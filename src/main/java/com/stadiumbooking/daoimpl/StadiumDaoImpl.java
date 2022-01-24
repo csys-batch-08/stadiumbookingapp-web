@@ -20,7 +20,7 @@ public class StadiumDaoImpl implements StadiumDao {
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
 		Statement stmt=con.createStatement();
-		String query="Select * from stadium_detalis";
+		String query="Select STADIUM_ID,STADIUM_NAME,STADIUM_IMG  from stadium_detalis";
 		
 		ResultSet rs=stmt.executeQuery(query);
 

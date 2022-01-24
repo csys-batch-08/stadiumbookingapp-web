@@ -14,6 +14,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <meta http-equiv="refresh" content="60">
+<link    rel="stylesheet"    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 <link rel = "icon" type = "" href = "image/Studium.png">
 <title>Matchbooking.com</title>
 
@@ -207,12 +208,27 @@ left:300px;
   font-weight: bold;
     position: relative;
   left: 40px;
+       transition:transform 300ms,background-color 300ms;
+  animation:pulse 500ms;
         }
         #mathcInfo a:hover{
 background-color: green;
 color: black;
+transform:scale(1.05);
+        }
+        #mathcInfo a:active{
+        transform:scale(0.95);
+        animation:none;
         }
         
+        @keyframes pulse{
+        from{
+        box-shadow: #ff69b4 0 0 0;
+        }
+        to{
+        box-shadow: #ff69b400 0 0 0 12px;
+        }
+        }
         
         ::-webkit-scrollbar {
   width: 12px;
@@ -260,7 +276,7 @@ color: black;
 <div id="Allmatch">
  <%while(rs.next())
 	 {%>    
-	 <div class="allMatch" id="<%=rs.getString(7)+rs.getString(8)%>">
+	 <div class="allMatch animate__animated animate__flipInX animate__slow" id="<%=rs.getString(7)+rs.getString(8)%>">
      <br>
         <img src="image/<%=rs.getString(9) %>" loading="lazy">  &nbsp;  &nbsp; <label ><b id="teamA"><%=rs.getString(7) %></b> <strong id="Vs">Vs</strong> <b id="teamB"> <%=rs.getString(8) %> </b></label>
     <img src="image/<%=rs.getString(10) %>" id="teamBlogo"  loading="lazy"> <br> <br>

@@ -70,7 +70,7 @@ public class MatchDaoImpl implements MatchDao {
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
 		Statement stmt=con.createStatement();
-		String query="select * from match_info order by match_date desc";
+		String query="select MATCH_ID,SPORTSID,STADIUM_NAME,LOCATION,MATCH_DATE,MATCH_TIME,TEAMA,TEAMB,TEAMALOGO,TEAMBLOGO,TOTALSEATS,AVAILABLESEATS,FIRSTCLASS_SEATS_PRICE,SECONDCLASS_SEATS_PRICE from match_info order by match_date desc";
 		
 		ResultSet rs=stmt.executeQuery(query);
 
@@ -148,7 +148,7 @@ public class MatchDaoImpl implements MatchDao {
 		ConnectionUtill conUtil=new ConnectionUtill();
 		
 		Connection con=conUtil.getDBConnect();
-		String query="select * from match_info where teama like '"+teamName.toUpperCase()+"%' or teamb like '"+teamName.toUpperCase()+"%' ";
+		String query="select MATCH_ID,SPORTSID,STADIUM_NAME,LOCATION,MATCH_DATE,MATCH_TIME,TEAMA,TEAMB,TEAMALOGO,TEAMBLOGO,TOTALSEATS,AVAILABLESEATS,FIRSTCLASS_SEATS_PRICE,SECONDCLASS_SEATS_PRICE from match_info where teama like '"+teamName.toUpperCase()+"%' or teamb like '"+teamName.toUpperCase()+"%' ";
 		PreparedStatement pst=con.prepareStatement(query);
 		//pst.setString(1, teamName);
 		//pst.setString(2, teamName);

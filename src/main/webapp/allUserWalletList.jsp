@@ -94,7 +94,7 @@
     <div>
     <table>
     <tr>
-    <th>Wallet Id</th>
+ 
     <th>Name</th>
     <th>Amount</th>
     <th>Transaction Date</th>
@@ -102,7 +102,7 @@
     
     <%while(rs.next()){ %>
     <tr>
-    <td><%=rs.getInt(1) %></td>
+
     <td><%=userDao.getUserNamebyId(rs.getInt(2)) %></td>
     <td><%=rs.getLong(3) %></td>
     <td><%=rs.getString(4) %></td>

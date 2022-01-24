@@ -49,7 +49,7 @@ public class SeatsDaoImpl implements SeatsDao {
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
 		
-		String query="select * from seat_details where userid=?";
+		String query="select TICKETID,USERID,TICKET_NUMBERS,MATCH_ID,SEATCLASS,TOTALPIRCE,SEATCOUNT,STATUS from seat_details where userid=?";
 		PreparedStatement pst=con.prepareStatement(query);
 		pst.setInt(1, userId);
 		ResultSet rs=pst.executeQuery();
@@ -63,7 +63,7 @@ public class SeatsDaoImpl implements SeatsDao {
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
 		Statement stmt=con.createStatement();
-		String query="select * from seat_details";
+		String query="select TICKETID,USERID,TICKET_NUMBERS,MATCH_ID,SEATCLASS,TOTALPIRCE,SEATCOUNT,STATUS from seat_details";
 		
 		ResultSet rs=stmt.executeQuery(query);
 		return rs;

@@ -10,7 +10,27 @@ public class User {
 	private String password;
 	private String email;
 	private long phoneNumber;
+	private Double wallet;
+	private String profilePic;
 	
+	
+	
+	public Double getWallet() {
+		return wallet;
+	}
+
+	public void setWallet(Double wallet) {
+		this.wallet = wallet;
+	}
+
+	public String getProfilePic() {
+		return profilePic;
+	}
+
+	public void setProfilePic(String profilePic) {
+		this.profilePic = profilePic;
+	}
+
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -41,6 +61,21 @@ public class User {
 		this.password=password2;
 		this.email=email2;
 		this.phoneNumber=phoneNumber2;
+	}
+
+	
+	public User(int userid, String name, String username, String role, String password, String email, long phoneNumber,
+			Double wallet, String profilePic) {
+		super();
+		this.userid = userid;
+		this.name = name;
+		this.username = username;
+		this.role = role;
+		this.password = password;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.wallet = wallet;
+		this.profilePic = profilePic;
 	}
 
 	public int getUserid() {

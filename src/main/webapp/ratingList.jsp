@@ -16,6 +16,9 @@
 <link rel = "icon" type = "" href = "image/Studium.png">
 <title>Matchbooking.com</title>
 <style>
+body{
+overflow-x:hidden; 
+}
   img{
             width: 300px;
             height: 300px;

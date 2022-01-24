@@ -20,7 +20,7 @@ public class SportsDaoImpl implements SportsDao{
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
 		
-		String query="select * from sports_info where sportsName=? and eventName=?";
+		String query="select SPORTSID,SPORTSNAME,EVENTNAME from sports_info where sportsName=? and eventName=?";
 		
 		PreparedStatement stmt=con.prepareStatement(query);
 		stmt.setString(1, sportsName);
@@ -64,7 +64,7 @@ public class SportsDaoImpl implements SportsDao{
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
 		Statement stmt=con.createStatement();
-		String query="Select * from sports_info";
+		String query="Select SPORTSID,SPORTSNAME,EVENTNAME from sports_info";
 		
 		ResultSet rs=stmt.executeQuery(query);
 

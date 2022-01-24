@@ -6,10 +6,31 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-
+  <link  rel="stylesheet"    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 <link rel = "icon" type = "" href = "image/Studium.png">
 <title>Matchbooking.com</title>
 <style>
+
+.sidenav {
+	height: 100%;
+	width: 200px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: steelblue;
+}
+
+.sidenav a {
+	padding: 6px 6px 6px 32px;
+	text-decoration: none;
+	font-size: 23px;
+	color: white;
+	display: block;
+}
+
+.sidenav a:hover {
+	color: black;
+}
 
 #updateMatch{
  position:absolute;
@@ -104,6 +125,22 @@ font-size: 20px;
 </style>
 </head>
 <body>
+
+<div class="sidenav">
+	   <a href="adminProfile.jsp">Profile</a>
+        <a href="matchDetails.jsp">Match Details</a>
+        <a href="stadiumDetalis.jsp">Stadium Details</a>
+        <a href="sportsDetalis.jsp">Sports Details</a>
+       <a href="Getallusers.jsp?deleteId=0">All User</a>
+        <a href="showMatchToAdmin.jsp">All Match Details</a>
+        <a href="allBookingDetails.jsp">Booking Details</a>
+        <a href="allUserWalletList.jsp">All User Wallet List</a>
+        <a href="stadiumList.jsp">Stadium List</a>
+        <a href="ratingList.jsp">Rating List</a>
+        <a href="index.jsp">Logout</a>
+	</div>
+
+
   <%
     MatchDaoImpl matchDao=new MatchDaoImpl();
       int matchId=Integer.parseInt(request.getParameter("matchId")) ;
@@ -112,7 +149,7 @@ font-size: 20px;
     dateRs.next();
    if(rs.next()){
     %>
-    <div id="updateMatch">
+    <div class="animate__animated animate__zoomIn animate__slow" id="updateMatch">
     <div>
      <div>
      <img src="image/<%=rs.getString(7) %>"> &nbsp; &nbsp;<b id="vs">Vs</b>  &nbsp;  <img src="image/<%=rs.getString(8) %>" id="teamBlogo">
@@ -125,7 +162,7 @@ font-size: 20px;
     <br>
     </div>
        <br>
-    <div id="matchDetails">
+    <div class="animate__animated animate__fadeInDown animate__delay-2s" id="matchDetails">
     <b ><%=rs.getString(2) %></b>
     &nbsp;&nbsp;&nbsp;&nbsp;
     <b><%=rs.getString(1) %></b>

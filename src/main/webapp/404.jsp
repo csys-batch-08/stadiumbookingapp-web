@@ -4,7 +4,7 @@
 <html>
 <head>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-
+ <link  rel="stylesheet"   href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <meta charset="ISO-8859-1">
 <title>Page Not Found</title>
 <style>
@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container animate__animated animate__fadeInDown animate__fast">
     <div class="row">
         <div class="col-md-12">
             <div class="error-template">
@@ -24,7 +24,7 @@
                     Oops!</h1>
                 <h2>
                     404 Not Found</h2>
-                <img class="img-fluid w-50" src="image/error-icon-32-removebg-preview.png">
+                <img class="img-fluid w-50 animate__animated animate__zoomIn animate__delay-1s" src="image/error-icon-32-removebg-preview.png">
                 <div class="error-details">
                 
                     Sorry, an error has occured, Requested page not found!

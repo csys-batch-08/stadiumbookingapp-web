@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+     <link    rel="stylesheet"    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "icon" type = "" href = "image/Studium.png">
     <title>Matchbooking.com</title>
@@ -77,6 +77,9 @@
          opacity:1;
          transform:translate(0,-50%);
          }
+         
+                
+         
         input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
@@ -117,7 +120,7 @@ input[type=number] {
     <%String lowBlance=(String) session.getAttribute("LowBalanceError"); 
     if(lowBlance!=null){
     %>
-   <h2  id="Emesg" onclick="Error()" style="position:absolute; left:500px; top:150px;color:red;visibility:visible"> <%=session.getAttribute("LowBalanceError") %></h2>
+   <h2 class="animate__animated animate__flash" id="Emesg" onclick="Error()" style="position:absolute; left:500px; top:150px;color:red;visibility:visible"> <%=session.getAttribute("LowBalanceError") %></h2>
 
     <%} %>
       <div id="wallet">
@@ -135,7 +138,7 @@ input[type=number] {
         <br>
         <label style="visibility: hidden;" id="amountError">Enter Amount</label>
         <br>
-        <button type="submit">Submit</button>
+        <button class="button" type="submit">Submit</button>
 
 
     </form>

@@ -52,7 +52,7 @@ public class UserDaoImpl  implements UserDao  {
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
 		Statement stmt=con.createStatement();
-		String query="select * from users order by userid";
+		String query="select USERID,NAME,USERNAME,ROLE,PASSWORD,EMAIL,PHONENUMBER,WALLET,PROFILEPIC from users order by userid";
 		
 		ResultSet rs=stmt.executeQuery(query);
 
@@ -71,7 +71,7 @@ public class UserDaoImpl  implements UserDao  {
 
 		//System.out.println("Dao"+id);
 		
-		String query="Select * from users where userid=?";		
+		String query="Select USERID,NAME,USERNAME,ROLE,PASSWORD,EMAIL,PHONENUMBER,WALLET,PROFILEPIC from users where userid=?";		
 
 		PreparedStatement stmt1=con.prepareStatement(query);		
 		stmt1.setInt(1, id);
@@ -130,7 +130,7 @@ public class UserDaoImpl  implements UserDao  {
 		Connection con=conUtil.getDBConnect();
 		
 	
-		String query="Select * from users where username=? and password=?";		
+		String query="Select USERID,NAME,USERNAME,ROLE,PASSWORD,EMAIL,PHONENUMBER,WALLET,PROFILEPIC from users where username=? and password=?";		
 
 		PreparedStatement stmt1=con.prepareStatement(query);
 		stmt1.setString(1, username);
@@ -150,7 +150,7 @@ public class UserDaoImpl  implements UserDao  {
 		Connection con=conUtil.getDBConnect();
 		
 	
-		String query="Select * from users where username=? and password=?";		
+		String query="Select USERID,NAME,USERNAME,ROLE,PASSWORD,EMAIL,PHONENUMBER,WALLET,PROFILEPIC from users where username=? and password=?";		
 
 		PreparedStatement stmt1=con.prepareStatement(query);
 		stmt1.setString(1, username);
@@ -219,13 +219,13 @@ public class UserDaoImpl  implements UserDao  {
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
 				
-		String query="Select * from users where userid=?";		
+		String query="Select WALLET from users where userid=?";		
 
 		PreparedStatement stmt1=con.prepareStatement(query);		
 		stmt1.setInt(1, userid);
 		ResultSet rs2=stmt1.executeQuery();
 		if(rs2.next()) {
-	    Double amount= rs2.getDouble(8);
+	    Double amount= rs2.getDouble(1);
 	    
 		return amount;
 		
@@ -277,13 +277,11 @@ public class UserDaoImpl  implements UserDao  {
 	@Override
 	public boolean checkUser(String userName, String email, Long phone) throws ClassNotFoundException, SQLException {
 		
+		/* Checking Weather the user alredy registered or Not  */
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
-		
-
-		//System.out.println("Dao"+id);
-		
-		String query="Select * from users where username=? or email=? or phoneNumber=?";		
+				
+		String query="Select USERID,NAME,USERNAME,ROLE,PASSWORD,EMAIL,PHONENUMBER,WALLET,PROFILEPIC from users where username=? or email=? or phoneNumber=?";		
 
 		PreparedStatement stmt1=con.prepareStatement(query);		
 		stmt1.setString(1, userName);

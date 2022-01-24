@@ -13,8 +13,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+      <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
     <style>
     html {
+    overflow-x:hidden;
   scroll-behavior: smooth;
 }
          li {
@@ -102,6 +107,29 @@ input:-webkit-autofill:active  {
   transition: background-color 5000s;
   -webkit-text-fill-color: blue !important;
 }
+
+#loginBuuton,#regButton {         
+       transition:transform 300ms,background-color 300ms;
+  animation:pulse 500ms;
+        }
+        #loginBuuton:hover,#regButton:hover{
+transform:scale(1.05);
+        }
+        #loginBuuton:active,#regButton:active{
+        transform:scale(0.95);
+        animation:none; 
+        }
+        
+        @keyframes pulse{
+        from{
+        box-shadow: yellow 0 0 0;
+        }
+        to{
+        box-shadow: blue 0 0 0 6px;
+        }
+        }
+        
+
     #con{
     background-image:url('image/StadiumImages.jpg');
     background-repeat: no-repeat;
@@ -118,6 +146,9 @@ margin-left: 120px;
 #dream{
 margin-left: 120px;
 }
+
+.rotate-center{animation:rotate-center 1s ease-in-out both}
+@keyframes rotate-center{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
 
 ::-webkit-scrollbar {
   width: 12px;
@@ -178,19 +209,19 @@ margin-left: 120px;
     <section id="con"  class="bg-info text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
-                <div>
+                <div class="animate__animated animate__fadeInLeft">
                     
     <%
     String error=(String)session.getAttribute("error");
     if (error!=null) {
     %>
-     <h2  id="Emesg" onclick="Error()" style="position:absolute; left:665px; top:100px;color:orange;visibility:visible"><i class="bi bi-emoji-frown"></i> <%=session.getAttribute("error") %></h2>
+     <h2  id="Emesg" onclick="Error()" style="position:absolute;width:500px; left:665px; top:-120px;color:orange;visibility:visible"><i class="bi bi-emoji-frown"></i> <%=session.getAttribute("error") %></h2>
    <%} %>
    <%String message=(String) session.getAttribute("RegisterSuccessful");
    
    if(message!=null){%>
     
-      <h2  id="RegSus" onclick="RegSus()" style="position:absolute; left:700px; top:100px;color:white;visibility:visible"><i class="bi bi-emoji-smile"></i> <%=session.getAttribute("RegisterSuccessful")%></h2>
+      <h2  id="RegSus" onclick="RegSus()" style="position:absolute; left:700px; width:500px; top:-120px;color:white;visibility:visible"><i class="bi bi-emoji-smile"></i> <%=session.getAttribute("RegisterSuccessful")%></h2>
     <%} %>
     
     
@@ -198,7 +229,7 @@ margin-left: 120px;
    
    if(SomthingWentWrong!=null){%>
     
-      <h2  id="RegSus" onclick="RegSus()" style="position:absolute; left:660px; top:80px;color:red;visibility:visible"> <i class="bi bi-emoji-frown"></i> <%=session.getAttribute("SomthingWentWrong")%></h2>
+      <h2  id="RegSus" onclick="RegSus()" style="position:absolute; left:660px; width:500px;  top:-120px;color:red;visibility:visible"> <i class="bi bi-emoji-frown"></i> <%=session.getAttribute("SomthingWentWrong")%></h2>
     <%} %>
     
     
@@ -206,9 +237,9 @@ margin-left: 120px;
                     <p class="lead font-weight-light my-4 ">
                         Upcoming TaTa IPL Tickets sales stared Book Now and Supports your Favorite Team
                     </p>
-                    <button class="btn btn-primary btn-outline-warning text-light" data-bs-toggle="modal" data-bs-target="#enroll">Book Now</button>
+                    <button class="btn btn-primary btn-outline-warning text-light" id="loginBuuton" data-bs-toggle="modal" data-bs-target="#enroll">Book Now</button>
                 </div>
-                <div>
+                <div class="animate__animated animate__flipInY animate__delay-1s">
                     <img class="img-fluid h-100  max-width-200 d-none d-sm-block"
                         src="image/iplLogo.png"
                         alt="">
@@ -221,7 +252,7 @@ margin-left: 120px;
         <div class="container">
             <div class="d-md-flex justify-content-between align-items-center">
                 <h3 class="mb-3 mb-md-0">Register Now For Booking</h3>
-                <button class="btn btn-info btn-outline-warning text-light" data-bs-toggle="modal" data-bs-target="#register">Register</button>
+                <button class="btn btn-info btn-outline-warning text-light" id="regButton" data-bs-toggle="modal" data-bs-target="#register">Register</button>
             </div>
             
         </div>
@@ -231,7 +262,7 @@ margin-left: 120px;
         <div class="container">
             <div class="row text-center g-4">
                 <div class="col-md">
-                    <div class="card bg-dark text-light">
+                    <div class="card bg-dark text-light rotate-center">
                         <div class="card-body text-center">
                             <div class="h2 mb-3">
                                 <i class="bi bi-binoculars"></i>
@@ -249,7 +280,7 @@ margin-left: 120px;
                     </div>
                 </div>
                 <div class="col-md">
-                    <div class="card bg-secondary text-light">
+                    <div class="card bg-secondary text-light rotate-center">
                         <div class="card-body text-center">
                             <div class="h2 mb-3">
                                 <i class="bi bi-person-square"></i>
@@ -266,7 +297,7 @@ margin-left: 120px;
                     </div>
                 </div>
                 <div class="col-md">
-                    <div class="card bg-dark text-light">
+                    <div class="card bg-dark text-light rotate-center">
                         <div class="card-body text-center">
                             <div class="h2 mb-3">
                                 <i class="bi bi-calendar3"></i>

@@ -41,7 +41,7 @@ public class RatingsDaoImpl implements RatingsDao {
 		Statement stmt=con.createStatement();
 		//System.out.println(stadium_id);
 		
-		String query="Select * from Ratings where stadium_id=?";
+		String query="Select REVIEWID,USERID,REVIEWS,RATINGS,STADIUM_ID from Ratings where stadium_id=?";
 		PreparedStatement stmt1=con.prepareStatement(query);		
 		stmt1.setInt(1, stadium_id);
 		ResultSet rs2=stmt1.executeQuery();
@@ -58,7 +58,7 @@ public class RatingsDaoImpl implements RatingsDao {
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
 		Statement stmt=con.createStatement();
-		String query="Select * from Ratings where stadium_id=?";
+		String query="Select REVIEWID,USERID,REVIEWS,RATINGS,STADIUM_ID  from Ratings";
 		
 		ResultSet rs=stmt.executeQuery(query);
 		return rs;

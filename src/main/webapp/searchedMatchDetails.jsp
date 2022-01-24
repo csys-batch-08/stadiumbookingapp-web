@@ -14,7 +14,7 @@ ResultSet rs = matchDao.searchByTeam(teamName);
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
+<link    rel="stylesheet"    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel = "icon" type = "" href = "image/Studium.png">
@@ -198,23 +198,40 @@ left:1200px
 width: 50px;
 height: 50px;
 }
-#mathcInfo a {
-	background-color: #f44336;
-	color: white;
-	padding: 14px 25px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: large;
-	font-weight: bold;
-	position: relative;
-	left: 40px;
-}
 
-#mathcInfo a:hover {
-	background-color: green;
-	color: black;
-}
+#mathcInfo  a{         
+   background-color: #f44336;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: large;
+  font-weight: bold;
+    position: relative;
+  left: 40px;
+       transition:transform 300ms,background-color 300ms;
+  animation:pulse 500ms;
+        }
+        #mathcInfo a:hover{
+background-color: green;
+color: black;
+transform:scale(1.05);
+        }
+        #mathcInfo a:active{
+        transform:scale(0.95);
+        animation:none;
+        }
+        
+        @keyframes pulse{
+        from{
+        box-shadow: #ff69b4 0 0 0;
+        }
+        to{
+        box-shadow: #ff69b400 0 0 0 12px;
+        }
+        }
+        
 
 #search {
 	position: absolute;
@@ -315,7 +332,7 @@ input:-webkit-autofill:active  {
 		if(rs.next()==true){
 		while (rs.next()) {
 		%>
-		  <div class="allMatch" id="<%=rs.getString(7)+rs.getString(8)%>">
+		  <div class="allMatch animate__animated animate__flipInX animate__slow" id="<%=rs.getString(7)+rs.getString(8)%>">
 		<br> <img src="image/<%=rs.getString(9)%>" alt=""> &nbsp;
 		&nbsp; <label><b id="teamA"><%=rs.getString(7)%></b> <strong
 			id="Vs">Vs</strong> <b id="teamB"> <%=rs.getString(8)%>
@@ -355,7 +372,7 @@ input:-webkit-autofill:active  {
 		}}
 		else {
 		%>
-		<img style="width: 400px; height: 200px;"  src="image/no-search-found-removebg-preview.png">
+		<img style="width: 400px; height: 200px;" class="animate__animated animate__zoomInDown"  src="image/no-search-found-removebg-preview.png">
 <%} %>
 	</div>
 
