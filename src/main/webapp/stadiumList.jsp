@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="com.stadiumbooking.daoimpl.StadiumDaoImpl"%>
-<%
-StadiumDaoImpl stadiumDao = new StadiumDaoImpl();
-%>
+   <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,21 +55,21 @@ text-decoration: none;
 		<table>
 			<tbody>
 				<tr>
-					<%
-					int count = 0;
-					ResultSet rs = stadiumDao.getAllStadiumList();
-					while (rs.next()) {
-					%>
+					<c:set var="count" value="0" />
+					
+					
+					     <c:forEach items="${sessionScope.stadiumList}" var="stadium">
+       
 					<td>
 						<table id="stadumList" cellspacing=70px;>
 							<tbody>
 								<tr>
-									<td><img src="image/<%=rs.getString(3)%>"></td>
+									<td><img src="image/${stadium.stadium_img}"></td>
 									
 									</tr>
 								
 									<td id="stadium">
-									<a href="rating.jsp?stadiumId=<%=rs.getInt(1)%>"><%=rs.getString(2)%></a>
+									<a href="rating.jsp?stadiumId=${stadium.stadium_id }">${stadium.stadium_name}</a>
 									
 																</td>
 							</tbody>
@@ -81,18 +77,16 @@ text-decoration: none;
 
 
 					</td>
-					<%
-					count++;
-					if (count == 4) {
-					%>
+					
+					<c:set var="count" value="${count + 1}" scope="page"/>
+					<c:choose>
+					<c:when test="${count==4}">
 				</tr>
 				<tr>
-					<%
-					count = 0;
-					}
-					}
-					%>
-
+						<c:set var="count" value="0" scope="page" />
+					</c:when>
+					</c:choose>
+</c:forEach>
 				</tr>
 			</tbody>
 		</table>

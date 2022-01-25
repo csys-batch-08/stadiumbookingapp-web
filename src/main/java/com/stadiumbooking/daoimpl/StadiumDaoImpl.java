@@ -5,15 +5,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.stadiumbooking.connection.ConnectionUtill;
 import com.stadiumbooking.dao.StadiumDao;
-import com.stadiumbooking.model.Stadium_detalis;
+import com.stadiumbooking.model.StadiumDetalis;
 
 public class StadiumDaoImpl implements StadiumDao {
 
 	@Override
-	public ResultSet getAllStadiumList() throws ClassNotFoundException, SQLException {
+	public List<StadiumDetalis> getAllStadiumList() throws ClassNotFoundException, SQLException {
 		
 		/* Get All Stadium Details */
 		
@@ -23,13 +25,19 @@ public class StadiumDaoImpl implements StadiumDao {
 		String query="Select STADIUM_ID,STADIUM_NAME,STADIUM_IMG  from stadium_detalis";
 		
 		ResultSet rs=stmt.executeQuery(query);
-
 		
-		return rs;
+		List<StadiumDetalis> StadiumList=new ArrayList<StadiumDetalis>();
+
+		while(rs.next()) {
+			StadiumDetalis stadium=new StadiumDetalis(rs.getInt(1),rs.getString(2),rs.getString(3));
+			StadiumList.add(stadium);
+		}
+		
+		return StadiumList;
 	}
 
 	@Override
-	public void insertStadium(Stadium_detalis stadium) {
+	public void insertStadium(StadiumDetalis stadium) {
 		
 		/* Insert Stadium Details Into database  */
 		

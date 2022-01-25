@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-
-  <%@page import="java.sql.ResultSet"%>
-    <%@page import="com.stadiumbooking.daoimpl.UserDaoImpl" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -104,18 +102,13 @@ input[type=number] {
     </div>
     
     
- <%int userID = (int)session.getAttribute("id"); %>    
+   
     <div id="walletId">
-    <%
-    UserDaoImpl userDao=new UserDaoImpl();
+
     
- 	ResultSet rs1=userDao.getUserById(userID);
- 	 if(rs1.next()){ 
-    %>
-    
-    <p><b>Wallet Amount:</b><%=rs1.getDouble(8) %></p>
+    <p><b>Wallet Amount:</b>${sessionScope.wallet}</p>
   
-    <%} %>
+  
     </div>
     <%String lowBlance=(String) session.getAttribute("LowBalanceError"); 
     if(lowBlance!=null){
@@ -127,7 +120,7 @@ input[type=number] {
     <form action="wallets" onsubmit="return insertwallet()">
 
 
-        <input style="visibility: hidden;" type="text" name="userID" value="<%=userID%>" >
+        <input style="visibility: hidden;" type="text" name="userID" value="${sessionScope.id}" >
         <br>
      
         <div class="wrapper">

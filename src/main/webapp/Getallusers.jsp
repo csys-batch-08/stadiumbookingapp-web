@@ -1,13 +1,9 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"  %>
-<%@page import="com.stadiumbooking.daoimpl.UserDaoImpl"%>
-<%@page import="java.sql.ResultSet"%>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%
-   UserDaoImpl userDao1=new UserDaoImpl();
-    ResultSet rs = userDao1.getAllUser();
-    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -106,38 +102,34 @@
      <th></th> 
      </tr>  
 
-<% while (rs.next()) 
-{ 
-   %>
+<c:forEach items="${sessionScope.UserLists}" var="users">
+
 	<tr>
 	 
-	<td><%= rs.getString(2)%></td>
-	<td><%= rs.getString(3)%></td> 
-	<td><%= rs.getString(4)%> </td> 
-	<td> <%=rs.getString(5)%> </td> 
-	<td> <%=rs.getString(6)%></td>
-	<td><%=rs.getLong(7) %></td>
-	<%if(rs.getDouble(8)==0 && rs.getString(4).equals("User")){ %>
-	<td><a href="Getallusers.jsp?deleteId=<%=rs.getInt(1)%>">Delete</a></td>
-	<%}
-	else if(rs.getString(4).equals("Admin")){
-	%>
-	<td>-----</td>
-	<%}else {%>
-	<td>Regular User</td>
-	<% } %>
+	<td>${users.name}</td>
+	<td>${users.username}</td> 
+	<td>${users.role}</td> 
+	<td> ${users.password}</td> 
+	<td> ${users.email}</td>
+	<td>${users.phoneNumber}</td>
+	<c:choose>
+	<c:when test="${users.wallet==0 and users.role.equals('User')}">
+	
+	<td><a href="Getallusers.jsp?deleteId=${users.userid}">Delete</a></td>
+	
+	</c:when>
+<c:when test="${users.role.equals('Admin') }">
+		<td>-----</td>
+	</c:when>
+	 <c:otherwise>
+	 <td>Regular User</td>
+	 </c:otherwise>
+	</c:choose>
+	
 	</tr>  
- 
-<% }  
 
-%>
+</c:forEach>
 
-
-    	<% 
- int userId=Integer.parseInt(request.getParameter("deleteId"));
-//System.out.println(userId);
-userDao1.deleteUser(userId); %>       
-    
 
 
 </table>

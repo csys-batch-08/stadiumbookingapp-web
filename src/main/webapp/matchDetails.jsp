@@ -1,19 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@page import="com.stadiumbooking.daoimpl.MatchDaoImpl" %>
-   <%@page import="java.sql.ResultSet"%>
-   <%@page import="com.stadiumbooking.daoimpl.SportsDaoImpl" %>
-   <%@page import="com.stadiumbooking.daoimpl.StadiumDaoImpl" %>
-<%
-MatchDaoImpl matchDao=new MatchDaoImpl();
-ResultSet rs=matchDao.getDate();
-
-SportsDaoImpl sportsDao=new SportsDaoImpl();
-ResultSet sportsRS=sportsDao.getAllSports();
-
-StadiumDaoImpl stadiumDao=new StadiumDaoImpl();
-ResultSet stadiumRs=stadiumDao.getAllStadiumList();
-%> 
+   <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+  <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+  <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="f" %>
+  
+  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -133,12 +124,12 @@ ResultSet stadiumRs=stadiumDao.getAllStadiumList();
 
     <div id="Form">
     <form action="matchServe" onsubmit="return sports()" >
-        <label for="stadoumName"><b>Stadoum Name:</b></label>
+        <label for="stadoumName"><b>Stadium Name:</b></label>
         <select name="stdname" placeholder="Enter Stadium Name" style="position: relative; left: 20px;">
         <option >--Select--</option>
-        <%while(stadiumRs.next()){ %>
-        <option value="<%=stadiumRs.getString(2)%>"><%=stadiumRs.getString(2)%></option>
-       <%} %>
+         <c:forEach items="${sessionScope.stadiumList}" var="stadium">
+        <option value="${stadium.stadium_name}">${stadium.stadium_name}</option>
+       </c:forEach>
         </select>
         <br> <br>
         <label for="Sports Name"><b>Sports Name:</b></label>
@@ -151,9 +142,9 @@ ResultSet stadiumRs=stadiumDao.getAllStadiumList();
         <label for="event"><b>Event:</b></label>
         <select name="event" id="event" >
             <option>--Select--</option>
-           <%while(sportsRS.next()) { %>
-           <option value="<%=sportsRS.getString(3)%>"><%=sportsRS.getString(3) %></option>
-            <%} %>
+                <c:forEach items="${sessionScope.sportsList}" var="spotrs">
+           <option value="${spotrs.eventName}">${spotrs.eventName}</option>
+            </c:forEach>
 
         </select>
         <br> <br>
@@ -170,11 +161,11 @@ ResultSet stadiumRs=stadiumDao.getAllStadiumList();
             <option value="Hyderabad">Hyderabad</option>
         </select>
         <br> <br>
-        <%if(rs.next()){ %>
+     
         
         <label for="date"><b>Date:</b></label>
-        <input type="date" id="dateinput" name="matchDate" min="<%=rs.getDate(1) %>"   placeholder="Select Date" style="position: relative; left: 95px;" required>
-        <%} %>
+        <input type="date" id="dateinput" name="matchDate" min="${sessionScope.today}"   placeholder="Select Date" style="position: relative; left: 95px;" required>
+    
         <br> <br>
         <label><b>Time:</b></label>
         <input type="time" name="time" id="time"  min="09:00" max="20:00" style="position: relative; left: 95px; width:145px " required >

@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.stadiumbooking.connection.ConnectionUtill;
 import com.stadiumbooking.dao.SeatsDao;
@@ -42,7 +44,7 @@ public class SeatsDaoImpl implements SeatsDao {
 	}
 
 	@Override
-	public ResultSet getSeatById(int userId) throws ClassNotFoundException, SQLException {
+	public List<Seats> getSeatById(int userId) throws ClassNotFoundException, SQLException {
 		
 		/* Getting Single User Booking Details */
 		
@@ -53,11 +55,16 @@ public class SeatsDaoImpl implements SeatsDao {
 		PreparedStatement pst=con.prepareStatement(query);
 		pst.setInt(1, userId);
 		ResultSet rs=pst.executeQuery();
-		return rs;
+		List<Seats> seatList=new ArrayList<Seats>();
+		while(rs.next()) {
+			Seats seat=new Seats(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getInt(7),rs.getString(8));
+		seatList.add(seat);
+		}
+		return seatList;
 	}
 
 	@Override
-	public ResultSet getSeatsDetalis() throws ClassNotFoundException, SQLException {
+	public List<Seats> getSeatsDetalis() throws ClassNotFoundException, SQLException {
 		/*Getting Booking Details */
 		
 		ConnectionUtill conUtil=new ConnectionUtill();
@@ -66,7 +73,12 @@ public class SeatsDaoImpl implements SeatsDao {
 		String query="select TICKETID,USERID,TICKET_NUMBERS,MATCH_ID,SEATCLASS,TOTALPIRCE,SEATCOUNT,STATUS from seat_details";
 		
 		ResultSet rs=stmt.executeQuery(query);
-		return rs;
+		List<Seats> seatList=new ArrayList<Seats>();
+		while(rs.next()) {
+			Seats seat=new Seats(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getInt(7),rs.getString(8));
+		seatList.add(seat);
+		}
+		return seatList;
 	}
 
 	@Override

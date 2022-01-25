@@ -2,6 +2,7 @@ package com.stadiumbooking.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.stadiumbooking.daoimpl.UserDaoImpl;
+import com.stadiumbooking.model.User;
 
 @WebServlet("/profilePic")
 public class ProfilePicController extends HttpServlet {
@@ -27,6 +29,9 @@ public class ProfilePicController extends HttpServlet {
 		if(role.equals("Admin")) {
 			try {
 				userDao.updateUserProfilePic(userId, pic);
+			
+				List<User> userDetails=userDao.getUserById(userId);
+				session.setAttribute("userDateils", userDetails);
 				res.sendRedirect("adminProfile.jsp");
 			} catch (ClassNotFoundException | SQLException | IOException e) {
 				// TODO Auto-generated catch block
@@ -36,6 +41,9 @@ public class ProfilePicController extends HttpServlet {
 		else if(role.equals("User")) {
 			try {
 				userDao.updateUserProfilePic(userId, pic);
+				
+				List<User> userDetails=userDao.getUserById(userId);
+				session.setAttribute("userDateils", userDetails);
 				res.sendRedirect("usersprofile.jsp");
 			} catch (ClassNotFoundException | SQLException | IOException e) {
 				// TODO Auto-generated catch block

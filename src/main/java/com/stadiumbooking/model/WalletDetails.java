@@ -1,21 +1,42 @@
 package com.stadiumbooking.model;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Wallet_details {
+public class WalletDetails {
 
 	private int walletId;
 	private int userId;
 	private Long amount;
-	public Wallet_details() {
+	private LocalDateTime transaction_date;
+	
+	public WalletDetails() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Wallet_details(int userId, Long amount) {
+	
+
+	public WalletDetails(int walletId, int userId, Long amount, LocalDateTime transaction_Date) {
 		super();
+		this.walletId = walletId;
 		this.userId = userId;
 		this.amount = amount;
+		this.transaction_date= transaction_Date;
 	}
+
+
+	
+	
+	public LocalDateTime getTransaction_date() {
+		return transaction_date;
+	}
+
+
+	public void setTransaction_date(LocalDateTime transaction_date) {
+		this.transaction_date = transaction_date;
+	}
+
+
 	public int getWalletId() {
 		return walletId;
 	}
@@ -34,11 +55,17 @@ public class Wallet_details {
 	public void setAmount(Long amount) {
 		this.amount = amount;
 	}
-	@Override
+	
+	
+	
+		@Override
 	public String toString() {
-		return "Wallet_details [walletId=" + walletId + ", userId=" + userId + ", amount=" + amount + "]";
+		return "WalletDetails [walletId=" + walletId + ", userId=" + userId + ", amount=" + amount
+				+ ", transaction_date=" + transaction_date + "]";
 	}
-	@Override
+
+
+		@Override
 	public int hashCode() {
 		return Objects.hash(amount, userId, walletId);
 	}
@@ -50,7 +77,7 @@ public class Wallet_details {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Wallet_details other = (Wallet_details) obj;
+		WalletDetails other = (WalletDetails) obj;
 		return Objects.equals(amount, other.amount) && userId == other.userId && walletId == other.walletId;
 	}
 	

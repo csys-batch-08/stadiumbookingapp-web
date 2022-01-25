@@ -13,9 +13,12 @@ public class Ratings {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Ratings( int userId, String reviews, double ratings, int stadium_id) {
+	
+	
+	
+	public Ratings(int reviewID, int userId, String reviews, double ratings, int stadium_id) {
 		super();
-		
+		this.reviewID = reviewID;
 		this.userId = userId;
 		this.reviews = reviews;
 		this.ratings = ratings;

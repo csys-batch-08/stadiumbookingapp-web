@@ -7,7 +7,7 @@ public class Seats {
 	private int userid;
 	private String ticket_numbers;
 	private int match_id;
-	private int sportsId;
+
 	private String seatclass;
 	private int Totalpirce;
 	private int seatcount;
@@ -16,18 +16,33 @@ public class Seats {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Seats( int userid, String ticket_numbers, int match_id, String seatclass,
-			int totalpirce, int seatcount) {
+	
+	
+	public Seats(int ticketId, int userid, String ticket_numbers, int match_id, String seatclass, int totalpirce,
+			int seatcount, String status) {
 		super();
-		
+		this.ticketId = ticketId;
 		this.userid = userid;
 		this.ticket_numbers = ticket_numbers;
 		this.match_id = match_id;
-		
 		this.seatclass = seatclass;
 		Totalpirce = totalpirce;
 		this.seatcount = seatcount;
+		this.status = status;
 	}
+
+
+	
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
 	public int getTicketId() {
 		return ticketId;
 	}
@@ -52,12 +67,7 @@ public class Seats {
 	public void setMatch_id(int match_id) {
 		this.match_id = match_id;
 	}
-	public int getSportsId() {
-		return sportsId;
-	}
-	public void setSportsId(int sportsId) {
-		this.sportsId = sportsId;
-	}
+
 	public String getSeatclass() {
 		return seatclass;
 	}
@@ -79,7 +89,7 @@ public class Seats {
 	@Override
 	public String toString() {
 		return "Seats [ticketId=" + ticketId + ", userid=" + userid + ", ticket_numbers=" + ticket_numbers
-				+ ", match_id=" + match_id + ", sportsId=" + sportsId + ", seatclass=" + seatclass + ", Totalpirce="
+				+ ", match_id=" + match_id + ",  seatclass=" + seatclass + ", Totalpirce="
 				+ Totalpirce + ", seatcount=" + seatcount + "]";
 	}
 	@Override

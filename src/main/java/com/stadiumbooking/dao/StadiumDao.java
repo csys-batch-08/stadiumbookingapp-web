@@ -2,11 +2,12 @@ package com.stadiumbooking.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
-import com.stadiumbooking.model.Stadium_detalis;
+import com.stadiumbooking.model.StadiumDetalis;
 
 public interface StadiumDao {
 
-	public void insertStadium(Stadium_detalis stadium);
-	public ResultSet getAllStadiumList() throws ClassNotFoundException, SQLException;
+	public void insertStadium(StadiumDetalis stadium);
+	public List<StadiumDetalis> getAllStadiumList() throws ClassNotFoundException, SQLException;
 }

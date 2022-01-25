@@ -2,32 +2,32 @@ package com.stadiumbooking.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.stadiumbooking.daoimpl.SportsDaoImpl;
-import com.stadiumbooking.model.Sports;
+import com.stadiumbooking.daoimpl.MatchDaoImpl;
+import com.stadiumbooking.model.Match;
 
+@WebServlet("/updateMatchCall")
+public class UpdateMacthCallController extends HttpServlet {
 
-
-@WebServlet("/sports")
-public class SportsController extends HttpServlet {
-	SportsDaoImpl sportsDao=new SportsDaoImpl();
+	MatchDaoImpl matchDao=new MatchDaoImpl();
 	
 	public void service(HttpServletRequest req,HttpServletResponse res) {
+	
+		HttpSession sessions=req.getSession();
 		
-		/*Getting Sports Details */
-		
-		String sportsName=req.getParameter("sportsName");
-		String eventName=req.getParameter("eventName");
-		
-		Sports sports=new Sports(0,sportsName,eventName);
+		int matchId=Integer.parseInt(req.getParameter("matchId"));
 		try {
-			sportsDao.insertSports(sports);
-			res.sendRedirect("sportsDetalis.jsp");
+			
+			List<Match> match = matchDao.getMatchByMatchId(matchId);
+			sessions.setAttribute("singleMatch", match);
+			res.sendRedirect("updateMatch.jsp");
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -36,6 +36,4 @@ public class SportsController extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-	
-
 }

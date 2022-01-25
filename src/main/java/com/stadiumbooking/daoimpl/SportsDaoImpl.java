@@ -5,9 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.stadiumbooking.connection.ConnectionUtill;
 import com.stadiumbooking.dao.SportsDao;
+import com.stadiumbooking.model.Ratings;
 import com.stadiumbooking.model.Sports;
 
 public class SportsDaoImpl implements SportsDao{
@@ -57,7 +60,7 @@ public class SportsDaoImpl implements SportsDao{
 	}
 
  	@Override
-	public ResultSet getAllSports() throws ClassNotFoundException, SQLException {
+	public List<Sports> getAllSports() throws ClassNotFoundException, SQLException {
 		
 		/* Get All Sports Details */
 		
@@ -67,9 +70,13 @@ public class SportsDaoImpl implements SportsDao{
 		String query="Select SPORTSID,SPORTSNAME,EVENTNAME from sports_info";
 		
 		ResultSet rs=stmt.executeQuery(query);
+		List<Sports> sportsList=new ArrayList<Sports>();
+		while(rs.next()) {
+			Sports sports=new Sports(rs.getInt(1),rs.getString(2),rs.getString(3));
+			sportsList.add(sports);
+		}
+		return sportsList;
 
-	
-		return rs;
 	}
 
 }

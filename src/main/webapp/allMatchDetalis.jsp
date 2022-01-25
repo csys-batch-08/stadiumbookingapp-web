@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@page import="com.stadiumbooking.daoimpl.MatchDaoImpl" %>
-    <%@page import="java.sql.ResultSet" %>
-    
-    <%
-    MatchDaoImpl matchDao=new MatchDaoImpl();
-    ResultSet rs=matchDao.getAllMatchDetalis();
-    %>
+   <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+  <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+  
+  
     
 <!DOCTYPE html>
 <html lang="en">
@@ -324,7 +321,7 @@ input:-webkit-autofill:active  {
 
 
  <div id="search">
- <form action="searchedMatchDetails.jsp">
+ <form action="searchedMatchDetails">
  <input type="text" name="teamName" placeholder="Search"><button type="submit"> &#128269;</button>
  
  </form>
@@ -347,47 +344,54 @@ input:-webkit-autofill:active  {
      <h2  id="EmMesg" onclick="Errors()" style="position:absolute; left:320px; top:30px;color:red;visibility:visible"> <%=session.getAttribute("LowCountSeats")%></h2>
    <%} %>
  
+   
     <div class="mathcInfo" id="mathcInfo">
- <%while(rs.next())
-	 {
-	
-	 %>     
-
-	  
-	  <div class="allMatch animate__animated animate__flipInX animate__slow" id="<%=rs.getString(7)+rs.getString(8)%>">
+<div id="Allmatch">
+   <c:forEach items="${sessionScope.MatchDetails}" var="match">
+  
+	 <div class="allMatch animate__animated animate__flipInX animate__slow" id="${match.teamA}${match.teamB}">
      <br>
-         <img src="image/<%=rs.getString(9)%>" loading="lazy" >  &nbsp;  &nbsp; <label ><b id="teamA"><%=rs.getString(7) %></b> <strong id="Vs">Vs</strong>   <b id="teamB"> <%=rs.getString(8) %> </b></label>
-     <img src="image/<%=rs.getString(10) %>" id="teamBlogo" loading="lazy" > <br> <br>
-    <label class="matchDetalis" ><%=rs.getString(3) %></label><br>
-        <label class="matchDetalis" ><%=rs.getString(4) %></label><br>
-       <label class="matchDetalis" ><%=rs.getDate(5) %></label><br>
-         <label class="matchDetalis" ><%=rs.getTime(6) %></label><br>
- <br>
- <div id="about">
-<%
-ResultSet dateRs=matchDao.getDate();
+        <img src="image/${match.teamAlogo}" loading="lazy">  &nbsp;  &nbsp; <label ><b id="teamA">${match.teamA}</b> <strong id="Vs">Vs</strong> <b id="teamB"> ${match.teamB} </b></label>
+    <img src="image/${match.teamBlogo}" id="teamBlogo"  loading="lazy"> <br> <br>
+    <label class="matchDetalis" id="stadiumName" >${match.stadium_name}</label><br>
+       <label class="matchDetalis" >${match.location}</label><br>
+       <fmt:parseDate value="${match.match_date}" pattern="yyyy-MM-dd" var="macthDate" type="date"/>
 
-if(dateRs.next()){ 
+   
+      <label class="matchDetalis" > <fmt:formatDate pattern="dd/MM/yyyy" value="${macthDate}"/>  </label><br>
+       <label class="matchDetalis" >${match.match_time}</label><br>
+        
 
-	if(dateRs.getDate(1).after(rs.getDate(5))){
-%>
-          <b><%=rs.getString(7) %>&nbsp; Won By 9 Wickets</b>
-           <br><br>
-          <%}
-	
-else{
-%>   
-   <a href="seats.jsp?matchId=<%=rs.getInt(1)%>" class="bookings effect">Book Tickets</a>
-      <br><br>
-     <%}} %>
-     </div>
-     </div> 
-          <br>
 <br>
-<%} %>
+<div id="about">
+     <c:choose>
 
+	 <c:when test = "${sessionScope.today > match.match_date }">
+
+          <b>${match.teamA}&nbsp; Won By 9 Wickets</b>
+          <br><br>
+          </c:when>
+	
+<c:otherwise>  
+
+
+<a href="bookSeats?matchId=${match.match_id}">Book</a>
+
+<br>
+<br>     
+    </c:otherwise> 
+
+</c:choose>     
+     </div>
+        
+
+        </div> 
+        <br>
+<br>
+</c:forEach>
+</div>
     </div>
-    
+
 </body>
 </html>
 <script >

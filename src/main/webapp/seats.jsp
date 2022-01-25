@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-     <%@page import="com.stadiumbooking.daoimpl.MatchDaoImpl" %>
-    <%@page import="java.sql.ResultSet" %>
-    
+ <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+     <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
   
 <!DOCTYPE html>
 <html lang="en">
@@ -178,42 +177,39 @@ rotateX(var(--x-angle));
 
 <body>
 <div id="pickSeats">
-      <%
-    MatchDaoImpl matchDao=new MatchDaoImpl();
-      int matchId=Integer.parseInt(request.getParameter("matchId")) ;
-    ResultSet rs=matchDao.getMatchByMatchId(matchId);
-    %>
-    <%if(rs.next()){ %>
+  
+    <c:forEach items="${sessionScope.singleMatch}" var="match">
+
     
     <div class="mathcInfo">
     <div>
-     <img src="image/<%=rs.getString(7) %>">  <strong id="Vs">Vs</strong> <img src="image/<%=rs.getString(8) %>" id="temaBLogo">
+     <img src="image/${match.teamAlogo}">  <strong id="Vs">Vs</strong> <img src="image/${match.teamBlogo}" id="temaBLogo">
     <br>
     <br>
-    <strong id="teamA"><%=rs.getString(5) %></strong>  
+    <strong id="teamA">${match.teamA}</strong>  
     
      
-    <strong id="teamB"><%=rs.getString(6) %></strong>
+    <strong id="teamB">${match.teamB}</strong>
     <br>
     </div>
     <br>
     <div id="matchDetails">
-    <b><%=rs.getString(2) %></b>
+    <b>${match.stadium_name}</b>
   
-    <b><%=rs.getString(1) %></b>
+    <b>${match.location}</b>
     <br>
-   
-    <br> <%=rs.getString(3) %> &nbsp; &nbsp; <%=rs.getString(4) %>
+    <fmt:parseDate value="${match.match_date}" pattern="yyyy-MM-dd" var="macthDate" type="date"/>
+    <br> <fmt:formatDate pattern="dd/MM/yyyy" value="${macthDate}"/>&nbsp; &nbsp; ${match.match_time}
     <br>
     </div>
     </div>
      <br> <br>
-     <label><b>Available Seats:</b><%=rs.getInt(12) %></label>
+     <label><b>Available Seats:</b>${match.availableSeats}</label>
     <div class="stadium-container">
         <form action="booking">
-        <input type="text" id="matchId" value="<%=request.getParameter("matchId")%>" name="matchIds" style="visibility:hidden;"> 
+        <input type="text" id="matchId" value="${match.match_id}" name="matchIds" style="visibility:hidden;"> 
         <br>
-        <label><b>Enter Seat Number:</b></label>
+        <label><b>Seat Number:</b></label>
          <input type="text" id="ticketNumber" name="ticketNumber">
         
         
@@ -222,14 +218,15 @@ rotateX(var(--x-angle));
        
         <select id="stadium" name="seatsCategory">
        
-          <option value="<%=rs.getInt(9) %>">FirstClass (Rs.<%=rs.getInt(9) %>)</option>
-          <option value="<%=rs.getInt(10) %>">Second Class(Rs.<%=rs.getInt(10) %>)</option>
+          <option value="${match.firstClass_Seats_price}">FirstClass (Rs.${match.firstClass_Seats_price})</option>
+          <option value="${match.secondClass_seats_price}">Second Class(Rs.${match.secondClass_seats_price})</option>
         </select>
         
         <input type="text" id="category" name="category" style="visibility:hidden;">
 
 
         <br>
+        <input type="text" id="checkFclass" style="visibility:hidden;" value="${match.firstClass_Seats_price}"><input type="text" style="visibility:hidden;" id="checkSclass" value="${match.secondClass_seats_price}">
         <br>
         
         
@@ -242,7 +239,7 @@ rotateX(var(--x-angle));
 
     </form>
       </div>
-<%} %>  
+</c:forEach>
 
 
 
@@ -501,22 +498,22 @@ rotateX(var(--x-angle));
     });
     
     function check(){
-    <%
-    ResultSet rs1=matchDao.getMatchByMatchId(matchId);
-    if(rs1.next()){
-    %>
-     
+    	   var fclassPrice=document.getElementById('checkFclass');
+    	   var SclassPrice=document.getElementById('checkSclass');
+
+    	
+    	
        
-     if(seatsSelect.options[seatsSelect.selectedIndex].value=="<%=rs1.getInt(9) %>"){
+     if(seatsSelect.options[seatsSelect.selectedIndex].value==fclassPrice.value){
         	// console.log('select seats working');
         	seatsCategory.value="First Class";
         	 //console.log(seatsCategory.value);
         }
-        else if(seatsSelect.options[seatsSelect.selectedIndex].value=="<%=rs1.getInt(10) %>"){
+        else if(seatsSelect.options[seatsSelect.selectedIndex].value==SclassPrice.value){
         	seatsCategory.value="Second Class";
         	 //console.log(seatsCategory.value);
         }
-        <%}%>
+      
     }
     
 

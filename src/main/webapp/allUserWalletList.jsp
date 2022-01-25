@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-     <%@page import="java.sql.ResultSet" %>
-     <%@page import="com.stadiumbooking.daoimpl.WalletDaoImpl" %>
-     <%@page import="com.stadiumbooking.daoimpl.UserDaoImpl" %>
-     <% WalletDaoImpl walletDao=new WalletDaoImpl();
-     UserDaoImpl userDao=new UserDaoImpl();
-     ResultSet rs=walletDao.allUserWalletList();
-     %>
+      <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+  <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+  <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="f" %>
+  
 <!DOCTYPE html>
 <html>
 <head>
@@ -99,15 +96,21 @@
     <th>Amount</th>
     <th>Transaction Date</th>
     </tr>
-    
-    <%while(rs.next()){ %>
+   <c:forEach items="${sessionScope.walletList}" var="walletlist">
+  
+	 <
     <tr>
 
-    <td><%=userDao.getUserNamebyId(rs.getInt(2)) %></td>
-    <td><%=rs.getLong(3) %></td>
-    <td><%=rs.getString(4) %></td>
+    <td>${walletlist.userId }</td>
+    <td>${walletlist.amount }</td>
+    
+<fmt:parseDate value="${ walletlist.transaction_date }" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
+
+   
+    <td><fmt:formatDate pattern="dd.MM.yyyy HH:mm" value="${ parsedDateTime }" /></td>
+   
     </tr>
-   <%} %> 
+   </c:forEach>
     </table>
     </div>
    

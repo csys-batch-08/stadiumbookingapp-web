@@ -1,13 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-        <%@page import="java.sql.ResultSet"%>
-        <%@page import="com.stadiumbooking.daoimpl.RatingsDaoImpl" %>
-     <%@page import="com.stadiumbooking.daoimpl.StadiumDaoImpl" %>
-      <%@page import="com.stadiumbooking.daoimpl.UserDaoImpl"%>
-     <%StadiumDaoImpl stadiumDao=new StadiumDaoImpl(); 
-     RatingsDaoImpl ratingDao=new RatingsDaoImpl();
-     UserDaoImpl userDao=new UserDaoImpl();
-     %>
+       
+  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -106,6 +100,8 @@ text-decoration: none;
         </style>
 </head>
 <body>
+
+<%-- 
 <% int id=(int) session.getAttribute("id");
             ResultSet user=userDao.getUserById(id);
 String role=null;
@@ -139,61 +135,68 @@ String role=null;
 
 <br><br>
 <br><br>
-
+ --%>
     
-<%ResultSet rs=stadiumDao.getAllStadiumList(); 
-while(rs.next()){
-%>
+
+     <c:forEach items="${sessionScope.stadiumList}" var="stadiumList">
      
    <div class="rating">
-   <img src="image/<%=rs.getString(3) %>" >
+   <img src="image/${stadiumList.stadium_img}" >
       
        <br>
-       <b><%=rs.getString(2) %></b> 
+       <b>${stadiumList.stadium_name}</b> 
        <br>
-       <%int stadiumId=rs.getInt(1);
-       //System.out.println(stadiumId);
-       ResultSet rs1=ratingDao.getAllRatingsById(stadiumId);
        
-       while(rs1.next()){
-       int userId=rs1.getInt(2);
+       <jsp:useBean id="ratingDao" class="com.stadiumbooking.daoimpl.RatingsDaoImpl"/>
        
-       ResultSet rs3=userDao.getUserById(userId);
-       if(rs3.next()){
-       %> 
-       
+    
+         <c:forEach items="${ratingDao.getAllRatingsById(stadiumList.stadium_id)}" var="ratingList">
+      <jsp:useBean id="userDao" class="com.stadiumbooking.daoimpl.UserDaoImpl"/>
+          
+     <c:forEach items="${userDao.getUserById(ratingList.userId)}" var="userList">
    
        <div class="reviewContainer">
-           <img src="image/<%=rs3.getString(9) %>" class="userProfile">
-       <b class="reviwerName"><%=rs3.getString(2) %>  &nbsp;
-       <%if(rs1.getDouble(4)==5.0){ %>
+           <img src="image/${userList.profilePic}" class="userProfile">
+       <b class="reviwerName">${userList.name}  
+       &nbsp;
+       <c:choose>
+       <c:when test="${ratingList.ratings==5.0}">
+      
        <label>&#11088;&#11088;&#11088;&#11088;&#11088;</label></b>
-       <%}
-       else if(rs1.getDouble(4)==4.0){
-       %>
+      
+       </c:when>
+       <c:when test="${ratingList.ratings==4.0}">
        <label>&#11088;&#11088;&#11088;&#11088;</label></b>
-       <%}  else if(rs1.getDouble(4)==3.0){%>
+       </c:when>
+        <c:when test="${ratingList.ratings==3.0}">
         <label>&#11088;&#11088;&#11088;</label></b> 
-       <%} else if(rs1.getDouble(4)==2.0){ %>
+       </c:when>
+       
+        <c:when test="${ratingList.ratings==2.0}">
        <label>&#11088;&#11088;</label></b>
-       <%} else if(rs1.getDouble(4)==1.0){%>
+       </c:when>
+        <c:when test="${ratingList.ratings==1.0}">
          <label>&#11088;</label></b>
-       <%} %>
-       <%} %>
+       </c:when>
+       </c:choose>
+       </c:forEach>     
+       
         &nbsp; 
       
       <br> <br>
-       <label id="review"><%=rs1.getString(3) %></label>
+       <label id="review">${ratingList.reviews}</label>
        <br>
        </div>
-       <%} %>
+       </c:forEach>
+      
+       
        <br>
     </div>
 
     <br>
         
     <br>
-    
-     <%} %>
+    </c:forEach>
+     
 </body>
 </html>

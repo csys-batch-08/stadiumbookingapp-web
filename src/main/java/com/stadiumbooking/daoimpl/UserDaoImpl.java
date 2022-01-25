@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -45,24 +46,32 @@ public class UserDaoImpl  implements UserDao  {
 	}
 
 	@Override
-	public ResultSet getAllUser() throws ClassNotFoundException, SQLException {
+	public List<User> getAllUser() throws ClassNotFoundException, SQLException {
 
 		/* Get All User Details */
 		
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
 		Statement stmt=con.createStatement();
+		List<User> userList=new ArrayList<User>();
 		String query="select USERID,NAME,USERNAME,ROLE,PASSWORD,EMAIL,PHONENUMBER,WALLET,PROFILEPIC from users order by userid";
 		
 		ResultSet rs=stmt.executeQuery(query);
+		
+		while(rs.next()) {
+		
+
+			User user=new User(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getDouble(8),rs.getString(9));
+			userList.add(user);
+		}
 
 		
-		return rs;
+		return userList;
 		
 	}
 
 	@Override
-	public ResultSet getUserById(int id) throws ClassNotFoundException, SQLException {
+	public List<User> getUserById(int id) throws ClassNotFoundException, SQLException {
 		/* Get Single  User details  */
 		
 		ConnectionUtill conUtil=new ConnectionUtill();
@@ -75,9 +84,14 @@ public class UserDaoImpl  implements UserDao  {
 
 		PreparedStatement stmt1=con.prepareStatement(query);		
 		stmt1.setInt(1, id);
-		ResultSet rs2=stmt1.executeQuery();
+        ResultSet rs=stmt1.executeQuery();
+        List<User> userList=new ArrayList<User>();
+		if(rs.next()) {
 	
-		return rs2;
+			User user=new User(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getDouble(8),rs.getString(9));
+			userList.add(user);
+		}
+		return userList;
 	
 		
 	}
@@ -123,7 +137,7 @@ public class UserDaoImpl  implements UserDao  {
 	}
 
 	@Override
-	public ResultSet validateUser(String username,String password) throws ClassNotFoundException, SQLException {
+	public List<User> validateUser(String username,String password) throws ClassNotFoundException, SQLException {
 		/* Get a Available User details from database  */
 		
 		ConnectionUtill conUtil=new ConnectionUtill();
@@ -136,8 +150,14 @@ public class UserDaoImpl  implements UserDao  {
 		stmt1.setString(1, username);
 		stmt1.setString(2,password);
 		ResultSet rs=stmt1.executeQuery();
-		
-		return rs;
+		  List<User> userList=new ArrayList<User>();
+			while(rs.next()) {
+			
+
+				User user=new User(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getDouble(8),rs.getString(9));
+				userList.add(user);
+			}
+			return userList;
 		
 	}
 

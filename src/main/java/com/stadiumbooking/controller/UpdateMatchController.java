@@ -4,11 +4,13 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.stadiumbooking.daoimpl.MatchDaoImpl;
 import com.stadiumbooking.model.Match;
@@ -27,8 +29,13 @@ public class UpdateMatchController extends HttpServlet {
 		LocalTime time=LocalTime.parse(timeInString);
 		//System.out.println(time);
 		Match match=new Match(matchId,date,time);
+		HttpSession session=req.getSession();
+		
 		try {
+		
 			matchDao.updateMatchDetails(match);
+			List<Match> matchDetails=matchDao.getAllMatchDetalis();
+			session.setAttribute("MatchDetails", matchDetails);
 			res.sendRedirect("showMatchToAdmin.jsp");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

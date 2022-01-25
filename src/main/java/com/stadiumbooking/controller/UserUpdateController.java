@@ -2,6 +2,7 @@ package com.stadiumbooking.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,11 +41,17 @@ public class UserUpdateController extends HttpServlet {
 			{
 				User user=new User(userId, name, username, password, email, phoneNumber);
 				userDao.updateUser(user);
+				int userID=(int) session1.getAttribute("id");
+				List<User> userDetails=userDao.getUserById(userID);
+				session1.setAttribute("userDateils", userDetails);
 	         	res.sendRedirect("adminProfile.jsp");
 	}
 	else if(role.equals("User")) {
 		User user=new User(userId, name, username, password, email, phoneNumber);
 		userDao.updateUser(user);
+		int userID=(int) session1.getAttribute("id");
+		List<User> userDetails=userDao.getUserById(userID);
+		session1.setAttribute("userDateils", userDetails);
 		res.sendRedirect("usersprofile.jsp");
 	}
 			

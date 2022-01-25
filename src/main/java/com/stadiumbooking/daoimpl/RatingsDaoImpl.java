@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.stadiumbooking.connection.ConnectionUtill;
 import com.stadiumbooking.dao.RatingsDao;
@@ -32,7 +34,7 @@ public class RatingsDaoImpl implements RatingsDao {
 	}
 
 	@Override
-	public ResultSet getAllRatingsById(int stadium_id) throws ClassNotFoundException, SQLException {
+	public List<Ratings> getAllRatingsById(int stadium_id) throws ClassNotFoundException, SQLException {
 		
 		/*Get Single Users all Rating Details  */
 		
@@ -44,14 +46,18 @@ public class RatingsDaoImpl implements RatingsDao {
 		String query="Select REVIEWID,USERID,REVIEWS,RATINGS,STADIUM_ID from Ratings where stadium_id=?";
 		PreparedStatement stmt1=con.prepareStatement(query);		
 		stmt1.setInt(1, stadium_id);
-		ResultSet rs2=stmt1.executeQuery();
+		ResultSet rs=stmt1.executeQuery();
+		List<Ratings> ratingList=new ArrayList<Ratings>();
+		while(rs.next()) {
+			Ratings ratings=new Ratings(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getDouble(4),rs.getInt(5));
+			ratingList.add(ratings);
+		}
+		return ratingList;
 
-		
-		return rs2;
 	}
 
 	@Override
-	public ResultSet getAllRatings() throws ClassNotFoundException, SQLException {
+	public List<Ratings> getAllRatings() throws ClassNotFoundException, SQLException {
 		
 		/* Getting All  Rating Details */
 		
@@ -61,7 +67,12 @@ public class RatingsDaoImpl implements RatingsDao {
 		String query="Select REVIEWID,USERID,REVIEWS,RATINGS,STADIUM_ID  from Ratings";
 		
 		ResultSet rs=stmt.executeQuery(query);
-		return rs;
+		List<Ratings> ratingList=new ArrayList<Ratings>();
+		while(rs.next()) {
+			Ratings ratings=new Ratings(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getDouble(4),rs.getInt(5));
+			ratingList.add(ratings);
+		}
+		return ratingList;
 
 		
 	}

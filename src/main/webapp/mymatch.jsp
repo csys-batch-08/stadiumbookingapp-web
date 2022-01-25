@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="java.util.*"%>
- <%@page import="java.sql.ResultSet"%>
- <%@page import="com.stadiumbooking.daoimpl.MatchDaoImpl" %>
- <%@page import="com.stadiumbooking.daoimpl.SeatsDaoImpl" %>
-<% 
-SeatsDaoImpl seatDao=new SeatsDaoImpl();
-MatchDaoImpl matchDao=new MatchDaoImpl(); %>
+   
+  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+  <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,64 +73,69 @@ color: black;
 
 
 
- <%int userId = (int)session.getAttribute("id"); %>
-<% 
-ResultSet rs=seatDao.getSeatById(userId);
-while(rs.next()){
-int matchIds=rs.getInt(4);
-ResultSet dateRs=matchDao.getDate();
-%>
+   <c:forEach items="${sessionScope.seatListById}" var="seatList">   
 
-<%ResultSet rs1=matchDao.getMatchByMatchId(matchIds); 
-Date date=null;
-if(rs1.next()){
-	date=rs1.getDate(3);
-%>
+
+<jsp:useBean id="matchDao" class="com.stadiumbooking.daoimpl.MatchDaoImpl"/>
+
 
     <div class="matchDetalis">
-
-        <b><%=rs1.getString(5) %></b>  Vs <b><%=rs1.getString(6) %></b>
+ <c:forEach items="${matchDao.getMatchByMatchId(seatList.match_id)}" var="match">
+  
+       <br>
+        <b>${match.teamA}</b>  Vs <b>${match.teamB}</b>
         <br>
-        <label><%=rs1.getString(2) %></label>
-        <label><%=rs1.getString(1) %></label>
+        <label>${match.stadium_name}</label>
+        <label>${match.location}</label>
         <br>
-        <label><%=rs1.getDate(3) %></label>
-         <label><%=rs1.getString(4) %></label>
+           <fmt:parseDate value="${match.match_date}" pattern="yyyy-MM-dd" var="macthDate" type="date"/>
+        
+        <label><fmt:formatDate pattern="dd/MM/yyyy" value="${macthDate}"/> </label>
+         <label>${match.match_time}</label>
          <br>
-<%} %>
-      <label><%=rs.getString(5) %></label>
+
+      <label>${seatList.seatclass}</label>
 <br>
-         <label>Number Of Ticktes:<%=rs.getInt(7)%></label>
+         <label>Number Of Ticktes:${seatList.seatcount}</label>
 
          <br>
-         <label>Seats Numbers:<%=rs.getString(3) %></label>
+         <label>Seats Numbers:${seatList.ticket_numbers}</label>
          <br>
-         <%
-   if(dateRs.next()){
-         if(dateRs.getDate(1).after(date)){     %>
+         <c:choose>
+         <c:when test = "${sessionScope.today > match.match_date }">
+
          <h3>Match Ended</h3>
          <hr style="width: 300px;">
-         <% 
-    }
-    else{
-         if(rs.getString(8).equals("Booked")) {%>
-<a href="mymatch.jsp?ticketId=<%= rs.getInt(1)%>">Cancel Ticket</a>
-<% }
-         else{
-         
-         %>
+</c:when>
+<c:otherwise>
+
+
+<c:choose>
+        <c:when test = "${seatList.status=='Booked'}">
+     
+<a href="cancleTicket?ticketId=${seatList.ticketId}">Cancel Ticket</a>
+
+
+</c:when>
+<c:otherwise>
          <lable>Cancelled</lable>
-         <%} %>
+         </c:otherwise>
+         </c:choose>
+         
+         
           <hr style="width: 300px;">
+</c:otherwise>
+</c:choose>
+
+
+</c:forEach>
 <br>
 
+
     </div>
-    <%}} }%>
-    
-    <% 
- int ticketId=Integer.parseInt(request.getParameter("ticketId"));
-    seatDao.cancelledSeats(ticketId);%>  
-    
+   
+    </c:forEach>
+ 
     
 </body>
 </html>

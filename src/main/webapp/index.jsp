@@ -1,3 +1,5 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+  
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +19,7 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
+  
     <style>
     html {
     overflow-x:hidden;
@@ -210,28 +213,22 @@ margin-left: 120px;
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
                 <div class="animate__animated animate__fadeInLeft">
-                    
-    <%
-    String error=(String)session.getAttribute("error");
-    if (error!=null) {
-    %>
-     <h2  id="Emesg" onclick="Error()" style="position:absolute;width:500px; left:665px; top:-120px;color:orange;visibility:visible"><i class="bi bi-emoji-frown"></i> <%=session.getAttribute("error") %></h2>
-   <%} %>
-   <%String message=(String) session.getAttribute("RegisterSuccessful");
    
-   if(message!=null){%>
-    
-      <h2  id="RegSus" onclick="RegSus()" style="position:absolute; left:700px; width:500px; top:-120px;color:white;visibility:visible"><i class="bi bi-emoji-smile"></i> <%=session.getAttribute("RegisterSuccessful")%></h2>
-    <%} %>
-    
-    
-      <%String SomthingWentWrong=(String) session.getAttribute("SomthingWentWrong");
    
-   if(SomthingWentWrong!=null){%>
-    
-      <h2  id="RegSus" onclick="RegSus()" style="position:absolute; left:660px; width:500px;  top:-120px;color:red;visibility:visible"> <i class="bi bi-emoji-frown"></i> <%=session.getAttribute("SomthingWentWrong")%></h2>
-    <%} %>
-    
+   <c:if test="${not empty sessionScope.error}">
+     <h2  id="Emesg" onclick="Error()" style="position:absolute;width:500px; left:665px; top:-120px;color:orange;visibility:visible"><i class="bi bi-emoji-frown"></i> ${sessionScope.error}</h2>
+
+</c:if>
+              
+              <c:if test="${not empty sessionScope.RegisterSuccessful}">
+                   <h2  id="Emesg" onclick="Error()" style="position:absolute; left:700px; width:500px; top:-120px;color:white;visibility:visible"><i class="bi bi-emoji-frown"></i> ${sessionScope.RegisterSuccessful}</h2>
+
+                </c:if>      
+   
+     <c:if test="${not empty sessionScope.SomthingWentWrong}">
+                <h2  id="RegSus" onclick="RegSus()" style="position:absolute; left:660px; width:500px;  top:-120px;color:red;visibility:visible"> <i class="bi bi-emoji-frown"></i> ${sessionScope.SomthingWentWrong }</h2>
+
+                </c:if>        
     
                     <h1>Tickets On Sale <span class="text-danger">Book Now</span></h1>
                     <p class="lead font-weight-light my-4 ">

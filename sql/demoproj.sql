@@ -12,6 +12,7 @@ commit;
 ALTER TABLE users
 ADD wallet number(30) default 0;
 
+desc users;
 ALTER TABLE users
 ADD profilePic varchar2(4000) default 'defultImg.jpg';
 
@@ -45,6 +46,7 @@ primary key(match_id),
 FOREIGN KEY(sportsId) REFERENCES sports_info(sportsId)
 );
 
+desc match_info;
 --ALTER TABLE match_info
 --ADD match_summary varchar2(200);
 
@@ -63,7 +65,7 @@ delete match_info where match_id=103;
 update match_info set match_date=match_date+1;
 select  round(to_date(to_char(match_date,'yyyy-mm-dd'), 'yyyy-mm-dd')- sysdate) as matchDate  from match_info;
 
-select stadium_name,location, round(to_date(to_char(match_date,'yyyy-mm-dd'),teamA,teamB,teamAlogo,teamBlogo,totalseats,availableseats from match_info;
+select stadium_name,location, round(to_char(match_date,'yyyy-mm-dd'),teamA,teamB,teamAlogo,teamBlogo,totalseats,availableseats from match_info;
 drop table match_info;
 
 CREATE SEQUENCE match_id
@@ -76,6 +78,7 @@ drop sequence match_id;
 
 select * from match_info;
 update match_info set match_date=match_date+1;
+delete from match_info where match_id=141;
 select to_char(match_time,'HH:MI') from match_info;
 select match_id,sportsid, stadium_name,location,to_char(match_date,'dd-mm-yyyy') as match_date, to_char(match_time,'HH:MI') as match_time,teamA,teamB,teamAlogo,teamBlogo,firstclass_seats_price,secondclass_seats_price,totalseats,availableseats from match_info;
 create table sports_info(
@@ -88,6 +91,7 @@ eventName varchar2(40) not null,
 primary key(sportsId)
 );
 
+desc sports_info;
 drop table sports_info;
 commit;
 insert into sports_info(sportsName,eventName) values('Cricket','ICC World Cup'); 
@@ -169,7 +173,9 @@ FOREIGN KEY(match_id) REFERENCES match_info(match_id),
 primary key(ticketId)
 );
 
+desc seat_details;
 select * from seat_details;
+delete from seat_details where match_id=141;
 insert into seat_details(userid,ticket_numbers,match_id,seatclass,Totalpirce,seatcount) values(56,'B1,B2,B3',4,'Second Class',2700,3);
 	delete  seat_details where ticketid=102;
 drop table seat_details;
@@ -186,6 +192,9 @@ userId int not null,
 amount number(30) default 0,
 FOREIGN KEY(userid) REFERENCES users(userid)
 );
+
+desc wallet_details;
+
 drop table wallet_details;
 select to_char(Transaction_Date,'dd-mm-yyyy HH:MI:SS') from wallet_details;
 
@@ -203,6 +212,8 @@ stadium_name varchar(50),
 stadium_img varchar(3000),
 primary key(stadium_id)
 );
+
+desc stadium_detalis;
 drop  table stadium_detalis;
 insert into stadium_detalis (stadium_name,stadium_img) values ('Chepauk','https://resize.indiatvnews.com/en/resize/oldbucket/715_-/sportscricket/IndiaTv7ebb19_ma.jpg'); 
 insert into stadium_detalis (stadium_name,stadium_img) values ('Wankhede','https://assets.architecturaldigest.in/photos/60082844a28465f75014be44/16:9/w_1280,c_limit/ipl-2018-wankhede-stadium-mumbai-indians-chennai-superkings-1366x768.jpg');
@@ -228,6 +239,7 @@ FOREIGN KEY(userid) REFERENCES users(userid),
 foreign key(stadium_id) references stadium_detalis(stadium_id)
 );
 
+desc Ratings;
 select * from ratings;
 
 

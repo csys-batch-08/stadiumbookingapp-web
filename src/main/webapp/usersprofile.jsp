@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-
-    <%@page import="java.sql.ResultSet"%>
-    <%@page import="com.stadiumbooking.daoimpl.UserDaoImpl" %>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
   
     
 <!DOCTYPE html>
@@ -15,34 +12,33 @@
 <title>Matchbooking.com</title>
 
  <style>
-        .sidenav {
-            height: 100%;
-            width: 200px;
-            position: fixed;
+      
+.sidenav {
+	height: 100%;
+	width: 200px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: steelblue;
+}
 
-            top: 0;
-            left: 0;
-            background-color:steelblue;
+.sidenav a {
+	padding: 6px 6px 6px 32px;
+	text-decoration: none;
+	font-size: 23px;
+	color: white;
+	display: block;
+}
 
-        }
+.sidenav a:hover {
+	color: black;
+}
 
-        .sidenav a {
-            padding: 6px 6px 6px 32px;
-            text-decoration: none;
-            font-size: 23px;
-            color: white;
-            display: block;
-        }
+.main {
+	margin-left: 200px;
+}
 
-        .sidenav a:hover {
-            color: black;
-        }
-
-        .main {
-            margin-left: 200px;
-        }
-        
-   input {
+input {
 	width: 100%;
 	padding: 12px 20px;
 	margin: 8px 0;
@@ -64,12 +60,6 @@
 	background-color: #f2f2f2;
 	padding: 20px;
 	width: 50%;
-}
-
-#userInfo {
-	position: absolute;
-	left: 300px;
-	top: 50px;
 }
 
 #userInfo {
@@ -100,22 +90,6 @@ height:250px;
     #profile input{
      outline: none;
      }
-     input[type="file"] {
-    border: none;
-    display: none;    
-}
-
-/*::-webkit-file-upload-button {
-  background: black;
-  color: red;
-  padding: 1em;
-}*/
-/*#profile label{
-background-color: blue;
-height: 40px;
-border: 2px solid none;
-border-radius: 10px;
-}*/
     </style>
 </head>
 <body>
@@ -131,47 +105,33 @@ border-radius: 10px;
 
 
 
-	<%
-	session.setAttribute("RegisterSuccessful",null);
-	session.setAttribute("error",null );
-	int i = (int) session.getAttribute("id");
 	
-	//System.out.println(i);
-	UserDaoImpl userDao = new UserDaoImpl();
 
-	ResultSet rs1 = userDao.getUserById(i);
-	String role=null;
-	%>
+
 	<div id="userInfo">
-		<%
-		if (rs1.next()) {
-		%>
 		
+		
+		
+		<c:forEach items="${sessionScope.userDateils}" var="user">
 
-		<label for=""><b>Name:</b> &nbsp; <%=rs1.getString(2)%> </label> <br>
-		<label for=""><b>Username:</b>&nbsp; <%=rs1.getString(3)%> </label> <br>
-		<label for=""><b>Mobile:</b>&nbsp; <%=rs1.getLong(7)%> </label> <br>
-		<label for=""><b>Email:</b> &nbsp; <%=rs1.getString(6)%> </label> <br>
-		<%role=rs1.getString(4); %>
+		<label for=""><b>Name:</b> &nbsp; ${user.name } </label> <br>
+		<label for=""><b>Username:</b>&nbsp; ${user.username} </label> <br>
+		<label for=""><b>Mobile:</b>&nbsp; ${user.phoneNumber}</label> <br>
+		<label for=""><b>Email:</b> &nbsp; ${user.email}</label> <br>
+		
 		<button onclick="update()">Update</button>
 		<div >
-		<img src="image/<%=rs1.getString(9) %>">
+		<img src="image/${user.profilePic }">
 		<button onclick="profile()" id="edit"> Edit </button>
 		</div>
-		
-		<%
-		}
-		%>
+		</c:forEach>
 				
 <div id="profile">
     <form action="profilePic" id="profilepicForm" style="visibility: hidden;">
-        <label class="custom-file-upload">
         
-        <input type="file" name="profilePic" title = "Choose a picture please">
-        Choose a picture please
-       </label>
+        <input type="file" name="profilePic">
        <button type="submit">Submit</button>
-       <input type="text" name="role" value="<%=role %>" style="visibility: hidden;">
+       <input type="text" name="role" value="User" style="visibility: hidden;">
     </form>
 </div>
 
@@ -182,32 +142,34 @@ border-radius: 10px;
 	<div id="update">
 
 		<form action="update" onsubmit="return validate()">
-		
+		    <c:forEach items="${sessionScope.userDateils}" var="user">
+
 
 			<label><b>Name:</b></label> <br>
-		    <input type="text" 	name="updateName" id="updateName"> <br>
+		    <input type="text" value="${user.name}" 	name="updateName" id="updateName"> <br>
 		    <label id="uname" style="visibility: hidden;">Enter Name</label> <br>
 
 			<label><b>Username:</b></label> <br> 
-			<input type="text"	name="updateUsername" id="updateUsername"> <br>			
+			<input type="text" value="${user.username}"	name="updateUsername" id="updateUsername"> <br>			
 		    <label id="username" style="visibility: hidden;">Enter Username</label> <br>
 			
 			
 			
 			<label ><b>Password:</b></label> <br> 
-			<input	type="text" name="updatePassword" id="updatePassword"> <br>
+			<input	type="text" value="${user.password}" name="updatePassword" id="updatePassword"> <br>
 			<label for="" id="lpass" style="visibility: hidden;">EnterPassword</label> <br>
 			
 			<label for=""><b>Email:</b></label> <br> 
-		    <input	type="email" name="updateEmail" id="updateEmail"> <br>
+		    <input	type="email" value="${user.email}" name="updateEmail" id="updateEmail"> <br>
 			<label for="" id="lmail" style="visibility: hidden;">Enter	Email</label> <br> 
 			
 			<label for=""><b>Phone Number:</b></label> <br>
-			<input type="number" name="updateNumber" id="updateNumber"> <br>
+			<input type="number" value="${user.phoneNumber}" name="updateNumber" id="updateNumber"> <br>
 			<label for="" id="mobile" style="visibility: hidden;">Enter	phone Number</label>
 			
 			<button type="submit">Submit</button>
-			<input type="text" name="role" id="role" style="visibility: hidden;">
+			<input type="text" name="role" value="${user.role}" id="role" style="visibility: hidden;">
+		</c:forEach>
 		</form>
 
 	</div>
@@ -217,21 +179,8 @@ border-radius: 10px;
 <script>
 function update(){
     document.getElementById("update").style.visibility="visible";
-    <%int j = (int) session.getAttribute("id");
+   
 
-//System.out.println(j);
-UserDaoImpl userDao1 = new UserDaoImpl();
-
-ResultSet rs2 = userDao.getUserById(j);
-if (rs2.next()) {%>
-
-       document.getElementById("updateName").value="<%=rs2.getString(2)%>";
-       document.getElementById("updateUsername").value="<%=rs2.getString(3)%>";
-       document.getElementById("role").value="<%=rs2.getString(4) %>";
-       document.getElementById("updatePassword").value="<%=rs2.getString(5)%>";
-       document.getElementById("updateEmail").value="<%=rs2.getString(6)%>";
-       document.getElementById("updateNumber").value="<%=rs1.getString(7)%>";
-<%}%>
 	}
 
 	function validate() {

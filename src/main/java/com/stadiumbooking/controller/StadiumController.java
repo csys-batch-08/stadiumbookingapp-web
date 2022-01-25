@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.stadiumbooking.daoimpl.StadiumDaoImpl;
-import com.stadiumbooking.model.Stadium_detalis;
+import com.stadiumbooking.model.StadiumDetalis;
 
 
 
@@ -23,7 +23,7 @@ public class StadiumController extends HttpServlet {
 		String stadiumName=req.getParameter("stadiumName");
 		String stadiumImage=req.getParameter("stadiumImge");
 		
-		Stadium_detalis stadium=new Stadium_detalis(stadiumName,stadiumImage);
+		StadiumDetalis stadium=new StadiumDetalis(0,stadiumName,stadiumImage);
 		StadiumDaoImpl stadiumDao=new StadiumDaoImpl();
 		
 		try {

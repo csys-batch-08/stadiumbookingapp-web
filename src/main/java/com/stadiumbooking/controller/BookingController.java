@@ -3,6 +3,7 @@ package com.stadiumbooking.controller;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +19,7 @@ import com.stadiumbooking.exception.HouseFull;
 import com.stadiumbooking.exception.LowBalance;
 import com.stadiumbooking.exception.LowSeatCount;
 import com.stadiumbooking.model.Seats;
+import com.stadiumbooking.model.User;
 
 
 @WebServlet("/booking")
@@ -73,13 +75,20 @@ public class BookingController extends HttpServlet {
 	         String ticketNumber=req.getParameter("ticketNumber");
 			
 			//System.out.println(seatclass+seatCounts+totalprice+matchId+userId);
-			Seats seats=new Seats(userId,ticketNumber,matchId,seatclass,totalprice,seatCounts);
+			Seats seats=new Seats(0,userId,ticketNumber,matchId,seatclass,totalprice,seatCounts,null);
 			seatDao.bookingSeats(seats);
 		
 			userDao.bookingTicktes(userId, totalprice);
 			matchDao.updateAvailableSeats(seatCounts, matchId);
+			List<Seats> seatsList=seatDao.getSeatById(userId);
+			List<User> userList=userDao.getUserById(userId);
 			
-			res.sendRedirect("mymatch.jsp?ticketId=0");
+			HttpSession session=req.getSession();
+			Double Wallet=userDao.userWalletDetails(userId);
+			//System.out.println(wallet);
+			session.setAttribute("wallet", Wallet);
+			session.setAttribute("seatListById", seatsList);
+			res.sendRedirect("mymatch.jsp");
 			}
 			else {
 			throw new LowBalance();

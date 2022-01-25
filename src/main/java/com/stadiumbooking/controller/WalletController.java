@@ -9,26 +9,31 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.stadiumbooking.daoimpl.UserDaoImpl;
 import com.stadiumbooking.daoimpl.WalletDaoImpl;
-import com.stadiumbooking.model.Wallet_details;
+import com.stadiumbooking.model.WalletDetails;
 
 
 
 @WebServlet("/wallets")
 public class WalletController extends HttpServlet {
 	WalletDaoImpl walletDao=new WalletDaoImpl();
+	UserDaoImpl userDao=new UserDaoImpl();
 	public void service(HttpServletRequest req,HttpServletResponse res) {
 		
 		/* Getting User Wallet Details */
-		HttpSession LowBalanceSession=req.getSession();
+		HttpSession Session=req.getSession();
 		int userId=Integer.parseInt(req.getParameter("userID"));
 		Long amount=Long.parseLong(req.getParameter("amount"));
 		
-		LowBalanceSession.setAttribute("LowBalanceError", null);
+		Session.setAttribute("LowBalanceError", null);
 		
-		Wallet_details wallet=new Wallet_details(userId,amount);
+		WalletDetails wallet=new WalletDetails(0,userId,amount,null);
 		try {
 			walletDao.insertAmount(wallet);
+			Double userWallet=userDao.userWalletDetails(userId);
+			//System.out.println(wallet);
+			Session.setAttribute("wallet", userWallet);
 			res.sendRedirect("wallet.jsp");
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block

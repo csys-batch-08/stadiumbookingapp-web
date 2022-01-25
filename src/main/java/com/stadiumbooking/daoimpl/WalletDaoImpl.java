@@ -5,16 +5,21 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.stadiumbooking.connection.ConnectionUtill;
 import com.stadiumbooking.dao.WalletDao;
-import com.stadiumbooking.model.Wallet_details;
+import com.stadiumbooking.model.User;
+import com.stadiumbooking.model.WalletDetails;
 
 public class WalletDaoImpl implements WalletDao {
 
 	
 	@Override
-	public void insertAmount(Wallet_details wallete) throws ClassNotFoundException, SQLException {
+	public void insertAmount(WalletDetails wallete) throws ClassNotFoundException, SQLException {
 		
 		/*Insert User Wallet Details intgo database */
 		
@@ -39,18 +44,24 @@ public class WalletDaoImpl implements WalletDao {
 	}
 
 	@Override
-	public ResultSet allUserWalletList() throws ClassNotFoundException, SQLException {
+	public List<WalletDetails> allUserWalletList() throws ClassNotFoundException, SQLException {
 		/* Get All User Wallet Transaction details */
 		
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
 		Statement stmt=con.createStatement();
-		String query="Select walletId,userId,amount,to_char(Transaction_Date,'dd-mm-yyyy HH:MI:SS') from wallet_details";
+		String query="Select walletId,userId,amount,Transaction_Date from wallet_details";
 		
 		ResultSet rs=stmt.executeQuery(query);
 
-	
-		return rs;
+		  List<WalletDetails> WalletList=new ArrayList<WalletDetails>();
+			
+		  while(rs.next()) {
+			
+				WalletDetails WalletDetails=new WalletDetails(rs.getInt(1),rs.getInt(2),rs.getLong(3),rs.getTimestamp(4).toLocalDateTime());
+				WalletList.add(WalletDetails);
+			}
+			return WalletList;
 	}
 
 	

@@ -30,7 +30,7 @@ public class RatingController extends HttpServlet {
 		String review=req.getParameter("review");
 		//System.out.println(review);
 		int userId = (int) session3.getAttribute("id");
-		Ratings ratings=new Ratings(userId,review,rating,stadiumId);
+		Ratings ratings=new Ratings(0,userId,review,rating,stadiumId);
 		try {
 			ratingDao.ratingStadium(ratings);
 			res.sendRedirect("ratingList.jsp");
