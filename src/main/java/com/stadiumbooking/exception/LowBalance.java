@@ -2,16 +2,16 @@ package com.stadiumbooking.exception;
 
 
 public class LowBalance extends Exception {
-String message="Insufficient Balance";
+static final String MESSAGE="Insufficient Balance";
 
 @Override
 public String getMessage() {
-	// TODO Auto-generated method stub
-	return message;
+	
+	return MESSAGE;
 }
 @Override
 public String toString() {
-	return message;
+	return MESSAGE;
 }
 
 	

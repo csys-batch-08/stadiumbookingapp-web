@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,9 +20,10 @@ import com.stadiumbooking.model.User;
 @WebServlet("/update")
 public class UserUpdateController extends HttpServlet {
 	
-	UserDaoImpl userDao=new UserDaoImpl();
+	final UserDaoImpl userDao=new UserDaoImpl();
 
 	
+	@Override
 	public void service(HttpServletRequest req, HttpServletResponse res) {
 		
 		/* Getting User Updated Details  */
@@ -33,7 +36,7 @@ public class UserUpdateController extends HttpServlet {
 		String email=req.getParameter("updateEmail").trim();
 		Long phoneNumber=Long.parseLong(req.getParameter("updateNumber"));
 		int userId = (int) session1.getAttribute("id");
-		//System.out.println(name+"\n"+username+"\n"+userId+password+email+phoneNumber+"\n"+role);
+
 		
 		try {
 			
@@ -43,27 +46,31 @@ public class UserUpdateController extends HttpServlet {
 				userDao.updateUser(user);
 				int userID=(int) session1.getAttribute("id");
 				List<User> userDetails=userDao.getUserById(userID);
-				session1.setAttribute("userDateils", userDetails);
-	         	res.sendRedirect("adminProfile.jsp");
+				req.setAttribute("userDateils", userDetails);
+	         	
+	         	 RequestDispatcher rd = req.getRequestDispatcher("adminProfile.jsp");			
+					rd.forward(req, res);
 	}
 	else if(role.equals("User")) {
 		User user=new User(userId, name, username, password, email, phoneNumber);
 		userDao.updateUser(user);
 		int userID=(int) session1.getAttribute("id");
 		List<User> userDetails=userDao.getUserById(userID);
-		session1.setAttribute("userDateils", userDetails);
-		res.sendRedirect("usersprofile.jsp");
+		req.setAttribute("userDateils", userDetails);
+		
+		 RequestDispatcher rd = req.getRequestDispatcher("usersprofile.jsp");			
+			rd.forward(req, res);
 	}
-			
-			
-			
-			
+		
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+	
 			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (IOException e1) {
+			
+			e1.printStackTrace();
+		} catch (ServletException e2) {
+			
+			e2.printStackTrace();
 		}
 	}
 	

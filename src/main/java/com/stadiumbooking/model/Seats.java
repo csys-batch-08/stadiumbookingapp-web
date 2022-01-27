@@ -5,44 +5,29 @@ import java.util.Objects;
 public class Seats {
 	private int ticketId;
 	private int userid;
-	private String ticket_numbers;
-	private int match_id;
+	private String ticketNumbers;
+	private int matchId;
 
 	private String seatclass;
-	private int Totalpirce;
+	private int price;
 	private int seatcount;
 	private String status;
 	public Seats() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
-	
-	
-	public Seats(int ticketId, int userid, String ticket_numbers, int match_id, String seatclass, int totalpirce,
+	public Seats(int ticketId, int userid, String ticketNumbers, int matchId, String seatclass, int pirce,
 			int seatcount, String status) {
 		super();
 		this.ticketId = ticketId;
 		this.userid = userid;
-		this.ticket_numbers = ticket_numbers;
-		this.match_id = match_id;
+		this.ticketNumbers = ticketNumbers;
+		this.matchId = matchId;
 		this.seatclass = seatclass;
-		Totalpirce = totalpirce;
+		this.price = pirce;
 		this.seatcount = seatcount;
 		this.status = status;
 	}
-
-
-	
-	public String getStatus() {
-		return status;
-	}
-
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-
 	public int getTicketId() {
 		return ticketId;
 	}
@@ -55,30 +40,29 @@ public class Seats {
 	public void setUserid(int userid) {
 		this.userid = userid;
 	}
-	public String getTicket_numbers() {
-		return ticket_numbers;
+	public String getTicketNumbers() {
+		return ticketNumbers;
 	}
-	public void setTicket_numbers(String ticket_numbers) {
-		this.ticket_numbers = ticket_numbers;
+	public void setTicketNumbers(String ticketNumbers) {
+		this.ticketNumbers = ticketNumbers;
 	}
-	public int getMatch_id() {
-		return match_id;
+	public int getMatchId() {
+		return matchId;
 	}
-	public void setMatch_id(int match_id) {
-		this.match_id = match_id;
+	public void setMatchId(int matchId) {
+		this.matchId = matchId;
 	}
-
 	public String getSeatclass() {
 		return seatclass;
 	}
 	public void setSeatclass(String seatclass) {
 		this.seatclass = seatclass;
 	}
-	public int getTotalpirce() {
-		return Totalpirce;
+	public int getPrice() {
+		return price;
 	}
-	public void setTotalpirce(int totalpirce) {
-		Totalpirce = totalpirce;
+	public void setPrice(int price) {
+		this.price= price;
 	}
 	public int getSeatcount() {
 		return seatcount;
@@ -86,15 +70,21 @@ public class Seats {
 	public void setSeatcount(int seatcount) {
 		this.seatcount = seatcount;
 	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	@Override
 	public String toString() {
-		return "Seats [ticketId=" + ticketId + ", userid=" + userid + ", ticket_numbers=" + ticket_numbers
-				+ ", match_id=" + match_id + ",  seatclass=" + seatclass + ", Totalpirce="
-				+ Totalpirce + ", seatcount=" + seatcount + "]";
+		return "Seats [ticketId=" + ticketId + ", userid=" + userid + ", ticketNumbers=" + ticketNumbers + ", matchId="
+				+ matchId + ", seatclass=" + seatclass + ", price=" + price + ", seatcount=" + seatcount + ", status="
+				+ status + "]";
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(seatclass, seatcount, ticketId, ticket_numbers);
+		return Objects.hash(price, seatclass, seatcount, ticketId, ticketNumbers, userid);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -105,9 +95,12 @@ public class Seats {
 		if (getClass() != obj.getClass())
 			return false;
 		Seats other = (Seats) obj;
-		return Objects.equals(seatclass, other.seatclass) && seatcount == other.seatcount && ticketId == other.ticketId
-				&& Objects.equals(ticket_numbers, other.ticket_numbers);
+		return price== other.price&& Objects.equals(seatclass, other.seatclass) && seatcount == other.seatcount
+				&& ticketId == other.ticketId && Objects.equals(ticketNumbers, other.ticketNumbers)
+				&& userid == other.userid;
 	}
+	
+	
 	
 	
 

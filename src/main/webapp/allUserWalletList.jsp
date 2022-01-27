@@ -5,10 +5,10 @@
   <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="f" %>
   
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<meta http-equiv="refresh" content="60">
+
 <link rel = "icon" type = "" href = "image/Studium.png">
 <title>Matchbooking.com</title>
 <style>
@@ -75,36 +75,40 @@
 <body>
 
    <div class="sidenav">
-         <a href="adminProfile.jsp">Profile</a>
-        <a href="matchDetails.jsp">Match Details</a>
+         <a href="adminProfile">Profile</a>
+        <a href="matchDetails">Match Details</a>
         <a href="stadiumDetalis.jsp">Stadium Details</a>
         <a href="sportsDetalis.jsp">Sports Details</a>
-        <a href="Getallusers.jsp?deleteId=0">All User</a>
-        <a href="showMatchToAdmin.jsp">All Match Details</a>
-        <a href="allBookingDetails.jsp">Booking Details</a>
-        <a href="allUserWalletList.jsp">All User Wallet List</a>
-        <a href="stadiumList.jsp">Stadium List</a>
-        <a href="ratingList.jsp">Rating List</a>
+        <a href="Getallusers">All User</a>
+        <a href="showMatchToAdmin">All Match Details</a>
+        <a href="allBookingDetails">Booking Details</a>
+        <a href="allUserWalletList">All User Wallet List</a>
+        <a href="stadiumList">Stadium List</a>
+        <a href="ratingList">Rating List</a>
         <a href="index.jsp">Logout</a>
     </div>
     
     <div>
     <table>
+     <caption>User Transaction history</caption>
     <tr>
  
-    <th>Name</th>
-    <th>Amount</th>
-    <th>Transaction Date</th>
+    <th id="name">Name</th>
+    <th id="amount">Amount</th>
+    <th id="date">Transaction Date</th>
     </tr>
-   <c:forEach items="${sessionScope.walletList}" var="walletlist">
+   <c:forEach items="${walletList}" var="walletlist">
   
 	 <
     <tr>
-
-    <td>${walletlist.userId }</td>
+     <jsp:useBean id="userDao" class="com.stadiumbooking.daoimpl.UserDaoImpl"/>
+          
+     
+   
+    <td>${userDao.getUserNamebyId(walletlist.userId )}</td>
     <td>${walletlist.amount }</td>
     
-<fmt:parseDate value="${ walletlist.transaction_date }" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
+<fmt:parseDate value="${ walletlist.transactionDate }" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
 
    
     <td><fmt:formatDate pattern="dd.MM.yyyy HH:mm" value="${ parsedDateTime }" /></td>

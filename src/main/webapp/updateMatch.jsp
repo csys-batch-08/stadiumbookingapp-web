@@ -4,7 +4,7 @@
   <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
   
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
   <link  rel="stylesheet"    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -46,7 +46,7 @@
 }
 
 
-#updateMatch b{
+#updateMatch strong{
 text-align: center;
 
 }
@@ -105,7 +105,7 @@ font-size: 50px;
         left: 120px;
         top: 0px;
 }
-b{
+strong{
 text-align: center;
 }
 #matchDetails{
@@ -114,7 +114,7 @@ text-align: center;
         left: 180px;
         top:-20px;        
 }
-#matchDetails b{
+#matchDetails strong{
 font-size: 20px;
 }
        ::placeholder {
@@ -128,27 +128,27 @@ font-size: 20px;
 <body>
 
 <div class="sidenav">
-	   <a href="adminProfile.jsp">Profile</a>
-        <a href="matchDetails.jsp">Match Details</a>
+	      <a href="adminProfile">Profile</a>
+        <a href="matchDetails">Match Details</a>
         <a href="stadiumDetalis.jsp">Stadium Details</a>
         <a href="sportsDetalis.jsp">Sports Details</a>
-       <a href="Getallusers.jsp?deleteId=0">All User</a>
-        <a href="showMatchToAdmin.jsp">All Match Details</a>
-        <a href="allBookingDetails.jsp">Booking Details</a>
-        <a href="allUserWalletList.jsp">All User Wallet List</a>
-        <a href="stadiumList.jsp">Stadium List</a>
-        <a href="ratingList.jsp">Rating List</a>
+        <a href="Getallusers">All User</a>
+        <a href="showMatchToAdmin">All Match Details</a>
+        <a href="allBookingDetails">Booking Details</a>
+        <a href="allUserWalletList">All User Wallet List</a>
+        <a href="stadiumList">Stadium List</a>
+        <a href="ratingList">Rating List</a>
         <a href="index.jsp">Logout</a>
 	</div>
 
 
  
- 	<c:forEach items="${sessionScope.singleMatch}" var="match">
+ 	<c:forEach items="${singleMatch}" var="match">
 
     <div class="animate__animated animate__zoomIn animate__slow" id="updateMatch">
     <div>
      <div>
-     <img src="image/${match.teamAlogo}"> &nbsp; &nbsp;<b id="vs">Vs</b>  &nbsp;  <img src="image/${match.teamBlogo}" id="teamBlogo">
+     <img src="image/${match.teamAlogo}" alt="cann't find"> &nbsp; &nbsp;<strong id="vs">Vs</strong>  &nbsp;  <img src="image/${match.teamBlogo}" id="teamBlogo" alt="cann't find">
     <br>
     <br>
     <strong id="teamA">${match.teamA}</strong>  
@@ -159,18 +159,18 @@ font-size: 20px;
     </div>
        <br>
     <div class="animate__animated animate__fadeInDown animate__delay-2s" id="matchDetails">
-    <b >${match.stadium_name}</b>
+    <strong >${match.stadiumName}</strong>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <b>${match.location}</b>
+    <strong>${match.location}</strong>
     <br>
-    <fmt:parseDate value="${match.match_date}" pattern="yyyy-MM-dd" var="macthDate" type="date"/>
-    <br> <fmt:formatDate pattern="dd/MM/yyyy" value="${macthDate}"/> &nbsp; &nbsp; ${match.match_time}
+    <fmt:parseDate value="${match.matchDate}" pattern="yyyy-MM-dd" var="macthDate" type="date"/>
+    <br> <fmt:formatDate pattern="dd/MM/yyyy" value="${macthDate}"/> &nbsp; &nbsp; ${match.matchTime}
     <br>
     </div>
     </div>
     <form action="updateMatch" >
 
-<input type="text" name="matchId" value="${match.match_id}" style="visibility:hidden;">
+<input type="text" name="matchId" value="${match.matchId}" style="visibility:hidden;">
 <br>
         <input type="date" min="${sessionScope.today}" name="matchDate" id="matchDate" required>
         <br>

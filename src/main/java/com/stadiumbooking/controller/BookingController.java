@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,132 +23,119 @@ import com.stadiumbooking.exception.LowSeatCount;
 import com.stadiumbooking.model.Seats;
 import com.stadiumbooking.model.User;
 
-
 @WebServlet("/booking")
 public class BookingController extends HttpServlet {
-	
-	SeatsDaoImpl seatDao=new SeatsDaoImpl();
-	MatchDaoImpl matchDao=new MatchDaoImpl();
-	WalletDaoImpl walletDao=new WalletDaoImpl();
-	UserDaoImpl userDao=new UserDaoImpl();
-	
-	public void service(HttpServletRequest req,HttpServletResponse res) {
+
+	final SeatsDaoImpl seatDao = new SeatsDaoImpl();
+	final MatchDaoImpl matchDao = new MatchDaoImpl();
+	final WalletDaoImpl walletDao = new WalletDaoImpl();
+	final UserDaoImpl userDao = new UserDaoImpl();
+
+	@Override
+	public void service(HttpServletRequest req, HttpServletResponse res) {
 		HttpSession session2 = req.getSession();
-	
-		/*  Getting Tickets Details */
-		
-		int seatCounts=Integer.parseInt(req.getParameter("seatCounts"));
-		//System.out.println(seatCounts);
-		String seatclass=req.getParameter("category");
-		//System.out.println(seatclass);
-		int totalprice=Integer.parseInt(req.getParameter("totalprice"));
-		//System.out.println(totalprice);
-		int matchId=Integer.parseInt(req.getParameter("matchIds"));
-		//System.out.println(matchId);
-		int userId =  (int) session2.getAttribute("id");
-		//System.out.println(userId);
-	
-		UserDaoImpl userDao=new UserDaoImpl();
-		int totalAvalibleSeats=0;
-		int avalibleSeats=0;
+
+		/* Getting Tickets Details */
+
+		int seatCounts = Integer.parseInt(req.getParameter("seatCounts"));
+
+		String seatclass = req.getParameter("category");
+
+		int totalprice = Integer.parseInt(req.getParameter("totalprice"));
+
+		int matchId = Integer.parseInt(req.getParameter("matchIds"));
+		int userId = (int) session2.getAttribute("id");
+
+		int totalAvalibleSeats = 0;
+		int avalibleSeats = 0;
+
 		try {
 			totalAvalibleSeats = matchDao.checkAvilableSeats(matchId);
-			avalibleSeats=totalAvalibleSeats-seatCounts;
-			
-		} catch (ClassNotFoundException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
-		} catch (SQLException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
-		}
-		if(totalAvalibleSeats!=0) {
-              if(avalibleSeats>=0) {
-				
-			
-		try {
-			Double userWallet=userDao.userWalletDetails(userId);
-			//System.out.println(userWallet);
+		} catch (ClassNotFoundException | SQLException e2) {
 
-			
-			
-			
-			if(userWallet>=totalprice) {
-	         String ticketNumber=req.getParameter("ticketNumber");
-			
-			//System.out.println(seatclass+seatCounts+totalprice+matchId+userId);
-			Seats seats=new Seats(0,userId,ticketNumber,matchId,seatclass,totalprice,seatCounts,null);
-			seatDao.bookingSeats(seats);
-		
-			userDao.bookingTicktes(userId, totalprice);
-			matchDao.updateAvailableSeats(seatCounts, matchId);
-			List<Seats> seatsList=seatDao.getSeatById(userId);
-			List<User> userList=userDao.getUserById(userId);
-			
-			HttpSession session=req.getSession();
-			Double Wallet=userDao.userWalletDetails(userId);
-			//System.out.println(wallet);
-			session.setAttribute("wallet", Wallet);
-			session.setAttribute("seatListById", seatsList);
-			res.sendRedirect("mymatch.jsp");
+			e2.printStackTrace();
+		}
+		avalibleSeats = totalAvalibleSeats - seatCounts;
+
+		if (totalAvalibleSeats != 0) {
+			if (avalibleSeats >= 0) {
+
+				try {
+					Double userWallet = userDao.userWalletDetails(userId);
+
+					if (userWallet >= totalprice) {
+						String ticketNumber = req.getParameter("ticketNumber");
+
+						Seats seats = new Seats(0, userId, ticketNumber, matchId, seatclass, totalprice, seatCounts,null);
+						seatDao.bookingSeats(seats);
+
+						userDao.bookingTicktes(userId, totalprice);
+						matchDao.updateAvailableSeats(seatCounts, matchId);
+						List<Seats> seatsList = seatDao.getSeatById(userId);
+					
+
+						HttpSession session = req.getSession();
+						Double wallet = userDao.userWalletDetails(userId);
+
+						session.setAttribute("wallet", wallet);
+						req.setAttribute("seatListById", seatsList);
+						
+
+						RequestDispatcher rd = req.getRequestDispatcher("/mymatch.jsp");
+
+						rd.forward(req, res);
+
+					} else {
+						throw new LowBalance();
+					}
+				} catch (ClassNotFoundException | SQLException | IOException e1) {
+					e1.printStackTrace();
+				} catch (LowBalance e) {
+					try {
+						HttpSession session = req.getSession();
+						session.setAttribute("LowBalanceError", e.getMessage());
+						res.sendRedirect("wallet.jsp");
+					} catch (IOException e1) {
+
+						e1.printStackTrace();
+					}
+				} catch (ServletException e) {
+
+					e.printStackTrace();
+				}
 			}
+
 			else {
-			throw new LowBalance();
+
+				try {
+					throw new LowSeatCount();
+				} catch (LowSeatCount lc) {
+
+					try {
+						HttpSession session = req.getSession();
+						session.setAttribute("LowCountSeats", lc.getMessage());
+						res.sendRedirect("allMatchDetalis.jsp");
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+
 			}
-		} catch (ClassNotFoundException | SQLException | IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (LowBalance e) {
-		try {
-			HttpSession LowBalanceSession=req.getSession();
-			LowBalanceSession.setAttribute("LowBalanceError", e.getMessage());
-				res.sendRedirect("wallet.jsp");
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}
-		}
-              
-              else {
-            	 
-            	  try {
-      				throw new LowSeatCount();
-      			}
-      			catch(LowSeatCount Lc){
-      				
-      				try {
-      					HttpSession LowCountSeatsSesssion=req.getSession();
-      					LowCountSeatsSesssion.setAttribute("LowCountSeats", Lc.getMessage());
-      					res.sendRedirect("allMatchDetalis.jsp");
-      				} catch (IOException e) {
-      					// TODO Auto-generated catch block
-      					e.printStackTrace();
-      				}
-      			}
-            	  
-              }
-		}
-		else {
+		} else {
 			try {
 				throw new HouseFull();
-			}
-			catch(HouseFull hf){
-				
+			} catch (HouseFull hf) {
+
 				try {
-					HttpSession HouseFullsession=req.getSession();
-					HouseFullsession.setAttribute("houseFull", hf.getMessage());
+					HttpSession houseFullsession = req.getSession();
+					houseFullsession.setAttribute("houseFull", hf.getMessage());
 					res.sendRedirect("allMatchDetalis.jsp");
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 		}
-		
-	}
-		
-	}
-	
-	
 
+	}
+
+}

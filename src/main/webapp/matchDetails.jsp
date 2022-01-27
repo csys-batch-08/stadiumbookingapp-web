@@ -109,47 +109,47 @@
 
 
     <div class="sidenav">
-         <a href="adminProfile.jsp">Profile</a>
-        <a href="matchDetails.jsp">Match Details</a>
+           <a href="adminProfile">Profile</a>
+        <a href="matchDetails">Match Details</a>
         <a href="stadiumDetalis.jsp">Stadium Details</a>
         <a href="sportsDetalis.jsp">Sports Details</a>
-        <a href="Getallusers.jsp?deleteId=0">All User</a>
-        <a href="showMatchToAdmin.jsp">All Match Details</a>
-        <a href="allBookingDetails.jsp">Booking Details</a>
-        <a href="allUserWalletList.jsp">All User Wallet List</a>
-        <a href="stadiumList.jsp">Stadium List</a>
-        <a href="ratingList.jsp">Rating List</a>
+        <a href="Getallusers">All User</a>
+        <a href="showMatchToAdmin">All Match Details</a>
+        <a href="allBookingDetails">Booking Details</a>
+        <a href="allUserWalletList">All User Wallet List</a>
+        <a href="stadiumList">Stadium List</a>
+        <a href="ratingList">Rating List</a>
         <a href="index.jsp">Logout</a>
     </div>
 
     <div id="Form">
     <form action="matchServe" onsubmit="return sports()" >
-        <label for="stadoumName"><b>Stadium Name:</b></label>
+        <label for="stadoumName"><strong>Stadium Name:</strong></label>
         <select name="stdname" placeholder="Enter Stadium Name" style="position: relative; left: 20px;">
         <option >--Select--</option>
-         <c:forEach items="${sessionScope.stadiumList}" var="stadium">
-        <option value="${stadium.stadium_name}">${stadium.stadium_name}</option>
+         <c:forEach items="${stadiumList}" var="stadium">
+        <option value="${stadium.stadiumName}">${stadium.stadiumName}</option>
        </c:forEach>
         </select>
         <br> <br>
-        <label for="Sports Name"><b>Sports Name:</b></label>
+        <label for="Sports Name"><strong>Sports Name:</strong></label>
         <select name="spname" id="spname">
             <option value="">--Select--</option>
             <option value="Cricket">Cricket</option>
             <option value="Football">Football</option>
         </select>
         <br> <br>
-        <label for="event"><b>Event:</b></label>
+        <label for="event"><strong>Event:</strong></label>
         <select name="event" id="event" >
             <option>--Select--</option>
-                <c:forEach items="${sessionScope.sportsList}" var="spotrs">
+                <c:forEach items="${sportsList}" var="spotrs">
            <option value="${spotrs.eventName}">${spotrs.eventName}</option>
             </c:forEach>
 
         </select>
         <br> <br>
 
-        <label for="location"><b>Location:</b></label>
+        <label for="location"><strong>Location:</strong></label>
         <select  name="location" id="location" style="position: relative; left: 65px; width: 150px;">
             <option value="">--Select Location--</option>
             <option value="Chennai">Chennai</option>
@@ -163,11 +163,11 @@
         <br> <br>
      
         
-        <label for="date"><b>Date:</b></label>
+        <label for="date"><strong>Date:</strong></label>
         <input type="date" id="dateinput" name="matchDate" min="${sessionScope.today}"   placeholder="Select Date" style="position: relative; left: 95px;" required>
     
         <br> <br>
-        <label><b>Time:</b></label>
+        <label><strong>Time:</strong></label>
         <input type="time" name="time" id="time"  min="09:00" max="20:00" style="position: relative; left: 95px; width:145px " required >
         <br>
         <br>
@@ -176,7 +176,7 @@
         <div>
 
 
-        <label for="teamA" onmouseover="spname()"><b>Team A:</b></label> 
+        <label for="teamA" onmouseover="spname()"><strong>Team A:</strong></label> 
         <select name="teamA" id="teamA" class="teamA" >
             <option value="">--Select--</option>
             <option value="CSK">CSK</option>
@@ -212,10 +212,10 @@
       
         <br> <br>
         &nbsp;
-        <b>VS</b>
+        <strong>VS</strong>
         &nbsp;
         <br><br>
-        <label for="teamB"><b>Team B:</b></label>
+        <label for="teamB"><strong>Team B:</strong></label>
          <select name="teamB" class="teamB" id="teamB">
             <option value="">--Select--</option>
             <option value="CSK">CSK</option>
@@ -255,13 +255,13 @@
     
     
     
-    <label for="teamAimg"><b>Team A logo </b></label>
+    <label for="teamAimg"><strong>Team A logo </strong></label>
         <input type="file" name="teamAlogo" id="teamAlogo" style="position: relative; left: 55px; width:145px ">
         <br> <br>
-        <label for="tramBimg"><b>Team B logo</b></label>
+        <label for="tramBimg"><strong>Team B logo</strong></label>
         <input type="file" name="teamBlogo" id="teamBlogo" style="position: relative; left: 55px; width:145px ">
         <br> <br>
-        <label for="numberseats"><b>Number Of Seats:</b></label>
+        <label for="numberseats"><strong>Number Of Seats:</strong></label>
         <select name="totalSeats" id="seats" style="position: relative; left: 15px; width:145px ">
             <option value="200">200</option>
             <option value="300">300</option>
@@ -269,7 +269,7 @@
             <option value="500">500</option>
         </select>
         <br> <br>
-         <label for="availseats"><b>Available Seats: </b></label>
+         <label for="availseats"><strong>Available Seats: </strong></label>
         <select name="availseats" id="seat" style="position: relative; left: 30px; width:145px ">
             <option value="">--Select--</option>
             <option value="100">100</option>
@@ -278,7 +278,7 @@
             <option value="200">200</option>
         </select>
         <br> <br>
-        <label for="firstClass"><b>First Class Rate:</b></label>
+        <label for="firstClass"><strong>First Class Rate:</strong></label>
         <select name="firstClass" id="fclass" >
             <option value="1000">1000Rs</option>
             <option value="1500">1500Rs</option>
@@ -287,7 +287,7 @@
         </select>
 
         <br> <br>
-        <label for="secondClass"><b>Second Class Rate:</b></label>
+        <label for="secondClass"><strong>Second Class Rate:</strong></label>
         <select name="secondClass" id="sclass">
             <option value="500">500Rs</option>
             <option value="700">700Rs</option>

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,19 +18,20 @@ import com.stadiumbooking.model.Match;
 @WebServlet("/searchedMatchDetails")
 public class SearchController  extends HttpServlet{
 
-	MatchDaoImpl matchDao=new MatchDaoImpl();
+	final MatchDaoImpl matchDao=new MatchDaoImpl();
+	@Override
 	public void doGet(HttpServletRequest req,HttpServletResponse res) {
 		String teamName=req.getParameter("teamName");
-		//System.out.println(teamName);
-		HttpSession session=req.getSession();
+		
 		try {
 			List<Match> matchDetails=matchDao.searchByTeam(teamName);
-			//System.out.println(matchDetails.size());
-			session.setAttribute("searchMatchList", matchDetails);
-			res.sendRedirect("searchedMatchDetails.jsp");
-		} catch (ClassNotFoundException | SQLException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			req.setAttribute("searchMatchList", matchDetails);
+			RequestDispatcher rd = req.getRequestDispatcher("searchedMatchDetails.jsp");			
+				rd.forward(req, res);
+			
+
+		} catch (ClassNotFoundException | SQLException | IOException | ServletException e) {
+						e.printStackTrace();
 		}
 		
 	}

@@ -32,8 +32,7 @@ public class SportsDaoImpl implements SportsDao{
 		int num=0;
 		if(rs.next()) {
 		 num=rs.getInt(1);
-		//System.out.println(num);
-		
+
 		}
 		con.close();
 		return num;
@@ -47,15 +46,13 @@ public class SportsDaoImpl implements SportsDao{
 		
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
-		//System.out.println("Insert Process");
 		String query="insert into sports_info(sportsName,eventName ) values(?,?)";
 		
 		PreparedStatement stmt=con.prepareStatement(query);
 		stmt.setString(1, sports.getSportsName());
 		stmt.setString(2, sports.getEventName());
-		int i=stmt.executeUpdate();
-		//System.out.println(i+" row Inserted");
-		//System.out.println("Value Inserted Successfully");
+		stmt.executeUpdate();
+		
 		
 	}
 
@@ -66,11 +63,12 @@ public class SportsDaoImpl implements SportsDao{
 		
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
-		Statement stmt=con.createStatement();
-		String query="Select SPORTSID,SPORTSNAME,EVENTNAME from sports_info";
 		
+		String query="Select SPORTSID,SPORTSNAME,EVENTNAME from sports_info";
+
+		PreparedStatement stmt=con.prepareStatement(query);
 		ResultSet rs=stmt.executeQuery(query);
-		List<Sports> sportsList=new ArrayList<Sports>();
+		List<Sports> sportsList=new ArrayList<>();
 		while(rs.next()) {
 			Sports sports=new Sports(rs.getInt(1),rs.getString(2),rs.getString(3));
 			sportsList.add(sports);

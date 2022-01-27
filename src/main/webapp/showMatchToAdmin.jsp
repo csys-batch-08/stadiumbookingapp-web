@@ -5,10 +5,10 @@
   
     
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<meta http-equiv="refresh" content="60">
+
 <link    rel="stylesheet"    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 <link rel = "icon" type = "" href = "image/Studium.png">
 <title>Matchbooking.com</title>
@@ -191,7 +191,7 @@ font-weight: bold;
 position:relative;
 left:300px;
 }
-#mathcInfo  button {
+#mathcInfo  a {
          
    background-color: #f44336;
   color: white;
@@ -206,12 +206,12 @@ left:300px;
        transition:transform 300ms,background-color 300ms;
   animation:pulse 500ms;
         }
-        #mathcInfo button:hover{
+        #mathcInfo a:hover{
 background-color: green;
 color: black;
 transform:scale(1.05);
         }
-        #mathcInfo button:active{
+        #mathcInfo a:active{
         transform:scale(0.95);
         animation:none;
         }
@@ -252,16 +252,16 @@ transform:scale(1.05);
 <body>
 
    <div class="sidenav">
-         <a href="adminProfile.jsp">Profile</a>
-        <a href="matchDetails.jsp">Match Details</a>
+           <a href="adminProfile">Profile</a>
+        <a href="matchDetails">Match Details</a>
         <a href="stadiumDetalis.jsp">Stadium Details</a>
         <a href="sportsDetalis.jsp">Sports Details</a>
-        <a href="Getallusers.jsp?deleteId=0">All User</a>
-        <a href="showMatchToAdmin.jsp">All Match Details</a>
-        <a href="allBookingDetails.jsp">Booking Details</a>
-        <a href="allUserWalletList.jsp">All User Wallet List</a>
-        <a href="stadiumList.jsp">Stadium List</a>
-        <a href="ratingList.jsp">Rating List</a>
+        <a href="Getallusers">All User</a>
+        <a href="showMatchToAdmin">All Match Details</a>
+        <a href="allBookingDetails">Booking Details</a>
+        <a href="allUserWalletList">All User Wallet List</a>
+        <a href="stadiumList">Stadium List</a>
+        <a href="ratingList">Rating List</a>
         <a href="index.jsp">Logout</a>
     </div>
    
@@ -269,36 +269,36 @@ transform:scale(1.05);
 
     <div id="mathcInfo">
 <div id="Allmatch">
-   <c:forEach items="${sessionScope.MatchDetails}" var="match">
+   <c:forEach items="${MatchDetails}" var="match">
   
 	 <div class="allMatch animate__animated animate__flipInX animate__slow" id="${match.teamA}${match.teamB}">
      <br>
-        <img src="image/${match.teamAlogo}" loading="lazy">  &nbsp;  &nbsp; <label ><b id="teamA">${match.teamA}</b> <strong id="Vs">Vs</strong> <b id="teamB"> ${match.teamB} </b></label>
-    <img src="image/${match.teamBlogo}" id="teamBlogo"  loading="lazy"> <br> <br>
-    <label class="matchDetalis" id="stadiumName" >${match.stadium_name}</label><br>
+        <img src="image/${match.teamAlogo}" alt="can't find" loading="lazy">  &nbsp;  &nbsp; <label ><strong id="teamA">${match.teamA}</strong> <strong id="Vs">Vs</strong> <strong id="teamB"> ${match.teamB} </strong></label>
+    <img src="image/${match.teamBlogo}" alt="can't find" id="teamBlogo"  loading="lazy"> <br> <br>
+    <label class="matchDetalis" id="stadiumName" >${match.stadiumName}</label><br>
        <label class="matchDetalis" >${match.location}</label><br>
-      <fmt:parseDate value="${match.match_date}" pattern="yyyy-MM-dd" var="macthDate" type="date"/>   
+      <fmt:parseDate value="${match.matchDate}" pattern="yyyy-MM-dd" var="macthDate" type="date"/>   
       <label class="matchDetalis" > <fmt:formatDate pattern="dd/MM/yyyy" value="${macthDate}"/>  </label><br>
-       <label class="matchDetalis" >${match.match_time}</label><br>
+       <label class="matchDetalis" >${match.matchTime}</label><br>
         
 
 <br>
 <div id="about">
      <c:choose>
 
-	 <c:when test = "${sessionScope.today > match.match_date }">
+	 <c:when test = "${today > match.matchDate }">
 
-          <b>${match.teamA}&nbsp; Won By 9 Wickets</b>
+          <strong>${match.teamA}&nbsp; Won By 9 Wickets</strong>
           <br><br>
           </c:when>
 	
 <c:otherwise>   
 
-<form action="updateMatchCall">
 
-<button type="submit">Update Match</button>
-<input type="text" style="visibility: hidden" name="matchId" value="${match.match_id}">
-</form>
+
+<a href="updateMatchCall?matchId=${match.matchId}">Update Match</a>
+
+
 <br>
 <br>     
     </c:otherwise> 

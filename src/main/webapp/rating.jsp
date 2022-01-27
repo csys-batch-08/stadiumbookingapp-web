@@ -70,7 +70,7 @@
         <br>
         <form action="ratings" onsubmit="return ratings()">
           <input type="text" name="ratingNumber" id="ratingNumber" style="visibility:hidden;">
-            <input type="text" id="stadiumId" value="<%=request.getParameter("stadiumId")%>" name="stadiumId" style="visibility:hidden;"  >
+            <input type="text" id="stadiumId" value="${param.stadiumId}" name="stadiumId" style="visibility:hidden;"  >
          <br>
           <label>Write a review</label>
           <br> <br>

@@ -2,14 +2,11 @@
     pageEncoding="ISO-8859-1"%>
    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
   <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-  
-  
-    
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="60">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -310,12 +307,12 @@ input:-webkit-autofill:active  {
 
 <body>
     <div class="sidenav">
-        <a href="usersprofile.jsp">Profile</a>
-          <a href="allMatchDetalis.jsp">Match Detalis</a>
-        <a href="mymatch.jsp?ticketId=0">My Match</a>
-        <a href="wallet.jsp">Wallet</a>
-        <a href="stadiumList.jsp">Stadium List</a>
-        <a href="ratingList.jsp">Rating List</a>
+        <a href="usersprofile">Profile</a>
+        <a href="allMatchDetalis">Match Details</a>
+        <a href="mymatch">My Match</a>
+        <a href="wallet">Wallet</a>
+        <a href="stadiumList">Stadium List</a>
+        <a href="ratingList">Rating List</a>
         <a href="index.jsp">Logout</a>
     </div>
 
@@ -327,7 +324,7 @@ input:-webkit-autofill:active  {
  </form>
  </div>
  <div class="anime">
- <img src="image/circktballGif.gif" id="gifImage" loading="lazy"  onmouseout="dec()" onmouseover="inc()"  >
+ <img src="image/circktballGif.gif" alt="can't find" id="gifImage" loading="lazy"  onmouseout="dec()" onmouseover="inc()"  >
  </div>
    <%
     String error=(String)session.getAttribute("houseFull");
@@ -347,35 +344,35 @@ input:-webkit-autofill:active  {
    
     <div class="mathcInfo" id="mathcInfo">
 <div id="Allmatch">
-   <c:forEach items="${sessionScope.MatchDetails}" var="match">
+   <c:forEach items="${MatchDetails}" var="match">
   
 	 <div class="allMatch animate__animated animate__flipInX animate__slow" id="${match.teamA}${match.teamB}">
      <br>
-        <img src="image/${match.teamAlogo}" loading="lazy">  &nbsp;  &nbsp; <label ><b id="teamA">${match.teamA}</b> <strong id="Vs">Vs</strong> <b id="teamB"> ${match.teamB} </b></label>
-    <img src="image/${match.teamBlogo}" id="teamBlogo"  loading="lazy"> <br> <br>
-    <label class="matchDetalis" id="stadiumName" >${match.stadium_name}</label><br>
+        <img src="image/${match.teamAlogo}" alt="can't find" loading="lazy">  &nbsp;  &nbsp; <label ><strong id="teamA">${match.teamA}</strong> <strong id="Vs">Vs</strong> <strong id="teamB"> ${match.teamB} </strong></label>
+    <img src="image/${match.teamBlogo}" alt="can't find" id="teamBlogo"  loading="lazy"> <br> <br>
+    <label class="matchDetalis" id="stadiumName" >${match.stadiumName}</label><br>
        <label class="matchDetalis" >${match.location}</label><br>
-       <fmt:parseDate value="${match.match_date}" pattern="yyyy-MM-dd" var="macthDate" type="date"/>
+       <fmt:parseDate value="${match.matchDate}" pattern="yyyy-MM-dd" var="macthDate" type="date"/>
 
    
       <label class="matchDetalis" > <fmt:formatDate pattern="dd/MM/yyyy" value="${macthDate}"/>  </label><br>
-       <label class="matchDetalis" >${match.match_time}</label><br>
+       <label class="matchDetalis" >${match.matchTime}</label><br>
         
 
 <br>
 <div id="about">
      <c:choose>
 
-	 <c:when test = "${sessionScope.today > match.match_date }">
+	 <c:when test = "${sessionScope.today > match.matchDate }">
 
-          <b>${match.teamA}&nbsp; Won By 9 Wickets</b>
+          <strong>${match.teamA}&nbsp; Won By 9 Wickets</strong>
           <br><br>
           </c:when>
 	
 <c:otherwise>  
 
 
-<a href="bookSeats?matchId=${match.match_id}">Book</a>
+<a href="bookSeats?matchId=${match.matchId}">Book Tickets</a>
 
 <br>
 <br>     
@@ -419,8 +416,7 @@ function zoomIn(){
        width=width+diff;
        document.getElementById("gifImage").style.width=width+"px";
        document.getElementById("gifImage").style.height=width+"px";
-       
-   //    console.log(width);
+      
    }
    else{
        clearInterval(setInter);
@@ -437,23 +433,11 @@ function zoomOut(){
        width=width-diff;
        document.getElementById("gifImage").style.width=width+"px";
        document.getElementById("gifImage").style.height=width+"px";
-//       console.log(width);
    }
    else{
        clearInterval(setInter);
    }
 }
-/*const allMatch=document.querySelector('.allMatch');
-const mathcInfo=document.querySelector('.mathcInfo');
 
-const {width,height}=mathcInfo.getBoundingClientRect();
-
-mathcInfo.addEventListener('mousemove', (event) =>{
-	const {offsetX, offsetY}=event;
-	
-	allMatch.style.setProperty('--x-pos',(offsetX/ width) -0.5);
-	allMatch.style.setProperty('--y-pos',(offsetY/ height) -0.5);
-});
-*/
 
 </script>

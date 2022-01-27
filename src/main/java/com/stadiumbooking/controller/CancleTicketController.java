@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,29 +21,30 @@ import com.stadiumbooking.model.Seats;
 @WebServlet("/cancleTicket")
 public class CancleTicketController extends HttpServlet {
 	
-	MatchDaoImpl matchDao=new MatchDaoImpl();
-	SeatsDaoImpl seatDao=new SeatsDaoImpl();
-	UserDaoImpl userDao=new UserDaoImpl();
+	final MatchDaoImpl matchDao=new MatchDaoImpl();
+	final SeatsDaoImpl seatDao=new SeatsDaoImpl();
+	final UserDaoImpl userDao=new UserDaoImpl();
+	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) {
 	
 		HttpSession session=req.getSession();
-		int ticketId=Integer.parseInt(req.getParameter("ticketId"));
-		int userID=(int) session.getAttribute("id");
-		try {
 		
+		try {
+			int ticketId=Integer.parseInt(req.getParameter("ticketId"));
+			int userID=(int) session.getAttribute("id");
 			seatDao.cancelledSeats(ticketId);
-			List<Match> matchDetails=matchDao.getAllMatchDetalis();
-			session.setAttribute("MatchDetails", matchDetails);
 			List<Seats> seatListById=seatDao.getSeatById(userID);
-			Double Wallet=userDao.userWalletDetails(userID);
-			//System.out.println(wallet);
-			session.setAttribute("wallet", Wallet);
-			session.setAttribute("seatListById", seatListById);
-			res.sendRedirect("mymatch.jsp");
+			req.setAttribute("seatListById", seatListById);
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/mymatch.jsp");
+
+			rd.forward(req, res);
 		
 		} catch (ClassNotFoundException | SQLException | IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
+		} catch (ServletException e1) {
+			
+			e1.printStackTrace();
 		}
 	
 	}

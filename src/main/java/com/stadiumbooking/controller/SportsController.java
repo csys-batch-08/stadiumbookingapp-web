@@ -15,8 +15,9 @@ import com.stadiumbooking.model.Sports;
 
 @WebServlet("/sports")
 public class SportsController extends HttpServlet {
-	SportsDaoImpl sportsDao=new SportsDaoImpl();
+	final SportsDaoImpl sportsDao=new SportsDaoImpl();
 	
+	@Override
 	public void service(HttpServletRequest req,HttpServletResponse res) {
 		
 		/*Getting Sports Details */
@@ -29,11 +30,11 @@ public class SportsController extends HttpServlet {
 			sportsDao.insertSports(sports);
 			res.sendRedirect("sportsDetalis.jsp");
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (IOException e1) {
+		
+			e1.printStackTrace();
 		}
 	}
 	

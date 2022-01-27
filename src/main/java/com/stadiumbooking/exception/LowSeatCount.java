@@ -2,16 +2,16 @@ package com.stadiumbooking.exception;
 
 public class LowSeatCount extends Exception {
 
-	String message="You Have Selected More Than LowAvailable Seats";
+	static final String MESSAGE="You Have Selected More Than LowAvailable Seats";
 
 	@Override
 	public String getMessage() {
-		// TODO Auto-generated method stub
-		return message;
+		
+		return MESSAGE;
 	}
 	@Override
 	public String toString() {
-		return message;
+		return MESSAGE;
 	}
 
 }

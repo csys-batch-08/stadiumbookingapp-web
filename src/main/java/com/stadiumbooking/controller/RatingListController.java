@@ -10,47 +10,31 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.stadiumbooking.daoimpl.RatingsDaoImpl;
 import com.stadiumbooking.daoimpl.StadiumDaoImpl;
-import com.stadiumbooking.model.Ratings;
 import com.stadiumbooking.model.StadiumDetalis;
 
-
-@WebServlet("/ratings")
-public class RatingController extends HttpServlet {
-
+@WebServlet("/ratingList")
+public class RatingListController extends HttpServlet {
+	
 	final StadiumDaoImpl stadiumDao=new StadiumDaoImpl();
 	final RatingsDaoImpl ratingDao=new RatingsDaoImpl();
-	
 	@Override
-	public void service (HttpServletRequest req, HttpServletResponse res) {
-		
-		/*Getting Rating Details */
-		
-		HttpSession session3 = req.getSession();
-		Double rating=Double.parseDouble(req.getParameter("ratingNumber"));
-	
-		int stadiumId=Integer.parseInt(req.getParameter("stadiumId"));
+	public void doGet(HttpServletRequest req, HttpServletResponse res) {
 
-		String review=req.getParameter("review");
-	
-		int userId = (int) session3.getAttribute("id");
-		Ratings ratings=new Ratings(0,userId,review,rating,stadiumId);
 		try {
-			ratingDao.ratingStadium(ratings);
 			List<StadiumDetalis> stadiumList=stadiumDao.getAllStadiumList();
 			req.setAttribute("stadiumList", stadiumList);
 		
 		      RequestDispatcher rd = req.getRequestDispatcher("ratingList.jsp");			
 					rd.forward(req, res);
-		} catch (ClassNotFoundException | SQLException | IOException e) {
-		
+		} catch (ClassNotFoundException | SQLException | ServletException | IOException e) {
+			
 			e.printStackTrace();
-		} catch (ServletException e1) {
-		
-			e1.printStackTrace();
 		}
+		
+	
 	}
+
 }

@@ -5,24 +5,24 @@ import java.util.Objects;
 public class Ratings {
 
 	private int reviewID;
-	private int userId ;
+	private int userId;
 	private String 	reviews;
-	private double ratings  ;
-	private int stadium_id;
+	private double ratingValue ;
+	private int stadiumId;
 	public Ratings() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 	
 	
 	
-	public Ratings(int reviewID, int userId, String reviews, double ratings, int stadium_id) {
+	public Ratings(int reviewID, int userId, String reviews, double ratings, int stadiumId) {
 		super();
 		this.reviewID = reviewID;
 		this.userId = userId;
 		this.reviews = reviews;
-		this.ratings = ratings;
-		this.stadium_id = stadium_id;
+		this.ratingValue = ratings;
+		this.stadiumId = stadiumId;
 	}
 	public int getReviewID() {
 		return reviewID;
@@ -42,21 +42,32 @@ public class Ratings {
 	public void setReviews(String reviews) {
 		this.reviews = reviews;
 	}
-	public double getRatings() {
-		return ratings;
+
+	public double getRatingValue() {
+		return ratingValue;
 	}
-	public void setRatings(double ratings) {
-		this.ratings = ratings;
+
+	public void setRatingValue(double ratingValue) {
+		this.ratingValue = ratingValue;
 	}
-	public int getStadium_id() {
-		return stadium_id;
+
+
+
+	public int getStadiumId() {
+		return stadiumId;
 	}
-	public void setStadium_id(int stadium_id) {
-		this.stadium_id = stadium_id;
+
+
+
+	public void setStadiumId(int stadiumId) {
+		this.stadiumId = stadiumId;
 	}
+
+
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(reviewID, reviews, stadium_id);
+		return Objects.hash(reviewID, reviews, stadiumId);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -67,12 +78,12 @@ public class Ratings {
 		if (getClass() != obj.getClass())
 			return false;
 		Ratings other = (Ratings) obj;
-		return reviewID == other.reviewID && Objects.equals(reviews, other.reviews) && stadium_id == other.stadium_id;
+		return reviewID == other.reviewID && Objects.equals(reviews, other.reviews) && stadiumId == other.stadiumId;
 	}
 	@Override
 	public String toString() {
-		return "Ratings [reviewID=" + reviewID + ", userId=" + userId + ", reviews=" + reviews + ", ratings=" + ratings
-				+ ", stadium_id=" + stadium_id + "]";
+		return "Ratings [reviewID=" + reviewID + ", userId=" + userId + ", reviews=" + reviews + ", ratings=" + ratingValue
+				+ ", stadium_id=" + stadiumId + "]";
 	}
 	
 	

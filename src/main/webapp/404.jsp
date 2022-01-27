@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
  <link  rel="stylesheet"   href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -24,7 +24,7 @@
                     Oops!</h1>
                 <h2>
                     404 Not Found</h2>
-                <img class="img-fluid w-50 animate__animated animate__zoomIn animate__delay-1s" src="image/error-icon-32-removebg-preview.png">
+                <img class="img-fluid w-50 animate__animated animate__zoomIn animate__delay-1s" alt="can't find" src="image/error-icon-32-removebg-preview.png">
                 <div class="error-details">
                 
                     Sorry, an error has occured, Requested page not found!

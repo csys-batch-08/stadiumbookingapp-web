@@ -6,10 +6,10 @@
     
     
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<meta http-equiv="refresh" content="60">
+
 <link rel = "icon" type = "" href = "image/Studium.png">
 <title>Matchbooking.com</title>
 <style>
@@ -68,52 +68,54 @@
 </head>
 <body>
 	<div class="sidenav">
-	   <a href="adminProfile.jsp">Profile</a>
-        <a href="matchDetails.jsp">Match Details</a>
+    <a href="adminProfile">Profile</a>
+        <a href="matchDetails">Match Details</a>
         <a href="stadiumDetalis.jsp">Stadium Details</a>
         <a href="sportsDetalis.jsp">Sports Details</a>
-       <a href="Getallusers.jsp?deleteId=0">All User</a>
-        <a href="showMatchToAdmin.jsp">All Match Details</a>
-        <a href="allBookingDetails.jsp">Booking Details</a>
-        <a href="allUserWalletList.jsp">All User Wallet List</a>
-        <a href="stadiumList.jsp">Stadium List</a>
-        <a href="ratingList.jsp">Rating List</a>
+        <a href="Getallusers">All User</a>
+        <a href="showMatchToAdmin">All Match Details</a>
+        <a href="allBookingDetails">Booking Details</a>
+        <a href="allUserWalletList">All User Wallet List</a>
+        <a href="stadiumList">Stadium List</a>
+        <a href="ratingList">Rating List</a>
         <a href="index.jsp">Logout</a>
 	</div>
 
  
-   <c:forEach items="${sessionScope.seatList}" var="seatList">   
+   <c:forEach items="${seatList}" var="seatList">   
 
 
 <jsp:useBean id="matchDao" class="com.stadiumbooking.daoimpl.MatchDaoImpl"/>
 
 
     <div class="matchDetalis">
-  <c:forEach items="${matchDao.getMatchByMatchId(seatList.match_id)}" var="match">
+  <c:forEach items="${matchDao.getMatchByMatchId(seatList.matchId)}" var="match">
   
 
 <jsp:useBean id="userDao" class="com.stadiumbooking.daoimpl.UserDaoImpl"/>
 
-        <b>${userDao.getUserNamebyId(seatList.userid)}</b>
+        <strong>${userDao.getUserNamebyId(seatList.userid)}</strong>
      
         <br>
-        <b>${match.teamA}</b>  Vs <b>${match.teamB}</b>
+        <strong>${match.teamA}</strong>  Vs <strong>${match.teamB}</strong>
         <br>
-        <label>${match.stadium_name}</label>
+        <label>${match.stadiumName}</label>
         <label>${match.location}</label>
         <br>
-           <fmt:parseDate value="${match.match_date}" pattern="yyyy-MM-dd" var="macthDate" type="date"/>
+           <fmt:parseDate value="${match.matchDate}" pattern="yyyy-MM-dd" var="macthDate" type="date"/>
         
         <label><fmt:formatDate pattern="dd/MM/yyyy" value="${macthDate}"/> </label>
-         <label>${match.match_time}</label>
+         <label>${match.matchTime}</label>
          <br>
 
       <label>${seatList.seatclass}</label>
 <br>
          <label>Number Of Ticktes:${seatList.seatcount}</label>
+         <br>
+         <label>Price:${seatList.price}</label>
 
          <br>
-         <label>Seats Numbers:${seatList.ticket_numbers}</label>
+         <label>Seats Numbers:${seatList.ticketNumbers}</label>
          <br>
          <label>${seatList.status}</label>
 <hr style="width: 300px;">

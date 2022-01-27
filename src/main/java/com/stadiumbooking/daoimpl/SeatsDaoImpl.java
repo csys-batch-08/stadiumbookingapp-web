@@ -26,20 +26,13 @@ public class SeatsDaoImpl implements SeatsDao {
 		
 		PreparedStatement stmt=con.prepareStatement(query);
 		
-		//System.out.println(seats.getUserid()+" wd  "+seats.getTicket_numbers());
-		
 		stmt.setInt(1, seats.getUserid());
-		stmt.setString(2, seats.getTicket_numbers());
-		stmt.setInt(3, seats.getMatch_id());
+		stmt.setString(2, seats.getTicketNumbers());
+		stmt.setInt(3, seats.getMatchId());
 		stmt.setString(4, seats.getSeatclass());
-		stmt.setInt(5, seats.getTotalpirce());
+		stmt.setInt(5, seats.getPrice());
 		stmt.setInt(6, seats.getSeatcount());
-		int i=stmt.executeUpdate();
-		//System.out.println(i+" row inserted");
-		//System.out.println("Value Inserted Successfully");
-		
-		
-		
+		stmt.executeUpdate();
 		
 	}
 
@@ -55,7 +48,7 @@ public class SeatsDaoImpl implements SeatsDao {
 		PreparedStatement pst=con.prepareStatement(query);
 		pst.setInt(1, userId);
 		ResultSet rs=pst.executeQuery();
-		List<Seats> seatList=new ArrayList<Seats>();
+		List<Seats> seatList=new ArrayList<>();
 		while(rs.next()) {
 			Seats seat=new Seats(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getInt(7),rs.getString(8));
 		seatList.add(seat);
@@ -73,7 +66,7 @@ public class SeatsDaoImpl implements SeatsDao {
 		String query="select TICKETID,USERID,TICKET_NUMBERS,MATCH_ID,SEATCLASS,TOTALPIRCE,SEATCOUNT,STATUS from seat_details";
 		
 		ResultSet rs=stmt.executeQuery(query);
-		List<Seats> seatList=new ArrayList<Seats>();
+		List<Seats> seatList=new ArrayList<>();
 		while(rs.next()) {
 			Seats seat=new Seats(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getInt(7),rs.getString(8));
 		seatList.add(seat);
@@ -82,26 +75,26 @@ public class SeatsDaoImpl implements SeatsDao {
 	}
 
 	@Override
-	public void cancelledSeats(int TicketId) throws ClassNotFoundException, SQLException {
+	public void cancelledSeats(int ticketId) throws ClassNotFoundException, SQLException {
 		
 		/* Update Seat Details If user cancelled tickets */
 		
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
-		Statement stmt=con.createStatement();
+		
 		String que = "update seat_details set Status=? where ticketid=?";
 			PreparedStatement pstmt = con.prepareStatement(que);
 			pstmt.setString(1, "Cancelled");
-			pstmt.setInt(2, TicketId);
+			pstmt.setInt(2, ticketId);
 		
-			int i=pstmt.executeUpdate();
-			//System.out.println(i+" Updated");
+			pstmt.executeUpdate();
+
 			
 			/* Update Available Seats and Amount Details If User Cancelled Tickets */
 			
 			String query="select match_id,seatcount,Totalpirce,userid from seat_details where ticketid=?";
 			PreparedStatement pst=con.prepareStatement(query);
-			pst.setInt(1, TicketId);
+			pst.setInt(1, ticketId);
 			ResultSet rs=pst.executeQuery();
 			int matchId;
 			int seatcounts;

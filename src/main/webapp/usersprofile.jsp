@@ -4,7 +4,7 @@
   
     
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 
@@ -94,13 +94,13 @@ height:250px;
 </head>
 <body>
   <div class="sidenav">
-       <a href="usersprofile.jsp">Profile</a>
-        <a href="allMatchDetalis.jsp">Match Details</a>
-        <a href="mymatch.jsp?ticketId=0">My Match</a>
-        <a href="wallet.jsp">Wallet</a>
-        <a href="stadiumList.jsp">Stadium List</a>
-        <a href="ratingList.jsp">Rating List</a>
-        <a href="index.jsp" >Logout</a>
+       <a href="usersprofile">Profile</a>
+         <a href="allMatchDetalis">Match Details</a>
+        <a href="mymatch">My Match</a>
+        <a href="wallet">Wallet</a>
+         <a href="stadiumList">Stadium List</a>
+        <a href="ratingList">Rating List</a>
+        <a href="index.jsp">Logout</a>
     </div>
 
 
@@ -112,16 +112,16 @@ height:250px;
 		
 		
 		
-		<c:forEach items="${sessionScope.userDateils}" var="user">
+		<c:forEach items="${userDateils}" var="user">
 
-		<label for=""><b>Name:</b> &nbsp; ${user.name } </label> <br>
-		<label for=""><b>Username:</b>&nbsp; ${user.username} </label> <br>
-		<label for=""><b>Mobile:</b>&nbsp; ${user.phoneNumber}</label> <br>
-		<label for=""><b>Email:</b> &nbsp; ${user.email}</label> <br>
+		<label for=""><strong>Name:</strong> &nbsp; ${user.name } </label> <br>
+		<label for=""><strong>Username:</strong>&nbsp; ${user.username} </label> <br>
+		<label for=""><strong>Mobile:</strong>&nbsp; ${user.phoneNumber}</label> <br>
+		<label for=""><strong>Email:</strong> &nbsp; ${user.email}</label> <br>
 		
 		<button onclick="update()">Update</button>
 		<div >
-		<img src="image/${user.profilePic }">
+		<img src="image/${user.profilePic }" alt="can't find">
 		<button onclick="profile()" id="edit"> Edit </button>
 		</div>
 		</c:forEach>
@@ -141,29 +141,29 @@ height:250px;
 
 	<div id="update">
 
-		<form action="update" onsubmit="return validate()">
-		    <c:forEach items="${sessionScope.userDateils}" var="user">
+		<form action="update" method="post" onsubmit="return validate()">
+		    <c:forEach items="${userDateils}" var="user">
 
 
-			<label><b>Name:</b></label> <br>
+			<label><strong>Name:</strong></label> <br>
 		    <input type="text" value="${user.name}" 	name="updateName" id="updateName"> <br>
 		    <label id="uname" style="visibility: hidden;">Enter Name</label> <br>
 
-			<label><b>Username:</b></label> <br> 
+			<label><strong>Username:</strong></label> <br> 
 			<input type="text" value="${user.username}"	name="updateUsername" id="updateUsername"> <br>			
 		    <label id="username" style="visibility: hidden;">Enter Username</label> <br>
 			
 			
 			
-			<label ><b>Password:</b></label> <br> 
+			<label ><strong>Password:</strong></label> <br> 
 			<input	type="text" value="${user.password}" name="updatePassword" id="updatePassword"> <br>
 			<label for="" id="lpass" style="visibility: hidden;">EnterPassword</label> <br>
 			
-			<label for=""><b>Email:</b></label> <br> 
+			<label for=""><strong>Email:</strong></label> <br> 
 		    <input	type="email" value="${user.email}" name="updateEmail" id="updateEmail"> <br>
 			<label for="" id="lmail" style="visibility: hidden;">Enter	Email</label> <br> 
 			
-			<label for=""><b>Phone Number:</b></label> <br>
+			<label for=""><strong>Phone Number:</strong></label> <br>
 			<input type="number" value="${user.phoneNumber}" name="updateNumber" id="updateNumber"> <br>
 			<label for="" id="mobile" style="visibility: hidden;">Enter	phone Number</label>
 			

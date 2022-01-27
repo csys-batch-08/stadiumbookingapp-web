@@ -48,6 +48,10 @@
             left: 400px;
             top: px;
         }
+          #walletId p{
+        font-size: 15px;
+        }
+        
         .wrapper{
         position:relative;
         overflow: hidden;
@@ -92,12 +96,12 @@ input[type=number] {
 <body>
 
   <div class="sidenav">
-       <a href="usersprofile.jsp">Profile</a>
-        <a href="allMatchDetalis.jsp">Match Details</a>
-        <a href="mymatch.jsp?ticketId=0">My Match</a>
-        <a href="wallet.jsp">Wallet</a>
-        <a href="stadiumList.jsp">Stadium List</a>
-        <a href="ratingList.jsp">Rating List</a>
+        <a href="usersprofile">Profile</a>
+         <a href="allMatchDetalis">Match Details</a>
+        <a href="mymatch">My Match</a>
+        <a href="wallet">Wallet</a>
+         <a href="stadiumList">Stadium List</a>
+        <a href="ratingList">Rating List</a>
         <a href="index.jsp">Logout</a>
     </div>
     
@@ -106,7 +110,7 @@ input[type=number] {
     <div id="walletId">
 
     
-    <p><b>Wallet Amount:</b>${sessionScope.wallet}</p>
+    <p><strong>Wallet Amount:</strong>${sessionScope.wallet}</p>
   
   
     </div>
@@ -124,7 +128,7 @@ input[type=number] {
         <br>
      
         <div class="wrapper">
-           <label ><b>Add Amount:</b></label>
+           <label ><strong>Add Amount:</strong></label>
         <input type="number" min="1000" name="amount" id="amount" required />
         <div class="validation">Minimum Deposit 1000Rs</div>
         </div>

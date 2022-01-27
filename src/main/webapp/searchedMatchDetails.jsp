@@ -298,20 +298,14 @@ input:-webkit-autofill:active  {
 
 <body>
 	<div class="sidenav">
-		<a href="usersprofile.jsp">Profile</a> <a href="allMatchDetalis.jsp">Match
-			Detalis</a> <a href="mymatch.jsp?ticketId=0">My Match</a> <a
-			href="wallet.jsp">Wallet</a> <a href="stadiumList.jsp">Stadium
-			Lists</a> <a href="ratingList.jsp">Rating Lists</a> <a href="index.jsp">Logout</a>
+		 <a href="usersprofile">Profile</a>
+         <a href="allMatchDetalis">Match Details</a>
+        <a href="mymatch">My Match</a>
+        <a href="wallet">Wallet</a>
+         <a href="stadiumList">Stadium List</a>
+        <a href="ratingList">Rating List</a>
+        <a href="index.jsp">Logout</a>
 	</div>
-	<!-- 
-    <div id="sportInfo">
-    
-        <b>{sports.name}</b>  &nbsp; <b>{sports.name}</b> &nbsp; <b>{sports.name}</b>
-        <br> <br>
-        <hr>
-     </div>
- -->
-
 
 	<div id="search">
 		<form action="searchedMatchDetails">
@@ -320,7 +314,7 @@ input:-webkit-autofill:active  {
 		</form>
 	</div>
  <div class="anime">
- <img src="image/circktballGif.gif" id="gifImage"  onmouseout="dec()" onmouseover="inc()"  >
+ <img src="image/circktballGif.gif" alt="can't find" id="gifImage"  onmouseout="dec()" onmouseover="inc()"  >
  </div>
 
 
@@ -328,28 +322,28 @@ input:-webkit-autofill:active  {
 	<div id="Allmatch">
 
   <c:choose>
-		<c:when test="${sessionScope.searchMatchList.size() != 0 }">  
+		<c:when test="${searchMatchList.size() != 0 }">  
 		
-		<c:forEach items="${sessionScope.searchMatchList}" var="match">
+		<c:forEach items="${searchMatchList}" var="match">
 
 	 <div class="allMatch animate__animated animate__flipInX animate__slow" id="${match.teamA}${match.teamB}">
      <br>
-        <img src="image/${match.teamAlogo}" loading="lazy">  &nbsp;  &nbsp; <label ><b id="teamA">${match.teamA}</b> <strong id="Vs">Vs</strong> <b id="teamB"> ${match.teamB} </b></label>
-    <img src="image/${match.teamBlogo}" id="teamBlogo"  loading="lazy"> <br> <br>
-    <label class="matchDetalis" id="stadiumName" >${match.stadium_name}</label><br>
+        <img src="image/${match.teamAlogo}" alt="can't find" loading="lazy">  &nbsp;  &nbsp; <label ><strong id="teamA">${match.teamA}</strong> <strong id="Vs">Vs</strong> <strong id="teamB"> ${match.teamB} </strong></label>
+    <img src="image/${match.teamBlogo}" alt="can't find" id="teamBlogo"  loading="lazy"> <br> <br>
+    <label class="matchDetalis" id="stadiumName" >${match.stadiumName}</label><br>
        <label class="matchDetalis" >${match.location}</label><br>
-      <fmt:parseDate value="${match.match_date}" pattern="yyyy-MM-dd" var="macthDate" type="date"/>
+      <fmt:parseDate value="${match.matchDate}" pattern="yyyy-MM-dd" var="macthDate" type="date"/>
       <label class="matchDetalis" > <fmt:formatDate pattern="dd/MM/yyyy" value="${macthDate}"/>  </label><br>
-       <label class="matchDetalis" >${match.match_time}</label><br>
+       <label class="matchDetalis" >${match.matchTime}</label><br>
         
 
 <br>
 <div id="about">
      <c:choose>
 
-	 <c:when test = "${sessionScope.today > match.match_date }">
+	 <c:when test = "${sessionScope.today > match.matchDate }">
 
-          <b>${match.teamA}&nbsp; Won By 9 Wickets</b>
+          <strong>${match.teamA}&nbsp; Won By 9 Wickets</strong>
           <br><br>
           </c:when>
 	
@@ -358,7 +352,7 @@ input:-webkit-autofill:active  {
 <form action="bookSeats">
 
 <button type="submit">Book</button>
-<input type="text" style="visibility: hidden" name="matchId" value="${match.match_id}">
+<input type="text" style="visibility: hidden" name="matchId" value="${match.matchId}">
 
 </form>
 <br>
@@ -373,7 +367,7 @@ input:-webkit-autofill:active  {
 	</c:forEach>  
 	</c:when>
 		<c:otherwise>
-			<img style="width: 400px; height: 200px;  " class="animate__animated animate__zoomInDown"  src="image/no-search-found-removebg-preview.png">
+			<img style="width: 400px; height: 200px; " alt="can't find" class="animate__animated animate__zoomInDown"  src="image/no-search-found-removebg-preview.png">
 </c:otherwise>
 
 	</c:choose>
@@ -381,13 +375,6 @@ input:-webkit-autofill:active  {
 </div>
 </div>
 	
-	
-
-	
-
-
-
-
 
 </body>
 </html>

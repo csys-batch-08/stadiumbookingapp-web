@@ -45,29 +45,29 @@
 </head>
 <body>
     <div class="sidenav">
-          <a href="adminProfile.jsp">Profile</a>
-        <a href="matchDetails.jsp">Match Details</a>
+           <a href="adminProfile">Profile</a>
+        <a href="matchDetails">Match Details</a>
         <a href="stadiumDetalis.jsp">Stadium Details</a>
         <a href="sportsDetalis.jsp">Sports Details</a>
-        <a href="Getallusers.jsp?deleteId=0">All User</a>
-        <a href="showMatchToAdmin.jsp">All Match Details</a>
-        <a href="allBookingDetails.jsp">Booking Details</a>
-        <a href="allUserWalletList.jsp">All User Wallet List</a>
-        <a href="stadiumList.jsp">Stadium List</a>
-        <a href="ratingList.jsp">Rating List</a>
+        <a href="Getallusers">All User</a>
+        <a href="showMatchToAdmin">All Match Details</a>
+        <a href="allBookingDetails">Booking Details</a>
+        <a href="allUserWalletList">All User Wallet List</a>
+        <a href="stadiumList">Stadium List</a>
+        <a href="ratingList">Rating List</a>
         <a href="index.jsp">Logout</a>
     </div>
     <br>
     <div id="sports">
     <form action="sports" onsubmit="return insert()">
 
-        <label ><b>Sports Name:</b></label>
+        <label ><strong>Sports Name:</strong></label>
         <input type="text" name="sportsName" id="sportsName" >
         <br>
         
         <label style="visibility: hidden;" id="sportsError">Enter Sports Name</label>
         <br>
-        <label ><b>Event Name:</b></label>
+        <label ><strong>Event Name:</strong></label>
         <input type="text" name="eventName" id="eventName">
         <br>
         <label style="visibility: hidden;" id="event">Enter Event Name</label>

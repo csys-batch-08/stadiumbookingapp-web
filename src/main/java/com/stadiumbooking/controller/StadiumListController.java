@@ -12,45 +12,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.stadiumbooking.daoimpl.StadiumDaoImpl;
+import com.stadiumbooking.daoimpl.WalletDaoImpl;
 import com.stadiumbooking.model.StadiumDetalis;
+import com.stadiumbooking.model.WalletDetails;
 
-
-
-@WebServlet("/stadium")
-public class StadiumController extends HttpServlet {
-
-	final StadiumDaoImpl stadiumDao=new StadiumDaoImpl();
-	@Override
-	public void service(HttpServletRequest req, HttpServletResponse res) {
-		
-		/*Getting StadiumDetails */
-		
-		String stadiumName=req.getParameter("stadiumName");
-		String stadiumImage=req.getParameter("stadiumImge");
-		
-		StadiumDetalis stadium=new StadiumDetalis(0,stadiumName,stadiumImage);
+@WebServlet("/stadiumList")
+public class StadiumListController extends HttpServlet {
 	
-		
+	final StadiumDaoImpl stadiumDao=new StadiumDaoImpl();
+	
+	@Override
+	public void doGet(HttpServletRequest req, HttpServletResponse res) {
+
 		try {
-			stadiumDao.insertStadium(stadium);
 			List<StadiumDetalis> stadiumList=stadiumDao.getAllStadiumList();
 			req.setAttribute("stadiumList", stadiumList);
 		
 		      RequestDispatcher rd = req.getRequestDispatcher("stadiumList.jsp");			
 					rd.forward(req, res);
-		} catch (IOException e) {
-		
-			e.printStackTrace();
-		} catch (ClassNotFoundException e1) {
-	
-			e1.printStackTrace();
-		} catch (SQLException e2) {
-
-			e2.printStackTrace();
-		} catch (ServletException e3) {
+		} catch (ClassNotFoundException | SQLException | ServletException | IOException e) {
 			
-			e3.printStackTrace();
+			e.printStackTrace();
 		}
+		
+	
 	}
-}
 
+}

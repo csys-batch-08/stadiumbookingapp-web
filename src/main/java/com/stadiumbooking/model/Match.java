@@ -8,93 +8,57 @@ import java.util.Objects;
 
 public class Match {
 
-	private int match_id;
+	private int matchId;
 	private int sportsId;
-	private String stadium_name;
+	private String stadiumName;
 	private String location;
-	private LocalDate match_date; 
-	private LocalTime match_time;
+	private LocalDate matchDate; 
+	private LocalTime matchTime;
 	private  String teamA;
 	private  String teamB;
 	private String teamAlogo;
 	private String teamBlogo;
 	private int totalseats;
 	private int availableSeats;
-	private int firstClass_Seats_price;
-	private int secondClass_seats_price;
+	private int firstClassSeatsPrice;
+	private int secondClassSeatsPrice;
 	
 	
 	
 	public Match() {
 		super();
-		// TODO Auto-generated constructor stub
+	
 	}
 
 
-
-	public Match(int sportsId, String stadium_name, String location, LocalDate date,LocalTime match_time, String teamA, String teamB,
-			String teamAlogo, String teamBlogo, int totalseats, int availableSeats, int firstClass_Seats_price,
-			int secondClass_seats_price) {
+	public Match(int matchId,int sportsId, String stadiumName, String location, LocalDate date,LocalTime matchTime, String teamA, String teamB,
+			String teamAlogo, String teamBlogo, int totalseats, int availableSeats, int firstClassSeatsPrice,
+			int secondClassSeatsPrice) {
 		super();
-	
+		this.matchId=matchId;
 		this.sportsId = sportsId;
-		this.stadium_name = stadium_name;
+		this.stadiumName = stadiumName;
 		this.location = location;
-		this.match_date = date;
-		this.match_time=match_time;
+		this.matchDate = date;
+		this.matchTime=matchTime;
 		this.teamA = teamA;
 		this.teamB = teamB;
 		this.teamAlogo = teamAlogo;
 		this.teamBlogo = teamBlogo;
 		this.totalseats = totalseats;
 		this.availableSeats = availableSeats;
-		this.firstClass_Seats_price = firstClass_Seats_price;
-		this.secondClass_seats_price = secondClass_seats_price;
+		this.firstClassSeatsPrice = firstClassSeatsPrice;
+		this.secondClassSeatsPrice = secondClassSeatsPrice;
 	}
-	public Match(int matchId,int sportsId, String stadium_name, String location, LocalDate date,LocalTime match_time, String teamA, String teamB,
-			String teamAlogo, String teamBlogo, int totalseats, int availableSeats, int firstClass_Seats_price,
-			int secondClass_seats_price) {
-		super();
-		this.match_id=matchId;
-		this.sportsId = sportsId;
-		this.stadium_name = stadium_name;
-		this.location = location;
-		this.match_date = date;
-		this.match_time=match_time;
-		this.teamA = teamA;
-		this.teamB = teamB;
-		this.teamAlogo = teamAlogo;
-		this.teamBlogo = teamBlogo;
-		this.totalseats = totalseats;
-		this.availableSeats = availableSeats;
-		this.firstClass_Seats_price = firstClass_Seats_price;
-		this.secondClass_seats_price = secondClass_seats_price;
+
+	public int getMatchId() {
+		return matchId;
 	}
 
 
 
-	
-
-
-
-	public Match(int matchId, LocalDate date, LocalTime time) {
-		// TODO Auto-generated constructor stub
-		this.match_id=matchId;
-		this.match_date = date;
-		this.match_time=time;
-		
-	}
-
-
-
-	public int getMatch_id() {
-		return match_id;
-	}
-
-
-
-	public void setMatch_id(int match_id) {
-		this.match_id = match_id;
+	public void setMatchId(int matchId) {
+		this.matchId = matchId;
 	}
 
 
@@ -111,14 +75,14 @@ public class Match {
 
 
 
-	public String getStadium_name() {
-		return stadium_name;
+	public String getStadiumName() {
+		return stadiumName;
 	}
 
 
 
-	public void setStadium_name(String stadium_name) {
-		this.stadium_name = stadium_name;
+	public void setStadiumName(String stadiumName) {
+		this.stadiumName = stadiumName;
 	}
 
 
@@ -135,14 +99,14 @@ public class Match {
 
 
 
-	public LocalDate getMatch_date() {
-		return match_date;
+	public LocalDate getMatchDate() {
+		return matchDate;
 	}
 
 
 
-	public void setMatch_date(LocalDate match_date) {
-		this.match_date = match_date;
+	public void setMatchDate(LocalDate matchDate) {
+		this.matchDate = matchDate;
 	}
 
 
@@ -219,56 +183,56 @@ public class Match {
 
 
 
-	public int getFirstClass_Seats_price() {
-		return firstClass_Seats_price;
+	public int getFirstClassSeatsPrice() {
+		return firstClassSeatsPrice;
 	}
 
 
 
-	public void setFirstClass_Seats_price(int firstClass_Seats_price) {
-		this.firstClass_Seats_price = firstClass_Seats_price;
+	public void setFirstClassSeatsPrice(int firstClassSeatsPrice) {
+		this.firstClassSeatsPrice = firstClassSeatsPrice;
 	}
 
 
 
-	public int getSecondClass_seats_price() {
-		return secondClass_seats_price;
+	public int getSecondClassSeatsPrice() {
+		return secondClassSeatsPrice;
 	}
 
 
 
-	public void setSecondClass_seats_price(int secondClass_seats_price) {
-		this.secondClass_seats_price = secondClass_seats_price;
+	public void setSecondClassSeatsPrice(int secondClassSeatsPrice) {
+		this.secondClassSeatsPrice = secondClassSeatsPrice;
 	}
 
 
 
-	public LocalTime getMatch_time() {
-		return match_time;
+	public LocalTime getMatchTime() {
+		return matchTime;
 	}
 
 
 
-	public void setMatch_time(LocalTime match_time) {
-		this.match_time = match_time;
+	public void setMatchTime(LocalTime matchTime) {
+		this.matchTime = matchTime;
 	}
 
 
 
 	@Override
 	public String toString() {
-		return "Match [match_id=" + match_id + ", sportsId=" + sportsId + ", stadium_name=" + stadium_name
-				+ ", location=" + location + ", match_date=" + match_date + ", match_time=" + match_time + ", teamA="
+		return "Match [match_id=" + matchId + ", sportsId=" + sportsId + ", stadium_name=" + stadiumName
+				+ ", location=" + location + ", match_date=" + matchDate + ", match_time=" + matchTime + ", teamA="
 				+ teamA + ", teamB=" + teamB + ", teamAlogo=" + teamAlogo + ", teamBlogo=" + teamBlogo + ", totalseats="
 				+ totalseats + ", availableSeats=" + availableSeats + ", firstClass_Seats_price="
-				+ firstClass_Seats_price + ", secondClass_seats_price=" + secondClass_seats_price + "]";
+				+ firstClassSeatsPrice + ", secondClass_seats_price=" + secondClassSeatsPrice + "]";
 	}
 
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(location, match_date, match_time, teamA, teamB);
+		return Objects.hash(location, matchDate, matchTime, teamA, teamB);
 	}
 
 
@@ -282,8 +246,8 @@ public class Match {
 		if (getClass() != obj.getClass())
 			return false;
 		Match other = (Match) obj;
-		return Objects.equals(location, other.location) && Objects.equals(match_date, other.match_date)
-				&& Objects.equals(match_time, other.match_time) && Objects.equals(teamA, other.teamA)
+		return Objects.equals(location, other.location) && Objects.equals(matchDate, other.matchDate)
+				&& Objects.equals(matchTime, other.matchTime) && Objects.equals(teamA, other.teamA)
 				&& Objects.equals(teamB, other.teamB);
 	}
 	

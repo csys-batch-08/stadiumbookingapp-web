@@ -8,32 +8,32 @@ public class WalletDetails {
 	private int walletId;
 	private int userId;
 	private Long amount;
-	private LocalDateTime transaction_date;
+	private LocalDateTime transactionDate;
 	
 	public WalletDetails() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 
-	public WalletDetails(int walletId, int userId, Long amount, LocalDateTime transaction_Date) {
+	public WalletDetails(int walletId, int userId, Long amount, LocalDateTime transactionDate) {
 		super();
 		this.walletId = walletId;
 		this.userId = userId;
 		this.amount = amount;
-		this.transaction_date= transaction_Date;
+		this.transactionDate= transactionDate;
 	}
 
 
 	
 	
-	public LocalDateTime getTransaction_date() {
-		return transaction_date;
+	public LocalDateTime getTransactionDate() {
+		return transactionDate;
 	}
 
 
-	public void setTransaction_date(LocalDateTime transaction_date) {
-		this.transaction_date = transaction_date;
+	public void setTransactionDate(LocalDateTime transactionDate) {
+		this.transactionDate = transactionDate;
 	}
 
 
@@ -61,7 +61,7 @@ public class WalletDetails {
 		@Override
 	public String toString() {
 		return "WalletDetails [walletId=" + walletId + ", userId=" + userId + ", amount=" + amount
-				+ ", transaction_date=" + transaction_date + "]";
+				+ ", transactionDate=" + transactionDate + "]";
 	}
 
 

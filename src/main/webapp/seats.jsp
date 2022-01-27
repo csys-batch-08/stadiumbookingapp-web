@@ -183,7 +183,7 @@ rotateX(var(--x-angle));
     
     <div class="mathcInfo">
     <div>
-     <img src="image/${match.teamAlogo}">  <strong id="Vs">Vs</strong> <img src="image/${match.teamBlogo}" id="temaBLogo">
+     <img src="image/${match.teamAlogo}" alt="can't find">  <strong id="Vs">Vs</strong> <img src="image/${match.teamBlogo}" alt="can't find" id="temaBLogo">
     <br>
     <br>
     <strong id="teamA">${match.teamA}</strong>  
@@ -194,44 +194,44 @@ rotateX(var(--x-angle));
     </div>
     <br>
     <div id="matchDetails">
-    <b>${match.stadium_name}</b>
+    <strong>${match.stadiumName}</strong>
   
-    <b>${match.location}</b>
+    <strong>${match.location}</strong>
     <br>
-    <fmt:parseDate value="${match.match_date}" pattern="yyyy-MM-dd" var="macthDate" type="date"/>
-    <br> <fmt:formatDate pattern="dd/MM/yyyy" value="${macthDate}"/>&nbsp; &nbsp; ${match.match_time}
+    <fmt:parseDate value="${match.matchDate}" pattern="yyyy-MM-dd" var="macthDate" type="date"/>
+    <br> <fmt:formatDate pattern="dd/MM/yyyy" value="${macthDate}"/>&nbsp; &nbsp; ${match.matchTime}
     <br>
     </div>
     </div>
      <br> <br>
-     <label><b>Available Seats:</b>${match.availableSeats}</label>
+     <label><strong>Available Seats:</strong>${match.availableSeats}</label>
     <div class="stadium-container">
         <form action="booking">
-        <input type="text" id="matchId" value="${match.match_id}" name="matchIds" style="visibility:hidden;"> 
+        <input type="text" id="matchId" value="${match.matchId}" name="matchIds" style="visibility:hidden;"> 
         <br>
-        <label><b>Seat Number:</b></label>
+        <label><strong>Seat Number:</strong></label>
          <input type="text" id="ticketNumber" name="ticketNumber">
         
         
 
-        <label><b>Pick a Seats Category:</b></label>
+        <label><strong>Pick a Seats Category:</strong></label>
        
         <select id="stadium" name="seatsCategory">
        
-          <option value="${match.firstClass_Seats_price}">FirstClass (Rs.${match.firstClass_Seats_price})</option>
-          <option value="${match.secondClass_seats_price}">Second Class(Rs.${match.secondClass_seats_price})</option>
+          <option value="${match.firstClassSeatsPrice}">FirstClass (Rs.${match.firstClassSeatsPrice})</option>
+          <option value="${match.secondClassSeatsPrice}">Second Class(Rs.${match.secondClassSeatsPrice})</option>
         </select>
         
         <input type="text" id="category" name="category" style="visibility:hidden;">
 
 
         <br>
-        <input type="text" id="checkFclass" style="visibility:hidden;" value="${match.firstClass_Seats_price}"><input type="text" style="visibility:hidden;" id="checkSclass" value="${match.secondClass_seats_price}">
+        <input type="text" id="checkFclass" style="visibility:hidden;" value="${match.firstClassSeatsPrice}"><input type="text" style="visibility:hidden;" id="checkSclass" value="${match.secondClassSeatsPrice}">
         <br>
         
         
-        <label > <b>Number Of Tickets:</b></label>
-        <input type="number" id="count" name="seatCounts" min="1" required> &nbsp;&nbsp;&nbsp; <label ><b>Total Price:</b></label>
+        <label > <strong>Number Of Tickets:</strong></label>
+        <input type="number" id="count" name="seatCounts" min="1" required> &nbsp;&nbsp;&nbsp; <label ><strong>Total Price:</strong></label>
         <input type="text" id="total" name="totalprice" >
         <br><br>
        

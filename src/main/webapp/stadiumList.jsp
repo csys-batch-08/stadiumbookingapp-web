@@ -2,10 +2,10 @@
 	pageEncoding="ISO-8859-1"%>
    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<meta http-equiv="refresh" content="60">
+
 <link rel="icon" type="" href="image/Studium.png">
 <title>Matchbooking.com</title>
 <style>
@@ -58,18 +58,18 @@ text-decoration: none;
 					<c:set var="count" value="0" />
 					
 					
-					     <c:forEach items="${sessionScope.stadiumList}" var="stadium">
+					     <c:forEach items="${stadiumList}" var="stadium">
        
 					<td>
 						<table id="stadumList" cellspacing=70px;>
 							<tbody>
 								<tr>
-									<td><img src="image/${stadium.stadium_img}"></td>
+									<td><img src="image/${stadium.stadiumImg}" alt="can't find"></td>
 									
 									</tr>
 								
 									<td id="stadium">
-									<a href="rating.jsp?stadiumId=${stadium.stadium_id }">${stadium.stadium_name}</a>
+									<a href="rating.jsp?stadiumId=${stadium.stadiumId }">${stadium.stadiumName}</a>
 									
 																</td>
 							</tbody>

@@ -24,42 +24,31 @@ public class MatchDaoImpl implements MatchDao {
 		
 		/* Insert Match Details Into Database  */
 		
-		//System.out.println(match.getMatch_date());
+
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
 		
 		String query="insert into match_info(sportsId,stadium_name, location,match_date, match_time,teamA,teamB,teamAlogo, teamBlogo, totalseats, availableSeats, firstClass_Seats_price, secondClass_seats_price) values(?,?,?,?,? ,?,?,?,?,?,?,?,?)";
 		
 		PreparedStatement stmt=con.prepareStatement(query);
-
-//		DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy ");  
-//		String strDate = dateFormat.format(match.getMatch_date());  
-//		String date=dateFormat.format(match.getMatch_date());
-		
-//		String Date = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(match.getMatch_date());
-	
-//		String Date = String.format("%1$tY %1$tI:%1$tM %1$Tp", match.getMatch_date());
-
-//		DateFormat df = new SimpleDateFormat("MM-dd-yyyy");
-//		String Date=df.format(match.getMatch_date());
-//		System.out.println(Date);
 		
 	    stmt.setInt(1, match.getSportsId());
-		stmt.setString(2, match.getStadium_name());
+		stmt.setString(2, match.getStadiumName());
 		stmt.setString(3, match.getLocation());
-		stmt.setDate(4, java.sql.Date.valueOf(match.getMatch_date()));
-		stmt.setTime(5, java.sql.Time.valueOf(match.getMatch_time()));
+		stmt.setDate(4, java.sql.Date.valueOf(match.getMatchDate()));
+		stmt.setTime(5, java.sql.Time.valueOf(match.getMatchTime()));
 		stmt.setString(6, match.getTeamA());
 		stmt.setString(7, match.getTeamB());
 		stmt.setString(8, match.getTeamAlogo());
 		stmt.setString(9, match.getTeamBlogo());
 		stmt.setInt(10, match.getTotalseats());
 		stmt.setInt(11, match.getAvailableSeats());
-		stmt.setInt(12, match.getFirstClass_Seats_price());
-		stmt.setInt(13, match.getSecondClass_seats_price());
-     	int i=stmt.executeUpdate();
-		//System.out.println(i+" row inserted");
-		//System.out.println("Value Inserted Successfully");
+		stmt.setInt(12, match.getFirstClassSeatsPrice());
+		stmt.setInt(13, match.getSecondClassSeatsPrice());
+     	stmt.executeUpdate();
+     	stmt.close();
+     	con.close();
+	
 		
 	}
 
@@ -70,12 +59,12 @@ public class MatchDaoImpl implements MatchDao {
 		
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
-		Statement stmt=con.createStatement();
-		String query="select MATCH_ID,SPORTSID,STADIUM_NAME,LOCATION,to_char(MATCH_DATE,'yyyy-mm-dd'),to_char(MATCH_TIME,'HH:MI'),TEAMA,TEAMB,TEAMALOGO,TEAMBLOGO,TOTALSEATS,AVAILABLESEATS,FIRSTCLASS_SEATS_PRICE,SECONDCLASS_SEATS_PRICE from match_info order by match_date desc";
 		
+		String query="select MATCH_ID,SPORTSID,STADIUM_NAME,LOCATION,to_char(MATCH_DATE,'yyyy-mm-dd'),to_char(MATCH_TIME,'HH:MI'),TEAMA,TEAMB,TEAMALOGO,TEAMBLOGO,TOTALSEATS,AVAILABLESEATS,FIRSTCLASS_SEATS_PRICE,SECONDCLASS_SEATS_PRICE from match_info order by match_date desc";
+		PreparedStatement stmt=con.prepareStatement(query);
 		ResultSet rs=stmt.executeQuery(query);
 
-		List<Match> matchList=new ArrayList<Match>();
+		List<Match> matchList=new ArrayList<>();
 		String dateInStering;
 		String tiemString;
 		LocalDate localDate = null;
@@ -90,7 +79,9 @@ public class MatchDaoImpl implements MatchDao {
 		
 		matchList.add(match);
 		}
-		
+		rs.close();
+		stmt.close();
+		con.close();
 		return matchList;
 	}
 
@@ -100,14 +91,13 @@ public class MatchDaoImpl implements MatchDao {
 		/*Get Date System Date */
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
-		Statement stmt=con.createStatement();
+
          String query="select to_char(sysdate,'yyyy-mm-dd')  as today  from dual";
-		
+         PreparedStatement stmt=con.prepareStatement(query);
 		ResultSet rs=stmt.executeQuery(query);
 		rs.next();
 		String dateinString=rs.getString(1);
-		LocalDate localDate=LocalDate.parse(dateinString);
-		return localDate;
+		return LocalDate.parse(dateinString);
 		
 	}
 
@@ -123,7 +113,7 @@ public class MatchDaoImpl implements MatchDao {
 		PreparedStatement pst=con.prepareStatement(query);
 		pst.setInt(1, matchId);
 		ResultSet rs=pst.executeQuery();
-		List<Match> matchList=new ArrayList<Match>();
+		List<Match> matchList=new ArrayList<>();
 		String dateInStering;
 		String tiemString;
 		LocalDate localDate = null;
@@ -149,15 +139,12 @@ public class MatchDaoImpl implements MatchDao {
 		
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
-		//System.out.println(seatsCount);
 		String query="update match_info set availableSeats=availableSeats-? where match_id=?";
 		
 		PreparedStatement pst=con.prepareStatement(query);
 		pst.setInt(1, seatsCount);
 		pst.setInt(2, matchId);
-		int i=pst.executeUpdate();
-		//System.out.println(i+" Updated");
-		
+		pst.executeUpdate();		
 	}
 
 	@Override
@@ -166,15 +153,14 @@ public class MatchDaoImpl implements MatchDao {
 		
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
-		//System.out.println(seatsCount);
+		
 		String query="update match_info set availableSeats=availableSeats+? where match_id=?";
 		
 		PreparedStatement pst=con.prepareStatement(query);
 		pst.setInt(1, seatsCount);
 		pst.setInt(2, matchId);
-		int i=pst.executeUpdate();
-		//System.out.println(i+" Updated");
-		
+		pst.executeUpdate();
+			
 	}
 
 	@Override
@@ -185,10 +171,8 @@ public class MatchDaoImpl implements MatchDao {
 		Connection con=conUtil.getDBConnect();
 		String query="select MATCH_ID,SPORTSID,STADIUM_NAME,LOCATION,to_char(MATCH_DATE,'yyyy-mm-dd'),to_char(MATCH_TIME,'HH:MI'),TEAMA,TEAMB,TEAMALOGO,TEAMBLOGO,TOTALSEATS,AVAILABLESEATS,FIRSTCLASS_SEATS_PRICE,SECONDCLASS_SEATS_PRICE from match_info where teama like '"+teamName.toUpperCase()+"%' or teamb like '"+teamName.toUpperCase()+"%' ";
 		PreparedStatement pst=con.prepareStatement(query);
-		//pst.setString(1, teamName);
-		//pst.setString(2, teamName);
 		ResultSet rs=pst.executeQuery();
-		List<Match> matchList=new ArrayList<Match>();
+		List<Match> matchList=new ArrayList<>();
 		String dateInStering;
 		String tiemString;
 		LocalDate localDate = null;
@@ -209,35 +193,35 @@ public class MatchDaoImpl implements MatchDao {
 
 	@Override
 	public void updateMatchDetails(Match match) throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
-		/* Update Single Match Details */
+				/* Update Single Match Details */
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
 		String que = "update match_info set match_date=?,match_time=? where match_id=?";
 		PreparedStatement pstmt = con.prepareStatement(que);
-		pstmt.setDate(1, java.sql.Date.valueOf(match.getMatch_date()));
-		pstmt.setTime(2, java.sql.Time.valueOf(match.getMatch_time()));
-		pstmt.setInt(3, match.getMatch_id());
+		pstmt.setDate(1, java.sql.Date.valueOf(match.getMatchDate()));
+		pstmt.setTime(2, java.sql.Time.valueOf(match.getMatchTime()));
+		pstmt.setInt(3, match.getMatchId());
 		
-		int i=pstmt.executeUpdate();
-		//System.out.println(i+" Updated");
+		pstmt.executeUpdate();
+
 	}
 
 	@Override
 	public int checkAvilableSeats(int matchId) throws ClassNotFoundException, SQLException {
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
-		int Totalseats=0;
+		int totalseats=0;
 		
 		String query="select availableSeats from match_info where match_id=?";
 		PreparedStatement pstmt = con.prepareStatement(query);
 		pstmt.setInt(1, matchId);
 		ResultSet rs=pstmt.executeQuery();
-       if(rs.next())
-   		 Totalseats=rs.getInt(1);
-		return Totalseats;
+       if(rs.next()) {
+   		 totalseats=rs.getInt(1);
+		
 	}
-
+       return totalseats;
+	}
 	
 
 }

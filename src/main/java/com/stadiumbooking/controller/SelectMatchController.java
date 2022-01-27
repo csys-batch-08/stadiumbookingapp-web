@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,20 +22,24 @@ public class SelectMatchController extends HttpServlet {
 	
 	public void service(HttpServletRequest req,HttpServletResponse res) {
 	
-		HttpSession sessions=req.getSession();
+		
 		
 		int matchId=Integer.parseInt(req.getParameter("matchId"));
 		try {
 			
 			List<Match> match = matchDao.getMatchByMatchId(matchId);
-			sessions.setAttribute("singleMatch", match);
-			res.sendRedirect("seats.jsp");
+			req.setAttribute("singleMatch", match);
+						RequestDispatcher rd = req.getRequestDispatcher("seats.jsp");			
+			rd.forward(req, res);
+		
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		} catch (ServletException e2) {
+
+			e2.printStackTrace();
 		}
 	}
 }

@@ -6,10 +6,10 @@
     
     
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<meta http-equiv="refresh" content="60">
+
 <link rel = "icon" type = "" href = "image/Studium.png">
 <title>Matchbooking.com</title>
 <style>
@@ -62,47 +62,48 @@ color: black;
 <body>
 
  <div class="sidenav">
-       <a href="usersprofile.jsp">Profile</a>
-       <a href="allMatchDetalis.jsp">Match Detalis</a>
-        <a href="mymatch.jsp?ticketId=0">My Match</a>
-        <a href="wallet.jsp">Wallet</a>
-        <a href="stadiumList.jsp">Stadium List</a>
-        <a href="ratingList.jsp">Rating List</a>
+       <a href="usersprofile">Profile</a>
+       <a href="allMatchDetalis">Match Details</a>
+        <a href="mymatch">My Match</a>
+        <a href="wallet">Wallet</a>
+        <a href="stadiumList">Stadium List</a>
+        <a href="ratingList">Rating List</a>
         <a href="index.jsp">Logout</a>
     </div>
 
 
 
-   <c:forEach items="${sessionScope.seatListById}" var="seatList">   
+   <c:forEach items="${seatListById}" var="seatList">   
 
 
 <jsp:useBean id="matchDao" class="com.stadiumbooking.daoimpl.MatchDaoImpl"/>
 
 
     <div class="matchDetalis">
- <c:forEach items="${matchDao.getMatchByMatchId(seatList.match_id)}" var="match">
+ <c:forEach items="${matchDao.getMatchByMatchId(seatList.matchId)}" var="match">
   
        <br>
-        <b>${match.teamA}</b>  Vs <b>${match.teamB}</b>
+        <strong>${match.teamA}</strong>  Vs <strong>${match.teamB}</strong>
         <br>
-        <label>${match.stadium_name}</label>
+        <label>${match.stadiumName}</label>
         <label>${match.location}</label>
         <br>
-           <fmt:parseDate value="${match.match_date}" pattern="yyyy-MM-dd" var="macthDate" type="date"/>
+           <fmt:parseDate value="${match.matchDate}" pattern="yyyy-MM-dd" var="macthDate" type="date"/>
         
         <label><fmt:formatDate pattern="dd/MM/yyyy" value="${macthDate}"/> </label>
-         <label>${match.match_time}</label>
+         <label>${match.matchTime}</label>
          <br>
 
       <label>${seatList.seatclass}</label>
 <br>
          <label>Number Of Ticktes:${seatList.seatcount}</label>
-
+    <br>
+         <label>Price:${seatList.price}</label>
          <br>
-         <label>Seats Numbers:${seatList.ticket_numbers}</label>
+         <label>Seats Numbers:${seatList.ticketNumbers}</label>
          <br>
          <c:choose>
-         <c:when test = "${sessionScope.today > match.match_date }">
+         <c:when test = "${sessionScope.today > match.matchDate }">
 
          <h3>Match Ended</h3>
          <hr style="width: 300px;">

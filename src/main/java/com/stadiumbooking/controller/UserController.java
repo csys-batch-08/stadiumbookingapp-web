@@ -19,8 +19,9 @@ import com.stadiumbooking.model.User;
 @WebServlet("/regSevr")
 public class UserController extends HttpServlet {
 
-	UserDaoImpl userDao = new UserDaoImpl();
+	final UserDaoImpl userDao = new UserDaoImpl();
 
+	@Override
 	public void service(HttpServletRequest req, HttpServletResponse res) {
 
 		/* Getting User Details */
@@ -30,33 +31,26 @@ public class UserController extends HttpServlet {
 		String pass = req.getParameter("pass").trim();
 		String mail = req.getParameter("mail").trim();
 		Long phone = Long.parseLong(req.getParameter("phone"));
-		// System.out.println(name+"\n"+uname);
-		
-		
-		
-		
+	
 		User user = new User(name, uname, pass, mail, phone);
 		try {
-			
-			
-			
 
 			boolean flag=userDao.checkUser(uname, mail, phone);
-			if (flag == true) {
+			if (flag) {
 				
 				userDao.insertUser(user);
 				throw new RegisterSuccessful();
-				// res.sendRedirect("login.jsp");
+			
 			} else {
 				throw new SomthingWentWrong();
 			}
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (SQLException e1) {
+			
+			e1.printStackTrace();
 		} catch (RegisterSuccessful e) {
 
 			try {
@@ -66,7 +60,7 @@ public class UserController extends HttpServlet {
 				session.setAttribute("RegisterSuccessful", e.getMessage());
 				res.sendRedirect("index.jsp");
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
+				
 				e1.printStackTrace();
 			}
 		} catch (SomthingWentWrong e) {
@@ -76,9 +70,9 @@ public class UserController extends HttpServlet {
 				session.setAttribute("error",null);
 				session.setAttribute("SomthingWentWrong", e.getMessage());
 				res.sendRedirect("index.jsp");
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			} catch (IOException e2) {
+				
+				e2.printStackTrace();
 			}
 		}
 

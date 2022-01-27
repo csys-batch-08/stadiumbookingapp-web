@@ -207,7 +207,7 @@ margin-left: 120px;
         </div>
 
     </nav>
-<img id="iconn" class="d-none d-sm-block" src="image/Studium.png">
+<img id="iconn" class="d-none d-sm-block" alt="can't find" src="image/Studium.png">
 
     <section id="con"  class="bg-info text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
         <div class="container">
@@ -216,17 +216,17 @@ margin-left: 120px;
    
    
    <c:if test="${not empty sessionScope.error}">
-     <h2  id="Emesg" onclick="Error()" style="position:absolute;width:500px; left:665px; top:-120px;color:orange;visibility:visible"><i class="bi bi-emoji-frown"></i> ${sessionScope.error}</h2>
+     <h2  id="Emesg" onclick="Error()" style="position:absolute;width:500px; left:665px; top:-120px;color:orange;visibility:visible"><em class="bi bi-emoji-frown"></em> ${sessionScope.error}</h2>
 
 </c:if>
               
               <c:if test="${not empty sessionScope.RegisterSuccessful}">
-                   <h2  id="Emesg" onclick="Error()" style="position:absolute; left:700px; width:500px; top:-120px;color:white;visibility:visible"><i class="bi bi-emoji-frown"></i> ${sessionScope.RegisterSuccessful}</h2>
+                   <h2  id="Emesg" onclick="Error()" style="position:absolute; left:700px; width:500px; top:-120px;color:white;visibility:visible"><em class="bi bi-emoji-frown"></em> ${sessionScope.RegisterSuccessful}</h2>
 
                 </c:if>      
    
      <c:if test="${not empty sessionScope.SomthingWentWrong}">
-                <h2  id="RegSus" onclick="RegSus()" style="position:absolute; left:660px; width:500px;  top:-120px;color:red;visibility:visible"> <i class="bi bi-emoji-frown"></i> ${sessionScope.SomthingWentWrong }</h2>
+                <h2  id="RegSus" onclick="RegSus()" style="position:absolute; left:660px; width:500px;  top:-120px;color:red;visibility:visible"> <em class="bi bi-emoji-frown"></em> ${sessionScope.SomthingWentWrong }</h2>
 
                 </c:if>        
     
@@ -262,7 +262,7 @@ margin-left: 120px;
                     <div class="card bg-dark text-light rotate-center">
                         <div class="card-body text-center">
                             <div class="h2 mb-3">
-                                <i class="bi bi-binoculars"></i>
+                                <em class="bi bi-binoculars"></em>
                             </div>
                             <h3 class="card-title mb-3">
                                 Search
@@ -280,7 +280,7 @@ margin-left: 120px;
                     <div class="card bg-secondary text-light rotate-center">
                         <div class="card-body text-center">
                             <div class="h2 mb-3">
-                                <i class="bi bi-person-square"></i>
+                                <em class="bi bi-person-square"></em>
                             </div>
                             <h3 class="card-title mb-3">
                                 Register Now
@@ -297,7 +297,7 @@ margin-left: 120px;
                     <div class="card bg-dark text-light rotate-center">
                         <div class="card-body text-center">
                             <div class="h2 mb-3">
-                                <i class="bi bi-calendar3"></i>
+                                <em class="bi bi-calendar3"></em>
                             </div>
                             <h3 class="card-title mb-3">
                                 Online Sale
@@ -405,7 +405,7 @@ margin-left: 120px;
                         game.
                     </p>
                     <a href="#" class="btn btn-primary mt-3">
-                        <i class="bi bi-chevron-right"></i>Read More
+                        <em class="bi bi-chevron-right"></em>Read More
                     </a>
                 </div>
             </div>
@@ -439,7 +439,7 @@ margin-left: 120px;
                         sixes in an over.
                     </p>
                     <a href="#" class="btn btn-primary mt-3">
-                        <i class="bi bi-chevron-right"></i>Read More
+                        <em class="bi bi-chevron-right"></em>Read More
                     </a>
                 </div>
             </div>
@@ -465,12 +465,12 @@ margin-left: 120px;
                                 Oliver Queen, also known by his alter-ego the Green Arrow, is a fictional character in
                                 The CW's Arrowverse franchise, first introduced in the 2012 pilot episode  Arrow 
     
-                                <b class="text-dark">#YouHaveFailedThisCity #GreenArrow</b>
+                                <strong class="text-dark">#YouHaveFailedThisCity #GreenArrow</strong>
                             
                             </p>
-                            <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
-                            <a href="#"><i class="bi bi-facebook text-dark mx-1"></i></a>
-                            <a href="#"><i class="bi bi-instagram text-dark mx-1"></i></a>
+                            <a href="#"><em class="bi bi-twitter text-dark mx-1"></em></a>
+                            <a href="#"><em class="bi bi-facebook text-dark mx-1"></em></a>
+                            <a href="#"><em class="bi bi-instagram text-dark mx-1"></em></a>
                         </div>
                     </div>
                 </div>
@@ -488,10 +488,10 @@ margin-left: 120px;
                                 The Flash is a superhero appearing in a series of American comic books published by DC
                                 Comics. Barry Allen is a reinvention of the original Flash
                             </p>
-                            <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
-                            <a href="#"><i class="bi bi-facebook text-dark mx-1"></i></a>
-                            <a href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
-                            <a href="#"><i class="bi bi-instagram text-dark mx-1"></i></a>
+                            <a href="#"><em class="bi bi-twitter text-dark mx-1"></em></a>
+                            <a href="#"><em class="bi bi-facebook text-dark mx-1"></em></a>
+                            <a href="#"><em class="bi bi-linkedin text-dark mx-1"></em></a>
+                            <a href="#"><em class="bi bi-instagram text-dark mx-1"></em></a>
                         </div>
                     </div>
                 </div>
@@ -511,11 +511,11 @@ margin-left: 120px;
                                 Created by writer-editor Stan Lee and artist Steve Ditko, he first appeared in the
                                 anthology comic book
                             </p>
-                            <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
-                            <a href="#"><i class="bi bi-facebook text-dark mx-1"></i></a>
-                            <a href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
-                            <a href="#"><i class="bi bi-instagram text-dark mx-1"></i></a>
-                            <a href="#"><i class="bi bi-google text-dark mx-1"></i></a>
+                            <a href="#"><em class="bi bi-twitter text-dark mx-1"></em></a>
+                            <a href="#"><em class="bi bi-facebook text-dark mx-1"></em></a>
+                            <a href="#"><em class="bi bi-linkedin text-dark mx-1"></em></a>
+                            <a href="#"><em class="bi bi-instagram text-dark mx-1"></em></a>
+                            <a href="#"><em class="bi bi-google text-dark mx-1"></em></a>
                         </div>
                     </div>
                 </div>
@@ -535,9 +535,9 @@ margin-left: 120px;
                                 Captain America Comics
                             </p>
                           
-                            <a href="#"><i class="bi bi-facebook text-dark mx-1"></i></a>
-                            <a href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
-                            <a href="#"><i class="bi bi-google text-dark mx-1"></i></a>
+                            <a href="#"><em class="bi bi-facebook text-dark mx-1"></em></a>
+                            <a href="#"><em class="bi bi-linkedin text-dark mx-1"></em></a>
+                            <a href="#"><em class="bi bi-google text-dark mx-1"></em></a>
                         </div>
                     </div>
                 </div>
@@ -572,7 +572,7 @@ margin-left: 120px;
         <div class="container">
             <p class="lead">Copyright &copy; 2022 MatchBooking.com</p>
             <a href="#" class="position-absolute bottom-0 end-0 p-5">
-                <i class="bi bi-arrow-up-circle h1"></i>
+                <em class="bi bi-arrow-up-circle h1"></em>
             </a>
         </div>
     </footer>
@@ -601,7 +601,7 @@ margin-left: 120px;
                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               <button type="submit" class="btn btn-primary">Submit</button>
               <br> <br>
-              <i data-bs-toggle="modal" data-bs-target="#register">Don't Have An Account...??</i>
+              <em data-bs-toggle="modal" data-bs-target="#register">Don't Have An Account...??</em>
                </form>
                          
                 </div>
@@ -646,7 +646,7 @@ margin-left: 120px;
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Submit</button>
                         <br> <br>
-                        <i data-bs-toggle="modal" data-bs-target="#enroll">Already Have An Account..??</i>
+                        <em data-bs-toggle="modal" data-bs-target="#enroll">Already Have An Account..??</em>
                     </form>                    
             
                 </div>

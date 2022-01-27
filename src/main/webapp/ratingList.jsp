@@ -3,10 +3,10 @@
        
   <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<meta http-equiv="refresh" content="60">
+
 <link rel = "icon" type = "" href = "image/Studium.png">
 <title>Matchbooking.com</title>
 <style>
@@ -101,30 +101,27 @@ text-decoration: none;
 </head>
 <body>
 
-<%-- 
-<% int id=(int) session.getAttribute("id");
-            ResultSet user=userDao.getUserById(id);
-String role=null;
-            if(user.next()){
-	role=user.getString(4);
-}
-            %>
 <div id="nav">
 
         <ul type="none">
          
-            <b id="logo"> MatchBooking</b>
+            <strong id="logo"> MatchBooking</strong>
             
-            <b>
-           
-            </b>
       <li><a href="index.jsp">Logout</a></li>
             <li>&nbsp; &nbsp;</li>
-            <li onclick="regsiter()"> <%if(role.equals("Admin")){ %>
+            <li>
+            <c:choose>
+             <c:when test="${sessionScope.role.equals('Admin')}">
+             
             <a href="adminHome.html">Home</a>
-            <%} else if(role.equals("User")){%>
+            </c:when>
+            <c:when test="${sessionScope.role.equals('User')}">
+            
             <a href="userHome.html">Home</a>
-            <%} %></li>
+        
+            </c:when>
+            </c:choose>
+            </li>
             
            
           
@@ -135,48 +132,47 @@ String role=null;
 
 <br><br>
 <br><br>
- --%>
-    
 
-     <c:forEach items="${sessionScope.stadiumList}" var="stadiumList">
+
+     <c:forEach items="${stadiumList}" var="stadiumList">
      
    <div class="rating">
-   <img src="image/${stadiumList.stadium_img}" >
+   <img src="image/${stadiumList.stadiumImg}" alt="can't find" >
       
        <br>
-       <b>${stadiumList.stadium_name}</b> 
+       <strong>${stadiumList.stadiumName}</strong> 
        <br>
        
        <jsp:useBean id="ratingDao" class="com.stadiumbooking.daoimpl.RatingsDaoImpl"/>
        
     
-         <c:forEach items="${ratingDao.getAllRatingsById(stadiumList.stadium_id)}" var="ratingList">
+         <c:forEach items="${ratingDao.getAllRatingsById(stadiumList.stadiumId)}" var="ratingList">
       <jsp:useBean id="userDao" class="com.stadiumbooking.daoimpl.UserDaoImpl"/>
           
      <c:forEach items="${userDao.getUserById(ratingList.userId)}" var="userList">
    
        <div class="reviewContainer">
-           <img src="image/${userList.profilePic}" class="userProfile">
-       <b class="reviwerName">${userList.name}  
+           <img src="image/${userList.profilePic}" alt="can't find" class="userProfile">
+       <strong class="reviwerName">${userList.name}  
        &nbsp;
        <c:choose>
-       <c:when test="${ratingList.ratings==5.0}">
+       <c:when test="${ratingList.ratingValue==5.0}">
       
-       <label>&#11088;&#11088;&#11088;&#11088;&#11088;</label></b>
+       <label>&#11088;&#11088;&#11088;&#11088;&#11088;</label></strong>
       
        </c:when>
-       <c:when test="${ratingList.ratings==4.0}">
-       <label>&#11088;&#11088;&#11088;&#11088;</label></b>
+       <c:when test="${ratingList.ratingValue==4.0}">
+       <label>&#11088;&#11088;&#11088;&#11088;</label></strong>
        </c:when>
-        <c:when test="${ratingList.ratings==3.0}">
-        <label>&#11088;&#11088;&#11088;</label></b> 
+        <c:when test="${ratingList.ratingValue==3.0}">
+        <label>&#11088;&#11088;&#11088;</label></strong> 
        </c:when>
        
-        <c:when test="${ratingList.ratings==2.0}">
-       <label>&#11088;&#11088;</label></b>
+        <c:when test="${ratingList.ratingValue==2.0}">
+       <label>&#11088;&#11088;</label></strong>
        </c:when>
-        <c:when test="${ratingList.ratings==1.0}">
-         <label>&#11088;</label></b>
+        <c:when test="${ratingList.ratingValue==1.0}">
+         <label>&#11088;</label></strong>
        </c:when>
        </c:choose>
        </c:forEach>     
@@ -186,6 +182,8 @@ String role=null;
       <br> <br>
        <label id="review">${ratingList.reviews}</label>
        <br>
+       
+       
        </div>
        </c:forEach>
       

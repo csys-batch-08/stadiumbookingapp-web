@@ -6,6 +6,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,34 +20,37 @@ import com.stadiumbooking.model.Match;
 @WebServlet("/updateMatch")
 public class UpdateMatchController extends HttpServlet {
 
-	MatchDaoImpl matchDao=new MatchDaoImpl();
+	final MatchDaoImpl matchDao=new MatchDaoImpl();
+	@Override
 	public void service(HttpServletRequest req,HttpServletResponse res) {
 		
 		int matchId=Integer.parseInt(req.getParameter("matchId"));
 		String dateInString =req.getParameter("matchDate");
 		String timeInString=req.getParameter("matchTime");
-		//System.out.println(timeInString);
+		
 		LocalDate date = LocalDate.parse(dateInString);
 		LocalTime time=LocalTime.parse(timeInString);
-		//System.out.println(time);
-		Match match=new Match(matchId,date,time);
-		HttpSession session=req.getSession();
+		
+		Match match=new Match(matchId,0,null,null,date,time,null,null,null,null,0,0,0,0);
 		
 		try {
 		
 			matchDao.updateMatchDetails(match);
 			List<Match> matchDetails=matchDao.getAllMatchDetalis();
-			session.setAttribute("MatchDetails", matchDetails);
-			res.sendRedirect("showMatchToAdmin.jsp");
+			req.setAttribute("MatchDetails", matchDetails);
+			 RequestDispatcher rd = req.getRequestDispatcher("showMatchToAdmin.jsp");
+				rd.forward(req, res);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (ClassNotFoundException e1) {
+				e1.printStackTrace();
+		} catch (SQLException e2) {
+			
+			e2.printStackTrace();
+		} catch (ServletException e3) {
+			
+			e3.printStackTrace();
 		}
 		
 		

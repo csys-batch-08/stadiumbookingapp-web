@@ -30,15 +30,13 @@ public class WalletDaoImpl implements WalletDao {
 		PreparedStatement stmt=con.prepareStatement(query);
 		stmt.setInt(1, wallete.getUserId());
 		stmt.setLong(2, wallete.getAmount());
-		int i=stmt.executeUpdate();
-		//System.out.println(i+" Row Inserted");
+		stmt.executeUpdate();
+		
 		
 		/* Update User Wallet Details in users table */
 		
 		int userid=wallete.getUserId();
-		//System.out.println(userid);
 		double amount=wallete.getAmount();
-		//System.out.println(amount);
 		userDao.addAmount(userid, amount);
 		
 	}
@@ -49,19 +47,18 @@ public class WalletDaoImpl implements WalletDao {
 		
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
-		Statement stmt=con.createStatement();
 		String query="Select walletId,userId,amount,Transaction_Date from wallet_details";
-		
+		PreparedStatement stmt=con.prepareStatement(query);		
 		ResultSet rs=stmt.executeQuery(query);
 
-		  List<WalletDetails> WalletList=new ArrayList<WalletDetails>();
+		  List<WalletDetails> walletList=new ArrayList<>();
 			
 		  while(rs.next()) {
 			
-				WalletDetails WalletDetails=new WalletDetails(rs.getInt(1),rs.getInt(2),rs.getLong(3),rs.getTimestamp(4).toLocalDateTime());
-				WalletList.add(WalletDetails);
+				WalletDetails walletDetails=new WalletDetails(rs.getInt(1),rs.getInt(2),rs.getLong(3),rs.getTimestamp(4).toLocalDateTime());
+				walletList.add(walletDetails);
 			}
-			return WalletList;
+			return walletList;
 	}
 
 	

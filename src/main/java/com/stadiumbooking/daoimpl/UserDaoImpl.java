@@ -33,15 +33,13 @@ public class UserDaoImpl  implements UserDao  {
 		
 		PreparedStatement stmt=con.prepareStatement(query);
 	
-		//System.out.println(user.getName()+user.getEmail());
 		stmt.setString(1, user.getName());
 		stmt.setString(2, user.getUsername());
 		stmt.setString(3, "User");
 		stmt.setString(4, user.getPassword());
 		stmt.setString(5, user.getEmail());
 		stmt.setLong(6, user.getPhoneNumber());
-	    int i=stmt.executeUpdate();
-		return i;
+	    return stmt.executeUpdate();
 		
 	}
 
@@ -52,10 +50,10 @@ public class UserDaoImpl  implements UserDao  {
 		
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
-		Statement stmt=con.createStatement();
-		List<User> userList=new ArrayList<User>();
-		String query="select USERID,NAME,USERNAME,ROLE,PASSWORD,EMAIL,PHONENUMBER,WALLET,PROFILEPIC from users order by userid";
 		
+		List<User> userList=new ArrayList<>();
+		String query="select USERID,NAME,USERNAME,ROLE,PASSWORD,EMAIL,PHONENUMBER,WALLET,PROFILEPIC from users order by userid";
+		PreparedStatement stmt=con.prepareStatement(query);	
 		ResultSet rs=stmt.executeQuery(query);
 		
 		while(rs.next()) {
@@ -76,16 +74,12 @@ public class UserDaoImpl  implements UserDao  {
 		
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
-		
-
-		//System.out.println("Dao"+id);
-		
 		String query="Select USERID,NAME,USERNAME,ROLE,PASSWORD,EMAIL,PHONENUMBER,WALLET,PROFILEPIC from users where userid=?";		
 
 		PreparedStatement stmt1=con.prepareStatement(query);		
 		stmt1.setInt(1, id);
         ResultSet rs=stmt1.executeQuery();
-        List<User> userList=new ArrayList<User>();
+        List<User> userList=new ArrayList<>();
 		if(rs.next()) {
 	
 			User user=new User(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getDouble(8),rs.getString(9));
@@ -102,8 +96,7 @@ public class UserDaoImpl  implements UserDao  {
 		
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
-		Statement stmt=con.createStatement();
-		//System.out.println("DAOOOOO\n"+user.getName()+"\n"+user.getUsername()+"\n"+user.getUserid()+user.getPassword()+user.getEmail()+user.getPhoneNumber()+"\n"+"DAOOOO");
+
 			String que = "update users set name=?,username=?,password=?,email=?, phoneNumber=? where userid=?";
 			PreparedStatement pstmt = con.prepareStatement(que);
 			pstmt.setString(1, user.getName());
@@ -112,9 +105,8 @@ public class UserDaoImpl  implements UserDao  {
 			pstmt.setString(4, user.getEmail());
 			pstmt.setLong(5, user.getPhoneNumber());
 			pstmt.setInt(6, user.getUserid());
-			int i=pstmt.executeUpdate();
-			//System.out.println(i+" Updated");
-		
+			pstmt.executeUpdate();
+					
 		
 	}
 
@@ -124,15 +116,13 @@ public class UserDaoImpl  implements UserDao  {
 		
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con=conUtil.getDBConnect();
-		Statement stmt=con.createStatement();
-
 		
 		String que = "delete from users where userId=?";
 		PreparedStatement pstmt = con.prepareStatement(que);
 		
 		pstmt.setInt(1, userId);
-		int i=pstmt.executeUpdate();
-		//System.out.println(i+" deleted");
+		pstmt.executeUpdate();
+		
 		
 	}
 
@@ -195,14 +185,14 @@ public class UserDaoImpl  implements UserDao  {
 			PreparedStatement pstmt = con.prepareStatement(que);
 			pstmt.setDouble(1, amount);
 			pstmt.setInt(2, userId);
-			int i=pstmt.executeUpdate();
-			//System.out.println(i+" Updated");
+            pstmt.executeUpdate();
+			
 		
 	}
 
 	@Override
 	public void refundPice(int userId, double amount) throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
+	
 		/* Update user wallet if user cancelled tickets  */
 		
 		ConnectionUtill conUtil=new ConnectionUtill();
@@ -211,9 +201,8 @@ public class UserDaoImpl  implements UserDao  {
 			PreparedStatement pstmt = con.prepareStatement(que);
 			pstmt.setDouble(1, amount);
 			pstmt.setInt(2, userId);
-			int i=pstmt.executeUpdate();
-			//System.out.println(i+" Updated");
-	}
+			pstmt.executeUpdate();
+			}
 
 	@Override
 	public void bookingTicktes(int userid, double amount) throws ClassNotFoundException, SQLException {
@@ -226,8 +215,8 @@ public class UserDaoImpl  implements UserDao  {
 			PreparedStatement pstmt = con.prepareStatement(que);
 			pstmt.setDouble(1, amount);
 			pstmt.setInt(2, userid);
-			int i=pstmt.executeUpdate();
-			//System.out.println(i+" Updated");
+            pstmt.executeUpdate();
+			
 		
 		
 	}
@@ -245,9 +234,8 @@ public class UserDaoImpl  implements UserDao  {
 		stmt1.setInt(1, userid);
 		ResultSet rs2=stmt1.executeQuery();
 		if(rs2.next()) {
-	    Double amount= rs2.getDouble(1);
 	    
-		return amount;
+		return rs2.getDouble(1);
 		
 	}
 		return (double) 0;
@@ -266,8 +254,8 @@ public class UserDaoImpl  implements UserDao  {
 			PreparedStatement pstmt = con.prepareStatement(que);
 			pstmt.setString(1, pic);
 			pstmt.setInt(2, userid);
-			int i=pstmt.executeUpdate();
-			//System.out.println(i+" Updated");
+			pstmt.executeUpdate();
+		
 		
 	}
 
@@ -284,10 +272,8 @@ public class UserDaoImpl  implements UserDao  {
 		ResultSet rs2=stmt1.executeQuery();
 		String name=null;
 		if(rs2.next()) {
-	    name= rs2.getString(1);
 	    
-		return name;
-		
+		return rs2.getString(1);
 	}
 		return name;
 
