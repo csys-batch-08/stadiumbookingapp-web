@@ -22,15 +22,15 @@ public class ShowMatchtoAdminController extends HttpServlet {
 	@Override
 	public void service(HttpServletRequest req, HttpServletResponse res)  {
 		
-		List<Match> matchDetails;
+		
 		try {
-			matchDetails = matchDao.getAllMatchDetalis();
+			List<Match> matchDetails = matchDao.getAllMatchDetalis();
 			req.setAttribute("MatchDetails", matchDetails);
 			
 		
 			 RequestDispatcher rd = req.getRequestDispatcher("showMatchToAdmin.jsp");
 				rd.forward(req, res);
-		} catch (ClassNotFoundException | SQLException | ServletException | IOException e) {
+		} catch (SQLException | ServletException | IOException e) {
 	
 			e.printStackTrace();
 		}

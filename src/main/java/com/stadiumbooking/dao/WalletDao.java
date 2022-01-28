@@ -8,8 +8,8 @@ import com.stadiumbooking.model.WalletDetails;
 
 public interface WalletDao {
 
-	public void insertAmount(WalletDetails wallete) throws ClassNotFoundException, SQLException;
-	public List<WalletDetails> allUserWalletList() throws ClassNotFoundException, SQLException;
+	public void insertAmount(WalletDetails wallete) throws  SQLException;
+	public List<WalletDetails> allUserWalletList() throws SQLException;
 	
 	
 }

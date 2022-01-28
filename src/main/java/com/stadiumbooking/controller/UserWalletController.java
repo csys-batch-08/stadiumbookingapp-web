@@ -35,7 +35,7 @@ public class UserWalletController extends HttpServlet {
 			session.setAttribute("wallet", wallet);
 		      RequestDispatcher rd = req.getRequestDispatcher("wallet.jsp");			
 					rd.forward(req, res);
-		} catch (ClassNotFoundException | SQLException | ServletException | IOException e) {
+		} catch (SQLException | ServletException | IOException e) {
 			
 			e.printStackTrace();
 		}

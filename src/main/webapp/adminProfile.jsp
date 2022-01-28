@@ -141,7 +141,7 @@ height:250px;
 
 	<div id="update">
 
-		<form action="update" onsubmit="return validate()">
+		<form action="update" method="post" onsubmit="return validate()">
 		    <c:forEach items="${userDateils}" var="user">
 
 

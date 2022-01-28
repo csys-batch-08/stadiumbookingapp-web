@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-	   <link    rel="stylesheet"    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+	   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel = "icon" type = "" href = "image/Studium.png">
     <title>Matchbooking.com</title>
     <style>
@@ -61,7 +61,10 @@
   padding: 20px;
             
 }
-
+.matchCard{
+position: relative;
+left:75px;
+}
 .allMatch{
  background-color: #f2f2f2;
 	border: 1px solid #023f72 !important;
@@ -326,26 +329,22 @@ input:-webkit-autofill:active  {
  <div class="anime">
  <img src="image/circktballGif.gif" alt="can't find" id="gifImage" loading="lazy"  onmouseout="dec()" onmouseover="inc()"  >
  </div>
-   <%
-    String error=(String)session.getAttribute("houseFull");
-    if (error!=null) {
-    %>
-     <h2  id="Emesg" onclick="Error()" style="position:absolute; left:300px; top:10px;color:red;visibility:visible"> <%=session.getAttribute("houseFull") %></h2>
-   <%} %>
+   
+   <c:if test="${not empty sessionScope.houseFull}">
+      <h2  id="Emesg" onclick="Error()" style="position:absolute; left:300px; top:10px;color:red;visibility:visible"> ${sessionScope.houseFull}</h2>
+</c:if>
+  
  <!-- LowCountSeats -->
- 
- <%
-    String errors=(String)session.getAttribute("LowCountSeats");
-    if (errors!=null) {
-    %>
-     <h2  id="EmMesg" onclick="Errors()" style="position:absolute; left:320px; top:30px;color:red;visibility:visible"> <%=session.getAttribute("LowCountSeats")%></h2>
-   <%} %>
+   <c:if test="${not empty sessionScope.LowCountSeats}">
+      <h2  id="Emesg" onclick="Error()" style="position:absolute; left:300px; top:10px;color:red;visibility:visible"> ${sessionScope.LowCountSeats}</h2>
+</c:if>
+
  
    
     <div class="mathcInfo" id="mathcInfo">
 <div id="Allmatch">
    <c:forEach items="${MatchDetails}" var="match">
-  
+  <div class="matchCard" data-aos="fade-left">
 	 <div class="allMatch animate__animated animate__flipInX animate__slow" id="${match.teamA}${match.teamB}">
      <br>
         <img src="image/${match.teamAlogo}" alt="can't find" loading="lazy">  &nbsp;  &nbsp; <label ><strong id="teamA">${match.teamA}</strong> <strong id="Vs">Vs</strong> <strong id="teamB"> ${match.teamB} </strong></label>
@@ -381,14 +380,17 @@ input:-webkit-autofill:active  {
 </c:choose>     
      </div>
         
-
+</div>
         </div> 
         <br>
 <br>
 </c:forEach>
 </div>
     </div>
-
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
 </body>
 </html>
 <script >

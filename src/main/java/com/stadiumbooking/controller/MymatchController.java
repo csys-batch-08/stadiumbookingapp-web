@@ -17,28 +17,28 @@ import com.stadiumbooking.model.Seats;
 
 @WebServlet("/mymatch")
 public class MymatchController extends HttpServlet {
-	
-	final SeatsDaoImpl seatsDao=new SeatsDaoImpl();
+
+	final SeatsDaoImpl seatsDao = new SeatsDaoImpl();
+
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) {
 
 		try {
 			HttpSession session = req.getSession();
-			
-			int userID=(int) session.getAttribute("id");
-			
-			List<Seats> seatListById=seatsDao.getSeatById(userID);
-			System.out.println(seatListById);
+
+			int userID = (int) session.getAttribute("id");
+
+			List<Seats> seatListById = seatsDao.getSeatById(userID);
+
 			req.setAttribute("seatListById", seatListById);
-		
-		      RequestDispatcher rd = req.getRequestDispatcher("mymatch.jsp");			
-					rd.forward(req, res);
-		} catch (ClassNotFoundException | SQLException | ServletException | IOException e) {
-			
+
+			RequestDispatcher rd = req.getRequestDispatcher("mymatch.jsp");
+			rd.forward(req, res);
+		} catch (SQLException | ServletException | IOException e) {
+
 			e.printStackTrace();
 		}
-		
-	
+
 	}
 
 }

@@ -7,8 +7,8 @@ import java.util.List;
 import com.stadiumbooking.model.Ratings;
 
 public interface RatingsDao {
-	public void ratingStadium(Ratings ratings) throws ClassNotFoundException, SQLException;
-	public List<Ratings> getAllRatingsById(int stadium_id) throws ClassNotFoundException, SQLException;
-	public List<Ratings> getAllRatings() throws ClassNotFoundException, SQLException;
+	public void ratingStadium(Ratings ratings) throws SQLException;
+	public List<Ratings> getAllRatingsById(int stadiumId) throws  SQLException;
+	public List<Ratings> getAllRatings() throws  SQLException;
 
 }

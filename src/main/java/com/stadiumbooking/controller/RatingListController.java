@@ -29,7 +29,7 @@ public class RatingListController extends HttpServlet {
 		
 		      RequestDispatcher rd = req.getRequestDispatcher("ratingList.jsp");			
 					rd.forward(req, res);
-		} catch (ClassNotFoundException | SQLException | ServletException | IOException e) {
+		} catch (SQLException | ServletException | IOException e) {
 			
 			e.printStackTrace();
 		}

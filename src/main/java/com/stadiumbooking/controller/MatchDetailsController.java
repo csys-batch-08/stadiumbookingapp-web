@@ -36,7 +36,7 @@ public class MatchDetailsController extends HttpServlet {
 			
 			 RequestDispatcher rd = req.getRequestDispatcher("matchDetails.jsp");
 				rd.forward(req, res);
-		} catch (ClassNotFoundException | SQLException | ServletException | IOException e) {
+		} catch (SQLException | ServletException | IOException e) {
 	
 			e.printStackTrace();
 		}

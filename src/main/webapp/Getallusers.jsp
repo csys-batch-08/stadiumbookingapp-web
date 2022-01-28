@@ -59,6 +59,18 @@
             height: 60px;
             border: 1px solid black;
         }
+        caption{             
+        background-color: #eee;
+             color: blue;
+             font-size:25px;
+             text-align:center;
+              height: 60px;
+            border: 1px solid black;
+        
+        }
+        
+       
+        
 
         td {
         height:20px;
@@ -91,7 +103,7 @@
     </div>
    
     <table  id="tabel">
-     <caption>User Transaction history</caption>
+     <caption><strong id="title">All User List</strong></caption>
       <tr>  
      
      <th id="name">Name</th>
@@ -116,7 +128,7 @@
 	<c:choose>
 	<c:when test="${users.wallet==0 and users.role.equals('User')}">
 	
-	<td><a href="deleteUser?deleteId=${users.userid}">Delete</a></td>
+	<td><a href="deleteUser?userId=${users.userid}">Delete</a></td>
 	
 	</c:when>
 <c:when test="${users.role.equals('Admin') }">

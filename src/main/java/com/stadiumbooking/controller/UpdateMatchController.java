@@ -43,8 +43,6 @@ public class UpdateMatchController extends HttpServlet {
 		} catch (IOException e) {
 		
 			e.printStackTrace();
-		} catch (ClassNotFoundException e1) {
-				e1.printStackTrace();
 		} catch (SQLException e2) {
 			
 			e2.printStackTrace();

@@ -20,6 +20,7 @@ import com.stadiumbooking.daoimpl.WalletDaoImpl;
 import com.stadiumbooking.exception.HouseFull;
 import com.stadiumbooking.exception.LowBalance;
 import com.stadiumbooking.exception.LowSeatCount;
+import com.stadiumbooking.model.Match;
 import com.stadiumbooking.model.Seats;
 import com.stadiumbooking.model.User;
 
@@ -51,7 +52,7 @@ public class BookingController extends HttpServlet {
 
 		try {
 			totalAvalibleSeats = matchDao.checkAvilableSeats(matchId);
-		} catch (ClassNotFoundException | SQLException e2) {
+		} catch (SQLException e2) {
 
 			e2.printStackTrace();
 		}
@@ -88,16 +89,28 @@ public class BookingController extends HttpServlet {
 					} else {
 						throw new LowBalance();
 					}
-				} catch (ClassNotFoundException | SQLException | IOException e1) {
+				} catch (SQLException | IOException e1) {
 					e1.printStackTrace();
 				} catch (LowBalance e) {
 					try {
 						HttpSession session = req.getSession();
 						session.setAttribute("LowBalanceError", e.getMessage());
-						res.sendRedirect("wallet.jsp");
+
+						int userID=(int) session.getAttribute("id");
+						Double wallet=userDao.userWalletDetails(userID);
+						
+						session.setAttribute("wallet", wallet);
+					      RequestDispatcher rd = req.getRequestDispatcher("wallet.jsp");			
+								rd.forward(req, res);
 					} catch (IOException e1) {
 
 						e1.printStackTrace();
+					} catch (SQLException e2) {
+						
+						e2.printStackTrace();
+					} catch (ServletException e4) {
+						
+						e4.printStackTrace();
 					}
 				} catch (ServletException e) {
 
@@ -114,8 +127,13 @@ public class BookingController extends HttpServlet {
 					try {
 						HttpSession session = req.getSession();
 						session.setAttribute("LowCountSeats", lc.getMessage());
-						res.sendRedirect("allMatchDetalis.jsp");
-					} catch (IOException e) {
+						List<Match> matchDetails = matchDao.getAllMatchDetalis();
+						req.setAttribute("MatchDetails", matchDetails);
+						
+					
+						 RequestDispatcher rd = req.getRequestDispatcher("allMatchDetalis.jsp");
+							rd.forward(req, res);
+					} catch (IOException | SQLException | ServletException e) {
 						e.printStackTrace();
 					}
 				}
@@ -129,9 +147,15 @@ public class BookingController extends HttpServlet {
 				try {
 					HttpSession houseFullsession = req.getSession();
 					houseFullsession.setAttribute("houseFull", hf.getMessage());
-					res.sendRedirect("allMatchDetalis.jsp");
-				} catch (IOException e) {
+					List<Match> matchDetails = matchDao.getAllMatchDetalis();
+					req.setAttribute("MatchDetails", matchDetails);
+					 RequestDispatcher rd = req.getRequestDispatcher("allMatchDetalis.jsp");
+						rd.forward(req, res);
+				} catch (IOException | SQLException e) {
 					e.printStackTrace();
+				} catch (ServletException e1) {
+					
+					e1.printStackTrace();
 				}
 			}
 		}

@@ -18,8 +18,9 @@ import com.stadiumbooking.model.Match;
 @WebServlet("/bookSeats")
 public class SelectMatchController extends HttpServlet {
 
-	MatchDaoImpl matchDao=new MatchDaoImpl();
+	static final MatchDaoImpl matchDao=new MatchDaoImpl();
 	
+	@Override
 	public void service(HttpServletRequest req,HttpServletResponse res) {
 	
 		
@@ -29,10 +30,10 @@ public class SelectMatchController extends HttpServlet {
 			
 			List<Match> match = matchDao.getMatchByMatchId(matchId);
 			req.setAttribute("singleMatch", match);
-						RequestDispatcher rd = req.getRequestDispatcher("seats.jsp");			
+			RequestDispatcher rd = req.getRequestDispatcher("seats.jsp");			
 			rd.forward(req, res);
 		
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			
 			e.printStackTrace();
 		} catch (IOException e1) {

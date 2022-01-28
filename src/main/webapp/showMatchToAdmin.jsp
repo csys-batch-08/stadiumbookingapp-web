@@ -9,7 +9,7 @@
 <head>
 <meta charset="ISO-8859-1">
 
-<link    rel="stylesheet"    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <link rel = "icon" type = "" href = "image/Studium.png">
 <title>Matchbooking.com</title>
 
@@ -144,6 +144,10 @@ transform-origin:top;
 #matchInfo hr{
 width:400px;
 }
+.matchCard{
+position: relative;
+left:75px;
+}
 img{
 position:relative;
 top:-10px;
@@ -270,14 +274,17 @@ transform:scale(1.05);
     <div id="mathcInfo">
 <div id="Allmatch">
    <c:forEach items="${MatchDetails}" var="match">
-  
+   <div class="matchCard" data-aos="fade-left">
 	 <div class="allMatch animate__animated animate__flipInX animate__slow" id="${match.teamA}${match.teamB}">
+    
      <br>
         <img src="image/${match.teamAlogo}" alt="can't find" loading="lazy">  &nbsp;  &nbsp; <label ><strong id="teamA">${match.teamA}</strong> <strong id="Vs">Vs</strong> <strong id="teamB"> ${match.teamB} </strong></label>
     <img src="image/${match.teamBlogo}" alt="can't find" id="teamBlogo"  loading="lazy"> <br> <br>
     <label class="matchDetalis" id="stadiumName" >${match.stadiumName}</label><br>
        <label class="matchDetalis" >${match.location}</label><br>
+       
       <fmt:parseDate value="${match.matchDate}" pattern="yyyy-MM-dd" var="macthDate" type="date"/>   
+      
       <label class="matchDetalis" > <fmt:formatDate pattern="dd/MM/yyyy" value="${macthDate}"/>  </label><br>
        <label class="matchDetalis" >${match.matchTime}</label><br>
         
@@ -306,13 +313,16 @@ transform:scale(1.05);
 </c:choose>     
      </div>
         
-
+</div>
         </div> 
         <br>
 <br>
 </c:forEach>
 </div>
     </div>
-
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
 </body>
 </html>

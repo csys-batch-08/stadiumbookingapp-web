@@ -19,6 +19,7 @@
 <div class="box">
 <div class="error-template">
 <h1>500</h1>
+
 <h3>INTERNAL ERROR</h3>
 <div class="error-details">
 <h4>Sorry, it's me, not you.</h4>

@@ -36,34 +36,7 @@ public class User {
 	
 	}
 
-	public User(int userid) {
-		super();
-		this.userid = userid;
-	}
 
-	public User( String name, String username,  String password, String email,
-			long phoneNumber) {
-		super();
-		this.name = name;
-		this.username = username;
-		this.role = role;
-		this.password = password;
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-	}
-
-
-
-	public User(int userId2, String name2, String username2, String password2, String email2, Long phoneNumber2) {
-		this.userid=userId2;
-		this.name=name2;
-		this.username=username2;
-		this.password=password2;
-		this.email=email2;
-		this.phoneNumber=phoneNumber2;
-	}
-
-	
 	public User(int userid, String name, String username, String role, String password, String email, long phoneNumber,
 			Double wallet, String profilePic) {
 		super();

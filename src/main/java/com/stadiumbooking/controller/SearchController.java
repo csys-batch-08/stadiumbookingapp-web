@@ -30,7 +30,7 @@ public class SearchController  extends HttpServlet{
 				rd.forward(req, res);
 			
 
-		} catch (ClassNotFoundException | SQLException | IOException | ServletException e) {
+		} catch (SQLException | IOException | ServletException e) {
 						e.printStackTrace();
 		}
 		

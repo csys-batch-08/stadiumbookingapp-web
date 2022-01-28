@@ -15,20 +15,20 @@ import com.stadiumbooking.daoimpl.MatchDaoImpl;
 import com.stadiumbooking.model.Match;
 @WebServlet("/allMatchDetalis")
 public class AllMatchDetalisController extends HttpServlet {
-	final MatchDaoImpl matchDao=new MatchDaoImpl();
+	static final MatchDaoImpl matchDao=new MatchDaoImpl();
 	
 	@Override
 	public void service(HttpServletRequest req, HttpServletResponse res)  {
 		
-		List<Match> matchDetails;
+		
 		try {
-			matchDetails = matchDao.getAllMatchDetalis();
+			List<Match> matchDetails = matchDao.getAllMatchDetalis();
 			req.setAttribute("MatchDetails", matchDetails);
 			
 		
 			 RequestDispatcher rd = req.getRequestDispatcher("allMatchDetalis.jsp");
 				rd.forward(req, res);
-		} catch (ClassNotFoundException | SQLException | ServletException | IOException e) {
+		} catch (SQLException | ServletException | IOException e) {
 	
 			e.printStackTrace();
 		}

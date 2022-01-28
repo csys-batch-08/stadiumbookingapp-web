@@ -197,7 +197,7 @@ desc wallet_details;
 
 drop table wallet_details;
 select to_char(Transaction_Date,'dd-mm-yyyy HH:MI:SS') from wallet_details;
-
+select * from wallet_details;
 
 ALTER TABLE wallet_details
 add  Transaction_Date timestamp default systimestamp;

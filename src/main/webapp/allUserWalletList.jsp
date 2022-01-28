@@ -65,10 +65,22 @@
          tr:nth-of-type(odd) { 
 	background: #eee; 
 	}
+	 caption{             
+        background-color: #eee;
+             color: blue;
+             font-size:25px;
+             text-align:center;
+              height: 60px;
+            border: 1px solid black;
+        
+        }
+        
         td:hover{
         color:blue;
         
         }
+        
+        
         
 </style>
 </head>
@@ -90,7 +102,7 @@
     
     <div>
     <table>
-     <caption>User Transaction history</caption>
+     <caption> <strong>User Transaction History</strong> </caption>
     <tr>
  
     <th id="name">Name</th>
@@ -111,7 +123,7 @@
 <fmt:parseDate value="${ walletlist.transactionDate }" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
 
    
-    <td><fmt:formatDate pattern="dd.MM.yyyy HH:mm" value="${ parsedDateTime }" /></td>
+    <td><fmt:formatDate pattern="dd-MM-yyyy HH:mm" value="${ parsedDateTime }" /></td>
    
     </tr>
    </c:forEach>

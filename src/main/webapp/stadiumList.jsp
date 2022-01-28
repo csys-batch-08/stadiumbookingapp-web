@@ -52,7 +52,8 @@ text-decoration: none;
 
 	<div id="stadiumLists">
 
-		<table>
+		<table id="Staidum">
+		
 			<tbody>
 				<tr>
 					<c:set var="count" value="0" />

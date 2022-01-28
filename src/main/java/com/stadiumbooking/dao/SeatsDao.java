@@ -7,9 +7,9 @@ import java.util.List;
 import com.stadiumbooking.model.Seats;
 
 public interface SeatsDao {
-	public void bookingSeats(Seats seats) throws ClassNotFoundException, SQLException;
-	public List<Seats> getSeatById(int userId) throws ClassNotFoundException, SQLException;
-	public List<Seats> getSeatsDetalis() throws ClassNotFoundException, SQLException;
-	public void cancelledSeats(int ticketId) throws ClassNotFoundException, SQLException; 
+	public void bookingSeats(Seats seats) throws  SQLException;
+	public List<Seats> getSeatById(int userId) throws  SQLException;
+	public List<Seats> getSeatsDetalis() throws  SQLException;
+	public void cancelledSeats(int ticketId) throws  SQLException; 
 
 }

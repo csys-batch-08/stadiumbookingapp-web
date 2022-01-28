@@ -32,7 +32,7 @@ public class UserController extends HttpServlet {
 		String mail = req.getParameter("mail").trim();
 		Long phone = Long.parseLong(req.getParameter("phone"));
 	
-		User user = new User(name, uname, pass, mail, phone);
+		User user = new User(0,name, uname,null, pass, mail, phone,0.0,null);
 		try {
 
 			boolean flag=userDao.checkUser(uname, mail, phone);

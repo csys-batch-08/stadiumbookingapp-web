@@ -351,7 +351,7 @@ input:-webkit-autofill:active  {
  
 <form action="bookSeats">
 
-<button type="submit">Book</button>
+<button type="submit">Book Tickets</button>
 <input type="text" style="visibility: hidden" name="matchId" value="${match.matchId}">
 
 </form>

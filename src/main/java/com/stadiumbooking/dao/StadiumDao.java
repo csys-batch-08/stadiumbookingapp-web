@@ -8,6 +8,6 @@ import com.stadiumbooking.model.StadiumDetalis;
 
 public interface StadiumDao {
 
-	public void insertStadium(StadiumDetalis stadium);
-	public List<StadiumDetalis> getAllStadiumList() throws ClassNotFoundException, SQLException;
+	public void insertStadium(StadiumDetalis stadium) throws SQLException;
+	public List<StadiumDetalis> getAllStadiumList() throws  SQLException;
 }

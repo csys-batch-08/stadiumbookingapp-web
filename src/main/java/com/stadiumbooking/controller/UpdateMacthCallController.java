@@ -34,7 +34,7 @@ public class UpdateMacthCallController extends HttpServlet {
 			
 		      RequestDispatcher rd = req.getRequestDispatcher("updateMatch.jsp");			
 					rd.forward(req, res);
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			
 			e.printStackTrace();
 		} catch (IOException e2) {

@@ -19,7 +19,7 @@ import com.stadiumbooking.model.User;
 @WebServlet("/allBookingDetails")
 public class AllBookingDetailsController extends HttpServlet {
 	
-	final SeatsDaoImpl seatsDao=new SeatsDaoImpl();
+	static final SeatsDaoImpl seatsDao=new SeatsDaoImpl();
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) {
 
@@ -30,7 +30,7 @@ public class AllBookingDetailsController extends HttpServlet {
 		
 		      RequestDispatcher rd = req.getRequestDispatcher("allBookingDetails.jsp");			
 					rd.forward(req, res);
-		} catch (ClassNotFoundException | SQLException | ServletException | IOException e) {
+		} catch (SQLException | ServletException | IOException e) {
 			
 			e.printStackTrace();
 		}

@@ -15,10 +15,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-      <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
+      <link    rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   
     <style>
     html {
@@ -315,12 +313,14 @@ margin-left: 120px;
         </div>
     </section>
 
- <section id="ins" class="p-5 bg-dark">
+ <section id="ins" data-aos="fade-right" class="p-5 bg-dark">
         <div class="container">
             <h2 class="text-center text-white">Official Partners</h2>
             <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
-                    <div class="card bg-dark">
+                <div data-aos="zoom-in"
+data-aos-easing="linear"
+     data-aos-duration="1500" class="col-md-6 col-lg-4">
+                    <div  class="card bg-dark">
 
                         <div class="card-body text-center">
                             <img class="mb-3 w-100"
@@ -332,7 +332,9 @@ margin-left: 120px;
                 
                 </div>    
 
-                <div class="col-md-6 col-lg-4">
+                <div data-aos="zoom-in"
+data-aos-easing="linear"
+     data-aos-duration="1500" class="col-md-6 col-lg-4">
                     <div class="card bg-dark">
 
                         <div class="card-body text-center">
@@ -346,7 +348,9 @@ margin-left: 120px;
                 </div>    
 
                 
-                <div class="col-md-6 col-lg-4">
+                <div data-aos="zoom-in"
+data-aos-easing="linear"
+     data-aos-duration="1500" class="col-md-6 col-lg-4">
                     <div class="card bg-dark">
 
                         <div class="card-body text-center">
@@ -381,7 +385,7 @@ margin-left: 120px;
 
 
 
-    <section id="stadium" class="p-5">
+    <section id="stadium" data-aos="fade-up-right" class="p-5">
 
         <div class="container">
             <div class="row align-items-center justify-content-between">
@@ -414,7 +418,7 @@ margin-left: 120px;
 
 
 
-    <section id="stadium" class="p-5 bg-dark text-light">
+    <section id="stadium" data-aos="zoom-in" class="p-5 bg-dark text-light">
 
         <div class="container">
             <div class="row align-items-center justify-content-between">
@@ -446,17 +450,17 @@ margin-left: 120px;
         </div>
     </section>
 
-    <section id="ins" class="p-5 bg-primary">
-        <div class="container">
+    <section data-aos="zoom-out" id="ins"  class="p-5 bg-primary">
+        <div  class="container">
             <h2 class="text-center text-white">Our Instructors</h2>
             <p class="lead text-center text-white mb-5">
                 Our Instructors All Have 10+ years working as a web devloper in the Industry
             </p>
             <div class="row g-4">
                 <div class="col-md-6 col-lg-3">
-                    <div class="card bg-light">
+                    <div data-aos="flip-right" data-aos-easing="linear" data-aos-duration="2000" class="card bg-light">
 
-                        <div class="card-body text-center">
+                        <div  class="card-body text-center">
                             <img class="mb-3 w-100"
                                 src="image/stevOliver.jpg"
                                 alt="">
@@ -477,9 +481,9 @@ margin-left: 120px;
 
 
                 <div class="col-md-6 col-lg-3">
-                    <div class="card bg-light">
+                    <div data-aos="flip-right" data-aos-easing="linear" data-aos-duration="2000" class="card bg-light">
 
-                        <div class="card-body text-center">
+                        <div  class="card-body text-center">
                             <img class="mb-3 w-100"
                                 src="image/grantFlash.png"
                                 alt="">
@@ -499,9 +503,9 @@ margin-left: 120px;
 
 
                 <div class="col-md-6 col-lg-3">
-                    <div class="card bg-light">
+                    <div data-aos="flip-right" data-aos-easing="linear"   data-aos-duration="2000" class="card bg-light">
 
-                        <div class="card-body text-center">
+                        <div  class="card-body text-center">
                             <img class="mb-3 w-100"
                                 src="image/tomPeter.jpg"
                                 alt="">
@@ -522,9 +526,9 @@ margin-left: 120px;
 
 
                 <div class="col-md-6 col-lg-3">
-                    <div class="card bg-light">
+                    <div data-aos="flip-right" data-aos-easing="linear"  data-aos-duration="2000" class="card bg-light">
 
-                        <div class="card-body text-center">
+                        <div  class="card-body text-center">
                             <img class="mb-3 w-100"
                                 src="image/steave.jpg"
                                 alt="">
@@ -547,7 +551,7 @@ margin-left: 120px;
 
 
 
-    <section class="p-5">
+    <section data-aos="zoom-out-down" class="p-5">
         <div class="container">
             <div class="row g-4">
                 <div class="col-md">
@@ -568,7 +572,7 @@ margin-left: 120px;
         </div>
     </section>
 
-    <footer class="p-5 bg-dark text-white text-center position-relative">
+    <footer data-aos="flip-up" class="p-5 bg-dark text-white text-center position-relative">
         <div class="container">
             <p class="lead">Copyright &copy; 2022 MatchBooking.com</p>
             <a href="#" class="position-absolute bottom-0 end-0 p-5">
@@ -663,11 +667,14 @@ margin-left: 120px;
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
         crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </body>
 
 </html>
 
-
+<script>
+  AOS.init();
+</script>
 <script>
     function logV() {
 

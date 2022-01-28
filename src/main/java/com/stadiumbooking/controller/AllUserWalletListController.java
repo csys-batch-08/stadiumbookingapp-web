@@ -18,7 +18,7 @@ import com.stadiumbooking.model.WalletDetails;
 @WebServlet("/allUserWalletList")
 public class AllUserWalletListController extends HttpServlet {
 	
-	final WalletDaoImpl walletDao=new WalletDaoImpl();
+	static final WalletDaoImpl walletDao=new WalletDaoImpl();
 	
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) {
@@ -31,7 +31,7 @@ public class AllUserWalletListController extends HttpServlet {
 		
 		      RequestDispatcher rd = req.getRequestDispatcher("allUserWalletList.jsp");			
 					rd.forward(req, res);
-		} catch (ClassNotFoundException | SQLException | ServletException | IOException e) {
+		} catch (SQLException | ServletException | IOException e) {
 			
 			e.printStackTrace();
 		}

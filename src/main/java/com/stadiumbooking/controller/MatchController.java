@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.RequestDispatcher;
@@ -47,9 +48,6 @@ public class MatchController  extends HttpServlet{
 		int spid = 0;
 		try {
 			spid = sportsDao.getSportsId(sportsName, eventName);
-		} catch (ClassNotFoundException e1) {
-			
-			e1.printStackTrace();
 		} catch (SQLException e2) {
 			
 			e2.printStackTrace();
@@ -74,20 +72,16 @@ public class MatchController  extends HttpServlet{
 		int sClass=Integer.parseInt(req.getParameter("secondClass" ));
 	      String dateInString = req.getParameter("matchDate");
 		
-		
 		try {
 				LocalDate date = LocalDate.parse(dateInString);
 					String timeInString=req.getParameter("time");
 			LocalTime time=LocalTime.parse(timeInString);
 			Match match=new Match(0,spid,stdName,location,date,time,teamA,teamB,teamAlogo,teamBlogo,totalseats,availSeats,fClass,sClass);
 			matchDao.insertMatchDetalis(match);
-			
-			RequestDispatcher rd = req.getRequestDispatcher("showMatchToAdmin.jsp");
-
-			rd.forward(req, res);
-		} catch (ClassNotFoundException e3) {
-
-			e3.printStackTrace();
+			List<Match> matchDetails = matchDao.getAllMatchDetalis();
+			req.setAttribute("MatchDetails", matchDetails);
+			 RequestDispatcher rd = req.getRequestDispatcher("showMatchToAdmin.jsp");
+				rd.forward(req, res);
 		} catch (SQLException e) {
 			
 			e.printStackTrace();

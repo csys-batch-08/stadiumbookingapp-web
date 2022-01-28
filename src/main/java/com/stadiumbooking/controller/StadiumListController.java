@@ -30,7 +30,7 @@ public class StadiumListController extends HttpServlet {
 		
 		      RequestDispatcher rd = req.getRequestDispatcher("stadiumList.jsp");			
 					rd.forward(req, res);
-		} catch (ClassNotFoundException | SQLException | ServletException | IOException e) {
+		} catch (SQLException | ServletException | IOException e) {
 			
 			e.printStackTrace();
 		}

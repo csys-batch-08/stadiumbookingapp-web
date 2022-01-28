@@ -18,7 +18,7 @@ import com.stadiumbooking.model.User;
 @WebServlet("/adminProfile")
 public class AdminProfileController extends HttpServlet {
 	
-	final UserDaoImpl userDao=new UserDaoImpl();
+	 final UserDaoImpl userDao=new UserDaoImpl();
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) {
 	
@@ -33,7 +33,7 @@ public class AdminProfileController extends HttpServlet {
 		      RequestDispatcher rd = req.getRequestDispatcher("adminProfile.jsp");
 			
 					rd.forward(req, res);
-		} catch (ClassNotFoundException | SQLException | ServletException | IOException e) {
+		} catch (SQLException | ServletException | IOException e) {
 			
 			e.printStackTrace();
 		}

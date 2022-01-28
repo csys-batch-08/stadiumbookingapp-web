@@ -10,7 +10,7 @@ public class Sports {
 	private String eventName;
 	public Sports() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 	
 	

@@ -39,7 +39,7 @@ public class ProfilePicController extends HttpServlet {
 				RequestDispatcher rd = req.getRequestDispatcher("/adminProfile.jsp");
 
 				rd.forward(req, res);
-			} catch (ClassNotFoundException | SQLException | IOException e) {
+			} catch (SQLException | IOException e) {
 				
 				e.printStackTrace();
 			} catch (ServletException e1) {
@@ -56,7 +56,7 @@ public class ProfilePicController extends HttpServlet {
 			
 				  RequestDispatcher rd = req.getRequestDispatcher("usersprofile.jsp");			
 					rd.forward(req, res);
-			} catch (ClassNotFoundException | SQLException | IOException e) {
+			} catch (SQLException | IOException e) {
 				
 				e.printStackTrace();
 			} catch (ServletException e1) {

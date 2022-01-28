@@ -36,7 +36,7 @@ public class WalletController extends HttpServlet {
 			
 			session.setAttribute("wallet", userWallet);
 			res.sendRedirect("wallet.jsp");
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 						e.printStackTrace();
 		} catch (IOException e1) {
 

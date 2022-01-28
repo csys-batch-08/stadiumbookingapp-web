@@ -29,7 +29,7 @@ public class SportsController extends HttpServlet {
 		try {
 			sportsDao.insertSports(sports);
 			res.sendRedirect("sportsDetalis.jsp");
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			
 			e.printStackTrace();
 		} catch (IOException e1) {

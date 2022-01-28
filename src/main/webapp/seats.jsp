@@ -178,7 +178,7 @@ rotateX(var(--x-angle));
 <body>
 <div id="pickSeats">
   
-    <c:forEach items="${sessionScope.singleMatch}" var="match">
+    <c:forEach items="${singleMatch}" var="match">
 
     
     <div class="mathcInfo">

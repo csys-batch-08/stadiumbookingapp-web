@@ -8,12 +8,12 @@
 
   <error-page>
   <error-code>404</error-code>
-  <location>/404.jsp</location>
+  <location>/pageNotFound.jsp</location>
   </error-page>
   
     <error-page>
   <error-code>500</error-code>
-  <location>/code500.jsp</location>
+  <location>/internalError.jsp</location>
   </error-page>
   
 </web-app>

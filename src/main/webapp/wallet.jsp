@@ -114,12 +114,10 @@ input[type=number] {
   
   
     </div>
-    <%String lowBlance=(String) session.getAttribute("LowBalanceError"); 
-    if(lowBlance!=null){
-    %>
-   <h2 class="animate__animated animate__flash" id="Emesg" onclick="Error()" style="position:absolute; left:500px; top:150px;color:red;visibility:visible"> <%=session.getAttribute("LowBalanceError") %></h2>
-
-    <%} %>
+     <c:if test="${not empty sessionScope.LowBalanceError}">
+      <h2 class="animate__animated animate__flash" id="Emesg" onclick="Error()" style="position:absolute; left:500px; top:150px;color:red;visibility:visible"> ${sessionScope.LowBalanceError}</h2>
+</c:if>
+    
       <div id="wallet">
     <form action="wallets" onsubmit="return insertwallet()">
 

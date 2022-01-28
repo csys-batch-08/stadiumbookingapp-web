@@ -42,7 +42,7 @@ public class UserUpdateController extends HttpServlet {
 			
 			if(role.equals("Admin")) 
 			{
-				User user=new User(userId, name, username, password, email, phoneNumber);
+				User user=new User(userId, name, username,null, password, email, phoneNumber,0.0,null);
 				userDao.updateUser(user);
 				int userID=(int) session1.getAttribute("id");
 				List<User> userDetails=userDao.getUserById(userID);
@@ -52,7 +52,7 @@ public class UserUpdateController extends HttpServlet {
 					rd.forward(req, res);
 	}
 	else if(role.equals("User")) {
-		User user=new User(userId, name, username, password, email, phoneNumber);
+		User user=new User(userId, name, username,null, password, email, phoneNumber,0.0,null);
 		userDao.updateUser(user);
 		int userID=(int) session1.getAttribute("id");
 		List<User> userDetails=userDao.getUserById(userID);
@@ -62,7 +62,7 @@ public class UserUpdateController extends HttpServlet {
 			rd.forward(req, res);
 	}
 		
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 	
 			e.printStackTrace();
 		} catch (IOException e1) {

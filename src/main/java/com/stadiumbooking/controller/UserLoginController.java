@@ -44,7 +44,7 @@ public class UserLoginController extends HttpServlet {
 		String userName = req.getParameter("username").trim();
 		String passWord = req.getParameter("password").trim();
 
-		int id = 0;
+
 		try {
 			boolean flag;
 
@@ -74,7 +74,7 @@ public class UserLoginController extends HttpServlet {
 			} else {
 				throw new NotFound();
 			}
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 
 			e.printStackTrace();
 		} catch (NotFound e) {
