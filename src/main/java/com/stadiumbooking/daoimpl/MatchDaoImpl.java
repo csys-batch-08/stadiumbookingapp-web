@@ -107,9 +107,7 @@ public class MatchDaoImpl implements MatchDao {
 			e.printStackTrace();
 		}
 		finally {
-			if(rs!=null) {
-				rs.close();
-			}
+		
 			if(stmt!=null) {
 				stmt.close();
 		     	
@@ -144,9 +142,7 @@ public class MatchDaoImpl implements MatchDao {
 			e.printStackTrace();
 		}
 		finally {
-			if(rs!=null) {
-				rs.close();
-			}
+			
 			if(stmt!=null) {
 				stmt.close();
 		     	
@@ -198,9 +194,7 @@ public class MatchDaoImpl implements MatchDao {
 		
 			e.printStackTrace();
 		}finally {
-			if(rs!=null) {
-				rs.close();
-			}
+			
 			if(pst!=null) {
 				pst.close();
 		     	
@@ -321,9 +315,7 @@ public class MatchDaoImpl implements MatchDao {
 			
 			e.printStackTrace();
 		}	finally {
-			if(rs!=null) {
-				rs.close();
-			}
+			
 			if(pst!=null) {
 				pst.close();
 		     	
@@ -394,9 +386,7 @@ public class MatchDaoImpl implements MatchDao {
 		
 			e.printStackTrace();
 		}finally {
-			if(rs!=null) {
-				rs.close();
-			}
+			
 			if(	pstmt!=null) {
 				pstmt.close();
 		     	
