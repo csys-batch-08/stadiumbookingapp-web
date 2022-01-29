@@ -23,14 +23,15 @@ public class WalletController extends HttpServlet {
 	public void doGet(HttpServletRequest req,HttpServletResponse res) {
 		
 		/* Getting User Wallet Details */
-		HttpSession session=req.getSession();
-		int userId=Integer.parseInt(req.getParameter("userID"));
-		Long amount=Long.parseLong(req.getParameter("amount"));
 		
-		session.setAttribute("LowBalanceError", null);
-		
-		WalletDetails wallet=new WalletDetails(0,userId,amount,null);
 		try {
+			HttpSession session=req.getSession();
+			int userId=Integer.parseInt(req.getParameter("userID"));
+			Long amount=Long.parseLong(req.getParameter("amount"));
+			
+			session.setAttribute("LowBalanceError", null);
+			
+			WalletDetails wallet=new WalletDetails(0,userId,amount,null);
 			walletDao.insertAmount(wallet);
 			Double userWallet=userDao.userWalletDetails(userId);
 			

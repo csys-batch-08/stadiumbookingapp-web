@@ -22,21 +22,19 @@ public class DeleteUserController extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) {
 
-		int userId=Integer.parseInt(req.getParameter("userId"));
+	
 		try {
+			int userId=Integer.parseInt(req.getParameter("userId"));
 			      userDao.deleteUser(userId);
 			  List<User> userLists= userDao.getAllUser();
 			 req.setAttribute("UserLists", userLists);
 		
 		      RequestDispatcher rd = req.getRequestDispatcher("getallusers.jsp");			
 					rd.forward(req, res);
-		} catch (SQLException | ServletException | IOException e) {
+		} catch (SQLException | ServletException | IOException |NumberFormatException e  ) {
 			
-			e.printStackTrace();
-		}catch(NumberFormatException  e1) {
-			e1.getMessage();
+			  req.getRequestDispatcher("index.jsp");
 		}
-		
 		
 	
 	}

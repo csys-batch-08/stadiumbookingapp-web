@@ -28,11 +28,9 @@ public class RatingStadiumController extends HttpServlet {
 			req.setAttribute("stadiumID", stadiumId);
 		      RequestDispatcher rd = req.getRequestDispatcher("rating.jsp");			
 					rd.forward(req, res);
-		} catch (ServletException | IOException e) {
+		} catch (ServletException | IOException |NumberFormatException  e1) {
 			
-			e.printStackTrace();
-		}catch(NumberFormatException  e1) {
-			e1.getMessage();
+			  req.getRequestDispatcher("index.jsp");
 		}
 		
 	
