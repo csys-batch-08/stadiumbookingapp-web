@@ -44,10 +44,6 @@ public class UserController extends HttpServlet {
 			} else {
 				throw new SomthingWentWrong();
 			}
-		} catch (ClassNotFoundException e) {
-		
-			e.printStackTrace();
-
 		} catch (SQLException e1) {
 			
 			e1.printStackTrace();

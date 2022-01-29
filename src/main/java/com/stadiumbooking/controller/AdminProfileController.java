@@ -20,7 +20,7 @@ public class AdminProfileController extends HttpServlet {
 	
 	 final UserDaoImpl userDao=new UserDaoImpl();
 	@Override
-	public void doGet(HttpServletRequest req, HttpServletResponse res) {
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
 	
 		HttpSession session = req.getSession();
 		
@@ -35,7 +35,7 @@ public class AdminProfileController extends HttpServlet {
 					rd.forward(req, res);
 		} catch (SQLException | ServletException | IOException e) {
 			
-			e.printStackTrace();
+			res.sendRedirect("index.jsp");
 		}
 		
 	

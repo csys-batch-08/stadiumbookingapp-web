@@ -80,9 +80,7 @@ public class SeatsDaoImpl implements SeatsDao {
 			e.printStackTrace();
 		}
 		finally {	
-			if(rs!=null) {
-				rs.close();
-			}
+		
 			if(pst!=null) {
 			pst.close();     	
 			}
@@ -122,9 +120,7 @@ public class SeatsDaoImpl implements SeatsDao {
 			e.printStackTrace();
 		}
 		finally {	
-			if(rs!=null) {
-				rs.close();
-			}
+			
 			if(stmt!=null) {
 			stmt.close();     	
 			}

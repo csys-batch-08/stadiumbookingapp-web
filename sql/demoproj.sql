@@ -61,7 +61,7 @@ update match_info set availableSeats=availableSeats-4 where match_id=2;
  --availableSeats=100
  update match_info set availableSeats=100 where match_id=81;
  
-delete match_info where match_id=103;
+delete match_info where match_id=161;
 update match_info set match_date=match_date+1;
 select  round(to_date(to_char(match_date,'yyyy-mm-dd'), 'yyyy-mm-dd')- sysdate) as matchDate  from match_info;
 
@@ -81,6 +81,8 @@ update match_info set match_date=match_date+1;
 delete from match_info where match_id=141;
 select to_char(match_time,'HH:MI') from match_info;
 select match_id,sportsid, stadium_name,location,to_char(match_date,'dd-mm-yyyy') as match_date, to_char(match_time,'HH:MI') as match_time,teamA,teamB,teamAlogo,teamBlogo,firstclass_seats_price,secondclass_seats_price,totalseats,availableseats from match_info;
+
+select MATCH_ID,SPORTSID,STADIUM_NAME,LOCATION,to_char(MATCH_DATE,'yyyy-mm-dd'),to_char(MATCH_TIME,'HH:MI'),TEAMA,TEAMB,TEAMALOGO,TEAMBLOGO,TOTALSEATS,AVAILABLESEATS,FIRSTCLASS_SEATS_PRICE,SECONDCLASS_SEATS_PRICE from match_info where teama like 'C%' or teamb like 'C%'; 
 create table sports_info(
 
 
@@ -106,7 +108,7 @@ select * from sports_info;
 drop table sports_info;
 
 update sports_info set sportsid=103 where sportsid=121;
-delete sports_info  where sportsid=120;
+delete sports_info  where sportsid=140;
 select FindSportsId(Sportsname,eventname) as SporstId from sports_info;
 
 select sportsid from sports_info where sportsname='Cricket' and eventname='IPL';
@@ -224,6 +226,7 @@ insert into stadium_detalis (stadium_name,stadium_img) values('Indira Gandhi Ath
 
 update stadium_detalis set stadium_img='Chepauk.jpg' where stadium_name='Chepauk';
 
+delete from stadium_detalis where stadium_id=41; 
 select * from stadium_detalis;
 
 drop table Ratings;

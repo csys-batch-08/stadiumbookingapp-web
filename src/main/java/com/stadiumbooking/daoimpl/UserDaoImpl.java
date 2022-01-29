@@ -85,9 +85,7 @@ public class UserDaoImpl implements UserDao {
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		} finally {
-			if (rs != null) {
-				rs.close();
-			}
+
 			if (stmt != null) {
 				stmt.close();
 			}
@@ -232,9 +230,7 @@ public class UserDaoImpl implements UserDao {
 
 			e.printStackTrace();
 		} finally {
-			if (rs != null) {
-				rs.close();
-			}
+
 			if (stmt1 != null) {
 				stmt1.close();
 			}
@@ -442,7 +438,7 @@ public class UserDaoImpl implements UserDao {
 		ConnectionUtill conUtil = new ConnectionUtill();
 		String name = null;
 		Connection con = null;
-		PreparedStatement stmt1=null;
+		PreparedStatement stmt1 = null;
 		try {
 			con = conUtil.getDBConnect();
 			String query = "Select name from users where userid=?";
@@ -473,25 +469,41 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public boolean checkUser(String userName, String email, Long phone) throws ClassNotFoundException, SQLException {
+	public boolean checkUser(String userName, String email, Long phone) throws SQLException {
 
 		/* Checking Weather the user alredy registered or Not */
 		ConnectionUtill conUtil = new ConnectionUtill();
-		Connection con = conUtil.getDBConnect();
+		Connection con = null;
+		PreparedStatement stmt1=null;
+		try {
+			con = conUtil.getDBConnect();
+			String query = "Select USERID,NAME,USERNAME,ROLE,PASSWORD,EMAIL,PHONENUMBER,WALLET,PROFILEPIC from users where username=? or email=? or phoneNumber=?";
 
-		String query = "Select USERID,NAME,USERNAME,ROLE,PASSWORD,EMAIL,PHONENUMBER,WALLET,PROFILEPIC from users where username=? or email=? or phoneNumber=?";
+			stmt1 = con.prepareStatement(query);
+			stmt1.setString(1, userName);
+			stmt1.setString(2, email);
+			stmt1.setLong(3, phone);
+			ResultSet rs2 = stmt1.executeQuery();
 
-		PreparedStatement stmt1 = con.prepareStatement(query);
-		stmt1.setString(1, userName);
-		stmt1.setString(2, email);
-		stmt1.setLong(3, phone);
-		ResultSet rs2 = stmt1.executeQuery();
+			if (rs2.next()) {
+				return false;
+			} else {
+				return true;
+			}
+		} catch (ClassNotFoundException | SQLException e) {
 
-		if (rs2.next()) {
-			return false;
-		} else {
-			return true;
+			e.printStackTrace();
+		} finally {
+
+			if (stmt1!= null) {
+				stmt1.close();
+			}
+			if (con != null) {
+				con.close();
+			}
 		}
+		return false;
+
 	}
 
 }

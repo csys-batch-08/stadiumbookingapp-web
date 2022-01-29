@@ -43,9 +43,7 @@ public class SportsDaoImpl implements SportsDao {
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		} finally {
-			if (rs != null) {
-				rs.close();
-			}
+		
 			if (stmt != null) {
 				stmt.close();
 			}
@@ -116,9 +114,7 @@ public class SportsDaoImpl implements SportsDao {
 
 			e.printStackTrace();
 		}finally {	
-			if(rs!=null) {
-				rs.close();
-			}
+			
 			if(stmt!=null) {
 			stmt.close();     	
 			}

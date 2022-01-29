@@ -7,6 +7,7 @@ public class StadiumDetalis {
 	private int stadiumId;
 	private String stadiumName;
 	private String stadiumImg;
+	
 	public int getStadiumId() {
 		return stadiumId;
 	}

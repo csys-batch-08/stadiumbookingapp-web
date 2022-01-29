@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <link    rel="stylesheet"    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel = "icon" type = "" href = "image/Studium.png">
     <title>Matchbooking.com</title>
     <style>
@@ -80,7 +81,13 @@
          transform:translate(0,-50%);
          }
          
-                
+                   input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+  transition: background-color 5000s;
+  -webkit-text-fill-color: black !important;
+}  
          
         input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 

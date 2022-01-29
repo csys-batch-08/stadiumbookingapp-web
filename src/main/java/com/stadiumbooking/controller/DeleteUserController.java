@@ -33,7 +33,10 @@ public class DeleteUserController extends HttpServlet {
 		} catch (SQLException | ServletException | IOException e) {
 			
 			e.printStackTrace();
+		}catch(NumberFormatException  e1) {
+			e1.getMessage();
 		}
+		
 		
 	
 	}

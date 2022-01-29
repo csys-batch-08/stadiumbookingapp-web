@@ -103,7 +103,7 @@ text-decoration: none;
 
 <div id="nav">
 
-        <ul type="none">
+        <ul>
          
             <strong id="logo"> MatchBooking</strong>
             

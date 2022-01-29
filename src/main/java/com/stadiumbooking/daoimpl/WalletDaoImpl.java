@@ -84,9 +84,7 @@ public class WalletDaoImpl implements WalletDao {
 					e.printStackTrace();
 		}
 		finally {	
-			if(rs!=null) {
-				rs.close();
-			}
+		
 			if(stmt!=null) {
 			stmt.close();     	
 			}

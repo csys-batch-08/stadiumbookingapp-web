@@ -77,9 +77,7 @@ public class RatingsDaoImpl implements RatingsDao {
 		}
 
 		finally {
-			if (rs != null) {
-				rs.close();
-			}
+		
 			if (stmt1 != null) {
 				stmt1.close();
 			}
@@ -117,9 +115,7 @@ public class RatingsDaoImpl implements RatingsDao {
 		} catch (ClassNotFoundException | SQLException e) {
 					e.printStackTrace();
 		}finally {
-			if (rs != null) {
-				rs.close();
-			}
+			
 			if (stmt != null) {
 				stmt.close();
 			}

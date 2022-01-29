@@ -148,8 +148,6 @@ margin-left: 120px;
 margin-left: 120px;
 }
 
-.rotate-center{animation:rotate-center 1s ease-in-out both}
-@keyframes rotate-center{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
 
 ::-webkit-scrollbar {
   width: 12px;
@@ -172,7 +170,35 @@ margin-left: 120px;
   background: #555; 
 }
 
+.shimmerBG {
+    animation-duration: 2.2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: shimmer;
+    animation-timing-function: linear;
+    background: #ddd;
+    background: linear-gradient(to right, #F6F6F6 8%, #F0F0F0 18%, #F6F6F6 33%);
+    background-size: 1200px 100%;
+}
 
+@-webkit-keyframes shimmer {
+    0% {
+        background-position: -100% 0;
+    }
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1200px 0;
+    }
+    100% {
+        background-position: 1200px 0;
+    }
+}
+  
 
     </style>
 </head>
@@ -219,7 +245,7 @@ margin-left: 120px;
 </c:if>
               
               <c:if test="${not empty sessionScope.RegisterSuccessful}">
-                   <h2  id="Emesg" onclick="Error()" style="position:absolute; left:700px; width:500px; top:-120px;color:white;visibility:visible"><em class="bi bi-emoji-frown"></em> ${sessionScope.RegisterSuccessful}</h2>
+                   <h2  id="Emesg" onclick="Error()" style="position:absolute; left:700px; width:500px; top:-120px;color:white;visibility:visible"><em class="bi bi-emoji-smile"></em> ${sessionScope.RegisterSuccessful}</h2>
 
                 </c:if>      
    
@@ -255,9 +281,9 @@ margin-left: 120px;
 
     <section class=" p-5">
         <div class="container">
-            <div class="row text-center g-4">
-                <div class="col-md">
-                    <div class="card bg-dark text-light rotate-center">
+            <div class="row text-center g-4 " >
+                <div class="col-md animate__animated animate__fadeInUp" >
+                    <div class="card bg-dark text-light" >
                         <div class="card-body text-center">
                             <div class="h2 mb-3">
                                 <em class="bi bi-binoculars"></em>
@@ -274,8 +300,8 @@ margin-left: 120px;
                         </div>
                     </div>
                 </div>
-                <div class="col-md">
-                    <div class="card bg-secondary text-light rotate-center">
+                <div class="col-md animate__animated animate__fadeInUp">
+                    <div class="card bg-secondary text-light">
                         <div class="card-body text-center">
                             <div class="h2 mb-3">
                                 <em class="bi bi-person-square"></em>
@@ -291,8 +317,8 @@ margin-left: 120px;
                         </div>
                     </div>
                 </div>
-                <div class="col-md">
-                    <div class="card bg-dark text-light rotate-center">
+                <div class="col-md animate__animated animate__fadeInUp">
+                    <div class="card bg-dark text-light">
                         <div class="card-body text-center">
                             <div class="h2 mb-3">
                                 <em class="bi bi-calendar3"></em>
@@ -350,7 +376,7 @@ data-aos-easing="linear"
                 
                 <div data-aos="zoom-in"
 data-aos-easing="linear"
-     data-aos-duration="1500" class="col-md-6 col-lg-4">
+     data-aos-duration="1500" class="col-md-6 col-lg-4 ">
                     <div class="card bg-dark">
 
                         <div class="card-body text-center">
@@ -385,7 +411,7 @@ data-aos-easing="linear"
 
 
 
-    <section id="stadium" data-aos="fade-up-right" class="p-5">
+    <section id="stadium" data-aos="fade-up-right" class="p-5 shimmerBG ">
 
         <div class="container">
             <div class="row align-items-center justify-content-between">
@@ -551,7 +577,7 @@ data-aos-easing="linear"
 
 
 
-    <section data-aos="zoom-out-down" class="p-5">
+    <section data-aos="zoom-out-down" class="p-5 ">
         <div class="container">
             <div class="row g-4">
                 <div class="col-md">

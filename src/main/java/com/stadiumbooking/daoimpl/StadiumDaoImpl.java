@@ -44,9 +44,7 @@ public class StadiumDaoImpl implements StadiumDao {
 			e.printStackTrace();
 		}
 		finally {	
-			if(rs!=null) {
-				rs.close();
-			}
+		
 			if(stmt!=null) {
 			stmt.close();     	
 			}

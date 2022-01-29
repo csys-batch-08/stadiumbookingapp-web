@@ -88,6 +88,13 @@ height:250px;
     #profile input{
      outline: none;
      }
+      input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+  transition: background-color 5000s;
+  -webkit-text-fill-color: black !important;
+}
 </style>
 </head>
 <body>

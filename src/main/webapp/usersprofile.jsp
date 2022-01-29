@@ -120,7 +120,7 @@ height:250px;
 		<label for=""><strong>Email:</strong> &nbsp; ${user.email}</label> <br>
 		
 		<button onclick="update()">Update</button>
-		<div >
+		<div>
 		<img src="image/${user.profilePic }" alt="can't find">
 		<button onclick="profile()" id="edit"> Edit </button>
 		</div>

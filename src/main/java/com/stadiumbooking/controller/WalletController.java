@@ -41,7 +41,10 @@ public class WalletController extends HttpServlet {
 		} catch (IOException e1) {
 
 			e1.printStackTrace();
+		}catch(NumberFormatException  e2) {
+			e2.getMessage();
 		}
+		
 	}
 	
 
