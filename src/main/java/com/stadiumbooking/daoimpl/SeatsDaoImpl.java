@@ -140,6 +140,7 @@ public class SeatsDaoImpl implements SeatsDao {
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con = null;
 		PreparedStatement pstmt=null;
+		PreparedStatement pstmt1=null;
 
 		try {
 			con = conUtil.getDBConnect();
@@ -154,9 +155,9 @@ public class SeatsDaoImpl implements SeatsDao {
 			/* Update Available Seats and Amount Details If User Cancelled Tickets */
 			
 			String query="select match_id,seatcount,Totalpirce,userid from seat_details where ticketid=?";
-			pstmt=con.prepareStatement(query);
-			pstmt.setInt(1, ticketId);
-			ResultSet rs=pstmt.executeQuery();
+			pstmt1=con.prepareStatement(query);
+			pstmt1.setInt(1, ticketId);
+			ResultSet rs=pstmt1.executeQuery();
 			int matchId;
 			int seatcounts;
 			double price;
@@ -177,6 +178,9 @@ public class SeatsDaoImpl implements SeatsDao {
 		}finally {	
 			if(pstmt!=null) {
 			pstmt.close();     	
+			}
+			if(pstmt1!=null) {
+				pstmt1.close();
 			}
 			if(con !=null) {
 			con.close();
