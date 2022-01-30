@@ -40,13 +40,13 @@ public class StadiumController extends HttpServlet {
 					rd.forward(req, res);
 		} catch (IOException e) {
 		
-			e.printStackTrace();
+			e.getMessage();
 		} catch (SQLException e2) {
 
-			e2.printStackTrace();
+			e2.getMessage();
 		} catch (ServletException e3) {
 			
-			e3.printStackTrace();
+			e3.getMessage();
 		}
 	}
 }

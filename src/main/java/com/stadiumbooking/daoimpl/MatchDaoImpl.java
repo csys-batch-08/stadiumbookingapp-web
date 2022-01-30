@@ -52,7 +52,7 @@ public class MatchDaoImpl implements MatchDao {
 	     	
 		} catch (ClassNotFoundException | SQLException e) {
 		
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 			if(stmt!=null) {
 				stmt.close();

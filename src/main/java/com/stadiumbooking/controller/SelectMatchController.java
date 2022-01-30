@@ -35,12 +35,12 @@ public class SelectMatchController extends HttpServlet {
 		
 		} catch (SQLException e) {
 			
-			e.printStackTrace();
+			e.getMessage();
 		} catch (IOException e1) {
-			e1.printStackTrace();
+			e1.getMessage();
 		} catch (ServletException e2) {
 
-			e2.printStackTrace();
+			e2.getMessage();
 		}
 	}
 }

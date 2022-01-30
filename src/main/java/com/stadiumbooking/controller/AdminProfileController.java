@@ -35,7 +35,7 @@ public class AdminProfileController extends HttpServlet {
 					rd.forward(req, res);
 		} catch (SQLException | ServletException | IOException e) {
 			
-                req.getRequestDispatcher("index.jsp");
+			e.getMessage();
 		}
 		
 	

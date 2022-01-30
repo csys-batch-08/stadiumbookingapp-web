@@ -31,7 +31,7 @@ public class SearchController  extends HttpServlet{
 			
 
 		} catch (SQLException | IOException | ServletException e) {
-						e.printStackTrace();
+			e.getMessage();
 		}
 		
 	}

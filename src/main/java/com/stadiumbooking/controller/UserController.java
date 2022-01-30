@@ -46,7 +46,7 @@ public class UserController extends HttpServlet {
 			}
 		} catch (SQLException e1) {
 			
-			e1.printStackTrace();
+			e1.getMessage();
 		} catch (RegisterSuccessful e) {
 
 			try {
@@ -57,7 +57,7 @@ public class UserController extends HttpServlet {
 				res.sendRedirect("index.jsp");
 			} catch (IOException e1) {
 				
-				e1.printStackTrace();
+				e1.getMessage();
 			}
 		} catch (SomthingWentWrong e) {
 			try {
@@ -68,7 +68,7 @@ public class UserController extends HttpServlet {
 				res.sendRedirect("index.jsp");
 			} catch (IOException e2) {
 				
-				e2.printStackTrace();
+				e2.getMessage();
 			}
 		}
 

@@ -125,9 +125,7 @@ public class UserDaoImpl implements UserDao {
 
 			e.printStackTrace();
 		} finally {
-			if (rs != null) {
-				rs.close();
-			}
+			
 			if (stmt1 != null) {
 				stmt1.close();
 			}

@@ -22,15 +22,17 @@ public class RatingStadiumController extends HttpServlet {
 	@Override
 	public void service(HttpServletRequest req, HttpServletResponse res) {
 
-		int stadiumId=Integer.parseInt(req.getParameter("stadiumId"));
 		
-		try {
+		
+		try {int stadiumId=Integer.parseInt(req.getParameter("stadiumId"));
 			req.setAttribute("stadiumID", stadiumId);
 		      RequestDispatcher rd = req.getRequestDispatcher("rating.jsp");			
 					rd.forward(req, res);
-		} catch (ServletException | IOException |NumberFormatException  e1) {
+		} catch (ServletException | IOException e) {
 			
-			  req.getRequestDispatcher("index.jsp");
+			e.getMessage();
+		}catch(NumberFormatException  e1) {
+			e1.getMessage();
 		}
 		
 	

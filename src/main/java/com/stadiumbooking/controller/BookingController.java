@@ -90,7 +90,7 @@ public class BookingController extends HttpServlet {
 						throw new LowBalance();
 					}
 				} catch (SQLException | IOException e1) {
-					e1.printStackTrace();
+					req.getRequestDispatcher("index.jsp");
 				} catch (LowBalance e) {
 					try {
 						HttpSession session = req.getSession();
@@ -102,21 +102,14 @@ public class BookingController extends HttpServlet {
 						session.setAttribute("wallet", wallet);
 					      RequestDispatcher rd = req.getRequestDispatcher("wallet.jsp");			
 								rd.forward(req, res);
-					} catch (IOException e1) {
+					} catch (IOException |SQLException|ServletException e1) {
 
-						e1.printStackTrace();
-					} catch (SQLException e2) {
-						
-						e2.printStackTrace();
-					} catch (ServletException e4) {
-						
-						e4.printStackTrace();
-					}
-				} catch (ServletException e) {
-
-					e.printStackTrace();
-				}
-			}
+						e1.getMessage();
+					} 
+			} catch (ServletException e) {
+		
+					e.getMessage();
+				}}
 
 			else {
 

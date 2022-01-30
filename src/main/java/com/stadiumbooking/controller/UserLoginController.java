@@ -76,7 +76,7 @@ public class UserLoginController extends HttpServlet {
 			}
 		} catch (SQLException e) {
 
-			e.printStackTrace();
+			e.getMessage();
 		} catch (NotFound e) {
 
 			try {
@@ -88,11 +88,11 @@ public class UserLoginController extends HttpServlet {
 
 			} catch (IOException e1) {
 
-				e1.printStackTrace();
+				e1.getMessage();
 			}
 		} catch (IOException e2) {
 
-			e2.printStackTrace();
+			e2.getMessage();
 		}
 
 	}

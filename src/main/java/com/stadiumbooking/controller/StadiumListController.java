@@ -32,7 +32,7 @@ public class StadiumListController extends HttpServlet {
 					rd.forward(req, res);
 		} catch (SQLException | ServletException | IOException e) {
 			
-			e.printStackTrace();
+			e.getMessage();
 		}
 		
 	

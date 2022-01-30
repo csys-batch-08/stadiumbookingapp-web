@@ -36,12 +36,12 @@ public class UpdateMacthCallController extends HttpServlet {
 					rd.forward(req, res);
 		} catch (SQLException e) {
 			
-			e.printStackTrace();
+			e.getMessage();
 		} catch (IOException e2) {
 		
-			e2.printStackTrace();
+			e2.getMessage();
 		} catch (ServletException e1) {
-					e1.printStackTrace();
+			e1.getMessage();
 		}
 	}
 }

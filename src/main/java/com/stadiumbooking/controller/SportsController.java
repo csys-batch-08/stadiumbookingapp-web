@@ -31,10 +31,10 @@ public class SportsController extends HttpServlet {
 			res.sendRedirect("sportsDetalis.jsp");
 		} catch (SQLException e) {
 			
-			e.printStackTrace();
+			e.getMessage();
 		} catch (IOException e1) {
 		
-			e1.printStackTrace();
+			e1.getMessage();
 		}
 	}
 	

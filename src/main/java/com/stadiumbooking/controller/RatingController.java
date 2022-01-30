@@ -47,10 +47,10 @@ public class RatingController extends HttpServlet {
 					rd.forward(req, res);
 		} catch (SQLException | IOException e) {
 		
-			e.printStackTrace();
+			e.getMessage();
 		} catch (ServletException e1) {
 		
-			e1.printStackTrace();
+			e1.getMessage();
 		}
 	}
 }
