@@ -104,7 +104,7 @@ public class MatchDaoImpl implements MatchDao {
 		return matchList;
 		} catch (ClassNotFoundException | SQLException e) {
 		
-			e.printStackTrace();
+			e.getMessage();
 		}
 		finally {
 		
@@ -139,7 +139,7 @@ public class MatchDaoImpl implements MatchDao {
 			return LocalDate.parse(dateinString);
 		} catch (ClassNotFoundException | SQLException e) {
 		
-			e.printStackTrace();
+			e.getMessage();
 		}
 		finally {
 			
@@ -192,7 +192,7 @@ public class MatchDaoImpl implements MatchDao {
 			return matchList;
 		} catch (ClassNotFoundException | SQLException e) {
 		
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 		
 			if(pst!=null) {
@@ -229,7 +229,7 @@ public class MatchDaoImpl implements MatchDao {
 			pst.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
 		
-			e.printStackTrace();
+			e.getMessage();
 		}
 		finally {
 			
@@ -264,7 +264,7 @@ public class MatchDaoImpl implements MatchDao {
 			pst.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
 			
-			e.printStackTrace();
+			e.getMessage();
 		}	finally {
 			
 			if(pst!=null) {
@@ -315,7 +315,7 @@ public class MatchDaoImpl implements MatchDao {
 			return matchList;
 		} catch (ClassNotFoundException | SQLException e) {
 			
-			e.printStackTrace();
+			e.getMessage();
 		}	finally {
 			
 			if(pst!=null) {
@@ -350,7 +350,7 @@ public class MatchDaoImpl implements MatchDao {
 
 		} catch (ClassNotFoundException | SQLException e) {
 	
-			e.printStackTrace();
+			e.getMessage();
 		}	     finally {
 			
 			if(pstmt!=null) {
@@ -386,7 +386,7 @@ public class MatchDaoImpl implements MatchDao {
 	       return totalseats;
 		} catch (ClassNotFoundException | SQLException e) {
 		
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 		
 			if(	pstmt!=null) {

@@ -41,7 +41,7 @@ public class WalletDaoImpl implements WalletDao {
 			userDao.addAmount(userid, amount);
 		} catch (ClassNotFoundException | SQLException e) {
 
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 
 			if (stmt != null) {
@@ -81,7 +81,7 @@ public class WalletDaoImpl implements WalletDao {
 			return walletList;
 		
 		} catch (ClassNotFoundException | SQLException e) {
-					e.printStackTrace();
+			e.getMessage();
 		}
 		finally {	
 		

@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"  %>
 
@@ -7,7 +8,7 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css"  rel="stylesheet">
 <link rel = "icon" type = "" href = "image/Studium.png">
 <title>Matchbooking.com</title>
 
@@ -101,7 +102,7 @@
         <a href="index.jsp">Logout</a>
     </div>
    
-    <table  id="tabel">
+    <table data-aos="zoom-out-down"  id="tabel">
      <caption><strong id="title">All User List</strong></caption>
       <tr>  
      
@@ -116,25 +117,48 @@
 
 <c:forEach items="${UserLists}" var="users">
 
-	<tr>
+	<tr >
 	 
-	<td>${users.name}</td>
-	<td>${users.username}</td> 
-	<td>${users.role}</td> 
-	<td> ${users.password}</td> 
-	<td> ${users.email}</td>
-	<td>${users.phoneNumber}</td>
+	<td  data-aos="fade-down" 
+	data-aos-easing="linear"
+     data-aos-delay="400">${users.name}</td>
+     
+	<td data-aos="fade-down" 
+	data-aos-easing="linear"
+     data-aos-delay="550">${users.username}</td> 
+	
+	<td data-aos="fade-down" 
+	data-aos-easing="linear"
+     data-aos-delay="600">${users.role}</td> 
+	
+	<td data-aos="fade-down" 
+	data-aos-easing="linear"
+     data-aos-delay="750"> ${users.password}</td> 
+	
+	<td data-aos="fade-down" 
+	data-aos-easing="linear"
+     data-aos-delay="800"> ${users.email}</td>
+	
+	<td data-aos="fade-down" 
+	data-aos-easing="linear"
+     data-aos-delay="950">${users.phoneNumber}</td>
 	<c:choose>
 	<c:when test="${users.wallet==0 and users.role.equals('User')}">
 	
-	<td><a href="deleteUser?userId=${users.userid}">Delete</a></td>
+	<td data-aos="fade-down" 
+	data-aos-easing="linear"
+     data-aos-delay="1050"><a href="deleteUser?userId=${users.userid}">Delete</a></td>
 	
 	</c:when>
 <c:when test="${users.role.equals('Admin') }">
-		<td>-----</td>
+		<td data-aos="fade-down" 
+	data-aos-easing="linear"
+     data-aos-delay="1050">-----</td>
 	</c:when>
 	 <c:otherwise>
-	 <td>Regular User</td>
+	 <td data-aos="fade-down" 
+	data-aos-easing="linear"
+     data-aos-delay="1050">Regular User</td>
 	 </c:otherwise>
 	</c:choose>
 	
@@ -145,7 +169,10 @@
 
 
 </table>
-
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js" ></script>
+<script>
+  AOS.init();
+</script>
 
 </body>
 </html>

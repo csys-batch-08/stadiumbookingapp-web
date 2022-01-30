@@ -35,7 +35,7 @@
 
 #updateMatch{
  position:absolute;
- left:350px;
+ left:500px;
  top:100px;
  width: 40%;
   padding: 12px;

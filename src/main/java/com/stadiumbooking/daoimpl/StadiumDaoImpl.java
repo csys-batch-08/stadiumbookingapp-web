@@ -41,7 +41,7 @@ public class StadiumDaoImpl implements StadiumDao {
 			return stadiumList;
 		} catch (ClassNotFoundException | SQLException e) {
 		
-			e.printStackTrace();
+			e.getMessage();
 		}
 		finally {	
 		
@@ -76,7 +76,7 @@ public class StadiumDaoImpl implements StadiumDao {
 			stmt.executeUpdate();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-						e.printStackTrace();
+			e.getMessage();
 		}finally {	
 			
 			if(stmt!=null) {

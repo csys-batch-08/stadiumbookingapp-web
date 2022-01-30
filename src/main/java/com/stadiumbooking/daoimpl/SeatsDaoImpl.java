@@ -158,6 +158,7 @@ public class SeatsDaoImpl implements SeatsDao {
 			pstmt1=con.prepareStatement(query);
 			pstmt1.setInt(1, ticketId);
 			ResultSet rs=pstmt1.executeQuery();
+			
 			int matchId;
 			int seatcounts;
 			double price;
@@ -180,8 +181,8 @@ public class SeatsDaoImpl implements SeatsDao {
 			pstmt.close();     	
 			}
 			if(pstmt1!=null) {
-				pstmt1.close();
-			}
+				pstmt1.close();     	
+				}
 			if(con !=null) {
 			con.close();
 			}

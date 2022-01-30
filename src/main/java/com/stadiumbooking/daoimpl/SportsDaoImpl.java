@@ -41,7 +41,7 @@ public class SportsDaoImpl implements SportsDao {
 
 			return num;
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 		
 			if (stmt != null) {
@@ -73,7 +73,7 @@ public class SportsDaoImpl implements SportsDao {
 			stmt.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
 
-			e.printStackTrace();
+			e.getMessage();
 		}
 
 		finally {
@@ -112,7 +112,7 @@ public class SportsDaoImpl implements SportsDao {
 			return sportsList;
 		} catch (ClassNotFoundException | SQLException e) {
 
-			e.printStackTrace();
+			e.getMessage();
 		}finally {	
 			
 			if(stmt!=null) {

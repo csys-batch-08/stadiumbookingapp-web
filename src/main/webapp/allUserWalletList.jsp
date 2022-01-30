@@ -8,7 +8,7 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css"  rel="stylesheet">
 <link rel = "icon" type = "" href = "image/Studium.png">
 <title>Matchbooking.com</title>
 <style>
@@ -101,7 +101,7 @@
     </div>
     
     <div>
-    <table>
+    <table data-aos="zoom-in-down">
      <caption> <strong>User Transaction History</strong> </caption>
     <tr>
  
@@ -117,18 +117,31 @@
           
      
    
-    <td>${userDao.getUserNamebyId(walletlist.userId )}</td>
-    <td>${walletlist.amount }</td>
+    <td data-aos="flip-up"
+    	data-aos-easing="linear"
+    	data-aos-duration="500"
+     data-aos-delay="400">${userDao.getUserNamebyId(walletlist.userId )}</td>
+    
+    <td data-aos="flip-up"
+    	data-aos-easing="linear"
+    	data-aos-duration="500"
+     data-aos-delay="800">${walletlist.amount }</td>
     
 <fmt:parseDate value="${ walletlist.transactionDate }" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
 
    
-    <td><fmt:formatDate pattern="dd-MM-yyyy HH:mm" value="${ parsedDateTime }" /></td>
+    <td data-aos="flip-up"
+    	data-aos-easing="linear"
+    	data-aos-duration="500"
+     data-aos-delay="1200"><fmt:formatDate pattern="dd-MM-yyyy HH:mm" value="${ parsedDateTime }" /></td>
    
     </tr>
    </c:forEach>
     </table>
     </div>
-   
+   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" ></script>
+<script>
+  AOS.init();
+</script>
 </body>
 </html>

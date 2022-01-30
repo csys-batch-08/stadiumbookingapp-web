@@ -186,7 +186,7 @@ button {
 #gifImage{
 position: fixed;
 top:30px;
-left:1200px
+left:1250px
 }
 .anime img{
 width: 50px;

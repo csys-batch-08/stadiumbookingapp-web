@@ -41,7 +41,7 @@ public class UserDaoImpl implements UserDao {
 			return stmt.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
 
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 
 			if (stmt != null) {
@@ -83,7 +83,7 @@ public class UserDaoImpl implements UserDao {
 			return userList;
 
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 
 			if (stmt != null) {
@@ -123,7 +123,7 @@ public class UserDaoImpl implements UserDao {
 			return userList;
 		} catch (ClassNotFoundException | SQLException e) {
 
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 			
 			if (stmt1 != null) {
@@ -156,7 +156,7 @@ public class UserDaoImpl implements UserDao {
 			pstmt.setInt(6, user.getUserid());
 			pstmt.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 
 			if (pstmt != null) {
@@ -185,7 +185,7 @@ public class UserDaoImpl implements UserDao {
 
 		} catch (ClassNotFoundException | SQLException e) {
 
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 
 			if (pstmt != null) {
@@ -226,7 +226,7 @@ public class UserDaoImpl implements UserDao {
 
 		} catch (ClassNotFoundException | SQLException e) {
 
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 
 			if (stmt1 != null) {
@@ -263,7 +263,7 @@ public class UserDaoImpl implements UserDao {
 			}
 
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 
 			if (stmt1 != null) {
@@ -292,7 +292,7 @@ public class UserDaoImpl implements UserDao {
 			pstmt.setInt(2, userId);
 			pstmt.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 
 			if (pstmt != null) {
@@ -321,7 +321,7 @@ public class UserDaoImpl implements UserDao {
 			pstmt.setInt(2, userId);
 			pstmt.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 
 			if (pstmt != null) {
@@ -352,7 +352,7 @@ public class UserDaoImpl implements UserDao {
 			pstmt.setInt(2, userid);
 			pstmt.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 
 			if (pstmt != null) {
@@ -386,7 +386,7 @@ public class UserDaoImpl implements UserDao {
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 
 			if (stmt1 != null) {
@@ -417,7 +417,7 @@ public class UserDaoImpl implements UserDao {
 			pstmt.executeUpdate();
 
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 
 			if (pstmt != null) {
@@ -451,7 +451,7 @@ public class UserDaoImpl implements UserDao {
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 
 			if (stmt1 != null) {
@@ -490,7 +490,7 @@ public class UserDaoImpl implements UserDao {
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 
 			if (stmt1!= null) {

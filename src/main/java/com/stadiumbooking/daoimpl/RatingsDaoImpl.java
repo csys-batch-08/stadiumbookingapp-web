@@ -34,7 +34,7 @@ public class RatingsDaoImpl implements RatingsDao {
 			stmt.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
 
-			e.printStackTrace();
+			e.getMessage();
 		} finally {
 
 			if (stmt != null) {
@@ -73,7 +73,7 @@ public class RatingsDaoImpl implements RatingsDao {
 
 		} catch (ClassNotFoundException | SQLException e) {
 
-			e.printStackTrace();
+			e.getMessage();
 		}
 
 		finally {
@@ -113,7 +113,7 @@ public class RatingsDaoImpl implements RatingsDao {
 			}
 			return ratingList;
 		} catch (ClassNotFoundException | SQLException e) {
-					e.printStackTrace();
+			e.getMessage();
 		}finally {
 			
 			if (stmt != null) {

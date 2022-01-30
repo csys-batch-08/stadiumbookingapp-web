@@ -196,7 +196,7 @@ left:300px;
 #gifImage{
 position: fixed;
 top:30px;
-left:1200px
+left:1250px
 }
 .anime img{
 width: 50px;
@@ -327,7 +327,7 @@ input:-webkit-autofill:active  {
  </form>
  </div>
  <div class="anime">
- <img src="image/circktballGif.gif" alt="can't find" id="gifImage" loading="lazy"  onmouseout="dec()" onmouseover="inc()"  >
+ <img src="image/circktballGif.gif" alt="can't find" id="gifImage"  onmouseout="dec()" onmouseover="inc()"  >
  </div>
    
    <c:if test="${not empty sessionScope.houseFull}">

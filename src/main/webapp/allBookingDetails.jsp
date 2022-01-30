@@ -10,6 +10,7 @@
 <head>
 <meta charset="ISO-8859-1">
 
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css"  rel="stylesheet">
 <link rel = "icon" type = "" href = "image/Studium.png">
 <title>Matchbooking.com</title>
 <style>
@@ -88,7 +89,8 @@
 <jsp:useBean id="matchDao" class="com.stadiumbooking.daoimpl.MatchDaoImpl"/>
 
 
-    <div class="matchDetalis">
+    <div class="matchDetalis" data-aos="fade-up" 
+     data-aos-delay="100">
   <c:forEach items="${matchDao.getMatchByMatchId(seatList.matchId)}" var="match">
   
 
@@ -99,6 +101,8 @@
         <br>
         <strong>${match.teamA}</strong>  Vs <strong>${match.teamB}</strong>
         <br>
+        <div data-aos="fade-up"
+     data-aos-duration="1000">
         <label>${match.stadiumName}</label>
         <label>${match.location}</label>
         <br>
@@ -118,11 +122,17 @@
          <label>Seats Numbers:${seatList.ticketNumbers}</label>
          <br>
          <label>${seatList.status}</label>
+         
 <hr style="width: 300px;">
+ </div>
  </c:forEach>
     </div>
 
 </c:forEach>
 
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
 </body>
 </html>
