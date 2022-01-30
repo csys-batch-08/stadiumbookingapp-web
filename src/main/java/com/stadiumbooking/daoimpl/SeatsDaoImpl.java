@@ -37,7 +37,7 @@ public class SeatsDaoImpl implements SeatsDao {
 			stmt.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
 		
-			e.printStackTrace();
+			e.getMessage();
 		}finally {
 
 			if (stmt != null) {
@@ -77,7 +77,7 @@ public class SeatsDaoImpl implements SeatsDao {
 			return seatList;
 		} catch (ClassNotFoundException | SQLException e) {
 			
-			e.printStackTrace();
+			e.getMessage();
 		}
 		finally {	
 		
@@ -117,7 +117,7 @@ public class SeatsDaoImpl implements SeatsDao {
 			return seatList;
 		} catch (ClassNotFoundException | SQLException e) {
 		
-			e.printStackTrace();
+			e.getMessage();
 		}
 		finally {	
 			
@@ -179,7 +179,9 @@ public class SeatsDaoImpl implements SeatsDao {
 			if(pstmt!=null) {
 			pstmt.close();     	
 			}
-			
+			if(pstmt1!=null) {
+				pstmt1.close();
+			}
 			if(con !=null) {
 			con.close();
 			}
