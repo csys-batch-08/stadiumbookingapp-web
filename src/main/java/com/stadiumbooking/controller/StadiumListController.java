@@ -12,9 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.stadiumbooking.daoimpl.StadiumDaoImpl;
-import com.stadiumbooking.daoimpl.WalletDaoImpl;
 import com.stadiumbooking.model.StadiumDetalis;
-import com.stadiumbooking.model.WalletDetails;
 
 @WebServlet("/stadiumList")
 public class StadiumListController extends HttpServlet {

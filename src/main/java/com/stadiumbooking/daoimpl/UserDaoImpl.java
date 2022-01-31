@@ -1,19 +1,15 @@
 package com.stadiumbooking.daoimpl;
 
-import java.io.PrintWriter;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import com.stadiumbooking.connection.ConnectionUtill;
-
 import com.stadiumbooking.dao.UserDao;
-import com.stadiumbooking.exception.SomthingWentWrong;
 import com.stadiumbooking.model.User;
 
 public class UserDaoImpl implements UserDao {

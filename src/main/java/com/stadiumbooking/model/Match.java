@@ -1,9 +1,8 @@
 package com.stadiumbooking.model;
 
-import java.sql.Time;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
 import java.util.Objects;
 
 public class Match {

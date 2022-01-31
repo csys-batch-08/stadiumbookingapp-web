@@ -1,7 +1,7 @@
 package com.stadiumbooking.controller;
 
 import java.io.IOException;
-import java.sql.ResultSet;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -22,7 +22,7 @@ import com.stadiumbooking.exception.LowBalance;
 import com.stadiumbooking.exception.LowSeatCount;
 import com.stadiumbooking.model.Match;
 import com.stadiumbooking.model.Seats;
-import com.stadiumbooking.model.User;
+
 
 @WebServlet("/booking")
 public class BookingController extends HttpServlet {

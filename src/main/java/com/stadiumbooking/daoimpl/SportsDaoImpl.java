@@ -4,13 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.stadiumbooking.connection.ConnectionUtill;
 import com.stadiumbooking.dao.SportsDao;
-import com.stadiumbooking.model.Ratings;
+
 import com.stadiumbooking.model.Sports;
 
 public class SportsDaoImpl implements SportsDao {

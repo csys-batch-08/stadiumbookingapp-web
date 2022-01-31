@@ -12,9 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.stadiumbooking.daoimpl.SeatsDaoImpl;
-import com.stadiumbooking.daoimpl.UserDaoImpl;
 import com.stadiumbooking.model.Seats;
-import com.stadiumbooking.model.User;
+
 
 @WebServlet("/allBookingDetails")
 public class AllBookingDetailsController extends HttpServlet {

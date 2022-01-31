@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import com.stadiumbooking.daoimpl.MatchDaoImpl;
 import com.stadiumbooking.daoimpl.SeatsDaoImpl;
 import com.stadiumbooking.daoimpl.UserDaoImpl;
-import com.stadiumbooking.model.Match;
+
 import com.stadiumbooking.model.Seats;
 
 @WebServlet("/cancleTicket")

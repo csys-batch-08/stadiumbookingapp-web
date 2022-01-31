@@ -15,7 +15,6 @@ public class WalletDetails {
 		
 	}
 	
-
 	public WalletDetails(int walletId, int userId, Long amount, LocalDateTime transactionDate) {
 		super();
 		this.walletId = walletId;
