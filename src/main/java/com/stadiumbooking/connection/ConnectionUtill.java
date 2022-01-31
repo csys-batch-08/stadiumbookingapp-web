@@ -4,26 +4,23 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import com.stadiumbooking.encryption.Encryptpassword;
+import com.stadiumbooking.config.EncryptPassword;
 
 
 public class ConnectionUtill {
 
-	public  Connection getDBConnect() throws ClassNotFoundException
-	{ 
+	public  Connection getDBConnect() throws ClassNotFoundException, SQLException
+	{
+		Class.forName("oracle.jdbc.OracleDriver");
+
 		try {
-			Encryptpassword ep=new Encryptpassword();
-			String encrptPassword=ep.encrypt("oracle");
-			String decrpyPass=ep.decrypt(encrptPassword);
-			Class.forName("oracle.jdbc.OracleDriver");
-
-			return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system",decrpyPass);	
-
+			return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system",EncryptPassword.decrypt());
 		} catch (Exception e) {
-			e.printStackTrace();
+		
+			e.getMessage();
 		}
-		return null;
-			}
+		return null;	
+	}
 	
 	
 }
