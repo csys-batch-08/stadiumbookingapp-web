@@ -1,7 +1,14 @@
 package com.stadiumbooking.config;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+
+import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.KeyGenerator;
+import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.GCMParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
@@ -15,7 +22,11 @@ public class EncryptPassword
 
   
 
-    public static byte[] encrypt(byte[] plaintext, SecretKey key, byte[] IV) throws Exception
+    private EncryptPassword() {
+		super();
+	}
+
+	public static byte[] encrypt(byte[] plaintext, SecretKey key, byte[] iv) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException
     {
       
         Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
@@ -23,7 +34,7 @@ public class EncryptPassword
     
         SecretKeySpec keySpec = new SecretKeySpec(key.getEncoded(), "AES");
         
-        GCMParameterSpec gcmParameterSpec = new GCMParameterSpec(GCM_TAG_LENGTH * 8, IV);
+        GCMParameterSpec gcmParameterSpec = new GCMParameterSpec(GCM_TAG_LENGTH * 8, iv);
         
   
         cipher.init(Cipher.ENCRYPT_MODE, keySpec, gcmParameterSpec);
@@ -32,7 +43,7 @@ public class EncryptPassword
         return cipher.doFinal(plaintext);
     }
 
-    public static String decrypt() throws Exception
+    public static String decrypt() throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException
     {
     	
     	  KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");

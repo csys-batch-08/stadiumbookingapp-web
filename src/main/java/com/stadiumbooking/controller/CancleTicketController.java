@@ -33,6 +33,7 @@ public class CancleTicketController extends HttpServlet {
 			int ticketId=Integer.parseInt(req.getParameter("ticketId"));
 			int userID=(int) session.getAttribute("id");
 			seatDao.cancelledSeats(ticketId);
+			seatDao.updateSeatsAndRefund(ticketId);
 			List<Seats> seatListById=seatDao.getSeatById(userID);
 			req.setAttribute("seatListById", seatListById);
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/mymatch.jsp");

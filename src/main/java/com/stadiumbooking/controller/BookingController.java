@@ -54,7 +54,7 @@ public class BookingController extends HttpServlet {
 			totalAvalibleSeats = matchDao.checkAvilableSeats(matchId);
 		} catch (SQLException e2) {
 
-			e2.printStackTrace();
+			e2.getMessage();
 		}
 		avalibleSeats = totalAvalibleSeats - seatCounts;
 
@@ -127,7 +127,7 @@ public class BookingController extends HttpServlet {
 						 RequestDispatcher rd = req.getRequestDispatcher("allMatchDetalis.jsp");
 							rd.forward(req, res);
 					} catch (IOException | SQLException | ServletException e) {
-						e.printStackTrace();
+						e.getMessage();
 					}
 				}
 
@@ -145,10 +145,10 @@ public class BookingController extends HttpServlet {
 					 RequestDispatcher rd = req.getRequestDispatcher("allMatchDetalis.jsp");
 						rd.forward(req, res);
 				} catch (IOException | SQLException e) {
-					e.printStackTrace();
+					e.getMessage();
 				} catch (ServletException e1) {
 					
-					e1.printStackTrace();
+					e1.getMessage();
 				}
 			}
 		}

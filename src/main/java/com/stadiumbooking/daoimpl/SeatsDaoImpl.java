@@ -151,27 +151,7 @@ public class SeatsDaoImpl implements SeatsDao {
 			pstmt.executeUpdate();
 
 			
-			/* Update Available Seats and Amount Details If User Cancelled Tickets */
 			
-			String query="select match_id,seatcount,Totalpirce,userid from seat_details where ticketid=?";
-			pstmt1=con.prepareStatement(query);
-			pstmt1.setInt(1, ticketId);
-			ResultSet rs=pstmt1.executeQuery();
-			
-			int matchId;
-			int seatcounts;
-			double price;
-			int userid;
-			if(rs.next()) {
-				matchId=rs.getInt(1);
-				seatcounts=rs.getInt(2);
-				price=rs.getDouble(3);
-				userid=rs.getInt(4);
-				MatchDaoImpl matchDao=new MatchDaoImpl();
-				matchDao.updateCancelledSeats(seatcounts, matchId);
-				UserDaoImpl userDao=new UserDaoImpl();
-				userDao.refundPice(userid,price);	
-			}
 		} catch (ClassNotFoundException | SQLException e) {
 		
 			e.getMessage();
@@ -179,9 +159,6 @@ public class SeatsDaoImpl implements SeatsDao {
 			if(pstmt!=null) {
 			pstmt.close();     	
 			}
-			if(pstmt1!=null) {
-				pstmt1.close();     	
-				}
 			if(con !=null) {
 			con.close();
 			}
@@ -189,6 +166,55 @@ public class SeatsDaoImpl implements SeatsDao {
 		
 		
 		
+	}
+
+	@Override
+	public void updateSeatsAndRefund(int ticketId) throws SQLException {
+		/* Update Available Seats and Amount Details If User Cancelled Tickets */
+		ConnectionUtill conUtil=new ConnectionUtill();
+		Connection con = null;
+		PreparedStatement pstmt1=null;
+	
+	
+			
+			try {
+				con = conUtil.getDBConnect();
+				String query="select match_id,seatcount,Totalpirce,userid from seat_details where ticketid=?";
+				pstmt1=con.prepareStatement(query);
+				pstmt1.setInt(1, ticketId);
+				ResultSet rs=pstmt1.executeQuery();
+				
+				int matchId;
+				int seatcounts;
+				double price;
+				int userid;
+				if(rs.next()) {
+					matchId=rs.getInt(1);
+					seatcounts=rs.getInt(2);
+					price=rs.getDouble(3);
+					userid=rs.getInt(4);
+					MatchDaoImpl matchDao=new MatchDaoImpl();
+					matchDao.updateCancelledSeats(seatcounts, matchId);
+					UserDaoImpl userDao=new UserDaoImpl();
+					userDao.refundPice(userid,price);	
+				}
+			
+			} catch (SQLException | ClassNotFoundException e) {
+			
+				e.getMessage();
+			}finally {	
+				
+				if(pstmt1!=null) {
+				pstmt1.close();  	
+				}
+				
+				if(con !=null) {
+				con.close();
+				}
+				}
+		
+		
+	
 	}
 
 	

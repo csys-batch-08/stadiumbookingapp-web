@@ -9,8 +9,7 @@
 <head>
 <meta charset="ISO-8859-1">
 
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-        crossorigin="anonymous" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <link rel = "icon" type = "" href = "image/Studium.png">
 <title>Matchbooking.com</title>
 
@@ -321,8 +320,7 @@ transform:scale(1.05);
 </c:forEach>
 </div>
     </div>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-        crossorigin="anonymous"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"integrity="filehash"></script>
 <script>
   AOS.init();
 </script>
