@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css"  rel="stylesheet">
 <link rel="icon" type="" href="image/Studium.png">
 <title>Matchbooking.com</title>
 <style>
@@ -173,7 +173,7 @@ text-decoration: none;
     </div>
 
 
-	<div id="stadiumLists" class="shimmer">
+	<div id="stadiumLists">
 
 		<table id="Staidum">
 		<caption></caption>
@@ -194,7 +194,7 @@ text-decoration: none;
 									<td >
 									
 								
-									<img src="image/${stadium.stadiumImg}" alt="can't find"></td>
+									<img src="image/${stadium.stadiumImg}" alt="can't find" data-aos="flip-right" data-aos-easing="linear"   data-aos-duration="1000"></td>
 								
 									</tr>
 								
@@ -224,7 +224,10 @@ text-decoration: none;
 	</div>
 
 
-
+     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" integrity="filehash"></script>
+<script>
+  AOS.init();
+</script>
 	
 </body>
 </html>

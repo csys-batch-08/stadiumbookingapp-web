@@ -65,6 +65,11 @@
             left: 00px;
             text-align: center;
         }
+        #TotalBookingPrice{
+        position: fixed;
+        top:5px;
+        right: 10px;
+        }
 </style>
 </head>
 <body>
@@ -83,7 +88,17 @@
 	</div>
 
  
+
+ <c:set var="TotalBookingPrice" value="0" />
    <c:forEach items="${seatList}" var="seatList">   
+<c:choose>
+<c:when test="${seatList.status.equals('Booked') }">
+<c:set var="TotalBookingPrice" value="${seatList.price+TotalBookingPrice}" scope="page"/>
+</c:when>
+<c:when test="${seatList.status.equals('Cancelled')}">
+<c:set var="TotalBookingPrice" value="${seatList.price+(TotalBookingPrice*.90)}" scope="page"/>
+</c:when>
+</c:choose>  
 
 
 <jsp:useBean id="matchDao" class="com.stadiumbooking.daoimpl.MatchDaoImpl"/>
@@ -129,7 +144,7 @@
     </div>
 
 </c:forEach>
-
+<h2 id="TotalBookingPrice"> Total Sales:- <span style="color: green;">&#8377;<fmt:formatNumber type = "number" maxFractionDigits = "0" value = "${TotalBookingPrice}" /></span> </h2>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" integrity="filehash"></script>
 <script>
   AOS.init();

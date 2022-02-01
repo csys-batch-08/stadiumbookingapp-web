@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css"  rel="stylesheet">
 <link rel = "icon" type = "" href = "image/Studium.png">
 <title>Matchbooking.com</title>
 <style>
@@ -97,6 +97,10 @@ width: 1355px;
 color:white;
 text-decoration: none;
 }
+ul {
+    list-style-type: none;
+}
+
         </style>
 </head>
 <body>
@@ -152,8 +156,8 @@ text-decoration: none;
      <c:forEach items="${userDao.getUserById(ratingList.userId)}" var="userList">
    
        <div class="reviewContainer">
-           <img src="image/${userList.profilePic}" alt="can't find" class="userProfile">
-       <strong class="reviwerName">${userList.name}  
+           <img src="image/${userList.profilePic}" alt="can't find" class="userProfile" data-aos="fade-up">
+       <strong class="reviwerName" data-aos="fade-up">${userList.name}  
        &nbsp;
        <c:choose>
        <c:when test="${ratingList.ratingValue==5.0}">
@@ -180,7 +184,7 @@ text-decoration: none;
         &nbsp; 
       
       <br> <br>
-       <label id="review">${ratingList.reviews}</label>
+       <label id="review" data-aos="zoom-out">${ratingList.reviews}</label>
        <br>
        
        
@@ -195,6 +199,10 @@ text-decoration: none;
         
     <br>
     </c:forEach>
+     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" integrity="filehash"></script>
+<script>
+  AOS.init();
+</script>
      
 </body>
 </html>

@@ -12,8 +12,17 @@ import com.stadiumbooking.dao.SeatsDao;
 import com.stadiumbooking.model.Seats;
 
 public class SeatsDaoImpl implements SeatsDao {
+	static final String TICKETID="TICKETID";
+	static final String USERID="USERID";
+	static final String TICKET_NUMBERS="TICKET_NUMBERS";
+	static final String	MATCH_ID="MATCH_ID";
+	static final String SEATCLASS="SEATCLASS";
+	static final String TOTALPIRCE="TOTALPIRCE";
+	static final String SEATCOUNT ="SEATCOUNT";
+	static final String STATUS="STATUS";
+	
 
-	@Override
+    @Override
 	public void bookingSeats(Seats seats) throws SQLException {
 		
 		/*  Insert Seat Deatils into database */
@@ -70,7 +79,8 @@ public class SeatsDaoImpl implements SeatsDao {
 			rs=pst.executeQuery();
 			seatList=new ArrayList<>();
 			while(rs.next()) {
-				Seats seat=new Seats(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getInt(7),rs.getString(8));
+				Seats seat=new Seats(rs.getInt(TICKETID),rs.getInt(USERID),rs.getString(TICKET_NUMBERS),rs.getInt(MATCH_ID),rs.getString(SEATCLASS),rs.getInt(TOTALPIRCE),
+						rs.getInt(SEATCOUNT),rs.getString(STATUS));
 			seatList.add(seat);
 			}
 			return seatList;
@@ -110,7 +120,8 @@ public class SeatsDaoImpl implements SeatsDao {
 			 rs=stmt.executeQuery(query);
 			seatList=new ArrayList<>();
 			while(rs.next()) {
-				Seats seat=new Seats(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getInt(7),rs.getString(8));
+				Seats seat=new Seats(rs.getInt(TICKETID),rs.getInt(USERID),rs.getString(TICKET_NUMBERS),rs.getInt(MATCH_ID),rs.getString(SEATCLASS),rs.getInt(TOTALPIRCE),
+						rs.getInt(SEATCOUNT),rs.getString(STATUS));
 			seatList.add(seat);
 			}
 			return seatList;
@@ -139,7 +150,6 @@ public class SeatsDaoImpl implements SeatsDao {
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con = null;
 		PreparedStatement pstmt=null;
-		PreparedStatement pstmt1=null;
 
 		try {
 			con = conUtil.getDBConnect();
@@ -175,7 +185,7 @@ public class SeatsDaoImpl implements SeatsDao {
 		Connection con = null;
 		PreparedStatement pstmt1=null;
 	
-	
+		
 			
 			try {
 				con = conUtil.getDBConnect();
@@ -189,10 +199,10 @@ public class SeatsDaoImpl implements SeatsDao {
 				double price;
 				int userid;
 				if(rs.next()) {
-					matchId=rs.getInt(1);
-					seatcounts=rs.getInt(2);
-					price=rs.getDouble(3);
-					userid=rs.getInt(4);
+					matchId=rs.getInt(MATCH_ID);
+					seatcounts=rs.getInt(SEATCOUNT );
+					price=rs.getDouble(TOTALPIRCE);
+					userid=rs.getInt(USERID);
 					MatchDaoImpl matchDao=new MatchDaoImpl();
 					matchDao.updateCancelledSeats(seatcounts, matchId);
 					UserDaoImpl userDao=new UserDaoImpl();

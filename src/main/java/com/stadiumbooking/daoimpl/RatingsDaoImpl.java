@@ -13,6 +13,12 @@ import com.stadiumbooking.model.Ratings;
 
 public class RatingsDaoImpl implements RatingsDao {
 
+	static final String REVIEWID="REVIEWID";
+	static final String USERID="USERID";
+	static final String REVIEWS="REVIEWS";
+	static final String RATINGS="RATINGS";
+	static final String STADIUM_ID="STADIUM_ID";
+	
 	@Override
 	public void ratingStadium(Ratings ratings) throws SQLException {
 
@@ -64,8 +70,8 @@ public class RatingsDaoImpl implements RatingsDao {
 			rs = stmt1.executeQuery();
 			ratingList = new ArrayList<>();
 			while (rs.next()) {
-				Ratings ratings = new Ratings(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getDouble(4),
-						rs.getInt(5));
+				Ratings ratings = new Ratings(rs.getInt(REVIEWID), rs.getInt(USERID), rs.getString(REVIEWS), rs.getDouble(RATINGS),
+						rs.getInt(STADIUM_ID));
 				ratingList.add(ratings);
 			}
 			return ratingList;
@@ -107,7 +113,8 @@ public class RatingsDaoImpl implements RatingsDao {
 			 rs = stmt.executeQuery(query);
 			 ratingList = new ArrayList<>();
 			while (rs.next()) {
-				Ratings ratings = new Ratings(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getDouble(4), rs.getInt(5));
+				Ratings ratings = new Ratings(rs.getInt(REVIEWID), rs.getInt(USERID), rs.getString(REVIEWS), rs.getDouble(RATINGS),
+						rs.getInt(STADIUM_ID));
 				ratingList.add(ratings);
 			}
 			return ratingList;

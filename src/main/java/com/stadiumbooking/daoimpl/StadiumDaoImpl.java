@@ -13,6 +13,9 @@ import com.stadiumbooking.model.StadiumDetalis;
 
 public class StadiumDaoImpl implements StadiumDao {
 
+	static final String STADIUM_ID="STADIUM_ID";
+	static final String STADIUM_NAME="STADIUM_NAME";
+	static final String STADIUM_IMG="STADIUM_IMG";
 	@Override
 	public List<StadiumDetalis> getAllStadiumList() throws SQLException {
 		
@@ -33,7 +36,7 @@ public class StadiumDaoImpl implements StadiumDao {
 			 stadiumList=new ArrayList<>();
 
 			while(rs.next()) {
-				StadiumDetalis stadium=new StadiumDetalis(rs.getInt(1),rs.getString(2),rs.getString(3));
+				StadiumDetalis stadium=new StadiumDetalis(rs.getInt(STADIUM_ID),rs.getString(STADIUM_NAME),rs.getString(STADIUM_IMG));
 				stadiumList.add(stadium);
 			}
 			

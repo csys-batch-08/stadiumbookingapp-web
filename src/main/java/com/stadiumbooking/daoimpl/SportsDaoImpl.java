@@ -14,6 +14,9 @@ import com.stadiumbooking.model.Sports;
 
 public class SportsDaoImpl implements SportsDao {
 
+	static final String SPORTSID="SPORTSID";
+	static final String SPORTSNAME="SPORTSNAME";
+	static final String EVENTNAME="EVENTNAME";
 	@Override
 	public int getSportsId(String sportsName, String eventName) throws SQLException {
 
@@ -105,7 +108,7 @@ public class SportsDaoImpl implements SportsDao {
 			 rs = stmt.executeQuery(query);
 			sportsList = new ArrayList<>();
 			while (rs.next()) {
-				Sports sports = new Sports(rs.getInt(1), rs.getString(2), rs.getString(3));
+				Sports sports = new Sports(rs.getInt(SPORTSID), rs.getString(SPORTSNAME), rs.getString(EVENTNAME));
 				sportsList.add(sports);
 			}
 			return sportsList;

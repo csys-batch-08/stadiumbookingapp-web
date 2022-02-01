@@ -17,6 +17,21 @@ import com.stadiumbooking.model.Match;
 
 public class MatchDaoImpl implements MatchDao {
 
+	static final String MATCH_DATE="MATCH_DATE";
+	static final String MATCH_TIME="MATCH_TIME";
+	static final String MATCH_ID="MATCH_ID";
+	static final String SPORTSID="SPORTSID";
+	static final String STADIUM_NAME="STADIUM_NAME";
+	static final String LOCATION="LOCATION";
+	static final String TEAMA="TEAMA";
+	static final String TEAMB="TEAMB";
+	static final String TEAMALOGO="TEAMALOGO";
+	static final String TEAMBLOGO="TEAMBLOGO";
+	static final String TOTALSEATS="TOTALSEATS";
+	static final String AVAILABLESEATS="AVAILABLESEATS";
+	static final String FIRSTCLASS_SEATS_PRICE="FIRSTCLASS_SEATS_PRICE";
+	static final String SECONDCLASS_SEATS_PRICE="SECONDCLASS_SEATS_PRICE";
+	
 	@Override
 	public void insertMatchDetalis(Match match) throws  SQLException {
 		
@@ -78,7 +93,7 @@ public class MatchDaoImpl implements MatchDao {
 		List<Match> matchList=null;
 		try {
 			con = conUtil.getDBConnect();
-			String query="select MATCH_ID,SPORTSID,STADIUM_NAME,LOCATION,to_char(MATCH_DATE,'yyyy-mm-dd'),to_char(MATCH_TIME,'HH:MI'),TEAMA,TEAMB,TEAMALOGO,TEAMBLOGO,TOTALSEATS,AVAILABLESEATS,FIRSTCLASS_SEATS_PRICE,SECONDCLASS_SEATS_PRICE from match_info order by match_date desc";
+			String query="select MATCH_ID,SPORTSID,STADIUM_NAME,LOCATION,to_char(MATCH_DATE,'yyyy-mm-dd') as MATCH_DATE,to_char(MATCH_TIME,'HH:MI') as MATCH_TIME,TEAMA,TEAMB,TEAMALOGO,TEAMBLOGO,TOTALSEATS,AVAILABLESEATS,FIRSTCLASS_SEATS_PRICE,SECONDCLASS_SEATS_PRICE from match_info order by match_date desc";
 			 stmt=con.prepareStatement(query);
 			rs=stmt.executeQuery(query);
 
@@ -88,12 +103,12 @@ public class MatchDaoImpl implements MatchDao {
 			LocalDate localDate = null;
 			LocalTime localTime=null;
 			while(rs.next()) {
-				dateInStering=rs.getString(5);
-				tiemString=rs.getString(6);
+				dateInStering=rs.getString(MATCH_DATE);
+				tiemString=rs.getString(MATCH_TIME);
 
 				localDate=LocalDate.parse(dateInStering);
 				localTime=LocalTime.parse(tiemString);
-				Match match=new Match(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),localDate,localTime,rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11),rs.getInt(12),rs.getInt(13),rs.getInt(14));
+				Match match=new Match(rs.getInt(MATCH_ID),rs.getInt(SPORTSID),rs.getString(STADIUM_NAME),rs.getString(LOCATION),localDate,localTime,rs.getString(TEAMA),rs.getString(TEAMB),rs.getString(TEAMALOGO),rs.getString(TEAMBLOGO),rs.getInt(TOTALSEATS),rs.getInt(AVAILABLESEATS),rs.getInt(FIRSTCLASS_SEATS_PRICE),rs.getInt(SECONDCLASS_SEATS_PRICE));
 			
 			matchList.add(match);
 			}
@@ -166,7 +181,7 @@ public class MatchDaoImpl implements MatchDao {
 		ResultSet rs=null;
 		try {
 			con = conUtil.getDBConnect();
-			String query="select MATCH_ID,SPORTSID,STADIUM_NAME,LOCATION,to_char(MATCH_DATE,'yyyy-mm-dd'),to_char(MATCH_TIME,'HH:MI'),TEAMA,TEAMB,TEAMALOGO,TEAMBLOGO,TOTALSEATS,AVAILABLESEATS,FIRSTCLASS_SEATS_PRICE,SECONDCLASS_SEATS_PRICE from match_info where match_id=?";
+			String query="select MATCH_ID,SPORTSID,STADIUM_NAME,LOCATION,to_char(MATCH_DATE,'yyyy-mm-dd') as MATCH_DATE,to_char(MATCH_TIME,'HH:MI') as MATCH_TIME,TEAMA,TEAMB,TEAMALOGO,TEAMBLOGO,TOTALSEATS,AVAILABLESEATS,FIRSTCLASS_SEATS_PRICE,SECONDCLASS_SEATS_PRICE from match_info where match_id=?";
 			 pst=con.prepareStatement(query);
 			pst.setInt(1, matchId);
 			 rs=pst.executeQuery();
@@ -176,12 +191,12 @@ public class MatchDaoImpl implements MatchDao {
 			LocalDate localDate = null;
 			LocalTime localTime=null;
 			while(rs.next()) {
-				dateInStering=rs.getString(5);
-				tiemString=rs.getString(6);
+				dateInStering=rs.getString(MATCH_DATE);
+				tiemString=rs.getString(MATCH_TIME);
 
 				localDate=LocalDate.parse(dateInStering);
 				localTime=LocalTime.parse(tiemString);
-				Match match=new Match(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),localDate,localTime,rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11),rs.getInt(12),rs.getInt(13),rs.getInt(14));
+				Match match=new Match(rs.getInt(MATCH_ID),rs.getInt(SPORTSID),rs.getString(STADIUM_NAME),rs.getString(LOCATION),localDate,localTime,rs.getString(TEAMA),rs.getString(TEAMB),rs.getString(TEAMALOGO),rs.getString(TEAMBLOGO),rs.getInt(TOTALSEATS),rs.getInt(AVAILABLESEATS),rs.getInt(FIRSTCLASS_SEATS_PRICE),rs.getInt(SECONDCLASS_SEATS_PRICE));
 			
 			matchList.add(match);
 			}
@@ -299,12 +314,12 @@ public class MatchDaoImpl implements MatchDao {
 			LocalDate localDate = null;
 			LocalTime localTime=null;
 			while(rs.next()) {
-				dateInStering=rs.getString(5);
-				tiemString=rs.getString(6);
+				dateInStering=rs.getString(MATCH_DATE);
+				tiemString=rs.getString(MATCH_TIME);
 
 				localDate=LocalDate.parse(dateInStering);
 				localTime=LocalTime.parse(tiemString);
-				Match match=new Match(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),localDate,localTime,rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11),rs.getInt(12),rs.getInt(13),rs.getInt(14));
+				Match match=new Match(rs.getInt(MATCH_ID),rs.getInt(SPORTSID),rs.getString(STADIUM_NAME),rs.getString(LOCATION),localDate,localTime,rs.getString(TEAMA),rs.getString(TEAMB),rs.getString(TEAMALOGO),rs.getString(TEAMBLOGO),rs.getInt(TOTALSEATS),rs.getInt(AVAILABLESEATS),rs.getInt(FIRSTCLASS_SEATS_PRICE),rs.getInt(SECONDCLASS_SEATS_PRICE));
 			
 			matchList.add(match);
 			}

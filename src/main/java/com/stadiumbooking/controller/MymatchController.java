@@ -29,7 +29,6 @@ public class MymatchController extends HttpServlet {
 			int userID = (int) session.getAttribute("id");
 
 			List<Seats> seatListById = seatsDao.getSeatById(userID);
-
 			req.setAttribute("seatListById", seatListById);
 
 			RequestDispatcher rd = req.getRequestDispatcher("mymatch.jsp");
