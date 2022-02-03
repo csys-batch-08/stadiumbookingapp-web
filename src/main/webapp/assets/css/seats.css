@@ -1,0 +1,194 @@
+@charset "ISO-8859-1";
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: white;
+	color: black;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow: hidden;
+	height: 100vh;
+	font-family: 'Lato', sans-serif;
+}
+
+.stadium-container select {
+	background-color: white;
+	border: 0;
+	color: black;
+	border: 2px solid black;
+	border-radius: 5px;
+	font-size: 14px;
+	margin-left: 10px;
+	padding: 5px 15px 5px 15px;
+	position: absolute;
+	top: 300px;
+}
+
+.container {
+	perspective: 1000px;
+	margin-bottom: 30px;
+	position: absolute;
+	bottom: 0px;
+	left: 400px;
+	margin: auto;
+}
+
+.seat {
+	background-color: #444451;
+	height: 12px;
+	width: 15px;
+	margin: 3px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.seat.selected {
+	background-color: #6feaf6;
+}
+
+.seat.occupied {
+	background-color: red;
+}
+
+.seat:not(.occupied):hover {
+	cursor: pointer;
+	transform: scale(1.2);
+}
+
+.showcase .seat:not(.occupied):hover {
+	cursor: default;
+	transform: scale(1);
+}
+
+.showcase {
+	padding: 5px 10px;
+	border-radius: 5px;
+	color: #777;
+	list-style-type: none;
+	display: flex;
+	position: absolute;
+	left: 550px;
+	bottom: 113px;
+}
+
+.showcase li {
+	display: flex;
+	align-items: center;
+	margin: 0 10px;
+}
+
+.showcase li small {
+	margin-left: 2px;
+}
+
+.row {
+	display: flex;
+}
+
+img {
+	width: 100px;
+	height: 100px;
+}
+
+#teamA {
+	position: relative;
+	left: 20px;
+	font-size: 20px;
+}
+
+#teamB {
+	position: relative;
+	font-size: 20px;
+	left: 500px;
+}
+
+#temaBLogo {
+	position: relative;
+	left: 400px;
+}
+
+#Vs {
+	position: absolute;
+	left: 300px;
+	top: 30px;
+	font-size: 45px;
+}
+
+#matchDetails {
+	position: relative;
+	left: 220px;
+	top: -20px;
+	font-size: 18px;
+}
+
+b {
+	text-align: center;
+}
+
+button {
+	position: relative;
+	left: 250px;
+	width: 100px;
+}
+
+.mathcInfo {
+	background-color: #f2f2f2;
+	border: 1px solid #023f72 !important;
+	box-shadow: 2px 2px 3px rgba(0, 0, 0, .4);
+	border-radius: 5px;
+	width: 630px;
+}
+
+.mathcInfo { 
+	--x-pos: 0; 
+	--y-angle: calc(var(- -x-pos)* 5deg); 
+	--y-pos: 0; 
+	--x-angle: calc(var(- -y-pos)* 5deg);
+	transform: perspective(200px) rotateY(var(- -y-angle))
+		rotateX(var(- -x-angle));
+}
+
+ul {
+	margin: 0;
+	overflow: hidden;
+	background-color: gray;
+	color: white;
+	font-weight: bolder;
+	padding: 16px;
+	opacity: 0.5px;
+}
+
+li {
+	float: right;
+	color: white;
+}
+
+#nav {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 1355px;
+}
+
+#nav a {
+	color: white;
+	text-decoration: none;
+}
+
+ul {
+	list-style-type: none;
+}
+
+#seatsCategory {
+	position: relative;
+	top: 0px;
+}
+
+#matchContrainer {
+	position: relative;
+	left: 100px;
+}

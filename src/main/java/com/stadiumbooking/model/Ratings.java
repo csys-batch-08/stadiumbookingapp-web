@@ -9,6 +9,8 @@ public class Ratings {
 	private String 	reviews;
 	private double ratingValue ;
 	private int stadiumId;
+	private User user;
+	
 	public Ratings() {
 		super();
 
@@ -61,6 +63,29 @@ public class Ratings {
 
 	public void setStadiumId(int stadiumId) {
 		this.stadiumId = stadiumId;
+	}
+
+
+
+	public Ratings(int reviewID, String reviews, double ratingValue, int stadiumId, User user) {
+		super();
+		this.reviewID = reviewID;
+		this.reviews = reviews;
+		this.ratingValue = ratingValue;
+		this.stadiumId = stadiumId;
+		this.user = user;
+	}
+
+
+
+	public User getUser() {
+		return user;
+	}
+
+
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 

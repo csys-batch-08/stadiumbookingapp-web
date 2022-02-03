@@ -2,7 +2,7 @@ package com.stadiumbooking.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,8 +28,8 @@ public class AdminProfileController extends HttpServlet {
 		session.setAttribute("error",null );
 		
 		try {
-			List<User> userDetails = userDao.getUserById(userID);
-			req.setAttribute("userDateils", userDetails);  
+			User userDetails = userDao.getUserById(userID);
+			req.setAttribute("user", userDetails);  
 		      RequestDispatcher rd = req.getRequestDispatcher("adminProfile.jsp");
 			
 					rd.forward(req, res);

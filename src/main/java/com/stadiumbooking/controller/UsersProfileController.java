@@ -28,8 +28,8 @@ public class UsersProfileController  extends HttpServlet {
 		session.setAttribute("error",null );
 		
 		try {
-			List<User> userDetails = userDao.getUserById(userID);
-			req.setAttribute("userDateils", userDetails);  
+			User userDetails = userDao.getUserById(userID);
+			req.setAttribute("user", userDetails);  
 		      RequestDispatcher rd = req.getRequestDispatcher("usersprofile.jsp");
 					rd.forward(req, res);
 		} catch (SQLException | ServletException | IOException e) {

@@ -13,7 +13,7 @@ public interface MatchDao {
 	public List<Match> getAllMatchDetalis() throws  SQLException;
 	public void updateMatchDetails(Match match) throws  SQLException;
 	public LocalDate getDate() throws  SQLException;
-	public List<Match> getMatchByMatchId(int matchId) throws SQLException;
+	public Match getMatchByMatchId(int matchId) throws SQLException;
 	public void updateAvailableSeats(int seatsCount, int matchId) throws SQLException;
 	public void updateCancelledSeats(int seatsCount,int matchId) throws  SQLException;
 

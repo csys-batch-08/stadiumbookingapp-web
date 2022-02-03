@@ -6,7 +6,7 @@ import java.util.Objects;
 public class WalletDetails {
 
 	private int walletId;
-	private int userId;
+	private User user;
 	private Long amount;
 	private LocalDateTime transactionDate;
 	
@@ -15,10 +15,10 @@ public class WalletDetails {
 		
 	}
 	
-	public WalletDetails(int walletId, int userId, Long amount, LocalDateTime transactionDate) {
+	public WalletDetails(int walletId, User user, Long amount, LocalDateTime transactionDate) {
 		super();
 		this.walletId = walletId;
-		this.userId = userId;
+		this.user = user;
 		this.amount = amount;
 		this.transactionDate= transactionDate;
 	}
@@ -42,11 +42,11 @@ public class WalletDetails {
 	public void setWalletId(int walletId) {
 		this.walletId = walletId;
 	}
-	public int getUserId() {
-		return userId;
+	public User getUser() {
+		return user;
 	}
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 	public Long getAmount() {
 		return amount;
@@ -59,14 +59,14 @@ public class WalletDetails {
 	
 		@Override
 	public String toString() {
-		return "WalletDetails [walletId=" + walletId + ", userId=" + userId + ", amount=" + amount
+		return "WalletDetails [walletId=" + walletId + ", user=" + user + ", amount=" + amount
 				+ ", transactionDate=" + transactionDate + "]";
 	}
 
 
 		@Override
 	public int hashCode() {
-		return Objects.hash(amount, userId, walletId);
+		return Objects.hash(amount, user, walletId);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -77,7 +77,7 @@ public class WalletDetails {
 		if (getClass() != obj.getClass())
 			return false;
 		WalletDetails other = (WalletDetails) obj;
-		return Objects.equals(amount, other.amount) && userId == other.userId && walletId == other.walletId;
+		return Objects.equals(amount, other.amount) && user == other.user && walletId == other.walletId;
 	}
 	
 	

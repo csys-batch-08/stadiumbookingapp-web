@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import com.stadiumbooking.daoimpl.UserDaoImpl;
 import com.stadiumbooking.daoimpl.WalletDaoImpl;
+import com.stadiumbooking.model.User;
 import com.stadiumbooking.model.WalletDetails;
 
 
@@ -29,7 +30,9 @@ public class WalletController extends HttpServlet {
 			Long amount=Long.parseLong(req.getParameter("amount"));
 			HttpSession session=req.getSession();
 			session.setAttribute("LowBalanceError", null);
-			WalletDetails wallet=new WalletDetails(0,userId,amount,null);
+			User user=new User();
+			user.setUserid(userId);
+			WalletDetails wallet=new WalletDetails(0,user,amount,null);
 			walletDao.insertAmount(wallet);
 			Double userWallet=userDao.userWalletDetails(userId);
 			

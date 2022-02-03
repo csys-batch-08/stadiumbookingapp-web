@@ -11,92 +11,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel = "icon" type = "" href = "image/Studium.png">
+    <link rel="stylesheet" href="assets/css/sideNavBar.css">
+<link rel="stylesheet" href="assets/css/wallet.css">
     <title>Matchbooking.com</title>
     <style>
-        .sidenav {
-            height: 100%;
-            width: 200px;
-            position: fixed;
-
-            top: 0;
-            left: 0;
-            background-color:steelblue;
-
-        }
-
-        .sidenav a {
-            padding: 6px 6px 6px 32px;
-            text-decoration: none;
-            font-size: 23px;
-            color: white;
-            display: block;
-        }
-
-        .sidenav a:hover {
-            color: black;
-        }
-
-        .main {
-            margin-left: 200px;
-        }
-        #wallet{
-            position: absolute;
-            left: 400px;
-            top: 100px;
-        }
-        #walletId{
-        position: absolute;
-            left: 400px;
-            top: px;
-        }
-          #walletId p{
-        font-size: 15px;
-        }
-        
-        .wrapper{
-        position:relative;
-        overflow: hidden;
-        }
-        .wrapper input{
-        border: none;
-        border-bottom:2px solid blue;
-        width: 200px;
-        height:40px;
-        outline:none;
-        
-        }
-        .validation{
-        position: absolute;
-        top:50%;
-        right: 0.5rem;
-        transform:translate(5rem,-50%);
-        opacity: 0;
-        color:blue;
-        transition:all 0.35s;
-        }
-        .wrapper input:valid {border-color:blue;}
-        
-         .wrapper input:invalid ~ .validation{
-         opacity:1;
-         transform:translate(0,-50%);
-         }
-         
-                   input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active  {
-  transition: background-color 5000s;
-  -webkit-text-fill-color: black !important;
-}  
-         
-        input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-}
-
-input[type=number] {
-  -moz-appearance: textfield;
-}
         
     </style>
 </head>
@@ -134,7 +52,7 @@ input[type=number] {
      
         <div class="wrapper">
            <label ><strong>Add Amount:</strong></label>
-        <input type="number" min="1000" name="amount" id="amount" required />
+        <input type="number" min="1000" name="amount" id="amount"   required=""/>
         <div class="validation">Minimum Deposit 1000Rs</div>
         </div>
         <br>

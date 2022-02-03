@@ -12,7 +12,7 @@ public interface UserDao {
 
 	public int insertUser(User user) throws  SQLException;
     public List<User> getAllUser() throws  SQLException;
-	public List<User> getUserById(int id) throws SQLException;
+	public User getUserById(int id) throws SQLException;
 	public void updateUser(User user) throws SQLException;
 	public void deleteUser(int userId) throws SQLException;
 	public List<User> validateUser(String username, String password) throws SQLException;

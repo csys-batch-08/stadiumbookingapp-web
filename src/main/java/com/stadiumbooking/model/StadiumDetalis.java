@@ -1,5 +1,6 @@
 package com.stadiumbooking.model;
 
+import java.util.List;
 import java.util.Objects;
 
 public class StadiumDetalis {
@@ -7,7 +8,14 @@ public class StadiumDetalis {
 	private int stadiumId;
 	private String stadiumName;
 	private String stadiumImg;
+	private List<Ratings> ratings;
 	
+	public List<Ratings> getRatings() {
+		return ratings;
+	}
+	public void setRatings(List<Ratings> ratings) {
+		this.ratings = ratings;
+	}
 	public int getStadiumId() {
 		return stadiumId;
 	}
@@ -35,6 +43,14 @@ public class StadiumDetalis {
 		this.stadiumId = stadiumId;
 		this.stadiumName = stadiumName;
 		this.stadiumImg = stadiumImg;
+	}
+	
+	public StadiumDetalis(int stadiumId, String stadiumName, String stadiumImg, List<Ratings> ratings) {
+		super();
+		this.stadiumId = stadiumId;
+		this.stadiumName = stadiumName;
+		this.stadiumImg = stadiumImg;
+		this.ratings = ratings;
 	}
 	@Override
 	public String toString() {

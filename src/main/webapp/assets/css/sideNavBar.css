@@ -1,0 +1,27 @@
+@charset "ISO-8859-1";
+ .sidenav {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+
+            top: 0;
+            left: 0;
+            background-color:steelblue;
+
+        }
+
+        .sidenav a {
+            padding: 6px 6px 6px 32px;
+            text-decoration: none;
+            font-size: 23px;
+            color: white;
+            display: block;
+        }
+
+        .sidenav a:hover {
+            color: black;
+        }
+
+        .main {
+            margin-left: 200px;
+        }

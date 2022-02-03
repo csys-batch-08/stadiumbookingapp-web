@@ -9,7 +9,9 @@ import java.util.List;
 
 import com.stadiumbooking.connection.ConnectionUtill;
 import com.stadiumbooking.dao.SeatsDao;
+import com.stadiumbooking.model.Match;
 import com.stadiumbooking.model.Seats;
+import com.stadiumbooking.model.User;
 
 public class SeatsDaoImpl implements SeatsDao {
 	static final String TICKETID="TICKETID";
@@ -36,9 +38,9 @@ public class SeatsDaoImpl implements SeatsDao {
 			
 			 stmt=con.prepareStatement(query);
 			
-			stmt.setInt(1, seats.getUserid());
+			stmt.setInt(1, seats.getUser().getUserid());
 			stmt.setString(2, seats.getTicketNumbers());
-			stmt.setInt(3, seats.getMatchId());
+			stmt.setInt(3, seats.getMatch().getMatchId());
 			stmt.setString(4, seats.getSeatclass());
 			stmt.setInt(5, seats.getPrice());
 			stmt.setInt(6, seats.getSeatcount());
@@ -79,7 +81,11 @@ public class SeatsDaoImpl implements SeatsDao {
 			rs=pst.executeQuery();
 			seatList=new ArrayList<>();
 			while(rs.next()) {
-				Seats seat=new Seats(rs.getInt(TICKETID),rs.getInt(USERID),rs.getString(TICKET_NUMBERS),rs.getInt(MATCH_ID),rs.getString(SEATCLASS),rs.getInt(TOTALPIRCE),
+				UserDaoImpl userDao=new UserDaoImpl();
+				User user=userDao.getUserById(rs.getInt(USERID));
+				MatchDaoImpl matchDao=new MatchDaoImpl();
+				Match match=matchDao.getMatchByMatchId(rs.getInt(MATCH_ID));
+				Seats seat=new Seats(rs.getInt(TICKETID),user,rs.getString(TICKET_NUMBERS),match,rs.getString(SEATCLASS),rs.getInt(TOTALPIRCE),
 						rs.getInt(SEATCOUNT),rs.getString(STATUS));
 			seatList.add(seat);
 			}
@@ -120,7 +126,11 @@ public class SeatsDaoImpl implements SeatsDao {
 			 rs=stmt.executeQuery(query);
 			seatList=new ArrayList<>();
 			while(rs.next()) {
-				Seats seat=new Seats(rs.getInt(TICKETID),rs.getInt(USERID),rs.getString(TICKET_NUMBERS),rs.getInt(MATCH_ID),rs.getString(SEATCLASS),rs.getInt(TOTALPIRCE),
+				UserDaoImpl userDao=new UserDaoImpl();
+				User user=userDao.getUserById(rs.getInt(USERID));
+				MatchDaoImpl matchDao=new MatchDaoImpl();
+				Match match=matchDao.getMatchByMatchId(rs.getInt(MATCH_ID));
+				Seats seat=new Seats(rs.getInt(TICKETID),user,rs.getString(TICKET_NUMBERS),match,rs.getString(SEATCLASS),rs.getInt(TOTALPIRCE),
 						rs.getInt(SEATCOUNT),rs.getString(STATUS));
 			seatList.add(seat);
 			}

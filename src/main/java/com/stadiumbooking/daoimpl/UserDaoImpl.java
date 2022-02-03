@@ -104,14 +104,14 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public List<User> getUserById(int id) throws SQLException {
+	public User getUserById(int id) throws SQLException {
 		/* Get Single User details */
 
 		ConnectionUtill conUtil = new ConnectionUtill();
 		Connection con = null;
 		PreparedStatement stmt1 = null;
 		ResultSet rs = null;
-		List<User> userList = null;
+		User user=null;
 		try {
 			con = conUtil.getDBConnect();
 			String query = "Select USERID,NAME,USERNAME,ROLE,PASSWORD,EMAIL,PHONENUMBER,WALLET,PROFILEPIC from users where userid=?";
@@ -119,14 +119,14 @@ public class UserDaoImpl implements UserDao {
 			stmt1 = con.prepareStatement(query);
 			stmt1.setInt(1, id);
 			rs = stmt1.executeQuery();
-			userList = new ArrayList<>();
+			
 			if (rs.next()) {
 
-				User user = new User(rs.getInt(USERID), rs.getString(NAME), rs.getString(USERNAME), rs.getString(ROLE), rs.getString(PASSWORD),
+				 user = new User(rs.getInt(USERID), rs.getString(NAME), rs.getString(USERNAME), rs.getString(ROLE), rs.getString(PASSWORD),
 						rs.getString(EMAIL), rs.getLong(PHONENUMBER), rs.getDouble(WALLET), rs.getString(PROFILEPIC));
-				userList.add(user);
+				
 			}
-			return userList;
+			return user;
 		} catch (ClassNotFoundException | SQLException e) {
 
 			e.getMessage();
@@ -139,7 +139,7 @@ public class UserDaoImpl implements UserDao {
 				con.close();
 			}
 		}
-		return userList;
+		return user;
 
 	}
 

@@ -33,7 +33,7 @@ public class ProfilePicController extends HttpServlet {
 			try {
 				userDao.updateUserProfilePic(userId, pic);
 			
-				List<User> userDetails=userDao.getUserById(userId);
+				User userDetails=userDao.getUserById(userId);
 				req.setAttribute("userDateils", userDetails);
 				
 				RequestDispatcher rd = req.getRequestDispatcher("/adminProfile.jsp");
@@ -51,7 +51,7 @@ public class ProfilePicController extends HttpServlet {
 			try {
 				userDao.updateUserProfilePic(userId, pic);
 				
-				List<User> userDetails=userDao.getUserById(userId);
+				User userDetails=userDao.getUserById(userId);
 				req.setAttribute("userDateils", userDetails);
 			
 				  RequestDispatcher rd = req.getRequestDispatcher("usersprofile.jsp");			

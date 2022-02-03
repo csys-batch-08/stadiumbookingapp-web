@@ -7,139 +7,9 @@
 <meta charset="ISO-8859-1">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css"  rel="stylesheet">
 <link rel="icon" type="" href="image/Studium.png">
+<link rel="stylesheet" href="assets/css/stadiumList.css">
 <title>Matchbooking.com</title>
-<style>
-body
-{
-overflow-x:hidden; 
-}
 
-
-img {
-	width: 200px;
-	height: 200px;
-	border-radius:50%;
-	position: relative;
-	left: 350px;
-	border: 2px solid blue;
-}
-.shimmer{
-    animation-duration: 2.2s;
-    animation-fill-mode: forwards;
-    animation-iteration-count: infinite;
-    animation-name: shimmer;
-    animation-timing-function: linear;
-    background: #ddd;
-    background: linear-gradient(to right, #F6F6F6 8%, #F0F0F0 18%, #F6F6F6 33%);
-    background-size: 1200px 100%;
-}
-
-@-webkit-keyframes shimmer {
-    0% {
-        background-position: -100% 0;
-    }
-    100% {
-        background-position: 100% 0;
-    }
-}
-
-@keyframes shimmer {
-    0% {
-        background-position: -1200px 0;
-    }
-    100% {
-        background-position: 1200px 0;
-    }
-}
-  
-
-table tr,td{
-margin-left: 150px;
-	
-}
-
-
-   
-#stadiumLists{
-margin-left: -380px;
-margin-top: 50px;
-width:auto;
-}
-#stadiumList{
-padding:10px;
-
-}
-table th,
-table td {
-  padding: 5px;
-  /* Apply cell padding */
-}
-table {
-  border-collapse: separate;
-  border-spacing: 30px;
-  cellspacing:70px;
-  /* Apply cell spacing */
-}
-
-#stadium{
-position: relative;
-left:400px;
-
-}
-a{
-text-decoration: none;
-}
-
-::-webkit-scrollbar {
-  width: 12px;
-
-}
-
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1; 
-}
- 
-
-::-webkit-scrollbar-thumb {
-  background: #888; 
-    
-}
-
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555; 
-}
-
-
-ul {
-            margin: 0;
-            overflow: hidden;
-            background-color: gray;
-            color: white;
-            font-weight: bolder;
-            padding: 16px;
-            opacity: 0.5px;
-        }
-
-        li {
-            float: right;
-            color: white;
-        }
-#nav{
-position: absolute;
-left: 0px;
-top: 0px;
-width: 1355px;
-}        
-#nav a{
-color:white;
-text-decoration: none;
-}ul {
-    list-style-type: none;
-}
-
-</style>
 </head>
 <body>
 
@@ -194,7 +64,7 @@ text-decoration: none;
 									<td >
 									
 								
-									<img src="image/${stadium.stadiumImg}" alt="can't find" data-aos="flip-right" data-aos-easing="linear"   data-aos-duration="1000"></td>
+									<img src="assets/image/${stadium.stadiumImg}" alt="can't find" data-aos="flip-right" data-aos-easing="linear"   data-aos-duration="1000"></td>
 								
 									</tr>
 								
@@ -225,9 +95,6 @@ text-decoration: none;
 
 
      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" integrity="filehash"></script>
-<script>
-  AOS.init();
-</script>
-	
+<script src="assets/js/animation.js"></script>
 </body>
 </html>

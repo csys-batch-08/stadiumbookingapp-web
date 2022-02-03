@@ -45,8 +45,8 @@ public class UserUpdateController extends HttpServlet {
 				User user=new User(userId, name, username,null, password, email, phoneNumber,0.0,null);
 				userDao.updateUser(user);
 				int userID=(int) session1.getAttribute("id");
-				List<User> userDetails=userDao.getUserById(userID);
-				req.setAttribute("userDateils", userDetails);
+				User userDetails=userDao.getUserById(userID);
+				req.setAttribute("user", userDetails);
 	         	
 	         	 RequestDispatcher rd = req.getRequestDispatcher("adminProfile.jsp");			
 					rd.forward(req, res);
@@ -55,8 +55,8 @@ public class UserUpdateController extends HttpServlet {
 		User user=new User(userId, name, username,null, password, email, phoneNumber,0.0,null);
 		userDao.updateUser(user);
 		int userID=(int) session1.getAttribute("id");
-		List<User> userDetails=userDao.getUserById(userID);
-		req.setAttribute("userDateils", userDetails);
+		User userDetails=userDao.getUserById(userID);
+		req.setAttribute("user", userDetails);
 		
 		 RequestDispatcher rd = req.getRequestDispatcher("usersprofile.jsp");			
 			rd.forward(req, res);

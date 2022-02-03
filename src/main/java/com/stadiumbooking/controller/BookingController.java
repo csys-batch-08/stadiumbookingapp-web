@@ -22,6 +22,7 @@ import com.stadiumbooking.exception.LowBalance;
 import com.stadiumbooking.exception.LowSeatCount;
 import com.stadiumbooking.model.Match;
 import com.stadiumbooking.model.Seats;
+import com.stadiumbooking.model.User;
 
 
 @WebServlet("/booking")
@@ -46,6 +47,7 @@ public class BookingController extends HttpServlet {
 
 		int matchId = Integer.parseInt(req.getParameter("matchIds"));
 		int userId = (int) session2.getAttribute("id");
+		String ticketNumber = req.getParameter("ticketNumber");
 
 		int totalAvalibleSeats = 0;
 		int avalibleSeats = 0;
@@ -57,17 +59,22 @@ public class BookingController extends HttpServlet {
 			e2.getMessage();
 		}
 		avalibleSeats = totalAvalibleSeats - seatCounts;
-
+//If Seats Are Avalible (>0)
+		
 		if (totalAvalibleSeats != 0) {
 			if (avalibleSeats >= 0) {
 
 				try {
-					Double userWallet = userDao.userWalletDetails(userId);
+					Double walletBlance = userDao.userWalletDetails(userId);
 
-					if (userWallet >= totalprice) {
-						String ticketNumber = req.getParameter("ticketNumber");
+					if (walletBlance >= totalprice) {
+						
 
-						Seats seats = new Seats(0, userId, ticketNumber, matchId, seatclass, totalprice, seatCounts,null);
+						User user=new User();
+						user.setUserid(userId);
+						Match match=new Match();
+						match.setMatchId(matchId);
+						Seats seats = new Seats(0, user, ticketNumber, match, seatclass, totalprice, seatCounts,null);
 						seatDao.bookingSeats(seats);
 
 						userDao.bookingTicktes(userId, totalprice);

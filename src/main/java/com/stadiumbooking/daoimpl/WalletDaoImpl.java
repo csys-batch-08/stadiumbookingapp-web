@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.stadiumbooking.connection.ConnectionUtill;
 import com.stadiumbooking.dao.WalletDao;
+import com.stadiumbooking.model.User;
 import com.stadiumbooking.model.WalletDetails;
 
 public class WalletDaoImpl implements WalletDao {
@@ -31,13 +32,13 @@ public class WalletDaoImpl implements WalletDao {
 			UserDaoImpl userDao = new UserDaoImpl();
 			String query = "insert into wallet_details(userId,amount) values(?,?)";
 			stmt = con.prepareStatement(query);
-			stmt.setInt(1, wallete.getUserId());
+			stmt.setInt(1, wallete.getUser().getUserid());
 			stmt.setLong(2, wallete.getAmount());
 			stmt.executeUpdate();
 
 			/* Update User Wallet Details in users table */
 
-			int userid = wallete.getUserId();
+			int userid = wallete.getUser().getUserid();
 			double amount = wallete.getAmount();
 			userDao.addAmount(userid, amount);
 		} catch (ClassNotFoundException | SQLException e) {
@@ -75,7 +76,10 @@ public class WalletDaoImpl implements WalletDao {
 
 			while (rs.next()) {
 
-				WalletDetails walletDetails = new WalletDetails(rs.getInt(WALLETID), rs.getInt(USERID), rs.getLong(AMOUNT),
+				UserDaoImpl userDao=new UserDaoImpl();
+				User user=new User();
+				user=userDao.getUserById(rs.getInt(USERID));
+				WalletDetails walletDetails = new WalletDetails(rs.getInt(WALLETID),user, rs.getLong(AMOUNT),
 						rs.getTimestamp(TRANSACTION_DATE).toLocalDateTime());
 				walletList.add(walletDetails);
 			}

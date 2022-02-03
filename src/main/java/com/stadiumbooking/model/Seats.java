@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public class Seats {
 	private int ticketId;
-	private int userid;
+	private User user;
 	private String ticketNumbers;
-	private int matchId;
+	private Match match;
 
 	private String seatclass;
 	private int price;
@@ -16,13 +16,13 @@ public class Seats {
 		super();
 		
 	}
-	public Seats(int ticketId, int userid, String ticketNumbers, int matchId, String seatclass, int pirce,
+	public Seats(int ticketId, User user, String ticketNumbers, Match match, String seatclass, int pirce,
 			int seatcount, String status) {
 		super();
 		this.ticketId = ticketId;
-		this.userid = userid;
+		this.user = user;
 		this.ticketNumbers = ticketNumbers;
-		this.matchId = matchId;
+		this.match = match;
 		this.seatclass = seatclass;
 		this.price = pirce;
 		this.seatcount = seatcount;
@@ -34,11 +34,11 @@ public class Seats {
 	public void setTicketId(int ticketId) {
 		this.ticketId = ticketId;
 	}
-	public int getUserid() {
-		return userid;
+	public User getUser() {
+		return user;
 	}
-	public void setUserid(int userid) {
-		this.userid = userid;
+	public void setUserid(User user) {
+		this.user = user;
 	}
 	public String getTicketNumbers() {
 		return ticketNumbers;
@@ -46,11 +46,11 @@ public class Seats {
 	public void setTicketNumbers(String ticketNumbers) {
 		this.ticketNumbers = ticketNumbers;
 	}
-	public int getMatchId() {
-		return matchId;
+	public Match getMatch() {
+		return match;
 	}
-	public void setMatchId(int matchId) {
-		this.matchId = matchId;
+	public void setMatchId(Match match) {
+		this.match = match;
 	}
 	public String getSeatclass() {
 		return seatclass;
@@ -78,13 +78,13 @@ public class Seats {
 	}
 	@Override
 	public String toString() {
-		return "Seats [ticketId=" + ticketId + ", userid=" + userid + ", ticketNumbers=" + ticketNumbers + ", matchId="
-				+ matchId + ", seatclass=" + seatclass + ", price=" + price + ", seatcount=" + seatcount + ", status="
+		return "Seats [ticketId=" + ticketId + ", user=" + user + ", ticketNumbers=" + ticketNumbers + ", match="
+				+ match + ", seatclass=" + seatclass + ", price=" + price + ", seatcount=" + seatcount + ", status="
 				+ status + "]";
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(price, seatclass, seatcount, ticketId, ticketNumbers, userid);
+		return Objects.hash(price, seatclass, seatcount, ticketId, ticketNumbers, user);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -97,7 +97,7 @@ public class Seats {
 		Seats other = (Seats) obj;
 		return price== other.price&& Objects.equals(seatclass, other.seatclass) && seatcount == other.seatcount
 				&& ticketId == other.ticketId && Objects.equals(ticketNumbers, other.ticketNumbers)
-				&& userid == other.userid;
+				&& user == other.user;
 	}
 	
 	

@@ -1,0 +1,64 @@
+@charset "ISO-8859-1";
+
+#wallet {
+	position: absolute;
+	left: 400px;
+	top: 100px;
+}
+
+#walletId {
+	position: absolute;
+	left: 400px;
+	top: px;
+}
+
+#walletId p {
+	font-size: 15px;
+}
+
+.wrapper {
+	position: relative;
+	overflow: hidden;
+}
+
+.wrapper input {
+	border: none;
+	border-bottom: 2px solid blue;
+	width: 200px;
+	height: 40px;
+	outline: none;
+}
+
+.validation {
+	position: absolute;
+	top: 50%;
+	right: 0.5rem;
+	transform: translate(5rem, -50%);
+	opacity: 0;
+	color: blue;
+	transition: all 0.35s;
+}
+
+.wrapper input:valid {
+	border-color: blue;
+}
+
+.wrapper input:invalid ~ .validation {
+	opacity: 1;
+	transform: translate(0, -50%);
+}
+
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus,
+	input:-webkit-autofill:active {
+	transition: background-color 5000s;
+	-webkit-text-fill-color: black !important;
+}
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button
+	{
+	-webkit-appearance: none;
+}
+
+input[type=number] {
+	-moz-appearance: textfield;
+}

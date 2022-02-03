@@ -1,6 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" %>
+     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 <!DOCTYPE html>
@@ -12,42 +13,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "icon" type = "" href = "image/Studium.png">
     <title>Matchbooking.com</title>
-    <style>
-   
-  .rate {
-    float: left;
-    height: 46px;
-    padding: 0 10px;
-}
-.rate:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
-}
-.rate:not(:checked) > label {
-    float:right;
-    width:1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:30px;
-    color:#ccc;
-}
-.rate:not(:checked) > label:before {
-    content:'\2605';
-}
-.rate > input:checked ~ label {
-    color: #ffc700;    
-}
-#ratingBody{
-
-    position: absolute;
-    left: 450px;
-    top: 100px;
-}
-
-    </style>
+   <link rel="stylesheet" href="assets/css/rating.css">
 </head>
 <body>
+
+<div id="nav">
+
+        <ul>
+         
+            <strong id="logo"> MatchBooking</strong>
+            
+      <li><a href="index.jsp">Logout</a></li>
+            <li>&nbsp; &nbsp;</li>
+            <li>
+            <c:choose>
+             <c:when test="${sessionScope.role.equals('Admin')}">
+             
+            <a href="adminHome.html">Home</a>
+            </c:when>
+            <c:when test="${sessionScope.role.equals('User')}">
+            
+            <a href="userHome.html">Home</a>
+        
+            </c:when>
+            </c:choose>
+            </li>
+
+          
+        </ul>
+    </div>
+<br>
+<h2>Give A Ratings To</h2>
     <div id="ratingBody">
     <div id="rating">
 

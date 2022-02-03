@@ -1,0 +1,183 @@
+@charset "ISO-8859-1";
+
+ html {
+    overflow-x:hidden;
+  scroll-behavior: smooth;
+}
+         li {
+            float: right;
+            color: black;
+            font-size: 18px;
+        }
+        li:hover{
+        cursor: pointer;
+        }
+        #login input{
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid brown;
+            color: blue;
+            font-weight: bold;
+            outline: none;
+        }
+        #regs input {
+            border: none;
+            background: transparent;
+            border-bottom: 2px solid brown;
+            color: blue;
+            font-weight: bold;
+            position: relative;
+            left: 60px;
+            top: 20px;
+            outline: none;
+        }
+        #regs label{
+        position:relative;
+        left:60px;
+        top:20px
+        }
+
+
+        input::placeholder {
+            color:black;
+            font-size: 14px;
+        }
+        #regs button
+        {
+            position: relative;
+            left: -50px;
+            top: 25px;
+        }
+        #regs i{
+
+            position: relative;
+            left: 100px;
+
+        }
+        #iconImg{
+transition:box-shadow .4s, color .8s, transform .4s;
+}        
+#iconImg:hover{
+color:red;
+box-shadow: 0 20px 20px rgba(0,0,0,0.205),
+inset -30px 0 20px 	rgba(0,0,0,0.205);
+transform:translateY(-10px);
+}
+
+#iconn{
+position:absolute;
+top:-5px;
+left:20px;
+width: 85px;
+height: 85px;
+}
+    input::placeholder {
+            color:gray;
+            font-size: 14px;
+        }
+        #login{
+        margin-left: 120px;
+        }
+        #regs{
+        margin-left: 60px;
+        } 
+   
+          input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+  transition: background-color 5000s;
+  -webkit-text-fill-color: blue !important;
+}
+
+#loginBuuton,#regButton {         
+       transition:transform 300ms,background-color 300ms;
+  animation:pulse 500ms;
+        }
+        #loginBuuton:hover,#regButton:hover{
+transform:scale(1.05);
+        }
+        #loginBuuton:active,#regButton:active{
+        transform:scale(0.95);
+        animation:none; 
+        }
+        
+        @keyframes pulse{
+        from{
+        box-shadow: yellow 0 0 0;
+        }
+        to{
+        box-shadow: blue 0 0 0 6px;
+        }
+        }
+        
+
+    #con{
+    background-image: url(../image/StadiumImages.jpg);
+
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
+#partentRow{
+margin-left: 160px;
+}
+#bcci{
+margin-left: 120px;
+}
+
+#dream{
+margin-left: 120px;
+}
+
+
+::-webkit-scrollbar {
+  width: 12px;
+
+}
+
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+
+::-webkit-scrollbar-thumb {
+  background: #888; 
+    
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.shimmerBG {
+    animation-duration: 2.2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: shimmer;
+    animation-timing-function: linear;
+    background: #ddd;
+    background: linear-gradient(to right, #F6F6F6 8%, #F0F0F0 18%, #F6F6F6 33%);
+    background-size: 1200px 100%;
+}
+
+@-webkit-keyframes shimmer {
+    0% {
+        background-position: -100% 0;
+    }
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1200px 0;
+    }
+    100% {
+        background-position: 1200px 0;
+    }
+}
+  

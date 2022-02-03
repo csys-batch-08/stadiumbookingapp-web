@@ -29,8 +29,8 @@ public class UpdateMacthCallController extends HttpServlet {
 		int matchId=Integer.parseInt(req.getParameter("matchId"));
 		try {
 			
-			List<Match> match = matchDao.getMatchByMatchId(matchId);
-			req.setAttribute("singleMatch", match);
+			Match match = matchDao.getMatchByMatchId(matchId);
+			req.setAttribute("match", match);
 			
 		      RequestDispatcher rd = req.getRequestDispatcher("updateMatch.jsp");			
 					rd.forward(req, res);

@@ -77,25 +77,22 @@ color: black;
    <c:forEach items="${seatListById}" var="seatList">   
 
 
-<jsp:useBean id="matchDao" class="com.stadiumbooking.daoimpl.MatchDaoImpl"/>
 
 
-    <div class="matchDetalis" data-aos="fade-up" 
-     data-aos-delay="100">
- <c:forEach items="${matchDao.getMatchByMatchId(seatList.matchId)}" var="match">
+    <div class="matchDetalis" data-aos="fade-up"  data-aos-delay="100">
   
        <br>
-        <strong>${match.teamA}</strong>  Vs <strong>${match.teamB}</strong>
+        <strong>${seatList.match.teamA}</strong>  Vs <strong>${seatList.match.teamB}</strong>
         <br>
            <div data-aos="fade-up"
      data-aos-duration="1000">
-        <label>${match.stadiumName}</label>
-        <label>${match.location}</label>
+        <label>${seatList.match.stadiumName}</label>
+        <label>${seatList.match.location}</label>
         <br>
-           <fmt:parseDate value="${match.matchDate}" pattern="yyyy-MM-dd" var="macthDate" type="date"/>
+           <fmt:parseDate value="${seatList.match.matchDate}" pattern="yyyy-MM-dd" var="macthDate" type="date"/>
         
         <label><fmt:formatDate pattern="dd/MM/yyyy" value="${macthDate}"/> </label>
-         <label>${match.matchTime}</label>
+         <label>${seatList.match.matchTime}</label>
          <br>
 
       <label>${seatList.seatclass}</label>
@@ -104,7 +101,7 @@ color: black;
     <br>
          <label>Price:${seatList.price}</label>
          <br>
-         <label>Seats Numbers:${seatList.ticketNumbers}</label>
+         <label>Seat Numbers:${seatList.ticketNumbers}</label>
          <br>
          <c:choose>
          <c:when test = "${sessionScope.today > match.matchDate }">
@@ -133,8 +130,6 @@ color: black;
 </c:otherwise>
 </c:choose>
 </div>
-
-</c:forEach>
 <br>
 
 
@@ -143,8 +138,6 @@ color: black;
     </c:forEach>
  
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" integrity="filehash"></script>
-<script>
-  AOS.init();
-</script>
+	<script src="assets/js/animation.js"></script>
 </body>
 </html>

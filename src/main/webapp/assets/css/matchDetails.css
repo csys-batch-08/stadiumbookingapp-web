@@ -1,0 +1,67 @@
+@charset "ISO-8859-1";
+
+#Form {
+	position: absolute;
+	top: 30PX;
+	left: 500px;
+}
+
+#From input {
+	width: 150px;
+}
+
+#From select {
+	width: 150px;
+}
+
+#spname {
+	width: 150px;
+	position: relative;
+	left: 35px;
+}
+
+#dateinput {
+	position: relative;
+	left: -5px;
+}
+
+.teamA {
+	width: 150px;
+	position: absolute;
+	left: 140px;
+}
+
+.teamB {
+	width: 150px;
+	position: absolute;
+	left: 140px;
+}
+
+#event {
+	width: 150px;
+	position: relative;
+	left: 85px;
+}
+
+#teamAlogo, #teamBlogo {
+	position: relative;
+	left: 50px;
+}
+
+#seats {
+	width: 100px;
+	position: relative;
+	left: 15px;
+}
+
+#fclass {
+	width: 100px;
+	position: relative;
+	left: 25px;
+}
+
+#sclass {
+	width: 100px;
+	position: relative;
+	left: 10px;
+}

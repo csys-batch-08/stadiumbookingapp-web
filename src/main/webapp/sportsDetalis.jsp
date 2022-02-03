@@ -9,39 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "icon" type = "" href = "image/Studium.png">
     <title>Matchbooking.com</title>
-    <style>
-        .sidenav {
-            height: 100%;
-            width: 200px;
-            position: fixed;
-
-            top: 0;
-            left: 0;
-            background-color:steelblue;
-
-        }
-
-        .sidenav a {
-            padding: 6px 6px 6px 32px;
-            text-decoration: none;
-            font-size: 23px;
-            color: white;
-            display: block;
-        }
-
-        .sidenav a:hover {
-            color: black;
-        }
-
-        .main {
-            margin-left: 200px;
-        }
-        #sports{
-            position: absolute;
-            left: 400px;
-            top: 100px;
-        }
-    </style>
+     <link rel="stylesheet" href="assets/css/sideNavBar.css">
+      <link rel="stylesheet" href="assets/css/stylesheet.css">
+  
 </head>
 <body>
     <div class="sidenav">

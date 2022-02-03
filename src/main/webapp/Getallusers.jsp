@@ -8,85 +8,14 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="assets/css/sideNavBar.css">
+<link rel="stylesheet" href="assets/css/table.css">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css"  rel="stylesheet">
 <link rel = "icon" type = "" href = "image/Studium.png">
+
 <title>Matchbooking.com</title>
 
-    <style>
-        .sidenav {
-            height: 100%;
-            width: 200px;
-            position: fixed;
-
-            top: 0;
-            left: 0;
-            background-color:steelblue;
-
-        }
-
-        .sidenav a {
-            padding: 6px 6px 6px 32px;
-            text-decoration: none;
-            font-size: 23px;
-            color: white;
-            display: block;
-        }
-
-        .sidenav a:hover {
-            color: black;
-        }
-
-        .main {
-            margin-left: 200px;
-        }
-        
-        table {
-             position: absolute;
-             left:235px;  
-             top:50px;     
-            width: 80%;
-            border-collapse: collapse;
-            
-            border-top: none;
-        }
-
-      tr:nth-of-type(odd) { 
-	   background: #eee; 
-	      }
-        th{
-             background-color: blue;
-             color: white;
-            height: 60px;
-            border: 1px solid black;
-        }
-        caption{             
-        background-color: #eee;
-             color: blue;
-             font-size:25px;
-             text-align:center;
-              height: 60px;
-            border: 1px solid black;
-        
-        }
-        
-       
-        
-
-        td {
-        height:20px;
-            text-align: center;
-            border: 1px solid black;
-        }
-         
-        td:hover{
-        color:blue;
-        
-        }
-        #tabel a{
-        text-decoration: none;
-        }
-
-    </style>
+  
 
 </head>
 <body>
@@ -108,7 +37,7 @@
     <table data-aos="zoom-out-down"  id="tabel">
      <caption><strong id="title">All User List</strong></caption>
       <tr>  
-     
+     <th id="serialNo">S/N</th>
      <th id="name">Name</th>
      <th id="username">Username</th>
      <th id="role">Role</th> 
@@ -117,11 +46,13 @@
      <th id="phone">Phone Number</th> 
      <th id="delete"></th> 
      </tr>  
-
+<c:set var="count" value="0" />
 <c:forEach items="${UserLists}" var="users">
-
+<c:set var="count" value="${count + 1}" scope="page"/>
 	<tr >
-	 
+<td  data-aos="fade-down" 
+	data-aos-easing="linear"
+     data-aos-delay="250">${count}</td>	 
 	<td  data-aos="fade-down" 
 	data-aos-easing="linear"
      data-aos-delay="400">${users.name}</td>
@@ -173,9 +104,6 @@
 
 </table>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" integrity="filehash"></script>
-<script>
-  AOS.init();
-</script>
-
+<script src="assets/js/animation.js"></script>
 </body>
 </html>

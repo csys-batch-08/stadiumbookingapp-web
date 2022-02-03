@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import com.stadiumbooking.connection.ConnectionUtill;
@@ -171,7 +170,7 @@ public class MatchDaoImpl implements MatchDao {
 	}
 
 	@Override
-	public List<Match> getMatchByMatchId(int matchId) throws  SQLException {
+	public Match getMatchByMatchId(int matchId) throws  SQLException {
 		
 		/*Get a Single Match Details By Match Id*/
 		
@@ -179,29 +178,30 @@ public class MatchDaoImpl implements MatchDao {
 		Connection con = null;
 		PreparedStatement pst=null;
 		ResultSet rs=null;
+		Match match=null;
 		try {
 			con = conUtil.getDBConnect();
 			String query="select MATCH_ID,SPORTSID,STADIUM_NAME,LOCATION,to_char(MATCH_DATE,'yyyy-mm-dd') as MATCH_DATE,to_char(MATCH_TIME,'HH:MI') as MATCH_TIME,TEAMA,TEAMB,TEAMALOGO,TEAMBLOGO,TOTALSEATS,AVAILABLESEATS,FIRSTCLASS_SEATS_PRICE,SECONDCLASS_SEATS_PRICE from match_info where match_id=?";
 			 pst=con.prepareStatement(query);
 			pst.setInt(1, matchId);
 			 rs=pst.executeQuery();
-			List<Match> matchList=new ArrayList<>();
+			
 			String dateInStering;
 			String tiemString;
 			LocalDate localDate = null;
 			LocalTime localTime=null;
-			while(rs.next()) {
+			if(rs.next()) {
 				dateInStering=rs.getString(MATCH_DATE);
 				tiemString=rs.getString(MATCH_TIME);
 
 				localDate=LocalDate.parse(dateInStering);
 				localTime=LocalTime.parse(tiemString);
-				Match match=new Match(rs.getInt(MATCH_ID),rs.getInt(SPORTSID),rs.getString(STADIUM_NAME),rs.getString(LOCATION),localDate,localTime,rs.getString(TEAMA),rs.getString(TEAMB),rs.getString(TEAMALOGO),rs.getString(TEAMBLOGO),rs.getInt(TOTALSEATS),rs.getInt(AVAILABLESEATS),rs.getInt(FIRSTCLASS_SEATS_PRICE),rs.getInt(SECONDCLASS_SEATS_PRICE));
+				 match=new Match(rs.getInt(MATCH_ID),rs.getInt(SPORTSID),rs.getString(STADIUM_NAME),rs.getString(LOCATION),localDate,localTime,rs.getString(TEAMA),rs.getString(TEAMB),rs.getString(TEAMALOGO),rs.getString(TEAMBLOGO),rs.getInt(TOTALSEATS),rs.getInt(AVAILABLESEATS),rs.getInt(FIRSTCLASS_SEATS_PRICE),rs.getInt(SECONDCLASS_SEATS_PRICE));
 			
-			matchList.add(match);
+			
 			}
 			
-			return matchList;
+			return match;
 		} catch (ClassNotFoundException | SQLException e) {
 		
 			e.getMessage();
@@ -216,7 +216,7 @@ public class MatchDaoImpl implements MatchDao {
 
 			}
 		}
-		return Collections.emptyList();
+		return match;
 		
 		
 		
@@ -303,7 +303,7 @@ public class MatchDaoImpl implements MatchDao {
 		List<Match> matchList=null;
 		try {
 			con = conUtil.getDBConnect();
-			String query="select MATCH_ID,SPORTSID,STADIUM_NAME,LOCATION,to_char(MATCH_DATE,'yyyy-mm-dd'),to_char(MATCH_TIME,'HH:MI'),TEAMA,TEAMB,TEAMALOGO,TEAMBLOGO,TOTALSEATS,AVAILABLESEATS,FIRSTCLASS_SEATS_PRICE,SECONDCLASS_SEATS_PRICE from match_info where teama like ? or teamb like ?"; 
+			String query="select MATCH_ID,SPORTSID,STADIUM_NAME,LOCATION,to_char(MATCH_DATE,'yyyy-mm-dd') as MATCH_DATE,to_char(MATCH_TIME,'HH:MI') as MATCH_TIME,TEAMA,TEAMB,TEAMALOGO,TEAMBLOGO,TOTALSEATS,AVAILABLESEATS,FIRSTCLASS_SEATS_PRICE,SECONDCLASS_SEATS_PRICE from match_info where teama like ? or teamb like ?"; 
 			pst=con.prepareStatement(query);
 			 pst.setString(1, teamName.toUpperCase()+"%");
 			 pst.setString(2, teamName.toUpperCase()+"%");

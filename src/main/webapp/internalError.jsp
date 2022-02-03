@@ -7,11 +7,7 @@
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <meta charset="ISO-8859-1">
 <title>500 - INTERNAL ERROR</title>
-<style>
-.error-template {padding: 40px 15px;text-align: center;}
-.error-actions {margin-top:15px;margin-bottom:15px;}
-.error-actions .btn { margin-right:10px;}
-</style>
+<link rel="stylesheet" href="assets/css/error.css">
 </head>
 <body>
 <div class="container">

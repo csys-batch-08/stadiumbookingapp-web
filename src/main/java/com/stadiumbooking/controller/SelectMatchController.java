@@ -28,8 +28,8 @@ public class SelectMatchController extends HttpServlet {
 		int matchId=Integer.parseInt(req.getParameter("matchId"));
 		try {
 			
-			List<Match> match = matchDao.getMatchByMatchId(matchId);
-			req.setAttribute("singleMatch", match);
+			Match match = matchDao.getMatchByMatchId(matchId);
+			req.setAttribute("match", match);//MATCH_DETAILS
 			RequestDispatcher rd = req.getRequestDispatcher("seats.jsp");			
 			rd.forward(req, res);
 		

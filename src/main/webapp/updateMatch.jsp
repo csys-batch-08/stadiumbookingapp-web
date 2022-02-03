@@ -10,120 +10,8 @@
   <link  rel="stylesheet"    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 <link rel = "icon" type = "" href = "image/Studium.png">
 <title>Matchbooking.com</title>
-<style>
-
-.sidenav {
-	height: 100%;
-	width: 200px;
-	position: fixed;
-	top: 0;
-	left: 0;
-	background-color: steelblue;
-}
-
-.sidenav a {
-	padding: 6px 6px 6px 32px;
-	text-decoration: none;
-	font-size: 23px;
-	color: white;
-	display: block;
-}
-
-.sidenav a:hover {
-	color: black;
-}
-
-#updateMatch{
- position:absolute;
- left:500px;
- top:100px;
- width: 40%;
-  padding: 12px;
-  border: 1px solid #ccc;
-    border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
-
-
-#updateMatch strong{
-text-align: center;
-
-}
-
-#updateMatch input[type="date"]{
-position:relative;
-left:120px;
-top:-20px;
-  background: transparent;
-            border: none;
-}
-
-#updateMatch input[type="time"]{
-position:relative;
-left:320px;
-top:-45px;
-  background: transparent;
-            border: none;
-}
-
-#updateMatch button{
-position:relative;
-left:200px;
-  background-color: navy;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 18px;
-
-  margin: 4px 2px;
-}
-#updateMatch  button:hover {
-            background-color: green;
-        }
-img{
-width:100px;
-height:100px;
-}
-#teamA{
-position:relative;
-left:30px;
-}
-#teamB{
-position:relative;
-left:420px;
-}
-#teamBlogo{
-position:relative;
-left:250px;
-}
-#vs{
-font-size: 50px;
-        position: relative;
-        left: 120px;
-        top: 0px;
-}
-strong{
-text-align: center;
-}
-#matchDetails{
-
-        position: relative;
-        left: 180px;
-        top:-20px;        
-}
-#matchDetails strong{
-font-size: 20px;
-}
-       ::placeholder {
-  color: black;
-  font-size: 28px;
-  height: 50px;
-  font-style: italic;
-}
-</style>
+<link rel="stylesheet" href="assets/css/sideNavBar.css">
+<link rel="stylesheet" href="assets/css/updateMatch.css">
 </head>
 <body>
 
@@ -143,12 +31,12 @@ font-size: 20px;
 
 
  
- 	<c:forEach items="${singleMatch}" var="match">
+ 	
 
     <div class="animate__animated animate__zoomIn animate__slow" id="updateMatch">
     <div>
      <div>
-     <img src="image/${match.teamAlogo}" alt="cann't find"> &nbsp; &nbsp;<strong id="vs">Vs</strong>  &nbsp;  <img src="image/${match.teamBlogo}" id="teamBlogo" alt="cann't find">
+     <img src="assets/image/${match.teamAlogo}" alt="cann't find"> &nbsp; &nbsp;<strong id="vs">Vs</strong>  &nbsp;  <img src="assets/image/${match.teamBlogo}" id="teamBlogo" alt="cann't find">
     <br>
     <br>
     <strong id="teamA">${match.teamA}</strong>  
@@ -179,6 +67,6 @@ font-size: 20px;
         <button type="submit">Update</button>
     </form>
     </div>
-    </c:forEach>
+    
 </body>
 </html>

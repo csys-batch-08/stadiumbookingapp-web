@@ -1,0 +1,67 @@
+@charset "ISO-8859-1";
+
+.rate {
+	float: left;
+	height: 46px;
+	padding: 0 10px;
+}
+
+.rate:not(:checked)>input {
+	position: absolute;
+	top: -9999px;
+}
+
+.rate:not(:checked)>label {
+	float: right;
+	width: 1em;
+	overflow: hidden;
+	white-space: nowrap;
+	cursor: pointer;
+	font-size: 30px;
+	color: #ccc;
+}
+
+.rate:not(:checked)>label:before {
+	content: '\2605';
+}
+
+.rate>input:checked ~ label {
+	color: #ffc700;
+}
+
+#ratingBody {
+	position: absolute;
+	left: 450px;
+	top: 100px;
+}
+
+ul {
+	margin: 0;
+	overflow: hidden;
+	background-color: gray;
+	color: white;
+	font-weight: bolder;
+	padding: 16px;
+	opacity: 0.5px;
+}
+
+li {
+	float: right;
+	color: white;
+}
+
+#nav {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 1355px;
+}
+
+#nav a {
+	color: white;
+	text-decoration: none;
+}
+
+ul {
+	list-style-type: none;
+}

@@ -7,12 +7,7 @@
  <link  rel="stylesheet"   href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <meta charset="ISO-8859-1">
 <title>Page Not Found</title>
-<style>
-.error-template {padding: 40px 15px;text-align: center;}
-.error-actions {margin-top:15px;margin-bottom:15px;}
-.error-actions .btn { margin-right:10px; }
-.error-template img{ width: 200px; height: 200px;}
-</style>
+<link rel="stylesheet" href="assets/css/error.css">
 </head>
 <body>
 
@@ -24,7 +19,7 @@
                     Oops!</h1>
                 <h2>
                     404 Not Found</h2>
-                <img class="img-fluid w-50 animate__animated animate__zoomIn animate__delay-1s" alt="can't find" src="image/error-icon-32-removebg-preview.png">
+                <img class="img-fluid w-50 animate__animated animate__zoomIn animate__delay-1s" alt="can't find" src="assets/image/error-icon-32-removebg-preview.png">
                 <div class="error-details">
                 
                     Sorry, an error has occured, Requested page not found!
