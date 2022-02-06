@@ -13,7 +13,7 @@
 <body>
     <div class="sidenav" id="mainnav" role="navigation" aria-labelledby="mainnavheading">
 <fmt:bundle basename = "sidenaveBar" prefix = "count.">
-         <a href="adminProfile" target="adminProfile" ><fmt:message key = "Profile"/></a>
+         <a href="adminProfile" target="adminProfile" >Profile</a>
         <a href="matchDetails">Match Details</a>
         <a href="stadiumDetalis.jsp">Stadium Details</a>
         <a href="sportsDetalis.jsp">Sports Details</a>
