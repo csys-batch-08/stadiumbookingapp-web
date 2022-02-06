@@ -12,8 +12,8 @@
 </head>
 <body>
     <div class="sidenav" id="mainnav" role="navigation" aria-labelledby="mainnavheading">
-
-         <a href="adminProfile" target="adminProfile" >Profile</a>
+<fmt:bundle basename = "sidenaveBar" prefix = "count.">
+         <a href="adminProfile" target="adminProfile" ><fmt:message key = "Profile"/></a>
         <a href="matchDetails">Match Details</a>
         <a href="stadiumDetalis.jsp">Stadium Details</a>
         <a href="sportsDetalis.jsp">Sports Details</a>
@@ -23,8 +23,8 @@
         <a href="allUserWalletList">All User Wallet List</a>
         <a href="stadiumList">Stadium List</a>
         <a href="ratingList">Rating List</a>
-        <a href="index.jsp">Logout</a>
-       
+        <a href="index.jsp"><fmt:message key = "Logout"/></a>
+</fmt:bundle>       
     </div>
 </body>
 </html>
