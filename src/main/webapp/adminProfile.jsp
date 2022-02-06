@@ -16,7 +16,7 @@
 </head>
 <body>
 
-	<div class="sidenav">
+	<div class="sidenav" id="mainnav" role="navigation" aria-labelledby="mainnavheading">
 	      <a href="adminProfile">Profile</a>
         <a href="matchDetails">Match Details</a>
         <a href="stadiumDetalis.jsp">Stadium Details</a>
@@ -49,8 +49,8 @@
     <form action="profilePic" id="profilepicForm" style="visibility: hidden;">
         
         <input type="file" name="profilePic">
-       <button type="submit">Submit</button>
-       <input type="text" name="role" value="Admin" style="visibility: hidden;">
+       <button id="profile submit" type="submit">Submit</button>
+       <input type="hidden" id="adminRole" name="role" value="Admin">
     </form>
 </div>
 
@@ -64,8 +64,8 @@
 	
 		<form action="update" method="post" onsubmit="return validate()">
 		    
-			<label><strong>Name:</strong></label> <br>
-		    <input type="text" value="${user.name}" 	name="updateName" id="updateName"> <br>
+			<label for="Name"><strong>Name:</strong></label> <br>
+		    <input type="text" value="${user.name}" a 	name="updateName" id="updateName"> <br>
 		    <label id="uname" style="visibility: hidden;">Enter Name</label> <br>
 
 			<label><strong>Username:</strong></label> <br> 
