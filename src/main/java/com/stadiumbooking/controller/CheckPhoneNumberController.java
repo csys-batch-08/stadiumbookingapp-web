@@ -18,8 +18,9 @@ public class CheckPhoneNumberController  extends HttpServlet {
 	
 	 @Override
 	public void doPost(HttpServletRequest req, HttpServletResponse res)  {
-		 Long phoneNumber=Long.parseLong(req.getParameter("phone"));	
+			
 		 try {
+			 Long phoneNumber=Long.parseLong(req.getParameter("phone"));
 			User user=userDao.checkPhoneNumber(phoneNumber);
 			if(user==null) {
 				res.getWriter().print("");
@@ -31,7 +32,9 @@ public class CheckPhoneNumberController  extends HttpServlet {
 			 
 		} catch (SQLException | IOException e) {
 			e.printStackTrace();
-		}
+		}catch(NumberFormatException  e2) {
+			e2.getMessage();
+		} 
 	}
 
 }
