@@ -1,31 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-  
+    <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
     
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-
-<link rel = "icon" type = "" href = "image/Studium.png">
+<meta name="keywords" content="stadium booking,seat booking,stadium seat booking,match ticket booking">
+<link rel = "icon" type = "" href = "assets/image/stadiumLogo.png">
+<script	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 <link rel="stylesheet" href="assets/css/profile.css">
+<link rel="stylesheet" href="assets/css/sideNavBar.css">
 <title>Matchbooking.com</title>
 
 </head>
 <body>
   <div class="sidenav">
-       <a href="usersprofile">Profile</a>
-         <a href="allMatchDetalis">Match Details</a>
-        <a href="mymatch">My Match</a>
-        <a href="wallet">Wallet</a>
-         <a href="stadiumList">Stadium List</a>
-        <a href="ratingList">Rating List</a>
-        <a href="index.jsp">Logout</a>
+    <fmt:bundle basename = "com.stadiumbooking.bundle.Sidenavbar" prefix="nav.">
+        <a href="usersprofile"><fmt:message  key="Profile"/></a>
+        <a href="allMatchDetalis"><fmt:message  key="UpcomingMatch"/></a>
+        <a href="mymatch"><fmt:message  key="MyMatch"/></a>
+        <a href="wallet"><fmt:message  key="Wallet"/></a>
+        <a href="stadiumList"><fmt:message  key="StadiumList"/></a>
+        <a href="ratingList"><fmt:message  key="RatingList"/></a>
+        <a href="index.jsp"><fmt:message key="LogOut"/></a>
+            </fmt:bundle>
     </div>
 
 
-
+<fmt:bundle basename = "com.stadiumbooking.bundle.ButtonsBundle" prefix="btn.">
 	<div id="userInfo">
 
 		<label for=""><strong>Name:</strong> &nbsp; ${user.name } </label> <br>
@@ -33,10 +38,10 @@
 		<label for=""><strong>Mobile:</strong>&nbsp; ${user.phoneNumber}</label> <br>
 		<label for=""><strong>Email:</strong> &nbsp; ${user.email}</label> <br>
 		
-		<button onclick="update()">Update</button>
+		<button onclick="update()"><fmt:message key="Update"/></button>
 		<div>
 		<img src="assets/image/${user.profilePic }" alt="can't find">
-		<button onclick="profile()" id="edit"> Edit </button>
+		<button onclick="profile()" id="edit"> <fmt:message key="Edit"/> </button>
 		</div>
 
 				
@@ -45,7 +50,7 @@
     <form action="profilePic" id="profilepicForm" style="visibility: hidden;">
         
         <input type="file" name="profilePic">
-       <button type="submit">Submit</button>
+       <button type="submit"><fmt:message key="Submit"/></button>
        <input type="text" name="role" value="User" style="visibility: hidden;">
     </form>
 </div>
@@ -84,13 +89,16 @@
 			<input type="number" value="${user.phoneNumber}" name="updateNumber" id="updateNumber"> <br>
 			<label for="" id="mobile" style="visibility: hidden;">Enter	phone Number</label>
 			
-			<button type="submit">Submit</button>
+			<button type="submit"><fmt:message key="Submit"/></button>
 			<input type="text" name="role" value="${user.role}" id="role" style="visibility: hidden;">
 	
 		</form>
 
 	</div>
-
+</fmt:bundle>
 </body>
 </html>
+<c:if test="${not empty userUpdate}">
+<script src="assets/js/userDetailsUpdated.js"></script>
+</c:if>
 <script src="assets/js/profile.js"></script>

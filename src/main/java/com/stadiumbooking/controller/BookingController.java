@@ -28,6 +28,7 @@ import com.stadiumbooking.model.User;
 @WebServlet("/booking")
 public class BookingController extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
 	final SeatsDaoImpl seatDao = new SeatsDaoImpl();
 	final MatchDaoImpl matchDao = new MatchDaoImpl();
 	final WalletDaoImpl walletDao = new WalletDaoImpl();
@@ -87,7 +88,7 @@ public class BookingController extends HttpServlet {
 
 						session.setAttribute("wallet", wallet);
 						req.setAttribute("seatListById", seatsList);
-						
+						req.setAttribute("cancel",null);
 
 						RequestDispatcher rd = req.getRequestDispatcher("/mymatch.jsp");
 

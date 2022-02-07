@@ -18,6 +18,7 @@ import com.stadiumbooking.model.Match;
 @WebServlet("/searchedMatchDetails")
 public class SearchController  extends HttpServlet{
 
+	private static final long serialVersionUID = 1L;
 	final MatchDaoImpl matchDao=new MatchDaoImpl();
 	@Override
 	public void doGet(HttpServletRequest req,HttpServletResponse res) {

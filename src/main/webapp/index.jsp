@@ -1,5 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+  <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,15 +8,20 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#4285f4">
-
+<meta name="keywords"
+	content="stadium booking,seat booking,stadium seat booking,match ticket booking">
 <meta name="theme-color" content="#1b1b1b">
-<link rel="icon" type="" href="image/Studium.png">
+<link rel="icon" type="" href="assets/image/stadiumLogo.png">
 <title>Matchbooking.com</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/index.css">
 </head>
@@ -38,19 +43,20 @@
 
 			<div class="collpase navbar-collapse">
 				<ul class="navbar-nav text-light">
+				<fmt:bundle basename = "com.stadiumbooking.bundle.ButtonsBundle" prefix="btn.">
 					<li class="nav-item"><a href="" class="nav-link text-light"
-						data-bs-toggle="modal" data-bs-target="#enroll">Sign In</a></li>
+						data-bs-toggle="modal" data-bs-target="#enroll"><fmt:message key="SignIn"/></a></li>
 					<li class="nav-item"><a class="nav-link text-light"
-						data-bs-toggle="modal" data-bs-target="#register">Sign Up</a></li>
-
+						data-bs-toggle="modal" data-bs-target="#register"><fmt:message key="SignUp"/></a></li>
+</fmt:bundle>
 				</ul>
 			</div>
 		</div>
 
 	</nav>
 	<img id="iconn" class="d-none d-sm-block" alt="can't find"
-		src="assets/image/Studium.png">
-
+		src="assets/image/stadiumLogo.png">
+<fmt:bundle basename = "com.stadiumbooking.bundle.ButtonsBundle" prefix="btn.">
 	<section id="con"
 		class="bg-info text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
 		<div class="container">
@@ -90,8 +96,7 @@
 					<p class="lead font-weight-light my-4 ">Upcoming TaTa IPL
 						Tickets sales stared Book Now and Supports your Favorite Team</p>
 					<button class="btn btn-primary btn-outline-warning text-light"
-						id="loginBuuton" data-bs-toggle="modal" data-bs-target="#enroll">Book
-						Now</button>
+						id="loginBuuton" data-bs-toggle="modal" data-bs-target="#enroll"><fmt:message key="BookNow"/></button>
 				</div>
 				<div class="animate__animated animate__flipInY animate__delay-1s">
 					<img class="img-fluid h-100  max-width-200 d-none d-sm-block"
@@ -106,12 +111,12 @@
 			<div class="d-md-flex justify-content-between align-items-center">
 				<h3 class="mb-3 mb-md-0">Register Now For Booking</h3>
 				<button class="btn btn-info btn-outline-warning text-light"
-					id="regButton" data-bs-toggle="modal" data-bs-target="#register">Register</button>
+					id="regButton" data-bs-toggle="modal" data-bs-target="#register"><fmt:message key="Register"/></button>
 			</div>
 
 		</div>
 	</section>
-
+</fmt:bundle>
 	<section class=" p-5">
 		<div class="container">
 			<div class="row text-center g-4 ">
@@ -396,7 +401,7 @@
 		</div>
 	</footer>
 
-
+<fmt:bundle basename = "com.stadiumbooking.bundle.ButtonsBundle" prefix="btn.">
 	<div class="modal fade" id="enroll" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -415,15 +420,15 @@
 						<form action="loginServe" onsubmit="return validate()">
 
 							<input type="text" id="uname" name="username"
-								placeholder="Username" /> <br> <label id="luser"
+								placeholder="Username" aria-label="Username" /> <br> <label id="luser"
 								style="color: red; visibility: hidden;">Enter Username</label> <br>
 							<input type="password" id="pass" name="password"
-								placeholder="Password" /> <br> <label id="lpass"
+								placeholder="Password" aria-label="Password"/> <br> <label id="lpass"
 								style="color: red; visibility: hidden;">Enter Password</label> <br>
 							<br>
 							<button type="button" class="btn btn-secondary"
-								data-bs-dismiss="modal">Close</button>
-							<button type="submit" class="btn btn-primary">Submit</button>
+								data-bs-dismiss="modal"><fmt:message key="Close"/></button>
+							<button type="submit" class="btn btn-primary"><fmt:message key="Submit"/></button>
 							<br> <br> <em data-bs-toggle="modal"
 								data-bs-target="#register">Don't Have An Account...??</em>
 						</form>
@@ -452,24 +457,24 @@
 						<form action="regSevr" method="get" onsubmit="return  reg()">
 
 							<input type="text" id="name" name="name"
-								placeholder="Enter Your Name"> <br> <label
-								id="lname" style="visibility: hidden;">Enter Your Name</label> <br>
+								placeholder="Enter Your Name" aria-label="name"> <br/> <label
+								id="lname" style="visibility: hidden;">Enter Your Name</label> <br/>
 							<input type="text" onkeyup="userName()" id="runame" name="uname"
-								placeholder="Enter Your Username"> <br> <label
+								placeholder="Enter Your Username" aria-label="Username"> <br/> <label
 								for="username" id="luname" style="visibility: hidden;">Enter
 								Your Username</label> <br> <input type="password" name="pass"
-								id="rpass" placeholder="Enter Your Password"> <br>
+								id="rpass" placeholder="Enter Your Password" aria-label="Password"> <br/>
 							<label id="repass" style="visibility: hidden;">Enter
-								Password</label> <br> <input type="email" onkeyup="sendemail()"
+								Password</label> <br> <input type="email" aria-label="Email" onkeyup="sendemail()"
 								id="mail" name="mail" placeholder="Enter Your E-mail"> <br>
 							<label id="lmail" style="visibility: hidden;">Enter Your
 								E-Mail</label> <br> <input type="text" onkeyup="verifyMobile()"
-								name="phone" id="phone" placeholder="Enter Your Mobile Number">
+								name="phone" id="phone" aria-label="Mobile Numbe" placeholder="Enter Your Mobile Number">
 							<br> <label id="mobile" style="visibility: hidden;">Enter
 								Mobile Number</label> <br> <br> <br>
 							<button type="button" class="btn btn-secondary"
 								data-bs-dismiss="modal">Close</button>
-							<button type="submit" class="btn btn-primary">Submit</button>
+							<button type="submit" class="btn btn-primary"><fmt:message key="Submit"/></button>
 							<br> <br> <em data-bs-toggle="modal"
 								data-bs-target="#enroll">Already Have An Account..??</em>
 						</form>
@@ -481,7 +486,7 @@
 			</div>
 		</div>
 	</div>
-
+</fmt:bundle>
 	<script
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
 		integrity="filehash"></script>
@@ -490,6 +495,8 @@
 		integrity="filehash"></script>
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"
 		integrity="filehash"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 
 </html>

@@ -18,6 +18,7 @@ import com.stadiumbooking.model.Match;
 @WebServlet("/bookSeats")
 public class SelectMatchController extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
 	static final MatchDaoImpl matchDao=new MatchDaoImpl();
 	
 	@Override

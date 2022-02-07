@@ -15,6 +15,7 @@ import com.stadiumbooking.daoimpl.MatchDaoImpl;
 import com.stadiumbooking.model.Match;
 @WebServlet("/allMatchDetalis")
 public class AllMatchDetalisController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 	static final MatchDaoImpl matchDao=new MatchDaoImpl();
 	
 	@Override

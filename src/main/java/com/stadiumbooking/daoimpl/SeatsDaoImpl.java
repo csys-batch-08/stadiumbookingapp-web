@@ -153,7 +153,7 @@ public class SeatsDaoImpl implements SeatsDao {
 	}
 
 	@Override
-	public void cancelledSeats(int ticketId) throws  SQLException {
+	public int cancelledSeats(int ticketId) throws  SQLException {
 		
 		/* Update Seat Details If user cancelled tickets */
 		
@@ -168,7 +168,7 @@ public class SeatsDaoImpl implements SeatsDao {
 			pstmt.setString(1, "Cancelled");
 			pstmt.setInt(2, ticketId);
 		
-			pstmt.executeUpdate();
+			return pstmt.executeUpdate();
 
 			
 			
@@ -183,6 +183,7 @@ public class SeatsDaoImpl implements SeatsDao {
 			con.close();
 			}
 			}
+		return 0;
 		
 		
 		

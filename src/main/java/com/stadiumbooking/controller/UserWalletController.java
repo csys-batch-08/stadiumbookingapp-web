@@ -2,7 +2,7 @@ package com.stadiumbooking.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,11 +15,12 @@ import javax.servlet.http.HttpSession;
 
 import com.stadiumbooking.daoimpl.UserDaoImpl;
 import com.stadiumbooking.daoimpl.WalletDaoImpl;
+import com.stadiumbooking.model.WalletDetails;
 
 
 @WebServlet("/wallet")
 public class UserWalletController extends HttpServlet {
-	
+	private static final long serialVersionUID = 1L;
 	final UserDaoImpl userDao=new UserDaoImpl();
 	final WalletDaoImpl walletDao=new WalletDaoImpl();
 	@Override
@@ -30,7 +31,8 @@ public class UserWalletController extends HttpServlet {
 			
 			int userID=(int) session.getAttribute("id");
 			Double wallet=userDao.userWalletDetails(userID);
-			
+			List<WalletDetails> userWalletList=walletDao.getUserWalletListById(userID);
+			req.setAttribute("userWalletList", userWalletList);
 			session.setAttribute("wallet", wallet);
 		      RequestDispatcher rd = req.getRequestDispatcher("wallet.jsp");			
 					rd.forward(req, res);

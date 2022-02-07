@@ -20,6 +20,7 @@ import com.stadiumbooking.model.Match;
 @WebServlet("/updateMatch")
 public class UpdateMatchController extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
 	final MatchDaoImpl matchDao=new MatchDaoImpl();
 	@Override
 	public void service(HttpServletRequest req,HttpServletResponse res) {

@@ -176,7 +176,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public void deleteUser(int userId) throws SQLException {
+	public int deleteUser(int userId) throws SQLException {
 		/* Delete Single User */
 
 		ConnectionUtill conUtil = new ConnectionUtill();
@@ -187,8 +187,7 @@ public class UserDaoImpl implements UserDao {
 			String que = "delete from users where userId=?";
 			pstmt = con.prepareStatement(que);
 			pstmt.setInt(1, userId);
-			pstmt.executeUpdate();
-
+			return pstmt.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
 
 			e.getMessage();
@@ -201,6 +200,7 @@ public class UserDaoImpl implements UserDao {
 				con.close();
 			}
 		}
+		return 0;
 
 	}
 
@@ -507,6 +507,127 @@ public class UserDaoImpl implements UserDao {
 			}
 		}
 		return false;
+
+	}
+
+	@Override
+	public User checkUser(String userName) throws SQLException {
+		/* Checking Weather the Username already exist or Not */
+		ConnectionUtill conUtil = new ConnectionUtill();
+		Connection con = null;
+		PreparedStatement stmt1=null;
+		ResultSet rs=null;
+		User user=null;
+		try {
+			con = conUtil.getDBConnect();
+			String query = "Select USERID,NAME,USERNAME,ROLE,PASSWORD,EMAIL,PHONENUMBER,WALLET,PROFILEPIC from users where username=?";
+
+			stmt1 = con.prepareStatement(query);
+			stmt1.setString(1, userName);
+	    rs = stmt1.executeQuery();
+			
+			if (rs.next()) {
+
+				 user = new User(rs.getInt(USERID), rs.getString(NAME), rs.getString(USERNAME), rs.getString(ROLE), rs.getString(PASSWORD),
+						rs.getString(EMAIL), rs.getLong(PHONENUMBER), rs.getDouble(WALLET), rs.getString(PROFILEPIC));
+				
+			}
+			return user;
+			
+		} catch (ClassNotFoundException | SQLException e) {
+
+			e.getMessage();
+		} finally {
+
+			if (stmt1!= null) {
+				stmt1.close();
+			}
+			if (con != null) {
+				con.close();
+			}
+		}
+		return user;
+
+
+	}
+
+	@Override
+	public User checkUserEmail(String email) throws SQLException {
+		/* Checking Weather the Email already exist or Not */
+		ConnectionUtill conUtil = new ConnectionUtill();
+		Connection con = null;
+		PreparedStatement stmt1=null;
+		ResultSet rs=null;
+		User user=null;
+		try {
+			con = conUtil.getDBConnect();
+			String query = "Select USERID,NAME,USERNAME,ROLE,PASSWORD,EMAIL,PHONENUMBER,WALLET,PROFILEPIC from USERS where EMAIL=?";
+
+			stmt1 = con.prepareStatement(query);
+			stmt1.setString(1, email);
+	    rs = stmt1.executeQuery();
+			
+			if (rs.next()) {
+
+				 user = new User(rs.getInt(USERID), rs.getString(NAME), rs.getString(USERNAME), rs.getString(ROLE), rs.getString(PASSWORD),
+						rs.getString(EMAIL), rs.getLong(PHONENUMBER), rs.getDouble(WALLET), rs.getString(PROFILEPIC));
+				
+			}
+			return user;
+			
+		} catch (ClassNotFoundException | SQLException e) {
+
+			e.getMessage();
+		} finally {
+
+			if (stmt1!= null) {
+				stmt1.close();
+			}
+			if (con != null) {
+				con.close();
+			}
+		}
+		return user;
+
+	}
+
+	@Override
+	public User checkPhoneNumber(Long phoneNumber) throws SQLException {
+		/* Checking Weather the Username already exist or Not */
+		ConnectionUtill conUtil = new ConnectionUtill();
+		Connection con = null;
+		PreparedStatement stmt1=null;
+		ResultSet rs=null;
+		User user=null;
+		try {
+			con = conUtil.getDBConnect();
+			String query = "Select USERID,NAME,USERNAME,ROLE,PASSWORD,EMAIL,PHONENUMBER,WALLET,PROFILEPIC from users where PHONENUMBER=?";
+
+			stmt1 = con.prepareStatement(query);
+			stmt1.setLong(1, phoneNumber);
+	    rs = stmt1.executeQuery();
+			
+			if (rs.next()) {
+
+				 user = new User(rs.getInt(USERID), rs.getString(NAME), rs.getString(USERNAME), rs.getString(ROLE), rs.getString(PASSWORD),
+						rs.getString(EMAIL), rs.getLong(PHONENUMBER), rs.getDouble(WALLET), rs.getString(PROFILEPIC));
+				
+			}
+			return user;
+			
+		} catch (ClassNotFoundException | SQLException e) {
+
+			e.getMessage();
+		} finally {
+
+			if (stmt1!= null) {
+				stmt1.close();
+			}
+			if (con != null) {
+				con.close();
+			}
+		}
+		return user;
 
 	}
 

@@ -17,6 +17,7 @@ import com.stadiumbooking.model.User;
 
 @WebServlet("/profilePic")
 public class ProfilePicController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 	final UserDaoImpl userDao=new UserDaoImpl();
 	
 	@Override
@@ -34,8 +35,8 @@ public class ProfilePicController extends HttpServlet {
 				userDao.updateUserProfilePic(userId, pic);
 			
 				User userDetails=userDao.getUserById(userId);
-				req.setAttribute("userDateils", userDetails);
-				
+				req.setAttribute("user", userDetails);
+				req.setAttribute("adminUpdate", "adminupdate");
 				RequestDispatcher rd = req.getRequestDispatcher("/adminProfile.jsp");
 
 				rd.forward(req, res);
@@ -52,8 +53,8 @@ public class ProfilePicController extends HttpServlet {
 				userDao.updateUserProfilePic(userId, pic);
 				
 				User userDetails=userDao.getUserById(userId);
-				req.setAttribute("userDateils", userDetails);
-			
+				req.setAttribute("user", userDetails);
+				req.setAttribute("userUpdate", "userUpdate");
 				  RequestDispatcher rd = req.getRequestDispatcher("usersprofile.jsp");			
 					rd.forward(req, res);
 			} catch (SQLException | IOException e) {

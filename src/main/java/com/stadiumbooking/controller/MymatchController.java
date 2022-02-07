@@ -18,6 +18,7 @@ import com.stadiumbooking.model.Seats;
 @WebServlet("/mymatch")
 public class MymatchController extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
 	final SeatsDaoImpl seatsDao = new SeatsDaoImpl();
 
 	@Override
@@ -30,7 +31,7 @@ public class MymatchController extends HttpServlet {
 
 			List<Seats> seatListById = seatsDao.getSeatById(userID);
 			req.setAttribute("seatListById", seatListById);
-
+			req.setAttribute("cancel",null);
 			RequestDispatcher rd = req.getRequestDispatcher("mymatch.jsp");
 			rd.forward(req, res);
 		} catch (SQLException | ServletException | IOException e) {

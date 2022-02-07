@@ -10,6 +10,7 @@ public interface WalletDao {
 
 	public void insertAmount(WalletDetails wallete) throws  SQLException;
 	public List<WalletDetails> allUserWalletList() throws SQLException;
+	public List<WalletDetails> getUserWalletListById(int userId) throws SQLException;
 	
 	
 }

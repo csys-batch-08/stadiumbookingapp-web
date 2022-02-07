@@ -100,4 +100,49 @@ public class WalletDaoImpl implements WalletDao {
 		return walletList;
 		
 }
+
+	@Override
+	public List<WalletDetails> getUserWalletListById(int userId) throws SQLException {
+		/* Get a Single User Wallet Transaction details */
+
+		ConnectionUtill conUtil = new ConnectionUtill();
+		Connection con = null;
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+
+		List<WalletDetails> walletList=null;
+		try {
+			con = conUtil.getDBConnect();
+			String query = "Select WALLETID,USERID,AMOUNT,TRANSACTION_DATE from wallet_details where USERID=?";
+			 stmt = con.prepareStatement(query);
+             stmt.setInt(1, userId);
+			 rs = stmt.executeQuery();
+
+			 walletList = new ArrayList<>();
+
+			while (rs.next()) {
+
+				UserDaoImpl userDao=new UserDaoImpl();
+				User user=new User();
+				user=userDao.getUserById(rs.getInt(USERID));
+				WalletDetails walletDetails = new WalletDetails(rs.getInt(WALLETID),user, rs.getLong(AMOUNT),
+						rs.getTimestamp(TRANSACTION_DATE).toLocalDateTime());
+				walletList.add(walletDetails);
+			}
+			return walletList;
+		
+		} catch (ClassNotFoundException | SQLException e) {
+			e.getMessage();
+		}
+		finally {	
+		
+			if(stmt!=null) {
+			stmt.close();     	
+			}
+			if(con !=null) {
+			con.close();
+			}
+			}
+		return walletList;
+	}
 }

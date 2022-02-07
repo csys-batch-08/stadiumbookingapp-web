@@ -1,5 +1,7 @@
 @charset "ISO-8859-1";
-
+body{
+	overflow: auto;
+}
 table {
 	position: absolute;
 	left: 235px;
@@ -38,7 +40,45 @@ td {
 td:hover {
 	color: blue;
 }
-
+table {
+  overflow: scroll;
+}
 #tabel a {
 	text-decoration: none;
+}
+.swal2-title {
+  color: red; 
+}
+.swal2-cancelButton,.swal2-closeButton{
+background-color: green;
+}
+
+.EmptySection{
+	position:absolute;
+bottom:0px; 	
+}
+th {
+	background-color: white;
+}
+
+tr:nth-child(odd) {
+	background-color: grey;
+}
+
+th, td {
+	padding: 0.5rem;
+}
+
+td:hover {
+	background-color: lightsalmon;
+}
+
+.paginate_button {
+	border-radius: 0 !important;
+}
+
+#tables {
+	width: 55%;
+	position: absolute;
+	left: 300px;
 }

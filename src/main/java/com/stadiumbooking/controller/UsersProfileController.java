@@ -18,6 +18,7 @@ import com.stadiumbooking.model.User;
 @WebServlet("/usersprofile")
 public class UsersProfileController  extends HttpServlet {
 	
+	private static final long serialVersionUID = 1L;
 	final UserDaoImpl userDao=new UserDaoImpl();
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) {
@@ -29,7 +30,8 @@ public class UsersProfileController  extends HttpServlet {
 		
 		try {
 			User userDetails = userDao.getUserById(userID);
-			req.setAttribute("user", userDetails);  
+			req.setAttribute("user", userDetails); 
+			
 		      RequestDispatcher rd = req.getRequestDispatcher("usersprofile.jsp");
 					rd.forward(req, res);
 		} catch (SQLException | ServletException | IOException e) {

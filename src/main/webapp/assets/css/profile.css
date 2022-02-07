@@ -3,30 +3,7 @@ body{
 	
 	overflow: hidden;
 }
-.sidenav {
-	height: 100%;
-	width: 200px;
-	position: fixed;
-	top: 0;
-	left: 0;
-	background-color: steelblue;
-}
 
-.sidenav a {
-	padding: 6px 6px 6px 32px;
-	text-decoration: none;
-	font-size: 23px;
-	color: white;
-	display: block;
-}
-
-.sidenav a:hover {
-	color: black;
-}
-
-.main {
-	margin-left: 200px;
-}
 
 input {
 	width: 100%;
@@ -86,4 +63,13 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active  {
   transition: background-color 5000s;
   -webkit-text-fill-color: black !important;
+}
+.swal-text {
+  background-color: #FEFAE3;
+  padding: 17px;
+  border: 1px solid #F0E1A1;
+  display: block;
+  margin: 22px;
+  text-align: center;
+  color: #61534e;
 }

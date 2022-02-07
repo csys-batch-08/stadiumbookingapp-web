@@ -17,7 +17,7 @@ import com.stadiumbooking.model.Seats;
 
 @WebServlet("/allBookingDetails")
 public class AllBookingDetailsController extends HttpServlet {
-	
+	private static final long serialVersionUID = 1L;
 	static final SeatsDaoImpl seatsDao=new SeatsDaoImpl();
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) {

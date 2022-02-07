@@ -7,10 +7,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="keywords" content="stadiumbooking,seatbooking">
+<meta name="keywords" content="stadium booking,seat booking,stadium seat booking,match ticket booking">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="" href="image/Studium.png">
+<link rel = "icon" type = "" href = "assets/image/stadiumLogo.png">
 <title>Matchbooking.com</title>         
 <link rel="stylesheet" href="assets/css/seats.css">
 
@@ -28,17 +28,7 @@
       <li><a href="index.jsp">Logout</a></li>
             <li>&nbsp; &nbsp;</li>
             <li>
-            <c:choose>
-             <c:when test="${sessionScope.role.equals('Admin')}">
-             
-            <a href="adminHome.html">Home</a>
-            </c:when>
-            <c:when test="${sessionScope.role.equals('User')}">
-            
-            <a href="userHome.html">Home</a>
-        
-            </c:when>
-            </c:choose>
+            <a href="userHome.jsp">Home</a>
             </li>
             
            

@@ -19,7 +19,7 @@ import com.stadiumbooking.model.User;
 
 @WebServlet("/update")
 public class UserUpdateController extends HttpServlet {
-	
+	private static final long serialVersionUID = 1L;
 	final UserDaoImpl userDao=new UserDaoImpl();
 
 	
@@ -47,7 +47,7 @@ public class UserUpdateController extends HttpServlet {
 				int userID=(int) session1.getAttribute("id");
 				User userDetails=userDao.getUserById(userID);
 				req.setAttribute("user", userDetails);
-	         	
+	         	req.setAttribute("adminUpdate", "adminupdate");
 	         	 RequestDispatcher rd = req.getRequestDispatcher("adminProfile.jsp");			
 					rd.forward(req, res);
 	}
@@ -57,7 +57,7 @@ public class UserUpdateController extends HttpServlet {
 		int userID=(int) session1.getAttribute("id");
 		User userDetails=userDao.getUserById(userID);
 		req.setAttribute("user", userDetails);
-		
+		req.setAttribute("userUpdate", "userUpdate");
 		 RequestDispatcher rd = req.getRequestDispatcher("usersprofile.jsp");			
 			rd.forward(req, res);
 	}

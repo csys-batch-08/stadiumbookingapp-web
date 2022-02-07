@@ -9,10 +9,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    
+    <meta name="keywords" content="stadium booking,seat booking,stadium seat booking,match ticket booking">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = "icon" type = "" href = "assets/image/Studium.png">
+    <link rel = "icon" type = "" href = "assets/image/stadiumLogo.png">
     <link rel="stylesheet" href="assets/css/sideNavBar.css">
     <link rel="stylesheet" href="assets/css/matchDetails.css">
     <title>Matchbooking.com</title>
@@ -21,17 +21,19 @@
 
 
     <div class="sidenav">
-           <a href="adminProfile">Profile</a>
-        <a href="matchDetails">Match Details</a>
-        <a href="stadiumDetalis.jsp">Stadium Details</a>
-        <a href="sportsDetalis.jsp">Sports Details</a>
-        <a href="Getallusers">All User</a>
-        <a href="showMatchToAdmin">All Match Details</a>
-        <a href="allBookingDetails">Booking Details</a>
-        <a href="allUserWalletList">All User Wallet List</a>
-        <a href="stadiumList">Stadium List</a>
-        <a href="ratingList">Rating List</a>
-        <a href="index.jsp">Logout</a>
+ <fmt:bundle basename = "com.stadiumbooking.bundle.Sidenavbar" prefix="nav.">
+         <a href="adminProfile"><fmt:message  key="Profile"/></a>
+        <a href="matchDetails" ><fmt:message  key="MatchDetails"/></a>
+        <a href="stadiumDetalis.jsp" ><fmt:message  key="StadiumDetails"/></a>
+        <a href="sportsDetalis.jsp"><fmt:message  key="SportsDetails"/></a>
+        <a href="Getallusers" ><fmt:message  key="AllUser"/></a>
+        <a href="showMatchToAdmin" ><fmt:message  key="AllMatchDetails"/></a>
+        <a href="allBookingDetails" ><fmt:message  key="AllBookingDetails"/></a>
+        <a href="allUserWalletList" ><fmt:message  key="AllUserWalletList"/></a>
+        <a href="stadiumList" ><fmt:message  key="StadiumList"/></a>
+        <a href="ratingList" ><fmt:message  key="RatingList"/></a>
+        <a href="index.jsp"><fmt:message key="LogOut"/></a>
+    </fmt:bundle>
     </div>
 
     <div id="Form">
@@ -88,7 +90,7 @@
         <div>
 
 
-        <label for="teamA" onmouseover="spname()"><strong>Team A:</strong></label> 
+        <label for="teamA" onmouseover="spname()" onfocus="spname()"><strong>Team A:</strong></label> 
         <select name="teamA" id="teamA" class="teamA" >
             <option value="">--Select--</option>
             <option value="CSK">CSK</option>
@@ -207,8 +209,9 @@
             <option value="1000">1000Rs</option>
         </select>
         <br> <br> <br>
-
-        <button  type="submit">Submit</button> &nbsp; &nbsp; <button type="reset">Reset</button>
+<fmt:bundle basename = "com.stadiumbooking.bundle.ButtonsBundle" prefix="btn.">
+        <button  type="submit"><fmt:message key="Submit"/></button> &nbsp; &nbsp; <button type="reset"><fmt:message key="Reset"/></button>
+    </fmt:bundle>
     </form>
 
 </div>

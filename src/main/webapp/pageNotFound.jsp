@@ -6,7 +6,9 @@
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" >
  <link  rel="stylesheet"   href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <meta charset="ISO-8859-1">
+<meta name="keywords" content="stadium booking,seat booking,stadium seat booking,match ticket booking">
 <title>Page Not Found</title>
+<link rel = "icon" type = "" href = "assets/image/stadiumLogo.png">
 <link rel="stylesheet" href="assets/css/error.css">
 </head>
 <body>

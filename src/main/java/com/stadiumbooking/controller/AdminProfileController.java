@@ -17,7 +17,7 @@ import com.stadiumbooking.model.User;
 
 @WebServlet("/adminProfile")
 public class AdminProfileController extends HttpServlet {
-	
+	private static final long serialVersionUID = 1L;
 	 final UserDaoImpl userDao=new UserDaoImpl();
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res)  {
@@ -30,6 +30,7 @@ public class AdminProfileController extends HttpServlet {
 		try {
 			User userDetails = userDao.getUserById(userID);
 			req.setAttribute("user", userDetails);  
+			
 		      RequestDispatcher rd = req.getRequestDispatcher("adminProfile.jsp");
 			
 					rd.forward(req, res);

@@ -18,13 +18,13 @@ AOS.init();
         if (username.value.trim() == "") {
 
             document.getElementById("luser").style.visibility = "visible";
-            username.style.borderBottom = "solid 3px black";
+          
             return false;
 
         }
         else if (password.value.trim() == "") {
 
-            password.style.borderBottom = "solid 3px black";
+    
             document.getElementById("lpass").style.visibility = "visible";
             return false;
         }
@@ -139,121 +139,59 @@ AOS.init();
 
     }
     
+
     
-    
-    function sendemail()
+function sendemail()
     {  
    
         let email=document.getElementById("mail").value;
+	$.ajax({
+		type:'POST',
+    url:'checkUserEmail',
+data:'email='+email,    
+cache:false,
+    success:function(response){
+	document.getElementById("lmail").innerHTML=response;
+    document.getElementById("lmail").style.color = "red";
+    document.getElementById("lmail").style.visibility = "visible";}
+}
+);
+}    
 
 
 
-
-    var url="chechEmail.jsp?email="+email;  
-    if(window.XMLHttpRequest){  
-    var request=new XMLHttpRequest();  
-    }  
-    else if(window.ActiveXObject){  
-    request=new ActiveXObject("Microsoft.XMLHTTP");  
-    }  
-    try  
-    {  
-    request.onreadystatechange=getInfo;  
-    request.open("GET",url,true);  
-    request.send();  
-    }  
-    catch(e)  
-    {  
-    alert("Unable to connect to server");  
-    }
-        
-       }
     
-    function getInfo(){  
-    	if(request.readyState==4){  
-    	var response =request.responseText; 
-  
-    	document.getElementById("lmail").innerHTML=response;
-    	 document.getElementById("lmail").style.color = "red";
-    	document.getElementById("lmail").style.visibility = "visible";
-    	
-
-
-    	}  
-    	}
-    
-    
-    function verifyMobile() {  
+function verifyMobile() {  
    
-        let phone=document.getElementById("phone").value;
+          let phone=document.getElementById("phone").value;
+	$.ajax({
+		type:'POST',
+    url:'checkPhonenumber',
 
-    var url="checkMobileNumber.jsp?phone="+phone;  
-    if(window.XMLHttpRequest){  
-    var request=new XMLHttpRequest();  
-    }  
-    else if(window.ActiveXObject){  
-    request=new ActiveXObject("Microsoft.XMLHTTP");  
-    }  
-    try  
-    {  
-    request.onreadystatechange=getInfos;  
-    request.open("GET",url,true);  
-    request.send();  
-    }  
-    catch(e)  
-    {  
-    alert("Unable to connect to server");  
-    }
-        
-       }
-    
-    function getInfos(){  
-    	if(request.readyState==4){  
-    	var response =request.responseText; 
-  
-    	document.getElementById('mobile').innerHTML=response;
+data:'phone='+phone,    
+cache:false,
+    success:function(response){
+	document.getElementById('mobile').innerHTML=response;
     	 document.getElementById("mobile").style.visibility = "visible";
-         document.getElementById("mobile").style.color = "red";
-      
-    	}  
-    	}
-    
-    
+         document.getElementById("mobile").style.color = "red";}
 
-    function userName() {  
-   
-        let username=document.getElementById("runame").value;
+}
+);
+}    
 
-    var url="checkUsername.jsp?userName="+username;  
-    if(window.XMLHttpRequest){  
-    var request=new XMLHttpRequest();  
-    }  
-    else if(window.ActiveXObject){  
-    request=new ActiveXObject("Microsoft.XMLHTTP");  
-    }  
-    try  
-    {  
-    request.onreadystatechange=getInf;  
-    request.open("GET",url,true);  
-    request.send();  
-    }  
-    catch(e)  
-    {  
-    alert("Unable to connect to server");  
-    }
-        
-       }
-    
-    function getInf(){  
-    	if(request.readyState==4){  
-    	var response =request.responseText; 
-    
-    	document.getElementById('luname').innerHTML=response;
-    	 document.getElementById("luname").style.visibility = "visible";
-         document.getElementById("luname").style.color = "red";
-   
-    	}  
-    	}
-    
-    
+function userName(){
+	 let username=document.getElementById("runame").value;
+	$.ajax({
+		type:'POST',
+    url:'checkUserName',
+ 
+data:'userName='+username,    
+cache:false,
+    success:function(response){
+	 document.getElementById("luname").style.visibility ="visible";
+     document.getElementById("luname").style.color = "red";
+	 document.getElementById('luname').innerHTML=response;},
 
+}
+);
+}

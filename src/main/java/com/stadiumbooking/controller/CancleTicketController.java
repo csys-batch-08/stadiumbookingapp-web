@@ -20,7 +20,7 @@ import com.stadiumbooking.model.Seats;
 
 @WebServlet("/cancleTicket")
 public class CancleTicketController extends HttpServlet {
-	
+	private static final long serialVersionUID = 1L;
 	final MatchDaoImpl matchDao=new MatchDaoImpl();
 	final SeatsDaoImpl seatDao=new SeatsDaoImpl();
 	final UserDaoImpl userDao=new UserDaoImpl();
@@ -32,14 +32,16 @@ public class CancleTicketController extends HttpServlet {
 		try {
 			int ticketId=Integer.parseInt(req.getParameter("ticketId"));
 			int userID=(int) session.getAttribute("id");
-			seatDao.cancelledSeats(ticketId);
+			int row=seatDao.cancelledSeats(ticketId);
+			if(row==1) {
 			seatDao.updateSeatsAndRefund(ticketId);
 			List<Seats> seatListById=seatDao.getSeatById(userID);
 			req.setAttribute("seatListById", seatListById);
+			req.setAttribute("cancel","Cancelled");
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/mymatch.jsp");
 
 			rd.forward(req, res);
-		
+			}		
 		} catch (SQLException | IOException e) {
 			
 			e.getMessage();

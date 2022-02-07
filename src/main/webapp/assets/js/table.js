@@ -1,5 +1,5 @@
   $(document).ready(function() {
-    $('#example').DataTable({
+    $('#table').DataTable({
     	
     	 "aaSorting": []
     });

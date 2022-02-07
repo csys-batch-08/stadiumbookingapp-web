@@ -6,7 +6,8 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 
-
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,7 @@ import com.stadiumbooking.model.User;
 @WebServlet("/loginServe")
 public class UserLoginController extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
 	final UserDaoImpl userDao = new UserDaoImpl();
 
 	final MatchDaoImpl matchDao = new MatchDaoImpl();
@@ -54,11 +56,15 @@ public class UserLoginController extends HttpServlet {
 				session.setAttribute("RegisterSuccessful", null);
 				if (role.equals("Admin")) {
 
-					res.sendRedirect("adminHome.html");
+					req.setAttribute("admin", "admin");
+					RequestDispatcher rd = req.getRequestDispatcher("adminHome.jsp");
+					rd.forward(req, res);
 
 				} else if (role.equals("User")) {
 
-					res.sendRedirect("userHome.html");
+					req.setAttribute("user", "user");
+					RequestDispatcher rd = req.getRequestDispatcher("userHome.jsp");
+					rd.forward(req, res);
 				}
 
 			} else {
@@ -83,6 +89,8 @@ public class UserLoginController extends HttpServlet {
 		} catch (IOException e2) {
 
 			e2.getMessage();
+		} catch (ServletException e) {
+			e.printStackTrace();
 		}
 
 	}

@@ -2,7 +2,10 @@ package com.stadiumbooking.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +21,7 @@ import com.stadiumbooking.model.WalletDetails;
 
 @WebServlet("/wallets")
 public class WalletController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 	final WalletDaoImpl walletDao=new WalletDaoImpl();
 	final UserDaoImpl userDao=new UserDaoImpl();
 	@Override
@@ -37,7 +41,12 @@ public class WalletController extends HttpServlet {
 			Double userWallet=userDao.userWalletDetails(userId);
 			
 			session.setAttribute("wallet", userWallet);
-			res.sendRedirect("wallet.jsp");
+			req.setAttribute("walletAdd", "walletAdd");
+			List<WalletDetails> userWalletList=walletDao.getUserWalletListById(userId);
+			req.setAttribute("userWalletList", userWalletList);
+			  RequestDispatcher rd = req.getRequestDispatcher("wallet.jsp");
+				
+				rd.forward(req, res);
 		} catch (SQLException e) {
 			e.getMessage();
 		} catch (IOException e1) {
@@ -45,6 +54,9 @@ public class WalletController extends HttpServlet {
 			e1.getMessage();
 		}catch(NumberFormatException  e2) {
 			e2.getMessage();
+		} catch (ServletException e) {
+
+			e.printStackTrace();
 		}
 		
 	}

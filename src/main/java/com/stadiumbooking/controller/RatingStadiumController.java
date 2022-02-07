@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/ratingStadium")
 public class RatingStadiumController extends HttpServlet {
 
-	
+	private static final long serialVersionUID = 1L;
 	@Override
 	public void service(HttpServletRequest req, HttpServletResponse res) {
 

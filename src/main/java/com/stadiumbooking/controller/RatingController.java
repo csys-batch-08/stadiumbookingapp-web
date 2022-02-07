@@ -21,6 +21,7 @@ import com.stadiumbooking.model.StadiumDetalis;
 @WebServlet("/ratings")
 public class RatingController extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
 	final StadiumDaoImpl stadiumDao=new StadiumDaoImpl();
 	final RatingsDaoImpl ratingDao=new RatingsDaoImpl();
 	

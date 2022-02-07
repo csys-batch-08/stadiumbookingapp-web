@@ -9,9 +9,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <meta name="keywords" content="stadium booking,seat booking,stadium seat booking,match ticket booking">
 	   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel = "icon" type = "" href = "assets/image/Studium.png">
+    <link rel = "icon" type = "" href = "assets/image/stadiumLogo.png">
     <link rel="stylesheet" href="assets/css/sideNavBar.css">
          <link rel="stylesheet" href="assets/css/allMatch.css">
     <title>Matchbooking.com</title>
@@ -20,19 +20,21 @@
 
 <body>
     <div class="sidenav">
-        <a href="usersprofile">Profile</a>
-        <a href="allMatchDetalis">Match Details</a>
-        <a href="mymatch">My Match</a>
-        <a href="wallet">Wallet</a>
-        <a href="stadiumList">Stadium List</a>
-        <a href="ratingList">Rating List</a>
-        <a href="index.jsp">Logout</a>
+       <fmt:bundle basename = "com.stadiumbooking.bundle.Sidenavbar" prefix="nav.">
+        <a href="usersprofile"><fmt:message  key="Profile"/></a>
+        <a href="allMatchDetalis"><fmt:message  key="UpcomingMatch"/></a>
+        <a href="mymatch"><fmt:message  key="MyMatch"/></a>
+        <a href="wallet"><fmt:message  key="Wallet"/></a>
+        <a href="stadiumList"><fmt:message  key="StadiumList"/></a>
+        <a href="ratingList"><fmt:message  key="RatingList"/></a>
+        <a href="index.jsp"><fmt:message key="LogOut"/></a>
+            </fmt:bundle>
     </div>
 
 
  <div id="search">
  <form action="searchedMatchDetails">
- <input type="text" name="teamName" placeholder="Search"><button type="submit"> &#128269;</button>
+ <input type="text" id="teamName" name="teamName" placeholder="Search"  aria-label="Search"><button type="submit"> &#128269;</button>
  
  </form>
  </div>
@@ -41,12 +43,12 @@
  </div>
    
    <c:if test="${not empty sessionScope.houseFull}">
-      <h2  id="Emesg" onclick="Error()" style="position:absolute; left:300px; top:10px;color:red;visibility:visible"> ${sessionScope.houseFull}</h2>
+      <h2  id="Emesg" onclick="Error()" onkeypress="Error()" style="position:absolute; left:300px; top:10px;color:red;visibility:visible"> ${sessionScope.houseFull}</h2>
 </c:if>
   
  <!-- LowCountSeats -->
    <c:if test="${not empty sessionScope.LowCountSeats}">
-      <h2  id="Emesg" onclick="Error()" style="position:absolute; left:300px; top:10px;color:red;visibility:visible"> ${sessionScope.LowCountSeats}</h2>
+      <h2  id="Emesg" onclick="Error()" onkeypress="Error()" style="position:absolute; left:300px; top:10px;color:red;visibility:visible"> ${sessionScope.LowCountSeats}</h2>
 </c:if>
 
  
@@ -80,9 +82,9 @@
 	
 <c:otherwise>  
 
-
-<a href="bookSeats?matchId=${match.matchId}">Book Tickets</a>
-
+<fmt:bundle basename = "com.stadiumbooking.bundle.ButtonsBundle" prefix="btn.">
+<a href="bookSeats?matchId=${match.matchId}"> <fmt:message key="BookTickets"/></a>
+</fmt:bundle>
 <br>
 <br>     
     </c:otherwise> 

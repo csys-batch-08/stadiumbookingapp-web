@@ -17,6 +17,7 @@ import com.stadiumbooking.model.Match;
 
 @WebServlet("/showMatchToAdmin")
 public class ShowMatchtoAdminController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 	final MatchDaoImpl matchDao=new MatchDaoImpl();
 	
 	@Override

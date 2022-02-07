@@ -17,7 +17,7 @@ import com.stadiumbooking.model.User;
 
 @WebServlet("/Getallusers")
 public class AllUserListController extends HttpServlet {
-	
+	private static final long serialVersionUID = 1L;
 	final UserDaoImpl userDao=new UserDaoImpl();
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) {
@@ -25,7 +25,7 @@ public class AllUserListController extends HttpServlet {
 		try {
 			  List<User> userLists= userDao.getAllUser();
 			 req.setAttribute("UserLists", userLists);
-		
+			 req.setAttribute("delete", null);
 		      RequestDispatcher rd = req.getRequestDispatcher("getallusers.jsp");			
 					rd.forward(req, res);
 		} catch (SQLException | ServletException | IOException e) {

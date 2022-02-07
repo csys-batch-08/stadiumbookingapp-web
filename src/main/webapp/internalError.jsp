@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+      <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <meta charset="ISO-8859-1">
+<meta name="keywords" content="stadium booking,seat booking,stadium seat booking,match ticket booking">
 <title>500 - INTERNAL ERROR</title>
+<link rel = "icon" type = "" href = "assets/image/stadiumLogo.png">
 <link rel="stylesheet" href="assets/css/error.css">
 </head>
 <body>

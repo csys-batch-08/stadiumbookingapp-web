@@ -16,7 +16,7 @@ import com.stadiumbooking.model.WalletDetails;
 
 @WebServlet("/allUserWalletList")
 public class AllUserWalletListController extends HttpServlet {
-	
+	private static final long serialVersionUID = 1L;
 	static final WalletDaoImpl walletDao=new WalletDaoImpl();
 	
 	@Override

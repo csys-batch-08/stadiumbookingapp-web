@@ -15,6 +15,7 @@ import com.stadiumbooking.model.Sports;
 
 @WebServlet("/sports")
 public class SportsController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 	final SportsDaoImpl sportsDao=new SportsDaoImpl();
 	
 	@Override

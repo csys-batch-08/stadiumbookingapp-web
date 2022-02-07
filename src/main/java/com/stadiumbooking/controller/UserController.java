@@ -17,6 +17,7 @@ import com.stadiumbooking.model.User;
 @WebServlet("/regSevr")
 public class UserController extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
 	final UserDaoImpl userDao = new UserDaoImpl();
 
 	@Override
