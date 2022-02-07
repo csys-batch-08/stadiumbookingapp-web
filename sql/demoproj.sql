@@ -26,7 +26,8 @@ Insert into Users (name,username,password,email,phonenumber) values('Chandler Bi
 select * from users order by userid;
 select userid,name,username,role,password,email,phonenumber,to_char(wallet,'99,000,000') from users where userid=53;
 desc users;
-
+select MATCH_ID,SPORTSID,STADIUM_NAME,LOCATION,to_char(MATCH_DATE,'yyyy-mm-dd'),to_char(MATCH_TIME,'HH:MI'),TEAMA,TEAMB,TEAMALOGO,TEAMBLOGO,TOTALSEATS,AVAILABLESEATS, ,SECONDCLASS_SEATS_PRICE from match_info order by match_date desc;
+		Select WALLETID,USERID,AMOUNT,TRANSACTION_DATE from wallet_details where USERID=64;
 create table match_info(
 match_id    NUMBER GENERATED ALWAYS AS IDENTITY START WITH 1,
 sportsId int not null,
@@ -51,7 +52,7 @@ desc match_info;
 --ADD match_summary varchar2(200);
 
 select * from match_info order by match_date  desc;
-
+select * from users order by userid;
 select SYSTIMESTAMP from dual;
 insert into match_info(sportsId,stadium_name, location,match_date, match_time,teamA,teamB,teamAlogo, teamBlogo, totalseats, availableSeats, firstClass_Seats_price, secondClass_seats_price) values(100,Wankhede,Mumbai,Mumbai,01-01-70 07:30:00.000000000 PM ASIA/CALCUTTA ,CSK,MI,https://i2.wp.com/iplnews.site/wp-content/uploads/2020/09/csk-transparent-png-by-iplnews-1.png?fit=555%2C555&ssl=1,https://iconape.com/wp-content/png_logo_vector/mumbai-indians-logo.png,300,150,2000,900);
 commit;
@@ -177,6 +178,7 @@ primary key(ticketId)
 
 desc seat_details;
 select * from seat_details;
+
 delete from seat_details where match_id=141;
 insert into seat_details(userid,ticket_numbers,match_id,seatclass,Totalpirce,seatcount) values(56,'B1,B2,B3',4,'Second Class',2700,3);
 	delete  seat_details where ticketid=102;

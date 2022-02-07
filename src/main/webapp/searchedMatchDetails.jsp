@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="keywords" content="stadium booking,seat booking,stadium seat booking,match ticket booking">
-<link    rel="stylesheet"    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link    rel="stylesheet"    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity=''/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel = "icon" type = "" href = "assets/image/stadiumLogo.png">
@@ -34,7 +34,7 @@
 
 	<div id="search">
 		<form action="searchedMatchDetails">
-			<input type="text" name="teamName" placeholder="Search">
+			<input type="text" id="teamName" name="teamName" placeholder="Search"  aria-label="Search">
 			<button type="submit">&#128269;</button>
 		</form>
 	</div>

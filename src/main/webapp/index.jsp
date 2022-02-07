@@ -18,10 +18,8 @@
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<link rel="stylesheet"	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/index.css">
 </head>
@@ -417,7 +415,7 @@
 
 					<div id="login">
 
-						<form action="loginServe" onsubmit="return validate()">
+						<form action="loginServe" onsubmit="return validate()" method="post">
 
 							<input type="text" id="uname" name="username"
 								placeholder="Username" aria-label="Username" /> <br> <label id="luser"
@@ -454,7 +452,7 @@
 				</div>
 				<div class="modal-body">
 					<div id="regs">
-						<form action="regSevr" method="get" onsubmit="return  reg()">
+						<form action="regSevr" method="get" onsubmit="return  reg()" method="post">
 
 							<input type="text" id="name" name="name"
 								placeholder="Enter Your Name" aria-label="name"> <br/> <label
@@ -488,15 +486,14 @@
 	</div>
 </fmt:bundle>
 	<script
-		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-		integrity="filehash"></script>
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"		integrity=''></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-		integrity="filehash"></script>
+		integrity=''></script>
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"
-		integrity="filehash"></script>
+		integrity=''></script>
 	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity=''></script>
 </body>
 
 </html>

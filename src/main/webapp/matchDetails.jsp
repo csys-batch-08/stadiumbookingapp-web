@@ -39,14 +39,14 @@
     <div id="Form">
     <form action="matchServe" onsubmit="return sports()" >
         <label for="stadoumName"><strong>Stadium Name:</strong></label>
-        <select name="stdname" placeholder="Enter Stadium Name" style="position: relative; left: 20px;">
+        <select name="stdname" id="stadoumName" placeholder="Enter Stadium Name" style="position: relative; left: 20px;">
         <option >--Select--</option>
          <c:forEach items="${stadiumList}" var="stadium">
         <option value="${stadium.stadiumName}">${stadium.stadiumName}</option>
        </c:forEach>
         </select>
         <br> <br>
-        <label for="Sports Name"><strong>Sports Name:</strong></label>
+        <label for="spname"><strong>Sports Name:</strong></label>
         <select name="spname" id="spname">
             <option value="">--Select--</option>
             <option value="Cricket">Cricket</option>
@@ -77,11 +77,11 @@
         <br> <br>
      
         
-        <label for="date"><strong>Date:</strong></label>
+        <label for="dateinput"><strong>Date:</strong></label>
         <input type="date" id="dateinput" name="matchDate" min="${sessionScope.today}"   placeholder="Select Date" style="position: relative; left: 95px;" required>
     
         <br> <br>
-        <label><strong>Time:</strong></label>
+        <label for="time"><strong>Time:</strong></label>
         <input type="time" name="time" id="time"  min="09:00" max="20:00" style="position: relative; left: 95px; width:145px " required >
         <br>
         <br>
@@ -169,13 +169,13 @@
     
     
     
-    <label for="teamAimg"><strong>Team A logo </strong></label>
+    <label for="teamAlogo"><strong>Team A logo </strong></label>
         <input type="file" name="teamAlogo" id="teamAlogo" style="position: relative; left: 55px; width:145px ">
         <br> <br>
-        <label for="tramBimg"><strong>Team B logo</strong></label>
+        <label for="teamBlogo"><strong>Team B logo</strong></label>
         <input type="file" name="teamBlogo" id="teamBlogo" style="position: relative; left: 55px; width:145px ">
         <br> <br>
-        <label for="numberseats"><strong>Number Of Seats:</strong></label>
+        <label for="seats"><strong>Number Of Seats:</strong></label>
         <select name="totalSeats" id="seats" style="position: relative; left: 15px; width:145px ">
             <option value="200">200</option>
             <option value="300">300</option>
@@ -183,7 +183,7 @@
             <option value="500">500</option>
         </select>
         <br> <br>
-         <label for="availseats"><strong>Available Seats: </strong></label>
+         <label for="seat"><strong>Available Seats: </strong></label>
         <select name="availseats" id="seat" style="position: relative; left: 30px; width:145px ">
             <option value="">--Select--</option>
             <option value="100">100</option>
@@ -192,7 +192,7 @@
             <option value="200">200</option>
         </select>
         <br> <br>
-        <label for="firstClass"><strong>First Class Rate:</strong></label>
+        <label for="fclass"><strong>First Class Rate:</strong></label>
         <select name="firstClass" id="fclass" >
             <option value="1000">1000Rs</option>
             <option value="1500">1500Rs</option>
@@ -201,7 +201,7 @@
         </select>
 
         <br> <br>
-        <label for="secondClass"><strong>Second Class Rate:</strong></label>
+        <label for="sclass"><strong>Second Class Rate:</strong></label>
         <select name="secondClass" id="sclass">
             <option value="500">500Rs</option>
             <option value="700">700Rs</option>

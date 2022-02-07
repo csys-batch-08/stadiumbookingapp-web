@@ -61,11 +61,11 @@
     </div>
     <form action="updateMatch" >
 
-<input type="text" name="matchId" value="${match.matchId}" style="visibility:hidden;">
+<input type="hidden" name="matchId" id="matchId" value="${match.matchId}" >
 <br>
-        <input type="date" min="${sessionScope.today}" name="matchDate" id="matchDate" required>
+        <input type="date" min="${sessionScope.today}" name="matchDate" id="matchDate" aria-label="matchDate" required>
         <br>
-        <input type="time" name="matchTime" id="matchTime" required>
+        <input type="time" name="matchTime" id="matchTime" aria-label="matchTime" required>
         <br>
         <fmt:bundle basename = "com.stadiumbooking.bundle.ButtonsBundle" prefix="btn.">
         <button type="submit"><fmt:message key="Update"/></button>

@@ -37,10 +37,10 @@
 
 <fmt:bundle basename = "com.stadiumbooking.bundle.ButtonsBundle" prefix="btn.">
 	<div id="userInfo">
-		<label for=""><strong>Name:</strong> &nbsp; ${user.name } </label> <br>
-		<label for=""><strong>Username:</strong>&nbsp; ${user.username} </label> <br>
-		<label for=""><strong>Mobile:</strong>&nbsp; ${user.phoneNumber}</label> <br>
-		<label for=""><strong>Email:</strong> &nbsp; ${user.email} </label> <br>
+		<label for="Name"><strong>Name:</strong> &nbsp; ${user.name } </label> <br>
+		<label for="Username"><strong>Username:</strong>&nbsp; ${user.username} </label> <br>
+		<label for="Mobile"><strong>Mobile:</strong>&nbsp; ${user.phoneNumber}</label> <br>
+		<label for="Email"><strong>Email:</strong> &nbsp; ${user.email} </label> <br>
 		
 		<button onclick="update()"><fmt:message key="Update"/></button>
 		<div >
@@ -68,25 +68,25 @@
 	
 		<form action="update" method="post" onsubmit="return validate()">
 		    
-			<label for="name"><strong>Name:</strong></label> <br>
+			<label for="updateName"><strong>Name:</strong></label> <br>
 		    <input type="text" value="${user.name}" aria-label="name" 	name="updateName" id="updateName"> <br>
 		    <label id="uname" style="visibility: hidden;">Enter Name</label> <br>
 
-			<label for="username"><strong>Username:</strong></label> <br> 
+			<label for="updateUsername"><strong>Username:</strong></label> <br> 
 			<input type="text" value="${user.username}" aria-label="username"	name="updateUsername" id="updateUsername"> <br>			
 		    <label id="username" style="visibility: hidden;">Enter Username</label> <br>
 			
 			
 			
-			<label for="password" ><strong>Password:</strong></label> <br> 
+			<label for="updatePassword" ><strong>Password:</strong></label> <br> 
 			<input	type="text" value="${user.password}" aria-label="Password" name="updatePassword" id="updatePassword"> <br>
 			<label for="" id="lpass" style="visibility: hidden;">EnterPassword</label> <br>
 			
-			<label for="email"><strong>Email:</strong></label> <br> 
+			<label for="updateEmail"><strong>Email:</strong></label> <br> 
 		    <input	type="email" value="${user.email}" aria-label="email" name="updateEmail" id="updateEmail"> <br>
 			<label id="lmail" style="visibility: hidden;">Enter	Email</label> <br> 
 			
-			<label for="phoneNumber"><strong>Phone Number:</strong></label> <br>
+			<label for="updateNumber"><strong>Phone Number:</strong></label> <br>
 			<input type="number" value="${user.phoneNumber}" aria-label="Phone Number" name="updateNumber" id="updateNumber"> <br>
 			<label for="" id="mobile" style="visibility: hidden;">Enter	phone Number</label>
 			

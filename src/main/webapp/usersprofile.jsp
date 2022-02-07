@@ -19,7 +19,7 @@
 <body>
   <div class="sidenav">
     <fmt:bundle basename = "com.stadiumbooking.bundle.Sidenavbar" prefix="nav.">
-        <a href="usersprofile"><fmt:message  key="Profile"/></a>
+        <a href="usersprofile"> <fmt:message  key="Profile"/> </a>
         <a href="allMatchDetalis"><fmt:message  key="UpcomingMatch"/></a>
         <a href="mymatch"><fmt:message  key="MyMatch"/></a>
         <a href="wallet"><fmt:message  key="Wallet"/></a>
@@ -33,10 +33,10 @@
 <fmt:bundle basename = "com.stadiumbooking.bundle.ButtonsBundle" prefix="btn.">
 	<div id="userInfo">
 
-		<label for=""><strong>Name:</strong> &nbsp; ${user.name } </label> <br>
-		<label for=""><strong>Username:</strong>&nbsp; ${user.username} </label> <br>
-		<label for=""><strong>Mobile:</strong>&nbsp; ${user.phoneNumber}</label> <br>
-		<label for=""><strong>Email:</strong> &nbsp; ${user.email}</label> <br>
+		<label for="Name"><strong>Name:</strong> &nbsp; ${user.name } </label> <br>
+		<label for="Username"><strong>Username:</strong>&nbsp; ${user.username} </label> <br>
+		<label for="Mobile"><strong>Mobile:</strong>&nbsp; ${user.phoneNumber}</label> <br>
+		<label for="Email"><strong>Email:</strong> &nbsp; ${user.email}</label> <br>
 		
 		<button onclick="update()"><fmt:message key="Update"/></button>
 		<div>
@@ -49,9 +49,9 @@
 
     <form action="profilePic" id="profilepicForm" style="visibility: hidden;">
         
-        <input type="file" name="profilePic">
+        <input type="file" name="profilePic" aria-label="profilePic" id="profilePic">
        <button type="submit"><fmt:message key="Submit"/></button>
-       <input type="text" name="role" value="User" style="visibility: hidden;">
+       <input type="hidden" name="role" id="role" value="User">
     </form>
 </div>
 
@@ -67,30 +67,30 @@
 		   
 
 
-			<label><strong>Name:</strong></label> <br>
+			<label for="updateName"><strong>Name:</strong></label> <br>
 		    <input type="text" value="${user.name}" 	name="updateName" id="updateName"> <br>
 		    <label id="uname" style="visibility: hidden;">Enter Name</label> <br>
 
-			<label><strong>Username:</strong></label> <br> 
+			<label for="updateUsername"><strong>Username:</strong></label> <br> 
 			<input type="text" value="${user.username}"	name="updateUsername" id="updateUsername"> <br>			
 		    <label id="username" style="visibility: hidden;">Enter Username</label> <br>
 			
 			
 			
-			<label ><strong>Password:</strong></label> <br> 
+			<label for="updatePassword"><strong>Password:</strong></label> <br> 
 			<input	type="text" value="${user.password}" name="updatePassword" id="updatePassword"> <br>
 			<label for="" id="lpass" style="visibility: hidden;">EnterPassword</label> <br>
 			
-			<label for=""><strong>Email:</strong></label> <br> 
+			<label for="updateEmail"><strong>Email:</strong></label> <br> 
 		    <input	type="email" value="${user.email}" name="updateEmail" id="updateEmail"> <br>
 			<label for="" id="lmail" style="visibility: hidden;">Enter	Email</label> <br> 
 			
-			<label for=""><strong>Phone Number:</strong></label> <br>
+			<label for="updateNumber"><strong>Phone Number:</strong></label> <br>
 			<input type="number" value="${user.phoneNumber}" name="updateNumber" id="updateNumber"> <br>
 			<label for="" id="mobile" style="visibility: hidden;">Enter	phone Number</label>
 			
 			<button type="submit"><fmt:message key="Submit"/></button>
-			<input type="text" name="role" value="${user.role}" id="role" style="visibility: hidden;">
+			<input type="hidden" name="role" value="${user.role}" id="role">
 	
 		</form>
 

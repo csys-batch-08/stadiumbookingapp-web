@@ -29,11 +29,11 @@
             <c:choose>
              <c:when test="${sessionScope.role.equals('Admin')}">
              
-            <a href="adminHome.html">Home</a>
+            <a href="adminHome.jsp">Home</a>
             </c:when>
             <c:when test="${sessionScope.role.equals('User')}">
             
-            <a href="userHome.html">Home</a>
+            <a href="userHome.jsp">Home</a>
         
             </c:when>
             </c:choose>
@@ -48,7 +48,7 @@
     <div id="rating">
 
         <div class="rate">
-            <input type="radio" id="star5" name="rate" value="5" onclick="rate5()" />
+            <input type="radio"  id="star5" name="rate" value="5" onclick="rate5()" />
             <label for="star5" title="text">5 stars</label>
             <input type="radio" id="star4" name="rate" value="4"onclick="rate4()" />
             <label for="star4" title="text">4 stars</label>
@@ -65,8 +65,8 @@
     <div>
         <br>
         <form action="ratings" onsubmit="return ratings()">
-          <input type="text" name="ratingNumber" id="ratingNumber" style="visibility:hidden;">
-            <input type="text" id="stadiumId" value="${stadiumID}" name="stadiumId" style="visibility:hidden;"  >
+          <input type="hidden" name="ratingNumber" id="ratingNumber" aria-label="ratingNumber">
+            <input type="hidden" id="stadiumId" value="${stadiumID}" name="stadiumId" aria-label="stadiumId" >
          <br>
           <label>Write a review</label>
           <br> <br>
@@ -78,41 +78,4 @@
         </div>
 </body>
 </html>
-<script>
-
-
-function rate5(){
-    var x = document.getElementsByName("rate")[0].value;
-    document.getElementById("ratingNumber").value = x;
-}
-
-function rate4(){
-    var x = document.getElementsByName("rate")[1].value;
-    document.getElementById("ratingNumber").value = x;
-}
-
-function rate3(){
-    var x = document.getElementsByName("rate")[2].value;
-    document.getElementById("ratingNumber").value = x;
-}
-
-function rate2(){
-    var x = document.getElementsByName("rate")[3].value;
-    document.getElementById("ratingNumber").value = x;
-}
-function rate1(){
-    var x = document.getElementsByName("rate")[4].value;
-    document.getElementById("ratingNumber").value = x;
-}
-
-function ratings(){
-    var rating=document.getElementById("ratingNumber");
-    var review=document.getElementById("review");
-    if(rating.value.trim()==""){
-        return false;
-    }
-    else if(review.value.trim()==""){
-        return false;
-    }
-}
-</script>
+<script src="assets/js/rating.js"></script>

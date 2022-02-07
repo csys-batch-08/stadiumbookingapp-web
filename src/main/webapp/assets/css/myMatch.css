@@ -1,0 +1,25 @@
+@charset "ISO-8859-1";
+
+.matchDetalis {
+	position: relative;
+	left: 00px;
+	text-align: center;
+}
+
+.matchDetalis  a {
+	background-color: #f44336;
+	color: white;
+	padding: 14px 25px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: large;
+	font-weight: bold;
+	position: relative;
+	left: 0px;
+}
+
+.matchDetalis a:hover {
+	background-color: green;
+	color: black;
+}

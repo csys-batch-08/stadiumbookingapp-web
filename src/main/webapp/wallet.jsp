@@ -67,11 +67,11 @@
     <form action="wallets" onsubmit="return insertwallet()">
 
 
-        <input style="visibility: hidden;" type="text" name="userID" value="${sessionScope.id}" >
+        <input  type="hidden" id="userID" name="userID" value="${sessionScope.id}" >
         <br>
      
         <div class="wrapper">
-           <label ><strong><fmt:message key="Add"/>:</strong></label>
+           <label for="amount"><strong><fmt:message key="Add"/>:</strong></label>
         <input type="number" min="1000" name="amount" id="amount"   required=""/>
         <div class="validation">Minimum Deposit 1000Rs</div>
         </div>

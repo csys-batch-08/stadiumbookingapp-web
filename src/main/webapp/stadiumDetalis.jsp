@@ -33,13 +33,13 @@
     <div id="stadium">
     <form action="stadium" onsubmit="return insert()">
 
-        <label ><strong>Stadium Name:</strong></label>
+        <label for="stadiumName"><strong>Stadium Name:</strong></label>
         <input type="text" name="stadiumName" id="stadiumName" >
         <br>
         
         <label style="visibility: hidden;" id="stadiumError">Enter Stadium Name</label>
         <br>
-        <label ><strong>Stadium Image :</strong></label>
+        <label for="stadiumImge"><strong>Stadium Image :</strong></label>
         <input type="file" name="stadiumImge" id="stadiumImge">
         <br>
         <label style="visibility: hidden;" id="image">Enter Image Url</label>

@@ -20,7 +20,7 @@
 </head>
 <body>
 	<div class="sidenav">
-    <a href="adminProfile">Profile</a>
+    
  <fmt:bundle basename = "com.stadiumbooking.bundle.Sidenavbar" prefix="nav.">
          <a href="adminProfile"><fmt:message  key="Profile"/></a>
         <a href="matchDetails" ><fmt:message  key="MatchDetails"/></a>
@@ -96,11 +96,11 @@
        </tbody>
     </table>
     </div>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js" integrity="filehash"></script>
-	<script src="assets/js/animation.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js" integrity=''></script>
+	<script src="assets/js/animation.js" integrity=''></script>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" integrity=''></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" integrity=''></script>
 
 </html>
 <script src="assets/js/table.js"></script>

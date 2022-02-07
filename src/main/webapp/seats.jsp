@@ -68,26 +68,21 @@
 						name="matchIds"  min="1"> <br> <label for="ticketNumber"><strong>Seat
 							Number:</strong></label> <input type="text" id="ticketNumber" name="ticketNumber" readonly="readonly">
 
-
-
-					<label><strong>Pick a Seat Category:</strong></label> 
+					<label for="seatsCategory"><strong>Pick a Seat Category:</strong></label> 
 					<select	id="seatsCategory" name="seatsCategory" required="required">
 						<option disabled="disabled" value="">--Select--</option>
-						<option value="${match.firstClassSeatsPrice}">FirstClass
-							(Rs.${match.firstClassSeatsPrice})</option>
-						<option value="${match.secondClassSeatsPrice}">Second
-							Class(Rs.${match.secondClassSeatsPrice})</option>
-							
-					</select> <input type="text" id="category" name="category"
-						style="visibility: hidden;"> <br> <input type="text"
-						id="checkFclass" style="visibility: hidden;"
-						value="${match.firstClassSeatsPrice}"><input type="text"
-						style="visibility: hidden;" id="checkSclass"
-						value="${match.secondClassSeatsPrice}"> <br> <label>
-						<strong>Number Of Tickets:</strong>
-					</label> <input type="number" id="count" name="seatCounts" min="1" max="1000000" required>
-					&nbsp;&nbsp;&nbsp; <label><strong>Total Price (Rs):</strong></label> <input
-						type="number" id="total" name="totalprice"> <br>
+						<option value="${match.firstClassSeatsPrice}">FirstClass (Rs.${match.firstClassSeatsPrice})</option>
+						<option value="${match.secondClassSeatsPrice}">Second Class(Rs.${match.secondClassSeatsPrice})</option>
+					</select>
+						
+				 <input type="hidden" id="category" name="category"> <br> 
+					<input type="hidden" id="checkFclass" 	value="${match.firstClassSeatsPrice}">
+					<input type="hidden" id="checkSclass"	value="${match.secondClassSeatsPrice}"> <br> 
+					<label for="count">	<strong>Number Of Tickets:</strong></label>
+					<input type="number" id="count" name="seatCounts" min="1" max="100" required>
+					   &nbsp;&nbsp;&nbsp;
+				    <label for="total"><strong>Total Price (Rs):</strong></label> 
+					<input	type="number" id="total" name="totalprice"> <br>
 					<br>
 
 					<button type="submit" onmouseover="check()">Pay</button>

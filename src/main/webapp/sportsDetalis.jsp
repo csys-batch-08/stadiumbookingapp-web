@@ -34,13 +34,13 @@
     <div id="sports">
     <form action="sports" onsubmit="return insert()">
 
-        <label ><strong>Sports Name:</strong></label>
+        <labelfor="sportsName"><strong>Sports Name:</strong></label>
         <input type="text" name="sportsName" id="sportsName" >
         <br>
         
         <label style="visibility: hidden;" id="sportsError">Enter Sports Name</label>
         <br>
-        <label ><strong>Event Name:</strong></label>
+        <label for="eventName"><strong>Event Name:</strong></label>
         <input type="text" name="eventName" id="eventName">
         <br>
         <label style="visibility: hidden;" id="event">Enter Event Name</label>

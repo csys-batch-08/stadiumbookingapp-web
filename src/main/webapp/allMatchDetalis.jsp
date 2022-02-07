@@ -46,7 +46,6 @@
       <h2  id="Emesg" onclick="Error()" onkeypress="Error()" style="position:absolute; left:300px; top:10px;color:red;visibility:visible"> ${sessionScope.houseFull}</h2>
 </c:if>
   
- <!-- LowCountSeats -->
    <c:if test="${not empty sessionScope.LowCountSeats}">
       <h2  id="Emesg" onclick="Error()" onkeypress="Error()" style="position:absolute; left:300px; top:10px;color:red;visibility:visible"> ${sessionScope.LowCountSeats}</h2>
 </c:if>
@@ -99,8 +98,8 @@
 </c:forEach>
 </div>
     </div>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js" integrity="filehash"></script>
-	<script src="assets/js/animation.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js" integrity=''></script>
+	<script src="assets/js/animation.js" integrity=''></script>
 </body>
 </html>
 <script src="assets/js/match.js"></script>
