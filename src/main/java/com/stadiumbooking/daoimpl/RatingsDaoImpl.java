@@ -12,9 +12,11 @@ import com.stadiumbooking.dao.RatingsDao;
 import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.Ratings;
 import com.stadiumbooking.model.User;
+import com.stadiumbooking.service.impl.UserServiceImpl;
 
 public class RatingsDaoImpl implements RatingsDao {
 
+	static final UserServiceImpl userService=new UserServiceImpl();
 	static final String REVIEWID="REVIEWID";
 	static final String USERID="USERID";
 	static final String REVIEWS="REVIEWS";
@@ -65,7 +67,6 @@ public class RatingsDaoImpl implements RatingsDao {
 		PreparedStatement stmt1 = null;
 		ResultSet rs = null;
 		List<Ratings> ratingList = null;
-		UserDaoImpl userDao=new UserDaoImpl();
 		try {
 			con = conUtil.getDBConnect();
 			String query = "Select REVIEWID,USERID,REVIEWS,RATINGS,STADIUM_ID from Ratings where stadium_id=?";
@@ -74,7 +75,7 @@ public class RatingsDaoImpl implements RatingsDao {
 			rs = stmt1.executeQuery();
 			ratingList = new ArrayList<>();
 			while (rs.next()) {
-				User user=userDao.getUserById(rs.getInt(USERID));
+				User user=userService.getUserById(rs.getInt(USERID));
 				Ratings ratings = new Ratings(rs.getInt(REVIEWID), rs.getString(REVIEWS), rs.getDouble(RATINGS),
 						rs.getInt(STADIUM_ID),user);
 				ratingList.add(ratings);

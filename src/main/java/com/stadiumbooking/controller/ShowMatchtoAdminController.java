@@ -15,18 +15,19 @@ import javax.servlet.http.HttpServletResponse;
 import com.stadiumbooking.daoimpl.MatchDaoImpl;
 import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.Match;
+import com.stadiumbooking.service.impl.MatchServiceImpl;
 
 @WebServlet("/showMatchToAdmin")
 public class ShowMatchtoAdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	final MatchDaoImpl matchDao=new MatchDaoImpl();
+	final MatchServiceImpl matchService=new MatchServiceImpl();
 	
 	@Override
 	public void service(HttpServletRequest req, HttpServletResponse res)  {
 		
 		
 		try {
-			List<Match> matchDetails = matchDao.getAllMatchDetalis();
+			List<Match> matchDetails = matchService.getAllMatchDetalis();
 			req.setAttribute("MatchDetails", matchDetails);
 			
 		

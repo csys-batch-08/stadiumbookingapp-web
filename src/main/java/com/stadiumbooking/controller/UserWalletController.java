@@ -17,13 +17,15 @@ import com.stadiumbooking.daoimpl.UserDaoImpl;
 import com.stadiumbooking.daoimpl.WalletDaoImpl;
 import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.WalletDetails;
+import com.stadiumbooking.service.impl.UserServiceImpl;
+import com.stadiumbooking.service.impl.WalletServiceImpl;
 
 
 @WebServlet("/wallet")
 public class UserWalletController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	final UserDaoImpl userDao=new UserDaoImpl();
-	final WalletDaoImpl walletDao=new WalletDaoImpl();
+	static final UserServiceImpl userService=new UserServiceImpl();
+	static final WalletServiceImpl walletService=new WalletServiceImpl();
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) {
 
@@ -31,8 +33,8 @@ public class UserWalletController extends HttpServlet {
 			HttpSession session = req.getSession();
 			
 			int userID=(int) session.getAttribute("id");
-			Double wallet=userDao.userWalletDetails(userID);
-			List<WalletDetails> userWalletList=walletDao.getUserWalletListById(userID);
+			Double wallet=userService.userWalletDetails(userID);
+			List<WalletDetails> userWalletList=walletService.getUserWalletListById(userID);
 			req.setAttribute("userWalletList", userWalletList);
 			session.setAttribute("wallet", wallet);
 		      RequestDispatcher rd = req.getRequestDispatcher("wallet.jsp");			

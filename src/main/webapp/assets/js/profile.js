@@ -12,7 +12,7 @@ function update(){
 		var phonenumber = document.getElementById("updateNumber");
 
 		var passExpression = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}$/;
-		var emailExpression = /[A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}/;
+		var emailExpression = /[A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}$/;
 		var mobileExpression = /[6-9]\d{9}$/;
 
 		if (name.value.trim() == "") {

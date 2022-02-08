@@ -15,18 +15,19 @@ import javax.servlet.http.HttpServletResponse;
 import com.stadiumbooking.daoimpl.MatchDaoImpl;
 import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.Match;
+import com.stadiumbooking.service.impl.MatchServiceImpl;
 
 @WebServlet("/searchedMatchDetails")
 public class SearchController  extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
-	final MatchDaoImpl matchDao=new MatchDaoImpl();
+	final MatchServiceImpl matchService=new MatchServiceImpl();
 	@Override
 	public void doGet(HttpServletRequest req,HttpServletResponse res) {
 		String teamName=req.getParameter("teamName");
 		
 		try {
-			List<Match> matchDetails=matchDao.searchByTeam(teamName);
+			List<Match> matchDetails=matchService.searchByTeam(teamName);
 			req.setAttribute("searchMatchList", matchDetails);
 			RequestDispatcher rd = req.getRequestDispatcher("searchedMatchDetails.jsp");			
 				rd.forward(req, res);

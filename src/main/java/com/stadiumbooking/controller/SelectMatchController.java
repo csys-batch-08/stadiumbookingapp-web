@@ -15,12 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.stadiumbooking.daoimpl.MatchDaoImpl;
 import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.Match;
+import com.stadiumbooking.service.impl.MatchServiceImpl;
 
 @WebServlet("/bookSeats")
 public class SelectMatchController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	static final MatchDaoImpl matchDao=new MatchDaoImpl();
+	static final MatchServiceImpl matchService=new MatchServiceImpl();
 	
 	@Override
 	public void service(HttpServletRequest req,HttpServletResponse res) {
@@ -30,7 +31,7 @@ public class SelectMatchController extends HttpServlet {
 		int matchId=Integer.parseInt(req.getParameter("matchId"));
 		try {
 			
-			Match match = matchDao.getMatchByMatchId(matchId);
+			Match match = matchService.getMatchByMatchId(matchId);
 			req.setAttribute("match", match);//MATCH_DETAILS
 			RequestDispatcher rd = req.getRequestDispatcher("seats.jsp");			
 			rd.forward(req, res);

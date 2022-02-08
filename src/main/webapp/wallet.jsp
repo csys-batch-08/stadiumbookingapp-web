@@ -24,22 +24,18 @@
 <body>
 
   <div class="sidenav">
-         <fmt:bundle basename = "com.stadiumbooking.bundle.Sidenavbar" prefix="nav.">
-        <a href="usersprofile"><fmt:message  key="Profile"/></a>
-        <a href="allMatchDetalis"><fmt:message  key="UpcomingMatch"/></a>
-        <a href="mymatch"><fmt:message  key="MyMatch"/></a>
-        <a href="wallet"><fmt:message  key="Wallet"/></a>
-        <a href="stadiumList"><fmt:message  key="StadiumList"/></a>
-        <a href="ratingList"><fmt:message  key="RatingList"/></a>
-        <a href="index.jsp"><fmt:message key="LogOut"/></a>
-            </fmt:bundle>
+          
+        <a href="usersprofile">Profile </a>
+        <a href="allMatchDetalis">Upcoming Matches </a>
+        <a href="mymatch">My Bookings</a>
+        <a href="wallet">Wallet</a>
+        <a href="stadiumList">Stadium List </a>
+        <a href="ratingList">Rating List</a>
+        <a href="index.jsp">Logout</a>
     </div>
-    
-    
-   
-    <div id="walletId">
 
 
+	<div id="walletId">
     <h1 >
     <span>W</span>
     <span>a</span>
@@ -62,7 +58,7 @@
      <c:if test="${not empty sessionScope.LowBalanceError}">
       <h2 class="animate__animated animate__flash" id="Emesg" onclick="Error()" style="position:absolute; left:500px; top:150px;color:red;visibility:visible"> ${sessionScope.LowBalanceError}</h2>
 </c:if>
-    <fmt:bundle basename = "com.stadiumbooking.bundle.ButtonsBundle" prefix="btn.">
+   
       <div id="wallet">
     <form action="wallets" onsubmit="return insertwallet()">
 
@@ -71,18 +67,18 @@
         <br>
      
         <div class="wrapper">
-           <label for="amount"><strong><fmt:message key="Add"/>:</strong></label>
+           <label for="amount"><strong>Add Amount:</strong></label>
         <input type="number" min="1000" name="amount" id="amount"   required=""/>
         <div class="validation">Minimum Deposit 1000Rs</div>
         </div>
       
         <br>
-        <button class="button" type="submit"><fmt:message key="Add"/></button>
+        <button class="button" type="submit">Add Amount</button>
 
 
     </form>
 </div>
-</fmt:bundle>
+
 
       <div id="transactions">
     <details>

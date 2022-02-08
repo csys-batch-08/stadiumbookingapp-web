@@ -19,21 +19,22 @@ import com.stadiumbooking.daoimpl.MatchDaoImpl;
 import com.stadiumbooking.daoimpl.SportsDaoImpl;
 import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.Match;
+import com.stadiumbooking.service.impl.MatchServiceImpl;
+import com.stadiumbooking.service.impl.SportsServiceImpl;
 
 
 @WebServlet("/matchServe")
 public class MatchController  extends HttpServlet{
 	private static final long serialVersionUID = 1L;
-	final MatchDaoImpl matchDao=new MatchDaoImpl();
+	
+	static final MatchServiceImpl matchService=new MatchServiceImpl();
+	static final SportsServiceImpl sportsService=new SportsServiceImpl();
 	
 	@Override
 	public void service(HttpServletRequest req, HttpServletResponse res) {
 	
 		/*  Getting Macth Details */
-		SportsDaoImpl sportsDao=new SportsDaoImpl();
-		
-	
-		
+
 		String stdName=req.getParameter("stdname").trim();
 	
 		String location=req.getParameter("location");
@@ -44,7 +45,7 @@ public class MatchController  extends HttpServlet{
 		
 		int spid = 0;
 		try {
-			spid = sportsDao.getSportsId(sportsName, eventName);
+			spid = sportsService.getSportsId(sportsName, eventName);
 		} catch (SQLException e2) {
 			
 			Logger.printStackTrace(e2);
@@ -90,8 +91,8 @@ public class MatchController  extends HttpServlet{
 			match.setFirstClassSeatsPrice(fClass);
 			match.setSecondClassSeatsPrice(sClass);
 			
-			matchDao.insertMatchDetalis(match);
-			List<Match> matchDetails = matchDao.getAllMatchDetalis();
+			matchService.insertMatchDetalis(match);
+			List<Match> matchDetails = matchService.getAllMatchDetalis();
 			req.setAttribute("MatchDetails", matchDetails);
 			 RequestDispatcher rd = req.getRequestDispatcher("showMatchToAdmin.jsp");
 				rd.forward(req, res);

@@ -19,15 +19,17 @@ import com.stadiumbooking.daoimpl.UserDaoImpl;
 import com.stadiumbooking.exception.NotFound;
 import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.User;
+import com.stadiumbooking.service.impl.MatchServiceImpl;
+import com.stadiumbooking.service.impl.UserServiceImpl;
 
 
 @WebServlet("/loginServe")
 public class UserLoginController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	final UserDaoImpl userDao = new UserDaoImpl();
+	static final UserServiceImpl userService=new UserServiceImpl();
 
-	final MatchDaoImpl matchDao = new MatchDaoImpl();
+	static final MatchServiceImpl matchService = new MatchServiceImpl();
 
 	@Override
 	public void service(HttpServletRequest req, HttpServletResponse res) {
@@ -41,17 +43,17 @@ public class UserLoginController extends HttpServlet {
 		try {
 			boolean flag;
 
-			flag = userDao.checkUser(userName, passWord);
+			flag = userService.checkUser(userName, passWord);
 			if (flag) {
 
-				List<User> userList = userDao.validateUser(userName, passWord);
+				List<User> userList = userService.validateUser(userName, passWord);
 				String role = userList.get(0).getRole();
 				int userID = userList.get(0).getUserid();
 				HttpSession session = req.getSession();
 				session.setAttribute("error", null);
 				session.setAttribute("id", userID);
 				session.setAttribute("role", role);
-				LocalDate today = matchDao.getDate();
+				LocalDate today = matchService.getDate();
 				session.setAttribute("today", today);
 				session.setAttribute("SomthingWentWrong", null);
 				session.setAttribute("RegisterSuccessful", null);

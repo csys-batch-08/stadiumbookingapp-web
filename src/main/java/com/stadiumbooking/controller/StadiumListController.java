@@ -14,18 +14,19 @@ import javax.servlet.http.HttpServletResponse;
 import com.stadiumbooking.daoimpl.StadiumDaoImpl;
 import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.StadiumDetalis;
+import com.stadiumbooking.service.impl.StadiumServiceImpl;
 
 @WebServlet("/stadiumList")
 public class StadiumListController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	final StadiumDaoImpl stadiumDao=new StadiumDaoImpl();
+	final StadiumServiceImpl stadiumService=new StadiumServiceImpl();
 	
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) {
 
 		try {
-			List<StadiumDetalis> stadiumList=stadiumDao.getAllStadiumList();
+			List<StadiumDetalis> stadiumList=stadiumService.getAllStadiumList();
 			req.setAttribute("stadiumList", stadiumList);
 		
 		      RequestDispatcher rd = req.getRequestDispatcher("stadiumList.jsp");			

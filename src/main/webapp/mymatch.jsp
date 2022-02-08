@@ -11,7 +11,7 @@
 <meta charset="ISO-8859-1">
 <meta name="keywords" content="stadium booking,seat booking,stadium seat booking,match ticket booking">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css"  rel="stylesheet">
-<script	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js" integrity=''></script>
+<script	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
 <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 <link rel = "icon" type = "" href = "assets/image/stadiumLogo.png">
  <link rel="stylesheet" href="assets/css/sideNavBar.css">
@@ -24,15 +24,14 @@
 <body>
 
  <div class="sidenav">
-      <fmt:bundle basename = "com.stadiumbooking.bundle.Sidenavbar" prefix="nav.">
-        <a href="usersprofile"><fmt:message  key="Profile"/></a>
-        <a href="allMatchDetalis"><fmt:message  key="UpcomingMatch"/></a>
-        <a href="mymatch"><fmt:message  key="MyMatch"/></a>
-        <a href="wallet"><fmt:message  key="Wallet"/></a>
-        <a href="stadiumList"><fmt:message  key="StadiumList"/></a>
-        <a href="ratingList"><fmt:message  key="RatingList"/></a>
-        <a href="index.jsp"><fmt:message key="LogOut"/></a>
-            </fmt:bundle>
+     
+        <a href="usersprofile">Profile </a>
+        <a href="allMatchDetalis">Upcoming Matches </a>
+        <a href="mymatch">My Bookings</a>
+        <a href="wallet">Wallet</a>
+        <a href="stadiumList">Stadium List </a>
+        <a href="ratingList">Rating List</a>
+        <a href="index.jsp">Logout</a>
     </div>
 
 
@@ -77,9 +76,8 @@
 
 <c:choose>
         <c:when test = "${seatList.status=='Booked'}">
-     <fmt:bundle basename = "com.stadiumbooking.bundle.ButtonsBundle" prefix="btn.">
-<a  onclick="cancleTickets(${seatList.ticketId})"><fmt:message key="Cancle_ticket"/></a>
-</fmt:bundle>
+     
+<a  onclick="cancleTickets(${seatList.ticketId})">Cancle Ticket</a>
 
 </c:when>
 <c:otherwise>

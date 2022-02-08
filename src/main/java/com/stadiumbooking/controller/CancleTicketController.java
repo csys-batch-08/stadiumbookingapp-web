@@ -17,13 +17,18 @@ import com.stadiumbooking.daoimpl.SeatsDaoImpl;
 import com.stadiumbooking.daoimpl.UserDaoImpl;
 import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.Seats;
+import com.stadiumbooking.service.impl.MatchServiceImpl;
+import com.stadiumbooking.service.impl.SeatsServiceImpl;
+import com.stadiumbooking.service.impl.UserServiceImpl;
 
 @WebServlet("/cancleTicket")
 public class CancleTicketController extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
-	final MatchDaoImpl matchDao=new MatchDaoImpl();
-	final SeatsDaoImpl seatDao=new SeatsDaoImpl();
-	final UserDaoImpl userDao=new UserDaoImpl();
+	
+	static final MatchServiceImpl matchService=new MatchServiceImpl();
+	static final SeatsServiceImpl seatService=new SeatsServiceImpl();
+	static final UserServiceImpl userService=new UserServiceImpl();
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) {
 	
@@ -32,10 +37,10 @@ public class CancleTicketController extends HttpServlet {
 		try {
 			int ticketId=Integer.parseInt(req.getParameter("ticketId"));
 			int userID=(int) session.getAttribute("id");
-			int row=seatDao.cancelledSeats(ticketId);
+			int row=seatService.cancelledSeats(ticketId);
 			if(row==1) {
-			seatDao.updateSeatsAndRefund(ticketId);
-			List<Seats> seatListById=seatDao.getSeatById(userID);
+			seatService.updateSeatsAndRefund(ticketId);
+			List<Seats> seatListById=seatService.getSeatById(userID);
 			req.setAttribute("seatListById", seatListById);
 			req.setAttribute("cancel","Cancelled");
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/mymatch.jsp");

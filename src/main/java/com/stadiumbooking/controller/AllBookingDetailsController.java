@@ -14,17 +14,18 @@ import javax.servlet.http.HttpServletResponse;
 import com.stadiumbooking.daoimpl.SeatsDaoImpl;
 import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.Seats;
+import com.stadiumbooking.service.impl.SeatsServiceImpl;
 
 
 @WebServlet("/allBookingDetails")
 public class AllBookingDetailsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static final SeatsDaoImpl seatsDao=new SeatsDaoImpl();
+	static final SeatsServiceImpl seatsService=new SeatsServiceImpl();
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) {
 
 		try {
-		    List<Seats> seatList=seatsDao.getSeatsDetalis();
+		    List<Seats> seatList=seatsService.getSeatsDetalis();
 			 
 		    req.setAttribute("seatList", seatList);
 		

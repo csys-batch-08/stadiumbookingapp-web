@@ -15,16 +15,17 @@ import javax.servlet.http.HttpServletResponse;
 import com.stadiumbooking.daoimpl.UserDaoImpl;
 import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.User;
+import com.stadiumbooking.service.impl.UserServiceImpl;
 
 @WebServlet("/Getallusers")
 public class AllUserListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	final UserDaoImpl userDao=new UserDaoImpl();
+	static final UserServiceImpl userService=new UserServiceImpl();
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) {
 
 		try {
-			  List<User> userLists= userDao.getAllUser();
+			  List<User> userLists= userService.getAllUser();
 			 req.setAttribute("UserLists", userLists);
 			 req.setAttribute("delete", null);
 		      RequestDispatcher rd = req.getRequestDispatcher("getallusers.jsp");			

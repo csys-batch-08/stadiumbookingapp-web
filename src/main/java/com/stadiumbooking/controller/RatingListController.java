@@ -15,17 +15,19 @@ import com.stadiumbooking.daoimpl.RatingsDaoImpl;
 import com.stadiumbooking.daoimpl.StadiumDaoImpl;
 import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.StadiumDetalis;
+import com.stadiumbooking.service.impl.RatingsServiceImpl;
+import com.stadiumbooking.service.impl.StadiumServiceImpl;
 
 @WebServlet("/ratingList")
 public class RatingListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	final StadiumDaoImpl stadiumDao=new StadiumDaoImpl();
-	final RatingsDaoImpl ratingDao=new RatingsDaoImpl();
+	final StadiumServiceImpl stadiumService=new StadiumServiceImpl();
+	final RatingsServiceImpl ratingService=new RatingsServiceImpl();
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) {
 
 		try {
-			List<StadiumDetalis> stadiumList=stadiumDao.getAllStadiumList();
+			List<StadiumDetalis> stadiumList=stadiumService.getAllStadiumList();
 			req.setAttribute("stadiumList", stadiumList);
 		
 		      RequestDispatcher rd = req.getRequestDispatcher("ratingList.jsp");			

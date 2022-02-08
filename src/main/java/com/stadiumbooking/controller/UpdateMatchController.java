@@ -17,12 +17,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.stadiumbooking.daoimpl.MatchDaoImpl;
 import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.Match;
+import com.stadiumbooking.service.impl.MatchServiceImpl;
 
 @WebServlet("/updateMatch")
 public class UpdateMatchController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	final MatchDaoImpl matchDao=new MatchDaoImpl();
+	final MatchServiceImpl matchService=new MatchServiceImpl();
 	@Override
 	public void service(HttpServletRequest req,HttpServletResponse res) {
 		
@@ -37,8 +38,8 @@ public class UpdateMatchController extends HttpServlet {
 		
 		try {
 		
-			matchDao.updateMatchDetails(match);
-			List<Match> matchDetails=matchDao.getAllMatchDetalis();
+			matchService.updateMatchDetails(match);
+			List<Match> matchDetails=matchService.getAllMatchDetalis();
 			req.setAttribute("MatchDetails", matchDetails);
 			 RequestDispatcher rd = req.getRequestDispatcher("showMatchToAdmin.jsp");
 				rd.forward(req, res);

@@ -14,12 +14,13 @@ import com.stadiumbooking.exception.RegisterSuccessful;
 import com.stadiumbooking.exception.SomthingWentWrong;
 import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.User;
+import com.stadiumbooking.service.impl.UserServiceImpl;
 
 @WebServlet("/regSevr")
 public class UserController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	final UserDaoImpl userDao = new UserDaoImpl();
+	static final UserServiceImpl userService=new UserServiceImpl();
 
 	@Override
 	public void service(HttpServletRequest req, HttpServletResponse res) {
@@ -41,10 +42,10 @@ public class UserController extends HttpServlet {
 		user.setPhoneNumber(phone);
 		try {
 
-			boolean flag=userDao.checkUser(uname, mail, phone);
+			boolean flag=userService.checkUser(uname, mail, phone);
 			if (flag) {
 				
-				userDao.insertUser(user);
+				userService.insertUser(user);
 				throw new RegisterSuccessful();
 			
 			} else {
@@ -79,6 +80,10 @@ public class UserController extends HttpServlet {
 				Logger.printStackTrace(e2);
 				Logger.runTimeException(e2.getMessage());
 			}
+		} catch (ClassNotFoundException e) {
+		
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}
 
 	}

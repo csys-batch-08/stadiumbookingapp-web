@@ -14,21 +14,23 @@ import javax.servlet.http.HttpServletResponse;
 import com.stadiumbooking.daoimpl.UserDaoImpl;
 import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.User;
+import com.stadiumbooking.service.impl.UserServiceImpl;
 
 
 @WebServlet("/deleteUser")
 public class DeleteUserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static final UserDaoImpl userDao=new UserDaoImpl();
+	
+	static final UserServiceImpl userService=new UserServiceImpl();
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) {
 
 		
 		try {
 			int userId=Integer.parseInt(req.getParameter("userId"));
-			    int row=userDao.deleteUser(userId);
+			    int row=userService.deleteUser(userId);
 			  if(row==1) {
-			    List<User> userLists= userDao.getAllUser();
+			    List<User> userLists= userService.getAllUser();
 			    req.setAttribute("delete", "deleted");
 			 req.setAttribute("UserLists", userLists);
 		

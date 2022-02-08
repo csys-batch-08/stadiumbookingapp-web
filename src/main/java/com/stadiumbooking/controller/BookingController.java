@@ -24,16 +24,19 @@ import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.Match;
 import com.stadiumbooking.model.Seats;
 import com.stadiumbooking.model.User;
+import com.stadiumbooking.service.impl.MatchServiceImpl;
+import com.stadiumbooking.service.impl.SeatsServiceImpl;
+import com.stadiumbooking.service.impl.UserServiceImpl;
+import com.stadiumbooking.service.impl.WalletServiceImpl;
 
 
 @WebServlet("/booking")
 public class BookingController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	final SeatsDaoImpl seatDao = new SeatsDaoImpl();
-	final MatchDaoImpl matchDao = new MatchDaoImpl();
-	final WalletDaoImpl walletDao = new WalletDaoImpl();
-	final UserDaoImpl userDao = new UserDaoImpl();
+	static final SeatsServiceImpl  seatService = new SeatsServiceImpl ();
+	static final MatchServiceImpl matchService = new MatchServiceImpl();
+	static final UserServiceImpl userService=new UserServiceImpl();
 
 	@Override
 	public void service(HttpServletRequest req, HttpServletResponse res) {
@@ -55,7 +58,7 @@ public class BookingController extends HttpServlet {
 		int avalibleSeats = 0;
 
 		try {
-			totalAvalibleSeats = matchDao.checkAvilableSeats(matchId);
+			totalAvalibleSeats = matchService.checkAvilableSeats(matchId);
 		} catch (SQLException e2) {
 
 			Logger.printStackTrace(e2);
@@ -68,7 +71,7 @@ public class BookingController extends HttpServlet {
 			if (avalibleSeats >= 0) {
 
 				try {
-					Double walletBlance = userDao.userWalletDetails(userId);
+					Double walletBlance = userService.userWalletDetails(userId);
 
 					if (walletBlance >= totalprice) {
 						
@@ -84,15 +87,15 @@ public class BookingController extends HttpServlet {
 						seats.setSeatclass(seatclass);
 						seats.setPrice(totalprice);
 						seats.setSeatcount(seatCounts);
-						seatDao.bookingSeats(seats);
+						seatService.bookingSeats(seats);
 
-						userDao.bookingTicktes(userId, totalprice);
-						matchDao.updateAvailableSeats(seatCounts, matchId);
-						List<Seats> seatsList = seatDao.getSeatById(userId);
+						userService.bookingTicktes(userId, totalprice);
+						matchService.updateAvailableSeats(seatCounts, matchId);
+						List<Seats> seatsList = seatService.getSeatById(userId);
 					
 
 						HttpSession session = req.getSession();
-						Double wallet = userDao.userWalletDetails(userId);
+						Double wallet = userService.userWalletDetails(userId);
 
 						session.setAttribute("wallet", wallet);
 						req.setAttribute("seatListById", seatsList);
@@ -113,7 +116,7 @@ public class BookingController extends HttpServlet {
 						session.setAttribute("LowBalanceError", e.getMessage());
 
 						int userID=(int) session.getAttribute("id");
-						Double wallet=userDao.userWalletDetails(userID);
+						Double wallet=userService.userWalletDetails(userID);
 						
 						session.setAttribute("wallet", wallet);
 					      RequestDispatcher rd = req.getRequestDispatcher("wallet.jsp");			
@@ -138,7 +141,7 @@ public class BookingController extends HttpServlet {
 					try {
 						HttpSession session = req.getSession();
 						session.setAttribute("LowCountSeats", lc.getMessage());
-						List<Match> matchDetails = matchDao.getAllMatchDetalis();
+						List<Match> matchDetails = matchService.getAllMatchDetalis();
 						req.setAttribute("MatchDetails", matchDetails);
 						
 					
@@ -159,7 +162,7 @@ public class BookingController extends HttpServlet {
 				try {
 					HttpSession houseFullsession = req.getSession();
 					houseFullsession.setAttribute("houseFull", hf.getMessage());
-					List<Match> matchDetails = matchDao.getAllMatchDetalis();
+					List<Match> matchDetails = matchService.getAllMatchDetalis();
 					req.setAttribute("MatchDetails", matchDetails);
 					 RequestDispatcher rd = req.getRequestDispatcher("allMatchDetalis.jsp");
 						rd.forward(req, res);

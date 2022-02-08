@@ -17,14 +17,16 @@ import com.stadiumbooking.daoimpl.WalletDaoImpl;
 import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.User;
 import com.stadiumbooking.model.WalletDetails;
+import com.stadiumbooking.service.impl.UserServiceImpl;
+import com.stadiumbooking.service.impl.WalletServiceImpl;
 
 
 
 @WebServlet("/wallets")
 public class WalletController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	final WalletDaoImpl walletDao=new WalletDaoImpl();
-	final UserDaoImpl userDao=new UserDaoImpl();
+	final WalletServiceImpl walletService=new WalletServiceImpl();
+	static final UserServiceImpl userService=new UserServiceImpl();
 	@Override
 	public void doGet(HttpServletRequest req,HttpServletResponse res) {
 		
@@ -40,12 +42,12 @@ public class WalletController extends HttpServlet {
 			WalletDetails wallet=new WalletDetails();
 			wallet.setUser(user);
 			wallet.setAmount(amount);
-			walletDao.insertAmount(wallet);
-			Double userWallet=userDao.userWalletDetails(userId);
+			walletService.insertAmount(wallet);
+			Double userWallet=userService.userWalletDetails(userId);
 			
 			session.setAttribute("wallet", userWallet);
 			req.setAttribute("walletAdd", "walletAdd");
-			List<WalletDetails> userWalletList=walletDao.getUserWalletListById(userId);
+			List<WalletDetails> userWalletList=walletService.getUserWalletListById(userId);
 			req.setAttribute("userWalletList", userWalletList);
 			  RequestDispatcher rd = req.getRequestDispatcher("wallet.jsp");
 				

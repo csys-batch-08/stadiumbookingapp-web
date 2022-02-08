@@ -12,9 +12,11 @@ import com.stadiumbooking.dao.StadiumDao;
 import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.Ratings;
 import com.stadiumbooking.model.StadiumDetalis;
+import com.stadiumbooking.service.impl.RatingsServiceImpl;
 
 public class StadiumDaoImpl implements StadiumDao {
 
+	static final RatingsServiceImpl ratingService=new RatingsServiceImpl();
 	static final String STADIUM_ID="STADIUM_ID";
 	static final String STADIUM_NAME="STADIUM_NAME";
 	static final String STADIUM_IMG="STADIUM_IMG";
@@ -32,7 +34,7 @@ public class StadiumDaoImpl implements StadiumDao {
 			con = conUtil.getDBConnect();
 			String query="Select STADIUM_ID,STADIUM_NAME,STADIUM_IMG  from stadium_detalis";
 
-			RatingsDaoImpl ratingDao=new RatingsDaoImpl();
+			
 			
 			stmt=con.prepareStatement(query);
 			 rs=stmt.executeQuery(query);
@@ -40,7 +42,7 @@ public class StadiumDaoImpl implements StadiumDao {
 			 stadiumList=new ArrayList<>();
 
 			while(rs.next()) {
-				List<Ratings> ratings=ratingDao.getAllRatingsById(rs.getInt(STADIUM_ID));
+				List<Ratings> ratings=ratingService.getAllRatingsById(rs.getInt(STADIUM_ID));
 				StadiumDetalis stadium=new StadiumDetalis(rs.getInt(STADIUM_ID),rs.getString(STADIUM_NAME),rs.getString(STADIUM_IMG),ratings);
 				stadiumList.add(stadium);
 			}

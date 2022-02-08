@@ -15,12 +15,13 @@ import javax.servlet.http.HttpSession;
 import com.stadiumbooking.daoimpl.UserDaoImpl;
 import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.User;
+import com.stadiumbooking.service.impl.UserServiceImpl;
 
 @WebServlet("/adminProfile")
 public class AdminProfileController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	static final UserDaoImpl userDao=new UserDaoImpl();
+	static final UserServiceImpl userService=new UserServiceImpl();
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res)  {
 	
@@ -30,7 +31,7 @@ public class AdminProfileController extends HttpServlet {
 		session.setAttribute("error",null );
 		
 		try {
-			User userDetails = userDao.getUserById(userID);
+			User userDetails = userService.getUserById(userID);
 			req.setAttribute("user", userDetails);  
 			
 		      RequestDispatcher rd = req.getRequestDispatcher("adminProfile.jsp");

@@ -18,31 +18,30 @@
 </head>
 <body>
 	<div class="sidenav">
-		<fmt:bundle basename="com.stadiumbooking.bundle.Sidenavbar"
-			prefix="nav.">
-			<a href="adminProfile"> <fmt:message key="Profile" />
+		
+			<a href="adminProfile"> Profile
 			</a>
-			<a href="matchDetails"> <fmt:message key="MatchDetails" />
+			<a href="matchDetails"> Add Match 
 			</a>
-			<a href="stadiumDetalis.jsp"> <fmt:message key="StadiumDetails" />
+			<a href="stadiumDetalis.jsp"> Stadium Details 
 			</a>
-			<a href="sportsDetalis.jsp"> <fmt:message key="SportsDetails" />
+			<a href="sportsDetalis.jsp"> Add Sports 
 			</a>
-			<a href="Getallusers"> <fmt:message key="AllUser" />
+			<a href="Getallusers"> Users List
 			</a>
-			<a href="showMatchToAdmin"> <fmt:message key="AllMatchDetails" />
+			<a href="showMatchToAdmin"> All Match Details 
 			</a>
-			<a href="allBookingDetails"> <fmt:message key="AllBookingDetails" />
+			<a href="allBookingDetails"> Booking Details 
 			</a>
-			<a href="allUserWalletList"> <fmt:message key="AllUserWalletList" />
+			<a href="allUserWalletList"> Transaction Historys
 			</a>
-			<a href="stadiumList"> <fmt:message key="StadiumList" />
+			<a href="stadiumList"> Stadium List 
 			</a>
-			<a href="ratingList"> <fmt:message key="RatingList" />
+			<a href="ratingList"> Rating List
 			</a>
-			<a href="index.jsp"> <fmt:message key="LogOut" />
+			<a href="index.jsp"> Logout
 			</a>
-		</fmt:bundle>
+		
 	</div>
 </body>
 </html>

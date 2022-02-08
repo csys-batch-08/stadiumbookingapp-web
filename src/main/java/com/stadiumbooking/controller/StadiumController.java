@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.stadiumbooking.daoimpl.StadiumDaoImpl;
 import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.StadiumDetalis;
+import com.stadiumbooking.service.impl.StadiumServiceImpl;
 
 
 
@@ -21,7 +22,7 @@ import com.stadiumbooking.model.StadiumDetalis;
 public class StadiumController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	final StadiumDaoImpl stadiumDao=new StadiumDaoImpl();
+	final StadiumServiceImpl stadiumService=new StadiumServiceImpl();
 	@Override
 	public void service(HttpServletRequest req, HttpServletResponse res) {
 		
@@ -34,8 +35,8 @@ public class StadiumController extends HttpServlet {
 	
 		
 		try {
-			stadiumDao.insertStadium(stadium);
-			List<StadiumDetalis> stadiumList=stadiumDao.getAllStadiumList();
+			stadiumService.insertStadium(stadium);
+			List<StadiumDetalis> stadiumList=stadiumService.getAllStadiumList();
 			req.setAttribute("stadiumList", stadiumList);
 		
 		      RequestDispatcher rd = req.getRequestDispatcher("stadiumList.jsp");			

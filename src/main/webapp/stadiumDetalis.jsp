@@ -15,19 +15,29 @@
 </head>
 <body>
     <div class="sidenav">
-   <fmt:bundle basename = "com.stadiumbooking.bundle.Sidenavbar" prefix="nav.">
-         <a href="adminProfile"><fmt:message  key="Profile"/></a>
-        <a href="matchDetails" ><fmt:message  key="MatchDetails"/></a>
-        <a href="stadiumDetalis.jsp" ><fmt:message  key="StadiumDetails"/></a>
-        <a href="sportsDetalis.jsp"><fmt:message  key="SportsDetails"/></a>
-        <a href="Getallusers" ><fmt:message  key="AllUser"/></a>
-        <a href="showMatchToAdmin" ><fmt:message  key="AllMatchDetails"/></a>
-        <a href="allBookingDetails" ><fmt:message  key="AllBookingDetails"/></a>
-        <a href="allUserWalletList" ><fmt:message  key="AllUserWalletList"/></a>
-        <a href="stadiumList" ><fmt:message  key="StadiumList"/></a>
-        <a href="ratingList" ><fmt:message  key="RatingList"/></a>
-        <a href="index.jsp"><fmt:message key="LogOut"/></a>
-    </fmt:bundle>
+  <a href="adminProfile"> Profile
+			</a>
+			<a href="matchDetails"> Add Match 
+			</a>
+			<a href="stadiumDetalis.jsp"> Stadium Details 
+			</a>
+			<a href="sportsDetalis.jsp"> Add Sports 
+			</a>
+			<a href="Getallusers"> Users List
+			</a>
+			<a href="showMatchToAdmin"> All Match Details 
+			</a>
+			<a href="allBookingDetails"> Booking Details 
+			</a>
+			<a href="allUserWalletList"> Transaction Historys
+			</a>
+			<a href="stadiumList"> Stadium List 
+			</a>
+			<a href="ratingList"> Rating List
+			</a>
+			<a href="index.jsp"> Logout
+			</a>
+		
     </div>
     <br>
     <div id="stadium">
@@ -44,35 +54,11 @@
         <br>
         <label style="visibility: hidden;" id="image">Enter Image Url</label>
         <br>
-        <fmt:bundle basename = "com.stadiumbooking.bundle.ButtonsBundle" prefix="btn.">
-        <button type="submit"><fmt:message key="Submit"/></button>
-     </fmt:bundle>
-
+        
+        <button type="submit">Submit</button>
+     
     </form>
 </div>
 </body>
 </html>
-<script>
-    function insert(){
-
-        var sstadiumName=document.getElementById("stadiumName");
-        var stadiumImge=document.getElementById("stadiumImge");
-
-        if(sstadiumName.value.trim() ==""){
-           // console.log("Working")
-            document.getElementById("stadiumError").style.visibility="visible";
-            document.getElementById("stadiumError").style.color="red";
-            document.getElementById("stadiumError").style.position="relative";
-            document.getElementById("stadiumError").style.left="100px";
-            return false;
-        }
-        else if(stadiumImge.value.trim()==""){
-            document.getElementById("image").style.visibility="visible";
-            document.getElementById("image").style.color="red";
-            document.getElementById("image").style.position="relative";
-            document.getElementById("image").style.left="100px";
-            return false;
-
-        }
-    }
-</script>
+<script src="assets/js/addStadiumDetails.js"></script>

@@ -18,19 +18,18 @@
 </head>
 <body>
   <div class="sidenav">
-    <fmt:bundle basename = "com.stadiumbooking.bundle.Sidenavbar" prefix="nav.">
-        <a href="usersprofile"> <fmt:message  key="Profile"/> </a>
-        <a href="allMatchDetalis"><fmt:message  key="UpcomingMatch"/></a>
-        <a href="mymatch"><fmt:message  key="MyMatch"/></a>
-        <a href="wallet"><fmt:message  key="Wallet"/></a>
-        <a href="stadiumList"><fmt:message  key="StadiumList"/></a>
-        <a href="ratingList"><fmt:message  key="RatingList"/></a>
-        <a href="index.jsp"><fmt:message key="LogOut"/></a>
-            </fmt:bundle>
+       
+        <a href="usersprofile">Profile </a>
+        <a href="allMatchDetalis">Upcoming Matches </a>
+        <a href="mymatch">My Bookings</a>
+        <a href="wallet">Wallet</a>
+        <a href="stadiumList">Stadium List </a>
+        <a href="ratingList">Rating List</a>
+        <a href="index.jsp">Logout</a>
     </div>
 
+.
 
-<fmt:bundle basename = "com.stadiumbooking.bundle.ButtonsBundle" prefix="btn.">
 	<div id="userInfo">
 
 		<label for="Name"><strong>Name:</strong> &nbsp; ${user.name } </label> <br>
@@ -38,10 +37,10 @@
 		<label for="Mobile"><strong>Mobile:</strong>&nbsp; ${user.phoneNumber}</label> <br>
 		<label for="Email"><strong>Email:</strong> &nbsp; ${user.email}</label> <br>
 		
-		<button onclick="update()"><fmt:message key="Update"/></button>
+		<button onclick="update()">Update</button>
 		<div>
 		<img src="assets/image/${user.profilePic }" alt="can't find">
-		<button onclick="profile()" id="edit"> <fmt:message key="Edit"/> </button>
+		<button onclick="profile()" id="edit">Edit </button>
 		</div>
 
 				
@@ -50,7 +49,7 @@
     <form action="profilePic" id="profilepicForm" style="visibility: hidden;">
         
         <input type="file" name="profilePic" aria-label="profilePic" id="profilePic">
-       <button type="submit"><fmt:message key="Submit"/></button>
+       <button type="submit">Submit</button>
        <input type="hidden" name="role" id="role" value="User">
     </form>
 </div>
@@ -89,13 +88,13 @@
 			<input type="number" value="${user.phoneNumber}" name="updateNumber" id="updateNumber"> <br>
 			<label for="" id="mobile" style="visibility: hidden;">Enter	phone Number</label>
 			
-			<button type="submit"><fmt:message key="Submit"/></button>
+			<button type="submit">Submit</button>
 			<input type="hidden" name="role" value="${user.role}" id="role">
 	
 		</form>
 
 	</div>
-</fmt:bundle>
+
 </body>
 </html>
 <c:if test="${not empty userUpdate}">
