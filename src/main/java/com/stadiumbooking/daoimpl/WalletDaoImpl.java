@@ -93,11 +93,12 @@ public class WalletDaoImpl implements WalletDao {
 		}
 		finally {	
 		
-			if(rs != null) {
-				rs.close();
-			}
+			
 			if(stmt!=null) {
 			stmt.close();     	
+			}
+			if(rs != null) {
+				rs.close();
 			}
 			if(con !=null) {
 			con.close();
@@ -143,11 +144,12 @@ public class WalletDaoImpl implements WalletDao {
 		}
 		finally {	
 		
-			if(rs != null) {
-				rs.close();
-			}
+			
 			if(stmt!=null) {
 			stmt.close();     	
+			}
+			if(rs != null) {
+				rs.close();
 			}
 			if(con !=null) {
 			con.close();

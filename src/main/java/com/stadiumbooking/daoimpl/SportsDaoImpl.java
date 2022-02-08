@@ -47,11 +47,12 @@ public class SportsDaoImpl implements SportsDao {
 			Logger.runTimeException(e.getMessage());
 		} finally {
 		
-			if(rs != null) {
-				rs.close();
-			}
+
 			if (stmt != null) {
 				stmt.close();
+			}
+			if(rs != null) {
+				rs.close();
 			}
 			if (con != null) {
 				con.close();
@@ -122,11 +123,12 @@ public class SportsDaoImpl implements SportsDao {
 			Logger.printStackTrace(e);
 			Logger.runTimeException(e.getMessage());
 		}finally {	
-			if(rs != null) {
-				rs.close();
-			}
+			
 			if(stmt!=null) {
 			stmt.close();     	
+			}
+			if(rs != null) {
+				rs.close();
 			}
 			if(con !=null) {
 			con.close();

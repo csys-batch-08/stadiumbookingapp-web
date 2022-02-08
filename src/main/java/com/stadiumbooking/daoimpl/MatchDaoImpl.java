@@ -122,13 +122,14 @@ public class MatchDaoImpl implements MatchDao {
 		}
 		finally {
 		
-			if(rs != null) {
-				rs.close();
-			}
 			if(stmt!=null) {
 				stmt.close();
 		     	
 			}
+			if(rs != null) {
+				rs.close();
+			}
+			
 			if(con !=null) {
 				con.close();
 
@@ -217,13 +218,14 @@ public class MatchDaoImpl implements MatchDao {
 			Logger.runTimeException(e.getMessage());
 		}finally {
 		
-			if(rs != null) {
-				rs.close();
-			}
 			if(pst!=null) {
 				pst.close();
 		     	
 			}
+			if(rs != null) {
+				rs.close();
+			}
+			
 			if(con !=null) {
 				con.close();
 
@@ -345,13 +347,15 @@ public class MatchDaoImpl implements MatchDao {
 			Logger.printStackTrace(e);
 			Logger.runTimeException(e.getMessage());
 		}	finally {
-			if(rs != null) {
-				rs.close();
-			}
 			if(pst!=null) {
 				pst.close();
 		     	
 			}
+			
+			if(rs != null) {
+				rs.close();
+			}
+		
 			if(con !=null) {
 				con.close();
 
@@ -421,13 +425,14 @@ public class MatchDaoImpl implements MatchDao {
 			Logger.runTimeException(e.getMessage());
 		}finally {
 		
-			if(rs != null) {
-				rs.close();
-			}
 			if(	pstmt!=null) {
 				pstmt.close();
 		     	
 			}
+			if(rs != null) {
+				rs.close();
+			}
+			
 			if(con !=null) {
 				con.close();
 

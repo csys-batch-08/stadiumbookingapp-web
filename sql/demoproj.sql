@@ -62,7 +62,7 @@ update match_info set availableSeats=availableSeats-4 where match_id=2;
  --availableSeats=100
  update match_info set availableSeats=100 where match_id=81;
  
-delete match_info where match_id=161;
+delete match_info where match_id=181;
 update match_info set match_date=match_date+1;
 select  round(to_date(to_char(match_date,'yyyy-mm-dd'), 'yyyy-mm-dd')- sysdate) as matchDate  from match_info;
 
@@ -79,7 +79,7 @@ drop sequence match_id;
 
 select * from match_info;
 update match_info set match_date=match_date+1;
-delete from match_info where match_id=141;
+delete from match_info where match_id=181;
 select to_char(match_time,'HH:MI') from match_info;
 select match_id,sportsid, stadium_name,location,to_char(match_date,'dd-mm-yyyy') as match_date, to_char(match_time,'HH:MI') as match_time,teamA,teamB,teamAlogo,teamBlogo,firstclass_seats_price,secondclass_seats_price,totalseats,availableseats from match_info;
 
@@ -179,7 +179,7 @@ primary key(ticketId)
 desc seat_details;
 select * from seat_details;
 
-delete from seat_details where match_id=141;
+delete from seat_details where match_id=181;
 insert into seat_details(userid,ticket_numbers,match_id,seatclass,Totalpirce,seatcount) values(56,'B1,B2,B3',4,'Second Class',2700,3);
 	delete  seat_details where ticketid=102;
 drop table seat_details;

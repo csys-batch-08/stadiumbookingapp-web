@@ -70,7 +70,7 @@ table th, table td {
 table {
 	border-collapse: separate;
 	border-spacing: 30px;
-	cellspacing: 70px;
+
 	/* Apply cell spacing */
 }
 

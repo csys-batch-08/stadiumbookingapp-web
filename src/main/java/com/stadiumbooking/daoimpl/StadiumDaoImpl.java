@@ -53,11 +53,12 @@ public class StadiumDaoImpl implements StadiumDao {
 		}
 		finally {	
 		
-			if(rs != null) {
-				rs.close();
-			}
+
 			if(stmt!=null) {
 			stmt.close();     	
+			}
+			if(rs != null) {
+				rs.close();
 			}
 			if(con !=null) {
 			con.close();

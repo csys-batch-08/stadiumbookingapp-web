@@ -100,11 +100,12 @@ public class SeatsDaoImpl implements SeatsDao {
 		}
 		finally {	
 		
-			if(rs != null) {
-				rs.close();
-			}
+			
 			if(pst!=null) {
 			pst.close();     	
+			}
+			if(rs != null) {
+				rs.close();
 			}
 			if(con !=null) {
 			con.close();
@@ -148,11 +149,12 @@ public class SeatsDaoImpl implements SeatsDao {
 			Logger.runTimeException(e.getMessage());
 		}
 		finally {	
-			if(rs != null) {
-				rs.close();
-			}
+
 			if(stmt!=null) {
 			stmt.close();     	
+			}
+			if(rs != null) {
+				rs.close();
 			}
 			if(con !=null) {
 			con.close();
@@ -235,13 +237,13 @@ public class SeatsDaoImpl implements SeatsDao {
 				Logger.printStackTrace(e);
 				Logger.runTimeException(e.getMessage());
 			}finally {	
-				if(rs != null) {
-					rs.close();
-				}
+				
 				if(pstmt1!=null) {
 				pstmt1.close();  	
 				}
-				
+				if(rs != null) {
+					rs.close();
+				}
 				if(con !=null) {
 				con.close();
 				}

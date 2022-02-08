@@ -95,11 +95,12 @@ public class UserDaoImpl implements UserDao {
 			Logger.runTimeException(e.getMessage());
 		} finally {
 
-			if(rs != null) {
-				rs.close();
-			}
+			
 			if (stmt != null) {
 				stmt.close();
+			}
+			if(rs != null) {
+				rs.close();
 			}
 			if (con != null) {
 				con.close();
@@ -138,11 +139,12 @@ public class UserDaoImpl implements UserDao {
 			Logger.printStackTrace(e);
 			Logger.runTimeException(e.getMessage());
 		} finally {
-			if(rs != null) {
-				rs.close();
-			}
+			
 			if (stmt1 != null) {
 				stmt1.close();
+			}
+			if(rs != null) {
+				rs.close();
 			}
 			if (con != null) {
 				con.close();
@@ -247,11 +249,12 @@ public class UserDaoImpl implements UserDao {
 			Logger.runTimeException(e.getMessage());
 		} finally {
 
-			if(rs != null) {
-				rs.close();
-			}
+			
 			if (stmt1 != null) {
 				stmt1.close();
+			}
+			if(rs != null) {
+				rs.close();
 			}
 			if (con != null) {
 				con.close();
@@ -415,12 +418,13 @@ public class UserDaoImpl implements UserDao {
 			Logger.printStackTrace(e);
 			Logger.runTimeException(e.getMessage());
 		} finally {
-			if(rs2 != null) {
-				rs2.close();
-			}
+			
 
 			if (stmt1 != null) {
 				stmt1.close();
+			}
+			if(rs2 != null) {
+				rs2.close();
 			}
 			if (con != null) {
 				con.close();
@@ -487,11 +491,12 @@ public class UserDaoImpl implements UserDao {
 			Logger.runTimeException(e.getMessage());
 		} finally {
 
-			if(rs2 != null) {
-				rs2.close();
-			}
+			
 			if (stmt1 != null) {
 				stmt1.close();
+			}
+			if(rs2 != null) {
+				rs2.close();
 			}
 			if (con != null) {
 				con.close();
@@ -531,11 +536,12 @@ public class UserDaoImpl implements UserDao {
 			Logger.runTimeException(e.getMessage());
 		} finally {
 
-			if(rs2 != null) {
-				rs2.close();
-			}
+			
 			if (stmt1!= null) {
 				stmt1.close();
+			}
+			if(rs2 != null) {
+				rs2.close();
 			}
 			if (con != null) {
 				con.close();
@@ -575,11 +581,12 @@ public class UserDaoImpl implements UserDao {
 			Logger.runTimeException(e.getMessage());
 		} finally {
 
-			if(rs != null) {
-				rs.close();
-			}
+			
 			if (stmt1!= null) {
 				stmt1.close();
+			}
+			if(rs != null) {
+				rs.close();
 			}
 			if (con != null) {
 				con.close();
@@ -620,11 +627,12 @@ public class UserDaoImpl implements UserDao {
 			Logger.runTimeException(e.getMessage());
 		} finally {
 
-			if(rs != null) {
-				rs.close();
-			}
+			
 			if (stmt1!= null) {
 				stmt1.close();
+			}
+			if(rs != null) {
+				rs.close();
 			}
 			if (con != null) {
 				con.close();
@@ -664,11 +672,12 @@ public class UserDaoImpl implements UserDao {
 			Logger.runTimeException(e.getMessage());
 		} finally {
 
-			if(rs != null) {
-				rs.close();
-			}
+
 			if (stmt1!= null) {
 				stmt1.close();
+			}
+			if(rs != null) {
+				rs.close();
 			}
 			if (con != null) {
 				con.close();
