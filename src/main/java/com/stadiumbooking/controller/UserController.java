@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.stadiumbooking.daoimpl.UserDaoImpl;
 import com.stadiumbooking.exception.RegisterSuccessful;
 import com.stadiumbooking.exception.SomthingWentWrong;
+import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.User;
 
 @WebServlet("/regSevr")
@@ -25,13 +26,19 @@ public class UserController extends HttpServlet {
 
 		/* Getting User Details */
 
+		HttpSession session = req.getSession();
 		String name = req.getParameter("name").trim();
 		String uname = req.getParameter("uname").trim();
 		String pass = req.getParameter("pass").trim();
 		String mail = req.getParameter("mail").trim();
 		Long phone = Long.parseLong(req.getParameter("phone"));
 	
-		User user = new User(0,name, uname,null, pass, mail, phone,0.0,null);
+		User user = new User();
+		user.setName(name);
+		user.setUsername(uname);
+		user.setPassword(pass);
+		user.setEmail(mail);
+		user.setPhoneNumber(phone);
 		try {
 
 			boolean flag=userDao.checkUser(uname, mail, phone);
@@ -45,29 +52,32 @@ public class UserController extends HttpServlet {
 			}
 		} catch (SQLException e1) {
 			
-			e1.getMessage();
+			Logger.printStackTrace(e1);
+			Logger.runTimeException(e1.getMessage());
 		} catch (RegisterSuccessful e) {
 
 			try {
-				HttpSession session = req.getSession();
+			
 				session.setAttribute("error",null);
 				session.setAttribute("SomthingWentWrong", null);
 				session.setAttribute("RegisterSuccessful", e.getMessage());
 				res.sendRedirect("index.jsp");
 			} catch (IOException e1) {
 				
-				e1.getMessage();
+				Logger.printStackTrace(e1);
+				Logger.runTimeException(e1.getMessage());
 			}
 		} catch (SomthingWentWrong e) {
 			try {
-				HttpSession session = req.getSession();
+				
 
 				session.setAttribute("error",null);
 				session.setAttribute("SomthingWentWrong", e.getMessage());
 				res.sendRedirect("index.jsp");
 			} catch (IOException e2) {
 				
-				e2.getMessage();
+				Logger.printStackTrace(e2);
+				Logger.runTimeException(e2.getMessage());
 			}
 		}
 

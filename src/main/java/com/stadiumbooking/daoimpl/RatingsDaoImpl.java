@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.stadiumbooking.connection.ConnectionUtill;
 import com.stadiumbooking.dao.RatingsDao;
+import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.Ratings;
 import com.stadiumbooking.model.User;
 
@@ -40,7 +41,8 @@ public class RatingsDaoImpl implements RatingsDao {
 			stmt.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
 
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
 
 			if (stmt != null) {
@@ -81,11 +83,15 @@ public class RatingsDaoImpl implements RatingsDao {
 
 		} catch (ClassNotFoundException | SQLException e) {
 
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}
 
 		finally {
 		
+			if(rs != null) {
+				rs.close();
+			}
 			if (stmt1 != null) {
 				stmt1.close();
 			}
@@ -122,9 +128,12 @@ public class RatingsDaoImpl implements RatingsDao {
 			}
 			return ratingList;
 		} catch (ClassNotFoundException | SQLException e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}finally {
-			
+			if(rs != null) {
+				rs.close();
+			}
 			if (stmt != null) {
 				stmt.close();
 			}

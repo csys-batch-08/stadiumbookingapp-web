@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import com.stadiumbooking.daoimpl.UserDaoImpl;
+import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.User;
 
 
@@ -32,7 +33,8 @@ public class CheckUsernameController extends HttpServlet {
 			
 			 
 		} catch (SQLException | IOException e) {
-			e.printStackTrace();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}
 	}
 

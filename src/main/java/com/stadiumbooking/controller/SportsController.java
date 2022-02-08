@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.stadiumbooking.daoimpl.SportsDaoImpl;
+import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.Sports;
 
 
@@ -32,10 +33,12 @@ public class SportsController extends HttpServlet {
 			res.sendRedirect("sportsDetalis.jsp");
 		} catch (SQLException e) {
 			
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} catch (IOException e1) {
 		
-			e1.getMessage();
+			Logger.printStackTrace(e1);
+			Logger.runTimeException(e1.getMessage());
 		}
 	}
 	

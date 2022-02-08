@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.stadiumbooking.daoimpl.MatchDaoImpl;
+import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.Match;
 @WebServlet("/allMatchDetalis")
 public class AllMatchDetalisController extends HttpServlet {
@@ -31,7 +32,8 @@ public class AllMatchDetalisController extends HttpServlet {
 				rd.forward(req, res);
 		} catch (SQLException | ServletException | IOException e) {
 	
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}
 	
 		

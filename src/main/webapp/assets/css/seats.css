@@ -144,9 +144,9 @@ button {
 
 .mathcInfo { 
 	--x-pos: 0; 
-	--y-angle: calc(var(- -x-pos)* 5deg); 
+	--y-angle: calc(var(- -x-pos) * 5deg); 
 	--y-pos: 0; 
-	--x-angle: calc(var(- -y-pos)* 5deg);
+	--x-angle: calc(var(- -y-pos) * 5deg);
 	transform: perspective(200px) rotateY(var(- -y-angle))
 		rotateX(var(- -x-angle));
 }

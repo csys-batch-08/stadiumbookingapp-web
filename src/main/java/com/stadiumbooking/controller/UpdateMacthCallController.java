@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import com.stadiumbooking.daoimpl.MatchDaoImpl;
+import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.Match;
 
 
@@ -37,12 +38,15 @@ public class UpdateMacthCallController extends HttpServlet {
 					rd.forward(req, res);
 		} catch (SQLException e) {
 			
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} catch (IOException e2) {
 		
-			e2.getMessage();
+			Logger.printStackTrace(e2);
+			Logger.runTimeException(e2.getMessage());
 		} catch (ServletException e1) {
-			e1.getMessage();
+			Logger.printStackTrace(e1);
+			Logger.runTimeException(e1.getMessage());
 		}
 	}
 }

@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import com.stadiumbooking.daoimpl.MatchDaoImpl;
 import com.stadiumbooking.daoimpl.SeatsDaoImpl;
 import com.stadiumbooking.daoimpl.UserDaoImpl;
-
+import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.Seats;
 
 @WebServlet("/cancleTicket")
@@ -44,10 +44,12 @@ public class CancleTicketController extends HttpServlet {
 			}		
 		} catch (SQLException | IOException e) {
 			
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} catch (ServletException e1) {
 			
-			e1.getMessage();
+			Logger.printStackTrace(e1);
+			Logger.runTimeException(e1.getMessage());
 		}
 	
 	}

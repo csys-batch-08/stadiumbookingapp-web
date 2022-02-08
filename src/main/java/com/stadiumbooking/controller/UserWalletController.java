@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import com.stadiumbooking.daoimpl.UserDaoImpl;
 import com.stadiumbooking.daoimpl.WalletDaoImpl;
+import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.WalletDetails;
 
 
@@ -38,7 +39,8 @@ public class UserWalletController extends HttpServlet {
 					rd.forward(req, res);
 		} catch (SQLException | ServletException | IOException e) {
 			
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}
 		
 	

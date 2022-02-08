@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.stadiumbooking.daoimpl.RatingsDaoImpl;
 import com.stadiumbooking.daoimpl.StadiumDaoImpl;
+import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.StadiumDetalis;
 
 @WebServlet("/ratingList")
@@ -31,7 +32,8 @@ public class RatingListController extends HttpServlet {
 					rd.forward(req, res);
 		} catch (SQLException | ServletException | IOException e) {
 			
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}
 		
 	

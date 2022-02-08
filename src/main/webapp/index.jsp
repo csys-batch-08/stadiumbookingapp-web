@@ -91,8 +91,11 @@
 					<h1>
 						Tickets On Sale <span class="text-danger">Book Now</span>
 					</h1>
-					<p class="lead font-weight-light my-4 ">Upcoming TaTa IPL
-						Tickets sales stared Book Now and Supports your Favorite Team</p>
+					<p class="lead font-weight-light my-4 ">
+				
+					Upcoming TaTa IPL Tickets sales stared Book Now and Supports your Favorite Team
+				
+					</p>
 					<button class="btn btn-primary btn-outline-warning text-light"
 						id="loginBuuton" data-bs-toggle="modal" data-bs-target="#enroll"><fmt:message key="BookNow"/></button>
 				</div>

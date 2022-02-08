@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import com.stadiumbooking.daoimpl.UserDaoImpl;
 import com.stadiumbooking.daoimpl.WalletDaoImpl;
+import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.User;
 import com.stadiumbooking.model.WalletDetails;
 
@@ -36,7 +37,9 @@ public class WalletController extends HttpServlet {
 			session.setAttribute("LowBalanceError", null);
 			User user=new User();
 			user.setUserid(userId);
-			WalletDetails wallet=new WalletDetails(0,user,amount,null);
+			WalletDetails wallet=new WalletDetails();
+			wallet.setUser(user);
+			wallet.setAmount(amount);
 			walletDao.insertAmount(wallet);
 			Double userWallet=userDao.userWalletDetails(userId);
 			
@@ -48,15 +51,19 @@ public class WalletController extends HttpServlet {
 				
 				rd.forward(req, res);
 		} catch (SQLException e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} catch (IOException e1) {
 
-			e1.getMessage();
+			Logger.printStackTrace(e1);
+			Logger.runTimeException(e1.getMessage());
 		}catch(NumberFormatException  e2) {
-			e2.getMessage();
-		} catch (ServletException e) {
+			Logger.printStackTrace(e2);
+			Logger.runTimeException(e2.getMessage());
+		} catch (ServletException e3) {
 
-			e.printStackTrace();
+			Logger.printStackTrace(e3);
+			Logger.runTimeException(e3.getMessage());
 		}
 		
 	}

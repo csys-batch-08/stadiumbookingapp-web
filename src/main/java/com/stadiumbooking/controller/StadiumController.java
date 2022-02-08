@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.stadiumbooking.daoimpl.StadiumDaoImpl;
+import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.StadiumDetalis;
 
 
@@ -41,13 +42,16 @@ public class StadiumController extends HttpServlet {
 					rd.forward(req, res);
 		} catch (IOException e) {
 		
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} catch (SQLException e2) {
 
-			e2.getMessage();
+			Logger.printStackTrace(e2);
+			Logger.runTimeException(e2.getMessage());
 		} catch (ServletException e3) {
 			
-			e3.getMessage();
+			Logger.printStackTrace(e3);
+			Logger.runTimeException(e3.getMessage());
 		}
 	}
 }

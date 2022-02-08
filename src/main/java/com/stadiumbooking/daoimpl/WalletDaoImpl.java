@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.stadiumbooking.connection.ConnectionUtill;
 import com.stadiumbooking.dao.WalletDao;
+import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.User;
 import com.stadiumbooking.model.WalletDetails;
 
@@ -43,7 +44,8 @@ public class WalletDaoImpl implements WalletDao {
 			userDao.addAmount(userid, amount);
 		} catch (ClassNotFoundException | SQLException e) {
 
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
 
 			if (stmt != null) {
@@ -86,10 +88,14 @@ public class WalletDaoImpl implements WalletDao {
 			return walletList;
 		
 		} catch (ClassNotFoundException | SQLException e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}
 		finally {	
 		
+			if(rs != null) {
+				rs.close();
+			}
 			if(stmt!=null) {
 			stmt.close();     	
 			}
@@ -132,10 +138,14 @@ public class WalletDaoImpl implements WalletDao {
 			return walletList;
 		
 		} catch (ClassNotFoundException | SQLException e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}
 		finally {	
 		
+			if(rs != null) {
+				rs.close();
+			}
 			if(stmt!=null) {
 			stmt.close();     	
 			}

@@ -55,7 +55,7 @@ function reg() {
 	if (name.value.trim() == "") {
 		document.getElementById("lname").style.visibility = "visible";
 		document.getElementById("lname").style.color = "red";
-		name.style.borderBottom = "2px solid black";
+		
 		return false;
 	}
 
@@ -63,27 +63,27 @@ function reg() {
 		document.getElementById("lname").style.visibility = "visible";
 		document.getElementById("lname").style.color = "red";
 		document.getElementById("lname").innerHTML = "Name Too Short";
-		username.style.borderBottom = "2px solid black";
+		
 		return false;
 	}
 
 	else if (username.value.trim() == "") {
 		document.getElementById("luname").style.visibility = "visible";
 		document.getElementById("luname").style.color = "red";
-		username.style.borderBottom = "2px solid black";
+		
 		return false;
 	}
 	else if (username.value.trim().length < 5) {
 		document.getElementById("luname").style.visibility = "visible";
 		document.getElementById("luname").style.color = "red";
 		document.getElementById("luname").innerHTML = "Username Too Short";
-		username.style.borderBottom = "2px solid black";
+		
 		return false;
 	}
 	else if (password.value.trim() == "") {
 		document.getElementById("repass").style.visibility = "visible";
 		document.getElementById("repass").style.color = "red";
-		password.style.borderBottom = "2px solid black";
+		
 		return false;
 	}
 	else if (password.value.trim().length < 5) {

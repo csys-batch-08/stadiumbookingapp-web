@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import com.stadiumbooking.daoimpl.MatchDaoImpl;
+import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.Match;
 
 @WebServlet("/bookSeats")
@@ -36,12 +37,15 @@ public class SelectMatchController extends HttpServlet {
 		
 		} catch (SQLException e) {
 			
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} catch (IOException e1) {
-			e1.getMessage();
+			Logger.printStackTrace(e1);
+			Logger.runTimeException(e1.getMessage());
 		} catch (ServletException e2) {
 
-			e2.getMessage();
+			Logger.printStackTrace(e2);
+			Logger.runTimeException(e2.getMessage());
 		}
 	}
 }

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.stadiumbooking.logger.Logger;
+
 
 
 @WebServlet("/ratingStadium")
@@ -26,9 +28,11 @@ public class RatingStadiumController extends HttpServlet {
 					rd.forward(req, res);
 		} catch (ServletException | IOException e) {
 			
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}catch(NumberFormatException  e1) {
-			e1.getMessage();
+			Logger.printStackTrace(e1);
+			Logger.runTimeException(e1.getMessage());
 		}
 		
 	

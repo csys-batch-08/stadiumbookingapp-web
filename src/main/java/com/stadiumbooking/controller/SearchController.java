@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import com.stadiumbooking.daoimpl.MatchDaoImpl;
+import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.Match;
 
 @WebServlet("/searchedMatchDetails")
@@ -32,7 +33,8 @@ public class SearchController  extends HttpServlet{
 			
 
 		} catch (SQLException | IOException | ServletException e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}
 		
 	}

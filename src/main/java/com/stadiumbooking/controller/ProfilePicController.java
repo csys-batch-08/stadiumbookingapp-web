@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.stadiumbooking.daoimpl.UserDaoImpl;
+import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.User;
 
 @WebServlet("/profilePic")
@@ -42,10 +43,12 @@ public class ProfilePicController extends HttpServlet {
 				rd.forward(req, res);
 			} catch (SQLException | IOException e) {
 				
-				e.getMessage();
+				Logger.printStackTrace(e);
+				Logger.runTimeException(e.getMessage());
 			} catch (ServletException e1) {
 				
-				e1.getMessage();
+				Logger.printStackTrace(e1);
+				Logger.runTimeException(e1.getMessage());
 			}
 		}
 		else if(role.equals("User")) {
@@ -59,10 +62,12 @@ public class ProfilePicController extends HttpServlet {
 					rd.forward(req, res);
 			} catch (SQLException | IOException e) {
 				
-				e.getMessage();
+				Logger.printStackTrace(e);
+				Logger.runTimeException(e.getMessage());
 			} catch (ServletException e1) {
 				
-				e1.getMessage();
+				Logger.printStackTrace(e1);
+				Logger.runTimeException(e1.getMessage());
 			}
 		
 		}

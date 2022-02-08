@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.stadiumbooking.connection.ConnectionUtill;
 import com.stadiumbooking.dao.StadiumDao;
+import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.Ratings;
 import com.stadiumbooking.model.StadiumDetalis;
 
@@ -47,10 +48,14 @@ public class StadiumDaoImpl implements StadiumDao {
 			return stadiumList;
 		} catch (ClassNotFoundException | SQLException e) {
 		
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}
 		finally {	
 		
+			if(rs != null) {
+				rs.close();
+			}
 			if(stmt!=null) {
 			stmt.close();     	
 			}
@@ -82,7 +87,8 @@ public class StadiumDaoImpl implements StadiumDao {
 			stmt.executeUpdate();
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}finally {	
 			
 			if(stmt!=null) {

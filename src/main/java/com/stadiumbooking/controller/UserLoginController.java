@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import com.stadiumbooking.daoimpl.MatchDaoImpl;
 import com.stadiumbooking.daoimpl.UserDaoImpl;
 import com.stadiumbooking.exception.NotFound;
+import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.User;
 
 
@@ -72,7 +73,8 @@ public class UserLoginController extends HttpServlet {
 			}
 		} catch (SQLException e) {
 
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} catch (NotFound e) {
 
 			try {
@@ -84,13 +86,16 @@ public class UserLoginController extends HttpServlet {
 
 			} catch (IOException e1) {
 
-				e1.getMessage();
+				Logger.printStackTrace(e1);
+				Logger.runTimeException(e1.getMessage());
 			}
 		} catch (IOException e2) {
 
-			e2.getMessage();
-		} catch (ServletException e) {
-			e.printStackTrace();
+			Logger.printStackTrace(e2);
+			Logger.runTimeException(e2.getMessage());
+		} catch (ServletException e3) {
+			Logger.printStackTrace(e3);
+			Logger.runTimeException(e3.getMessage());
 		}
 
 	}

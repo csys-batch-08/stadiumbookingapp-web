@@ -20,6 +20,7 @@ import com.stadiumbooking.daoimpl.WalletDaoImpl;
 import com.stadiumbooking.exception.HouseFull;
 import com.stadiumbooking.exception.LowBalance;
 import com.stadiumbooking.exception.LowSeatCount;
+import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.Match;
 import com.stadiumbooking.model.Seats;
 import com.stadiumbooking.model.User;
@@ -57,7 +58,8 @@ public class BookingController extends HttpServlet {
 			totalAvalibleSeats = matchDao.checkAvilableSeats(matchId);
 		} catch (SQLException e2) {
 
-			e2.getMessage();
+			Logger.printStackTrace(e2);
+			Logger.runTimeException(e2.getMessage());
 		}
 		avalibleSeats = totalAvalibleSeats - seatCounts;
 //If Seats Are Avalible (>0)
@@ -75,7 +77,13 @@ public class BookingController extends HttpServlet {
 						user.setUserid(userId);
 						Match match=new Match();
 						match.setMatchId(matchId);
-						Seats seats = new Seats(0, user, ticketNumber, match, seatclass, totalprice, seatCounts,null);
+						Seats seats = new Seats();
+						seats.setUserid(user);
+						seats.setTicketNumbers(ticketNumber);
+						seats.setMatchId(match);
+						seats.setSeatclass(seatclass);
+						seats.setPrice(totalprice);
+						seats.setSeatcount(seatCounts);
 						seatDao.bookingSeats(seats);
 
 						userDao.bookingTicktes(userId, totalprice);
@@ -112,11 +120,13 @@ public class BookingController extends HttpServlet {
 								rd.forward(req, res);
 					} catch (IOException |SQLException|ServletException e1) {
 
-						e1.getMessage();
+						Logger.printStackTrace(e1);
+						Logger.runTimeException(e1.getMessage());
 					} 
 			} catch (ServletException e) {
 		
-					e.getMessage();
+				Logger.printStackTrace(e);
+				Logger.runTimeException(e.getMessage());
 				}}
 
 			else {
@@ -135,7 +145,8 @@ public class BookingController extends HttpServlet {
 						 RequestDispatcher rd = req.getRequestDispatcher("allMatchDetalis.jsp");
 							rd.forward(req, res);
 					} catch (IOException | SQLException | ServletException e) {
-						e.getMessage();
+						Logger.printStackTrace(e);
+						Logger.runTimeException(e.getMessage());
 					}
 				}
 
@@ -153,10 +164,12 @@ public class BookingController extends HttpServlet {
 					 RequestDispatcher rd = req.getRequestDispatcher("allMatchDetalis.jsp");
 						rd.forward(req, res);
 				} catch (IOException | SQLException e) {
-					e.getMessage();
+					Logger.printStackTrace(e);
+					Logger.runTimeException(e.getMessage());
 				} catch (ServletException e1) {
 					
-					e1.getMessage();
+					Logger.printStackTrace(e1);
+					Logger.runTimeException(e1.getMessage());
 				}
 			}
 		}

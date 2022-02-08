@@ -78,6 +78,16 @@ public class Ratings {
 
 
 
+	public Ratings(int userId2, String review, Double rating, int stadiumId2) {
+		super();
+		this.userId = userId2;
+		this.reviews = review;
+		this.ratingValue =rating;
+		this.stadiumId = stadiumId2;
+	}
+
+
+
 	public User getUser() {
 		return user;
 	}

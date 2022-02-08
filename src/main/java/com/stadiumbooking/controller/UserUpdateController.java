@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.stadiumbooking.daoimpl.UserDaoImpl;
+import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.User;
 
 
@@ -37,12 +38,18 @@ public class UserUpdateController extends HttpServlet {
 		Long phoneNumber=Long.parseLong(req.getParameter("updateNumber"));
 		int userId = (int) session1.getAttribute("id");
 
-		
+		User user=new User();
+		user.setUserid(userId);
+		user.setName(name);
+		user.setUsername(username);
+		user.setPassword(password);
+		user.setEmail(email);
+		user.setPhoneNumber(phoneNumber);
 		try {
 			
 			if(role.equals("Admin")) 
 			{
-				User user=new User(userId, name, username,null, password, email, phoneNumber,0.0,null);
+				
 				userDao.updateUser(user);
 				int userID=(int) session1.getAttribute("id");
 				User userDetails=userDao.getUserById(userID);
@@ -52,7 +59,7 @@ public class UserUpdateController extends HttpServlet {
 					rd.forward(req, res);
 	}
 	else if(role.equals("User")) {
-		User user=new User(userId, name, username,null, password, email, phoneNumber,0.0,null);
+		
 		userDao.updateUser(user);
 		int userID=(int) session1.getAttribute("id");
 		User userDetails=userDao.getUserById(userID);
@@ -64,13 +71,16 @@ public class UserUpdateController extends HttpServlet {
 		
 		} catch (SQLException e) {
 	
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} catch (IOException e1) {
 			
-			e1.getMessage();
+			Logger.printStackTrace(e1);
+			Logger.runTimeException(e1.getMessage());
 		} catch (ServletException e2) {
 			
-			e2.getMessage();
+			Logger.printStackTrace(e2);
+			Logger.runTimeException(e2.getMessage());
 		}
 	}
 	

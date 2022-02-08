@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import com.stadiumbooking.daoimpl.RatingsDaoImpl;
 import com.stadiumbooking.daoimpl.StadiumDaoImpl;
+import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.Ratings;
 import com.stadiumbooking.model.StadiumDetalis;
 
@@ -38,7 +39,7 @@ public class RatingController extends HttpServlet {
 		String review=req.getParameter("review");
 	
 		int userId = (int) session3.getAttribute("id");
-		Ratings ratings=new Ratings(0,userId,review,rating,stadiumId);
+		Ratings ratings=new Ratings(userId,review,rating,stadiumId);
 		try {
 			ratingDao.ratingStadium(ratings);
 			List<StadiumDetalis> stadiumList=stadiumDao.getAllStadiumList();
@@ -48,10 +49,12 @@ public class RatingController extends HttpServlet {
 					rd.forward(req, res);
 		} catch (SQLException | IOException e) {
 		
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} catch (ServletException e1) {
 		
-			e1.getMessage();
+			Logger.printStackTrace(e1);
+			Logger.runTimeException(e1.getMessage());
 		}
 	}
 }

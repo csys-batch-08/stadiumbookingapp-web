@@ -9,7 +9,7 @@
     	  if (i <= endNbr) {
     	    elt.innerHTML = i;
     	    setTimeout(function() {
-    	      incNbrRec(i + 15, endNbr, elt);
+    	      incNbrRec(i + 10, endNbr, elt);
     	    }, speed);
     	  }
     	}

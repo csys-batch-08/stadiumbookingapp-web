@@ -34,7 +34,7 @@
     <div id="sports">
     <form action="sports" onsubmit="return insert()">
 
-        <labelfor="sportsName"><strong>Sports Name:</strong></label>
+        <label for="sportsName"><strong>Sports Name:</strong></label>
         <input type="text" name="sportsName" id="sportsName" >
         <br>
         

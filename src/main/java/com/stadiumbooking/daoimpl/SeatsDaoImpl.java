@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.stadiumbooking.connection.ConnectionUtill;
 import com.stadiumbooking.dao.SeatsDao;
+import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.Match;
 import com.stadiumbooking.model.Seats;
 import com.stadiumbooking.model.User;
@@ -47,9 +48,11 @@ public class SeatsDaoImpl implements SeatsDao {
 			stmt.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
 		
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}finally {
 
+			
 			if (stmt != null) {
 				stmt.close();
 			}
@@ -92,10 +95,14 @@ public class SeatsDaoImpl implements SeatsDao {
 			return seatList;
 		} catch (ClassNotFoundException | SQLException e) {
 			
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}
 		finally {	
 		
+			if(rs != null) {
+				rs.close();
+			}
 			if(pst!=null) {
 			pst.close();     	
 			}
@@ -137,10 +144,13 @@ public class SeatsDaoImpl implements SeatsDao {
 			return seatList;
 		} catch (ClassNotFoundException | SQLException e) {
 		
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}
 		finally {	
-			
+			if(rs != null) {
+				rs.close();
+			}
 			if(stmt!=null) {
 			stmt.close();     	
 			}
@@ -174,7 +184,8 @@ public class SeatsDaoImpl implements SeatsDao {
 			
 		} catch (ClassNotFoundException | SQLException e) {
 		
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}finally {	
 			if(pstmt!=null) {
 			pstmt.close();     	
@@ -195,15 +206,14 @@ public class SeatsDaoImpl implements SeatsDao {
 		ConnectionUtill conUtil=new ConnectionUtill();
 		Connection con = null;
 		PreparedStatement pstmt1=null;
-	
+		ResultSet rs=null;
 		
-			
 			try {
 				con = conUtil.getDBConnect();
 				String query="select match_id,seatcount,Totalpirce,userid from seat_details where ticketid=?";
 				pstmt1=con.prepareStatement(query);
 				pstmt1.setInt(1, ticketId);
-				ResultSet rs=pstmt1.executeQuery();
+				 rs=pstmt1.executeQuery();
 				
 				int matchId;
 				int seatcounts;
@@ -222,9 +232,12 @@ public class SeatsDaoImpl implements SeatsDao {
 			
 			} catch (SQLException | ClassNotFoundException e) {
 			
-				e.getMessage();
+				Logger.printStackTrace(e);
+				Logger.runTimeException(e.getMessage());
 			}finally {	
-				
+				if(rs != null) {
+					rs.close();
+				}
 				if(pstmt1!=null) {
 				pstmt1.close();  	
 				}

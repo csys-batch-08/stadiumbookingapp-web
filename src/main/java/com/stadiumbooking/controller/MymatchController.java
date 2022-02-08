@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.stadiumbooking.daoimpl.SeatsDaoImpl;
+import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.Seats;
 
 @WebServlet("/mymatch")
@@ -36,7 +37,8 @@ public class MymatchController extends HttpServlet {
 			rd.forward(req, res);
 		} catch (SQLException | ServletException | IOException e) {
 
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}
 
 	}

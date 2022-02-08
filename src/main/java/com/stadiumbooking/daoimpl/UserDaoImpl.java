@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.stadiumbooking.connection.ConnectionUtill;
 import com.stadiumbooking.dao.UserDao;
+import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.User;
 
 public class UserDaoImpl implements UserDao {
@@ -47,7 +48,8 @@ public class UserDaoImpl implements UserDao {
 			return stmt.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
 
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
 
 			if (stmt != null) {
@@ -89,9 +91,13 @@ public class UserDaoImpl implements UserDao {
 			return userList;
 
 		} catch (ClassNotFoundException | SQLException e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
 
+			if(rs != null) {
+				rs.close();
+			}
 			if (stmt != null) {
 				stmt.close();
 			}
@@ -129,9 +135,12 @@ public class UserDaoImpl implements UserDao {
 			return user;
 		} catch (ClassNotFoundException | SQLException e) {
 
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
-			
+			if(rs != null) {
+				rs.close();
+			}
 			if (stmt1 != null) {
 				stmt1.close();
 			}
@@ -162,7 +171,8 @@ public class UserDaoImpl implements UserDao {
 			pstmt.setInt(6, user.getUserid());
 			pstmt.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
 
 			if (pstmt != null) {
@@ -190,7 +200,8 @@ public class UserDaoImpl implements UserDao {
 			return pstmt.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
 
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
 
 			if (pstmt != null) {
@@ -232,9 +243,13 @@ public class UserDaoImpl implements UserDao {
 
 		} catch (ClassNotFoundException | SQLException e) {
 
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
 
+			if(rs != null) {
+				rs.close();
+			}
 			if (stmt1 != null) {
 				stmt1.close();
 			}
@@ -269,7 +284,8 @@ public class UserDaoImpl implements UserDao {
 			}
 
 		} catch (ClassNotFoundException | SQLException e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
 
 			if (stmt1 != null) {
@@ -298,7 +314,8 @@ public class UserDaoImpl implements UserDao {
 			pstmt.setInt(2, userId);
 			pstmt.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
 
 			if (pstmt != null) {
@@ -327,7 +344,8 @@ public class UserDaoImpl implements UserDao {
 			pstmt.setInt(2, userId);
 			pstmt.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
 
 			if (pstmt != null) {
@@ -358,7 +376,8 @@ public class UserDaoImpl implements UserDao {
 			pstmt.setInt(2, userid);
 			pstmt.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
 
 			if (pstmt != null) {
@@ -378,13 +397,14 @@ public class UserDaoImpl implements UserDao {
 		ConnectionUtill conUtil = new ConnectionUtill();
 		Connection con = null;
 		PreparedStatement stmt1 = null;
+		ResultSet rs2=null;
 		try {
 			con = conUtil.getDBConnect();
 			String query = "Select WALLET from users where userid=?";
 
 			stmt1 = con.prepareStatement(query);
 			stmt1.setInt(1, userid);
-			ResultSet rs2 = stmt1.executeQuery();
+			rs2 = stmt1.executeQuery();
 			if (rs2.next()) {
 
 				return rs2.getDouble(WALLET);
@@ -392,8 +412,12 @@ public class UserDaoImpl implements UserDao {
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
+			if(rs2 != null) {
+				rs2.close();
+			}
 
 			if (stmt1 != null) {
 				stmt1.close();
@@ -423,7 +447,8 @@ public class UserDaoImpl implements UserDao {
 			pstmt.executeUpdate();
 
 		} catch (ClassNotFoundException | SQLException e) {
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
 
 			if (pstmt != null) {
@@ -443,13 +468,14 @@ public class UserDaoImpl implements UserDao {
 		String name = null;
 		Connection con = null;
 		PreparedStatement stmt1 = null;
+		ResultSet rs2=null;
 		try {
 			con = conUtil.getDBConnect();
 			String query = "Select name from users where userid=?";
 
 			stmt1 = con.prepareStatement(query);
 			stmt1.setInt(1, userid);
-			ResultSet rs2 = stmt1.executeQuery();
+		    rs2 = stmt1.executeQuery();
 
 			if (rs2.next()) {
 
@@ -457,9 +483,13 @@ public class UserDaoImpl implements UserDao {
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
 
+			if(rs2 != null) {
+				rs2.close();
+			}
 			if (stmt1 != null) {
 				stmt1.close();
 			}
@@ -479,6 +509,7 @@ public class UserDaoImpl implements UserDao {
 		ConnectionUtill conUtil = new ConnectionUtill();
 		Connection con = null;
 		PreparedStatement stmt1=null;
+		ResultSet rs2=null;
 		try {
 			con = conUtil.getDBConnect();
 			String query = "Select USERID,NAME,USERNAME,ROLE,PASSWORD,EMAIL,PHONENUMBER,WALLET,PROFILEPIC from users where username=? or email=? or phoneNumber=?";
@@ -487,7 +518,7 @@ public class UserDaoImpl implements UserDao {
 			stmt1.setString(1, userName);
 			stmt1.setString(2, email);
 			stmt1.setLong(3, phone);
-			ResultSet rs2 = stmt1.executeQuery();
+			 rs2 = stmt1.executeQuery();
 
 			if (rs2.next()) {
 				return false;
@@ -496,9 +527,13 @@ public class UserDaoImpl implements UserDao {
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
 
+			if(rs2 != null) {
+				rs2.close();
+			}
 			if (stmt1!= null) {
 				stmt1.close();
 			}
@@ -536,9 +571,13 @@ public class UserDaoImpl implements UserDao {
 			
 		} catch (ClassNotFoundException | SQLException e) {
 
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
 
+			if(rs != null) {
+				rs.close();
+			}
 			if (stmt1!= null) {
 				stmt1.close();
 			}
@@ -577,9 +616,13 @@ public class UserDaoImpl implements UserDao {
 			
 		} catch (ClassNotFoundException | SQLException e) {
 
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
 
+			if(rs != null) {
+				rs.close();
+			}
 			if (stmt1!= null) {
 				stmt1.close();
 			}
@@ -617,9 +660,13 @@ public class UserDaoImpl implements UserDao {
 			
 		} catch (ClassNotFoundException | SQLException e) {
 
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		} finally {
 
+			if(rs != null) {
+				rs.close();
+			}
 			if (stmt1!= null) {
 				stmt1.close();
 			}

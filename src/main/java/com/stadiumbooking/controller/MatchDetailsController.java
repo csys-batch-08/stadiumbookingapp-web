@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.stadiumbooking.daoimpl.SportsDaoImpl;
 import com.stadiumbooking.daoimpl.StadiumDaoImpl;
+import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.Sports;
 import com.stadiumbooking.model.StadiumDetalis;
 
@@ -38,7 +39,8 @@ public class MatchDetailsController extends HttpServlet {
 				rd.forward(req, res);
 		} catch (SQLException | ServletException | IOException e) {
 	
-			e.getMessage();
+			Logger.printStackTrace(e);
+			Logger.runTimeException(e.getMessage());
 		}
 	
 		
