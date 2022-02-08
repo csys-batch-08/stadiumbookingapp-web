@@ -11,7 +11,7 @@
 <meta charset="ISO-8859-1">
 <meta name="keywords" content="stadium booking,seat booking,stadium seat booking,match ticket booking">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css"  rel="stylesheet">
-<script	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
+<script	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js" integrity=''></script>
 <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 <link rel = "icon" type = "" href = "assets/image/stadiumLogo.png">
  <link rel="stylesheet" href="assets/css/sideNavBar.css">
