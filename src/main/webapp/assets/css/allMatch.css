@@ -1,232 +1,237 @@
 @charset "ISO-8859-1";
 
 html {
-	scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-	overflow-x: hidden;
+    overflow-x: hidden;
 }
 
 #sportInfo {
-	position: absolute;
-	left: 300px;
+    position: absolute;
+    left: 300px;
 }
 
 #mathcInfo {
-	position: absolute;
-	left: 300px;
-	top: 100px;
-	width: 60%;
-	height: fit-content;
-	padding: 12px;
-	padding: 20px;
+    position: absolute;
+    left: 300px;
+    top: 100px;
+    width: 60%;
+    height: fit-content;
+    padding: 12px;
+    padding: 20px;
 }
 
 .allMatch {
-	background-color: #f2f2f2;
-	border: 1px solid #023f72 !important;
-	border-radius: 5px;
-	transition: .4s ease-in;
-	z-index: 1;
+    background-color: #f2f2f2;
+    border: 1px solid #023f72 !important;
+    border-radius: 5px;
+    transition: .4s ease-in;
+    z-index: 1;
 }
 
-.allMatch::before, .allMatch::after {
-	content: "";
-	z-index: -1;
+.allMatch::before,
+.allMatch::after {
+    content: "";
+    z-index: -1;
 }
 
 .allMatch:hover {
-	background-color: white;
-	box-shadow: inset -10.5em 0 0 0 SlateBlue, inset 10.5em 0 0 0 DodgerBlue;
+    background-color: white;
+    box-shadow: inset -10.5em 0 0 0 SlateBlue, inset 10.5em 0 0 0 DodgerBlue;
 }
 
 #CSKMI:hover {
-	background-color: white;
-	box-shadow: inset -10.5em 0 0 0 blue, inset 10.5em 0 0 0 yellow;
+    background-color: white;
+    box-shadow: inset -10.5em 0 0 0 blue, inset 10.5em 0 0 0 yellow;
 }
 
 #RCBKKR:hover {
-	background-color: white;
-	box-shadow: inset -10.5em 0 0 0 purple, inset 10.5em 0 0 0 red;
+    background-color: white;
+    box-shadow: inset -10.5em 0 0 0 purple, inset 10.5em 0 0 0 red;
 }
 
 #MIDC:hover {
-	background-color: white;
-	box-shadow: inset -10.5em 0 0 0 indigo, inset 10.5em 0 0 0 blue;
+    background-color: white;
+    box-shadow: inset -10.5em 0 0 0 indigo, inset 10.5em 0 0 0 blue;
 }
 
 #CSKRCB:hover {
-	background-color: white;
-	box-shadow: inset -10.5em 0 0 0 red, inset 10.5em 0 0 0 yellow;
+    background-color: white;
+    box-shadow: inset -10.5em 0 0 0 red, inset 10.5em 0 0 0 yellow;
 }
 
 #KKRDC:hover {
-	background-color: white;
-	box-shadow: inset -10.5em 0 0 0 indigo, inset 10.5em 0 0 0 purple;
+    background-color: white;
+    box-shadow: inset -10.5em 0 0 0 indigo, inset 10.5em 0 0 0 purple;
 }
 
 #SRHDC:hover {
-	background-color: white;
-	box-shadow: inset -10.5em 0 0 0 indigo, inset 10.5em 0 0 0 orange;
+    background-color: white;
+    box-shadow: inset -10.5em 0 0 0 indigo, inset 10.5em 0 0 0 orange;
 }
 
 #mathcInfo:hover {
-	background-color: white;
+    background-color: white;
 }
 
 img {
-	position: relative;
-	top: -10px;
-	left: 10px;
-	width: 100px;
-	height: 100px;
+    position: relative;
+    top: -10px;
+    left: 10px;
+    width: 100px;
+    height: 100px;
 }
 
 #teamBlogo {
-	position: relative;
-	left: 400px;
+    position: relative;
+    left: 400px;
 }
 
 #teamA {
-	font-size: 23px;
-	position: relative;
-	left: -90px;
-	top: 10px;
+    font-size: 23px;
+    position: relative;
+    left: -90px;
+    top: 10px;
 }
 
 #Vs {
-	font-size: 50px;
-	position: relative;
-	left: 200px;
-	top: -40px;
+    font-size: 50px;
+    position: relative;
+    left: 200px;
+    top: -40px;
 }
 
 #teamB {
-	font-size: 23px;
-	position: relative;
-	left: 450px;
-	top: 10px;
+    font-size: 23px;
+    position: relative;
+    left: 450px;
+    top: 10px;
 }
 
 button {
-	background-color: lightgreen;
-	color: red;
-	position: relative;
-	left: 60px;
+    background-color: lightgreen;
+    color: red;
+    position: relative;
+    left: 60px;
 }
 
 .matchDetalis {
-	position: relative;
-	left: 370px;
-	font-size: 18px;
-	top: -30px;
-	font-weight: bold;
+    position: relative;
+    left: 370px;
+    font-size: 18px;
+    top: -30px;
+    font-weight: bold;
 }
 
 #about {
-	position: relative;
-	left: 300px;
+    position: relative;
+    left: 300px;
 }
 
 #gifImage {
-	position: fixed;
-	top: 30px;
-	left: 1250px
+    position: fixed;
+    top: 30px;
+    left: 1250px
 }
 
 .anime img {
-	width: 50px;
-	height: 50px;
+    width: 50px;
+    height: 50px;
 }
 
-#mathcInfo  button,#mathcInfo a {
-	background-color: #f44336;
-	color: white;
-	padding: 14px 25px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: large;
-	font-weight: bold;
-	position: relative;
-	left: 40px;
-	transition: transform 300ms, background-color 300ms;
-	animation: pulse 500ms;
+#mathcInfo button,
+#mathcInfo a {
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: large;
+    font-weight: bold;
+    position: relative;
+    left: 40px;
+    transition: transform 300ms, background-color 300ms;
+    animation: pulse 500ms;
 }
 
-#mathcInfo button:hover,#mathcInfo a:hover {
-	background-color: green;
-	color: black;
-	transform: scale(1.05);
+#mathcInfo button:hover,
+#mathcInfo a:hover {
+    background-color: green;
+    color: black;
+    transform: scale(1.05);
 }
 
-#mathcInfo button:active,#mathcInfo a:active {
-	transform: scale(0.95);
-	animation: none;
+#mathcInfo button:active,
+#mathcInfo a:active {
+    transform: scale(0.95);
+    animation: none;
 }
 
-@keyframes pulse{
-	from {
- box-shadow: #ff69b4 0 0 0;
-	
+@keyframes pulse {
+    from {
+        box-shadow: #ff69b4 0 0 0;
+    }
+
+    to {
+        box-shadow: #ff69b400 0 0 0 12px;
+    }
 }
 
-to {
-	box-shadow: #ff69b400 0 0 0 12px;
-}
-
-}
 #search {
-	position: absolute;
-	top: 20px;
-	left: 850px;
-	border: 2px solid blue;
+    position: absolute;
+    top: 20px;
+    left: 850px;
+    border: 2px solid blue;
 }
 
 #search input {
-	border: none;
-	height: 60px;
-	font-weight: bold;
-	outline: none;
-	font-size: 18px;
+    border: none;
+    height: 60px;
+    font-weight: bold;
+    outline: none;
+    font-size: 18px;
 }
 
-#search  button {
-	position: relative;
-	left: 0px;
-	background-color: DodgerBlue;
-	border: none;
-	color: white;
-	padding: 15px 32px;
-	text-align: center;
-	height: 64px;
+#search button {
+    position: relative;
+    left: 0px;
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    height: 64px;
 }
 
 ::placeholder {
-	color: black;
-	font-size: 18px;
-	height: 50px;
-	font-style: italic;
+    color: black;
+    font-size: 18px;
+    height: 50px;
+    font-style: italic;
 }
 
-input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus,
-	input:-webkit-autofill:active {
-	transition: background-color 5000s;
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s;
 }
 
 ::-webkit-scrollbar {
-	width: 12px;
+    width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-	background: #f1f1f1;
+    background: #f1f1f1;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: #888;
+    background: #888;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: #555;
+    background: #555;
 }

@@ -2,7 +2,9 @@ package com.stadiumbooking.exception;
 
 
 public class LowBalance extends Exception {
-static final String MESSAGE="Insufficient Balance";
+
+	private static final long serialVersionUID = 1L;
+	static final String MESSAGE="Insufficient Balance";
 
 @Override
 public String getMessage() {

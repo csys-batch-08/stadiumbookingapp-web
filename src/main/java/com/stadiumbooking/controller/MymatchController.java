@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.stadiumbooking.daoimpl.SeatsDaoImpl;
 import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.Seats;
 import com.stadiumbooking.service.impl.SeatsServiceImpl;

@@ -12,9 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
-import com.stadiumbooking.daoimpl.UserDaoImpl;
-import com.stadiumbooking.daoimpl.WalletDaoImpl;
 import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.WalletDetails;
 import com.stadiumbooking.service.impl.UserServiceImpl;

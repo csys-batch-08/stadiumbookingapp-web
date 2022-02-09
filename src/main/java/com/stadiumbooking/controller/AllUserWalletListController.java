@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import com.stadiumbooking.daoimpl.WalletDaoImpl;
 import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.WalletDetails;
 import com.stadiumbooking.service.impl.WalletServiceImpl;

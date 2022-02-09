@@ -1,7 +1,6 @@
 package com.stadiumbooking.controller;
 
 import java.io.IOException;
-
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
@@ -14,8 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.stadiumbooking.daoimpl.MatchDaoImpl;
-import com.stadiumbooking.daoimpl.UserDaoImpl;
 import com.stadiumbooking.exception.NotFound;
 import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.User;

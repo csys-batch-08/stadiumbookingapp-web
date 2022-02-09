@@ -1,75 +1,78 @@
 @charset "ISO-8859-1";
-body{
-	
-	overflow: hidden;
-}
 
+body {
+    overflow: hidden;
+}
 
 input {
-	width: 100%;
-	padding: 12px 20px;
-	margin: 8px 0;
-	display: inline-block;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	box-sizing: border-box;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
 #update {
-	visibility: hidden;
-	position: absolute;
-	left: 450px;
-	top: 60px;
+    visibility: hidden;
+    position: absolute;
+    left: 450px;
+    top: 60px;
 }
 
 #update {
-	border-radius: 5px;
-	background-color: #f2f2f2;
-	padding: 20px;
-	width: 50%;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    width: 50%;
 }
 
 #userInfo {
-	position: absolute;
-	left: 600px;
-	top: 50px;
+    position: absolute;
+    left: 600px;
+    top: 50px;
 }
- img{
 
-width:250px;
-height:250px;
-            position: absolute;
-            left: -350px;
-            top:-30px;
-            border-radius: 50%;
-
-        }
-     #edit{
-   position: absolute;
-            left: -150px;
-            top:200px;     
-     } 
-     #profile{
-     position: relative;
-     left:-100px;
-     top:100px;
-     }
-    #profile input{
-     outline: none;
-     }
-      input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active  {
-  transition: background-color 5000s;
-  -webkit-text-fill-color: black !important;
+img {
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    left: -350px;
+    top: -30px;
+    border-radius: 50%;
 }
+
+#edit {
+    position: absolute;
+    left: -150px;
+    top: 200px;
+}
+
+#profile {
+    position: relative;
+    left: -100px;
+    top: 100px;
+}
+
+#profile input {
+    outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s;
+    -webkit-text-fill-color: black !important;
+}
+
 .swal-text {
-  background-color: #FEFAE3;
-  padding: 17px;
-  border: 1px solid #F0E1A1;
-  display: block;
-  margin: 22px;
-  text-align: center;
-  color: #61534e;
+    background-color: #FEFAE3;
+    padding: 17px;
+    border: 1px solid #F0E1A1;
+    display: block;
+    margin: 22px;
+    text-align: center;
+    color: #61534e;
 }

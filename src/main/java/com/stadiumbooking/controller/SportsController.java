@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.stadiumbooking.daoimpl.SportsDaoImpl;
 import com.stadiumbooking.logger.Logger;
 import com.stadiumbooking.model.Sports;
 import com.stadiumbooking.service.impl.SportsServiceImpl;

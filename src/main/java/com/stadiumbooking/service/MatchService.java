@@ -15,7 +15,6 @@ public interface MatchService {
 	public Match getMatchByMatchId(int matchId) throws SQLException;
 	public void updateAvailableSeats(int seatsCount, int matchId) throws SQLException;
 	public void updateCancelledSeats(int seatsCount,int matchId) throws  SQLException;
-
 	public int checkAvilableSeats(int matchId) throws  SQLException;
 	public List<Match> searchByTeam(String teamNmae) throws SQLException;
 }

@@ -2,6 +2,7 @@ package com.stadiumbooking.exception;
 
 public class HouseFull extends Exception {
 
+	private static final long serialVersionUID = 1L;
 	static final  String MESSAGE="House Full";
 
 	@Override
